@@ -2,22 +2,6 @@ import 'api_manager.dart';
 
 export 'api_manager.dart' show ApiCallResponse;
 
-Future<ApiCallResponse> tokenTwitchCall() {
-  return ApiManager.instance.makeApiCall(
-    callName: 'TokenTwitch',
-    apiUrl: 'https://id.twitch.tv/oauth2/token',
-    callType: ApiCallType.POST,
-    headers: {
-      'client_secret': '31l10c3oit9ynb0dpmqb21jwkos80c',
-      'client_id': 'sj8we4fkxdaz6w6qwwotxlwkom8z0c',
-      'grant_type': 'client_credentials',
-    },
-    params: {},
-    bodyType: BodyType.NONE,
-    returnBody: true,
-  );
-}
-
 Future<ApiCallResponse> getThreeItemCall() {
   return ApiManager.instance.makeApiCall(
     callName: 'GetThreeItem',
@@ -64,6 +48,24 @@ Future<ApiCallResponse> getImageCall({
       'Accept': 'application/json',
     },
     params: {},
+    returnBody: true,
+  );
+}
+
+Future<ApiCallResponse> tokenTwitchCall() {
+  return ApiManager.instance.makeApiCall(
+    callName: 'TokenTwitch',
+    apiUrl: 'https://id.twitch.tv/oauth2/token',
+    callType: ApiCallType.POST,
+    headers: {
+      'client_secret': '31l10c3oit9ynb0dpmqb21jwkos80c',
+      'client_id': 'sj8we4fkxdaz6w6qwwotxlwkom8z0c',
+      'grant_type': 'client_credentials',
+      'Authorization': '31l10c3oit9ynb0dpmqb21jwkos80c',
+      'Accept': 'application/json',
+    },
+    params: {},
+    bodyType: BodyType.NONE,
     returnBody: true,
   );
 }
