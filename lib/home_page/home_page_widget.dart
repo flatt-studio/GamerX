@@ -404,7 +404,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 onTap: () async {
                                   apiCallOutput = await getAllCall(
                                     bearerToken:
-                                        'Bearer ${getJsonField(tokenTwitchOutput.jsonBody, r'''$.access_token''').toString()}',
+                                        'Bearer 55zo9n1c1f5i8pbm11sayt9v7oq8iw',
                                   );
                                   if (apiCallOutput.succeeded) {
                                     ScaffoldMessenger.of(context).showSnackBar(
