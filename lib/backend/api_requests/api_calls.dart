@@ -18,6 +18,21 @@ Future<ApiCallResponse> tokenTwitchCall() {
   );
 }
 
+Future<ApiCallResponse> getThreeItemCall() {
+  return ApiManager.instance.makeApiCall(
+    callName: 'GetThreeItem',
+    apiUrl: 'https://api.igdb.com/v4/games/?fields=*&name=*&limit=3',
+    callType: ApiCallType.GET,
+    headers: {
+      'Authorization': '31l10c3oit9ynb0dpmqb21jwkos80c',
+      'Client-ID': 'sj8we4fkxdaz6w6qwwotxlwkom8z0c',
+      'Accept': 'application/json',
+    },
+    params: {},
+    returnBody: true,
+  );
+}
+
 Future<ApiCallResponse> getAllCall({
   String bearerToken = '',
 }) {
@@ -35,27 +50,13 @@ Future<ApiCallResponse> getAllCall({
   );
 }
 
-Future<ApiCallResponse> getThreeItemCall() {
-  return ApiManager.instance.makeApiCall(
-    callName: 'GetThreeItem',
-    apiUrl: 'https://api.igdb.com/v4/games/?fields=*&name=*&limit=3',
-    callType: ApiCallType.GET,
-    headers: {
-      'Authorization': '31l10c3oit9ynb0dpmqb21jwkos80c',
-      'Client-ID': 'sj8we4fkxdaz6w6qwwotxlwkom8z0c',
-      'Accept': 'application/json',
-    },
-    params: {},
-    returnBody: true,
-  );
-}
-
 Future<ApiCallResponse> getImageCall({
-  String id = '',
+  String id = '85031',
 }) {
   return ApiManager.instance.makeApiCall(
     callName: 'GetImage',
-    apiUrl: 'https://api.igdb.com/v4/games/?fields=cover.url&where id=${id}',
+    apiUrl:
+        'https://api.igdb.com/v4/games/?fields=cover.url&where id=${id}&limit=1',
     callType: ApiCallType.GET,
     headers: {
       'Authorization': '31l10c3oit9ynb0dpmqb21jwkos80c',

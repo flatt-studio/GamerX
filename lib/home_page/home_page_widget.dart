@@ -295,11 +295,14 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           final pageViewGetThreeItemResponse = snapshot.data;
                           return Builder(
                             builder: (context) {
-                              final threeItems = getJsonField(
-                                          pageViewGetThreeItemResponse.jsonBody,
-                                          r'''$.*''')
-                                      ?.toList() ??
-                                  [];
+                              final threeItems = (getJsonField(
+                                              pageViewGetThreeItemResponse
+                                                  .jsonBody,
+                                              r'''$.*''')
+                                          ?.toList() ??
+                                      [])
+                                  .take(3)
+                                  .toList();
                               return Container(
                                 width: double.infinity,
                                 height: 350,
@@ -319,70 +322,72 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                             (context, threeItemsIndex) {
                                           final threeItemsItem =
                                               threeItems[threeItemsIndex];
-                                          return Stack(
-                                            children: [
-                                              FutureBuilder<ApiCallResponse>(
-                                                future: getImageCall(
-                                                  id: getJsonField(
-                                                          threeItemsItem,
-                                                          r'''$.id''')
-                                                      .toString(),
-                                                ),
-                                                builder: (context, snapshot) {
-                                                  // Customize what your widget looks like when it's loading.
-                                                  if (!snapshot.hasData) {
-                                                    return Center(
-                                                      child: SizedBox(
-                                                        width: 40,
-                                                        height: 40,
-                                                        child:
-                                                            CircularProgressIndicator(
-                                                          color:
-                                                              FlutterFlowTheme
-                                                                  .primaryColor,
-                                                        ),
-                                                      ),
-                                                    );
-                                                  }
-                                                  final imageGetImageResponse =
-                                                      snapshot.data;
-                                                  return CachedNetworkImage(
+                                          return FutureBuilder<ApiCallResponse>(
+                                            future: getImageCall(
+                                              id: getJsonField(threeItemsItem,
+                                                      r'''$.id''')
+                                                  .toString(),
+                                            ),
+                                            builder: (context, snapshot) {
+                                              // Customize what your widget looks like when it's loading.
+                                              if (!snapshot.hasData) {
+                                                return Center(
+                                                  child: SizedBox(
+                                                    width: 40,
+                                                    height: 40,
+                                                    child:
+                                                        CircularProgressIndicator(
+                                                      color: FlutterFlowTheme
+                                                          .primaryColor,
+                                                    ),
+                                                  ),
+                                                );
+                                              }
+                                              final stackGetImageResponse =
+                                                  snapshot.data;
+                                              return Stack(
+                                                children: [
+                                                  CachedNetworkImage(
                                                     imageUrl: getJsonField(
-                                                        imageGetImageResponse
+                                                        stackGetImageResponse
                                                             .jsonBody,
-                                                        r'''$.[0].cover.url'''),
+                                                        r'''$..url'''),
                                                     width:
                                                         MediaQuery.of(context)
                                                             .size
                                                             .width,
                                                     height: 400,
                                                     fit: BoxFit.cover,
-                                                  );
-                                                },
-                                              ),
-                                              Align(
-                                                alignment: AlignmentDirectional(
-                                                    0, 0.95),
-                                                child: Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(20, 0, 20, 0),
-                                                  child: Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: [
-                                                      Text(
-                                                        getJsonField(
-                                                                threeItemsItem,
-                                                                r'''$.name''')
-                                                            .toString(),
-                                                        style: FlutterFlowTheme
-                                                            .title1,
-                                                      ),
-                                                    ],
                                                   ),
-                                                ),
-                                              ),
-                                            ],
+                                                  Align(
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            0, 0.95),
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  20, 0, 20, 0),
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          Text(
+                                                            getJsonField(
+                                                                    threeItemsItem,
+                                                                    r'''$.name''')
+                                                                .toString(),
+                                                            style:
+                                                                FlutterFlowTheme
+                                                                    .title1,
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              );
+                                            },
                                           );
                                         },
                                       ),
