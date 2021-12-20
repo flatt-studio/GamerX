@@ -319,8 +319,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
                                                   Text(
-                                                    getJsonField(threeItemItem,
-                                                            r'''$.name''')
+                                                    getJsonField(
+                                                            pageViewGetThreeItemResponse
+                                                                .jsonBody,
+                                                            r'''$.[1].name''')
                                                         .toString(),
                                                     style:
                                                         FlutterFlowTheme.title1,
