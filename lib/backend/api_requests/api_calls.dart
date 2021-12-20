@@ -20,36 +20,25 @@ Future<ApiCallResponse> tokenTwitchCall() {
   );
 }
 
-Future<ApiCallResponse> getAllCall({
-  String bearerToken = '',
-}) {
-  return ApiManager.instance.makeApiCall(
-    callName: 'GetAll',
-    apiUrl: 'https://api.igdb.com/v4/games/?fields=*&name=*',
-    callType: ApiCallType.GET,
-    headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'sj8we4fkxdaz6w6qwwotxlwkom8z0c',
-      'Authorization': '${bearerToken}',
-    },
-    params: {},
-    returnBody: true,
-  );
-}
-
 Future<ApiCallResponse> getThreeItemCall({
   String bearerToken = 'bearer 55zo9n1c1f5i8pbm11sayt9v7oq8iw',
 }) {
+  final body = '''
+fields *;
+where rating > 75;
+limit 10;''';
   return ApiManager.instance.makeApiCall(
     callName: 'GetThreeItem',
-    apiUrl: 'https://api.igdb.com/v4/games/?fields=*&name=*&limit=3',
-    callType: ApiCallType.GET,
+    apiUrl: 'https://api.igdb.com/v4/games/',
+    callType: ApiCallType.POST,
     headers: {
       'Authorization': '${bearerToken}',
       'Client-ID': 'sj8we4fkxdaz6w6qwwotxlwkom8z0c',
       'Accept': 'application/json',
     },
     params: {},
+    body: body,
+    bodyType: BodyType.TEXT,
     returnBody: true,
   );
 }
@@ -74,6 +63,28 @@ limit 1;''';
     params: {
       'id': id,
     },
+    body: body,
+    bodyType: BodyType.TEXT,
+    returnBody: true,
+  );
+}
+
+Future<ApiCallResponse> getAllCall({
+  String bearerToken = '',
+}) {
+  final body = '''
+fields *;
+name *;''';
+  return ApiManager.instance.makeApiCall(
+    callName: 'GetAll',
+    apiUrl: 'https://api.igdb.com/v4/games/',
+    callType: ApiCallType.POST,
+    headers: {
+      'Accept': 'application/json',
+      'Client-ID': 'sj8we4fkxdaz6w6qwwotxlwkom8z0c',
+      'Authorization': '${bearerToken}',
+    },
+    params: {},
     body: body,
     bodyType: BodyType.TEXT,
     returnBody: true,
