@@ -402,7 +402,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                             .showSnackBar(
                                           SnackBar(
                                             content: Text(
-                                              'Failed',
+                                              homePageTokenTwitchResponse
+                                                  .statusCode
+                                                  .toString(),
                                               style: TextStyle(
                                                 color: Color(0xFFFF0000),
                                               ),
