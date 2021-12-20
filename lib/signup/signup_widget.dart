@@ -1,9 +1,12 @@
 import '../auth/auth_util.dart';
+import '../backend/api_requests/api_calls.dart';
+import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../home_page/home_page_widget.dart';
 import '../login/login_widget.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -15,6 +18,7 @@ class SignupWidget extends StatefulWidget {
 }
 
 class _SignupWidgetState extends State<SignupWidget> {
+  ApiCallResponse userToken;
   TextEditingController emailAddressController;
   TextEditingController passwordController;
   bool passwordVisibility;
@@ -297,6 +301,15 @@ class _SignupWidgetState extends State<SignupWidget> {
                                     return;
                                   }
 
+                                  userToken = await tokenTwitchCall();
+                                  final usersUpdateData = createUsersRecordData(
+                                    tokenTwitch: getJsonField(
+                                            userToken.jsonBody,
+                                            r'''$.access_token''')
+                                        .toString(),
+                                  );
+                                  await currentUserReference
+                                      .update(usersUpdateData);
                                   await Navigator.pushAndRemoveUntil(
                                     context,
                                     MaterialPageRoute(
@@ -304,6 +317,8 @@ class _SignupWidgetState extends State<SignupWidget> {
                                     ),
                                     (r) => false,
                                   );
+
+                                  setState(() {});
                                 },
                                 text: 'Sign Up',
                                 options: FFButtonOptions(

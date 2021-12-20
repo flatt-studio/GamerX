@@ -1,3 +1,4 @@
+import '../auth/auth_util.dart';
 import '../backend/api_requests/api_calls.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -16,7 +17,6 @@ class HomePageWidget extends StatefulWidget {
 
 class _HomePageWidgetState extends State<HomePageWidget> {
   ApiCallResponse apiCallOutput;
-  ApiCallResponse tokenTwitchOutput;
   double ratingBarValue;
   PageController pageViewController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -348,63 +348,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               ),
                               InkWell(
                                 onTap: () async {
-                                  tokenTwitchOutput = await tokenTwitchCall();
-                                  if (tokenTwitchOutput.succeeded) {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                        content: Text(
-                                          'SUCCESS',
-                                          style: TextStyle(
-                                            color:
-                                                FlutterFlowTheme.primaryColor,
-                                          ),
-                                        ),
-                                        duration: Duration(milliseconds: 4000),
-                                        backgroundColor:
-                                            FlutterFlowTheme.tertiaryColor,
-                                      ),
-                                    );
-                                  } else {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                        content: Text(
-                                          'Failed',
-                                          style: TextStyle(
-                                            color: Color(0xFFFF0000),
-                                          ),
-                                        ),
-                                        duration: Duration(milliseconds: 4000),
-                                        backgroundColor: Color(0xFF0E151C),
-                                      ),
-                                    );
-                                  }
-
-                                  setState(() {});
-                                },
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Text(
-                                      'More',
-                                      style:
-                                          FlutterFlowTheme.bodyText1.override(
-                                        fontFamily: 'Roboto',
-                                        color: FlutterFlowTheme.customColor3,
-                                      ),
-                                    ),
-                                    Icon(
-                                      Icons.arrow_forward_ios,
-                                      color: FlutterFlowTheme.customColor3,
-                                      size: 16,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              InkWell(
-                                onTap: () async {
                                   apiCallOutput = await getAllCall(
                                     bearerToken:
-                                        'Bearer 55zo9n1c1f5i8pbm11sayt9v7oq8iw',
+                                        'Bearer ${currentUserDocument?.tokenTwitch}',
                                   );
                                   if (apiCallOutput.succeeded) {
                                     ScaffoldMessenger.of(context).showSnackBar(
@@ -425,8 +371,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
                                         content: Text(
-                                          tokenTwitchOutput.statusCode
-                                              .toString(),
+                                          'Failed',
                                           style: TextStyle(
                                             color: Color(0xFFFF0000),
                                           ),
