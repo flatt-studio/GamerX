@@ -19,6 +19,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   ApiCallResponse apiCallOutput;
   double ratingBarValue;
   PageController pageViewController;
+  ApiCallResponse apiCallOutputthree;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -607,23 +608,58 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   'Featured Games',
                                   style: FlutterFlowTheme.bodyText1,
                                 ),
-                                Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Text(
-                                      'More',
-                                      style:
-                                          FlutterFlowTheme.bodyText1.override(
-                                        fontFamily: 'Roboto',
-                                        color: FlutterFlowTheme.customColor3,
+                                InkWell(
+                                  onTap: () async {
+                                    apiCallOutputthree =
+                                        await getThreeItemCall();
+                                    if (apiCallOutputthree.succeeded) {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content: Text(
+                                            'success',
+                                            style: TextStyle(),
+                                          ),
+                                          duration:
+                                              Duration(milliseconds: 4000),
+                                          backgroundColor: Color(0x00000000),
+                                        ),
+                                      );
+                                    } else {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content: Text(
+                                            'Failed',
+                                            style: TextStyle(),
+                                          ),
+                                          duration:
+                                              Duration(milliseconds: 4000),
+                                          backgroundColor: Color(0x00000000),
+                                        ),
+                                      );
+                                    }
+
+                                    setState(() {});
+                                  },
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Text(
+                                        'More',
+                                        style:
+                                            FlutterFlowTheme.bodyText1.override(
+                                          fontFamily: 'Roboto',
+                                          color: FlutterFlowTheme.customColor3,
+                                        ),
                                       ),
-                                    ),
-                                    Icon(
-                                      Icons.arrow_forward_ios,
-                                      color: FlutterFlowTheme.customColor3,
-                                      size: 16,
-                                    ),
-                                  ],
+                                      Icon(
+                                        Icons.arrow_forward_ios,
+                                        color: FlutterFlowTheme.customColor3,
+                                        size: 16,
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ],
                             ),
