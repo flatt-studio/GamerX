@@ -1,6 +1,7 @@
 import '../backend/api_requests/api_calls.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -276,141 +277,157 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Container(
-                        width: double.infinity,
-                        height: 350,
-                        child: Stack(
-                          children: [
-                            Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 0, 0, 50),
-                              child: PageView(
-                                controller: pageViewController ??=
-                                    PageController(initialPage: 0),
-                                scrollDirection: Axis.horizontal,
-                                children: [
-                                  Stack(
-                                    children: [
-                                      Image.asset(
-                                        'assets/images/home_header.png',
-                                        width:
-                                            MediaQuery.of(context).size.width,
-                                        height: 400,
-                                        fit: BoxFit.cover,
-                                      ),
-                                      Align(
-                                        alignment:
-                                            AlignmentDirectional(0, 0.95),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  20, 0, 20, 0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Text(
-                                                'Halo Infinite',
-                                                style: FlutterFlowTheme.title1,
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  Stack(
-                                    children: [
-                                      Image.asset(
-                                        'assets/images/home_header.png',
-                                        width:
-                                            MediaQuery.of(context).size.width,
-                                        height: 400,
-                                        fit: BoxFit.cover,
-                                      ),
-                                      Align(
-                                        alignment:
-                                            AlignmentDirectional(0, 0.95),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  20, 0, 20, 0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Text(
-                                                'Halo Infinite',
-                                                style: FlutterFlowTheme.title1,
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  Stack(
-                                    children: [
-                                      Image.asset(
-                                        'assets/images/home_header.png',
-                                        width:
-                                            MediaQuery.of(context).size.width,
-                                        height: 400,
-                                        fit: BoxFit.cover,
-                                      ),
-                                      Align(
-                                        alignment:
-                                            AlignmentDirectional(0, 0.95),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  20, 0, 20, 0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Text(
-                                                'Halo Infinite',
-                                                style: FlutterFlowTheme.title1,
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Align(
-                              alignment: AlignmentDirectional(-0.87, 0.9),
-                              child: Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
-                                child: SmoothPageIndicator(
-                                  controller: pageViewController ??=
-                                      PageController(initialPage: 0),
-                                  count: 3,
-                                  axisDirection: Axis.horizontal,
-                                  onDotClicked: (i) {
-                                    pageViewController.animateToPage(
-                                      i,
-                                      duration: Duration(milliseconds: 500),
-                                      curve: Curves.ease,
-                                    );
-                                  },
-                                  effect: SlideEffect(
-                                    spacing: 5,
-                                    radius: 16,
-                                    dotWidth: 8,
-                                    dotHeight: 8,
-                                    dotColor: FlutterFlowTheme.tertiaryColor,
-                                    activeDotColor:
-                                        FlutterFlowTheme.primaryColor,
-                                    paintStyle: PaintingStyle.fill,
-                                  ),
+                      FutureBuilder<ApiCallResponse>(
+                        future: getThreeItemCall(),
+                        builder: (context, snapshot) {
+                          // Customize what your widget looks like when it's loading.
+                          if (!snapshot.hasData) {
+                            return Center(
+                              child: SizedBox(
+                                width: 40,
+                                height: 40,
+                                child: CircularProgressIndicator(
+                                  color: FlutterFlowTheme.primaryColor,
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
+                            );
+                          }
+                          final pageViewGetThreeItemResponse = snapshot.data;
+                          return Builder(
+                            builder: (context) {
+                              final threeItems = getJsonField(
+                                          pageViewGetThreeItemResponse.jsonBody,
+                                          r'''$.*''')
+                                      ?.toList() ??
+                                  [];
+                              return Container(
+                                width: double.infinity,
+                                height: 350,
+                                child: Stack(
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0, 0, 0, 50),
+                                      child: PageView.builder(
+                                        controller: pageViewController ??=
+                                            PageController(
+                                                initialPage: min(
+                                                    0, threeItems.length - 1)),
+                                        scrollDirection: Axis.horizontal,
+                                        itemCount: threeItems.length,
+                                        itemBuilder:
+                                            (context, threeItemsIndex) {
+                                          final threeItemsItem =
+                                              threeItems[threeItemsIndex];
+                                          return Stack(
+                                            children: [
+                                              FutureBuilder<ApiCallResponse>(
+                                                future: getImageCall(
+                                                  id: getJsonField(
+                                                          threeItemsItem,
+                                                          r'''$.id''')
+                                                      .toString(),
+                                                ),
+                                                builder: (context, snapshot) {
+                                                  // Customize what your widget looks like when it's loading.
+                                                  if (!snapshot.hasData) {
+                                                    return Center(
+                                                      child: SizedBox(
+                                                        width: 40,
+                                                        height: 40,
+                                                        child:
+                                                            CircularProgressIndicator(
+                                                          color:
+                                                              FlutterFlowTheme
+                                                                  .primaryColor,
+                                                        ),
+                                                      ),
+                                                    );
+                                                  }
+                                                  final imageGetImageResponse =
+                                                      snapshot.data;
+                                                  return CachedNetworkImage(
+                                                    imageUrl: getJsonField(
+                                                        imageGetImageResponse
+                                                            .jsonBody,
+                                                        r'''$.[0].cover.url'''),
+                                                    width:
+                                                        MediaQuery.of(context)
+                                                            .size
+                                                            .width,
+                                                    height: 400,
+                                                    fit: BoxFit.cover,
+                                                  );
+                                                },
+                                              ),
+                                              Align(
+                                                alignment: AlignmentDirectional(
+                                                    0, 0.95),
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(20, 0, 20, 0),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Text(
+                                                        getJsonField(
+                                                                threeItemsItem,
+                                                                r'''$.name''')
+                                                            .toString(),
+                                                        style: FlutterFlowTheme
+                                                            .title1,
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                    Align(
+                                      alignment:
+                                          AlignmentDirectional(-0.87, 0.9),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0, 0, 0, 10),
+                                        child: SmoothPageIndicator(
+                                          controller: pageViewController ??=
+                                              PageController(
+                                                  initialPage: min(0,
+                                                      threeItems.length - 1)),
+                                          count: threeItems.length,
+                                          axisDirection: Axis.horizontal,
+                                          onDotClicked: (i) {
+                                            pageViewController.animateToPage(
+                                              i,
+                                              duration:
+                                                  Duration(milliseconds: 500),
+                                              curve: Curves.ease,
+                                            );
+                                          },
+                                          effect: SlideEffect(
+                                            spacing: 5,
+                                            radius: 16,
+                                            dotWidth: 8,
+                                            dotHeight: 8,
+                                            dotColor:
+                                                FlutterFlowTheme.tertiaryColor,
+                                            activeDotColor:
+                                                FlutterFlowTheme.primaryColor,
+                                            paintStyle: PaintingStyle.fill,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              );
+                            },
+                          );
+                        },
                       ),
                       Container(
                         width: MediaQuery.of(context).size.width,
