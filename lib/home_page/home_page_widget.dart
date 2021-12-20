@@ -302,13 +302,45 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           threeItem[threeItemIndex];
                                       return Stack(
                                         children: [
-                                          Image.asset(
-                                            'assets/images/avatar.png',
-                                            width: MediaQuery.of(context)
-                                                .size
-                                                .width,
-                                            height: 400,
-                                            fit: BoxFit.cover,
+                                          FutureBuilder<ApiCallResponse>(
+                                            future: getImageCall(
+                                              id: getJsonField(threeItemItem,
+                                                      r'''$.id''')
+                                                  .toString(),
+                                              bearerToken:
+                                                  'Bearer ${currentUserDocument?.tokenTwitch}',
+                                            ),
+                                            builder: (context, snapshot) {
+                                              // Customize what your widget looks like when it's loading.
+                                              if (!snapshot.hasData) {
+                                                return Center(
+                                                  child: SizedBox(
+                                                    width: 40,
+                                                    height: 40,
+                                                    child:
+                                                        CircularProgressIndicator(
+                                                      color: FlutterFlowTheme
+                                                          .primaryColor,
+                                                    ),
+                                                  ),
+                                                );
+                                              }
+                                              final imageGetImageResponse =
+                                                  snapshot.data;
+                                              return AuthUserStreamWidget(
+                                                child: CachedNetworkImage(
+                                                  imageUrl: getJsonField(
+                                                      imageGetImageResponse
+                                                          .jsonBody,
+                                                      r'''$..cover.url'''),
+                                                  width: MediaQuery.of(context)
+                                                      .size
+                                                      .width,
+                                                  height: 400,
+                                                  fit: BoxFit.cover,
+                                                ),
+                                              );
+                                            },
                                           ),
                                           Align(
                                             alignment:
