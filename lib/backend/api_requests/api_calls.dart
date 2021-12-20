@@ -37,14 +37,12 @@ Future<ApiCallResponse> getAllCall({
   );
 }
 
-Future<ApiCallResponse> getImageCall({
-  String id = '85031',
+Future<ApiCallResponse> getThreeItemCall({
   String bearerToken = 'bearer 55zo9n1c1f5i8pbm11sayt9v7oq8iw',
 }) {
   return ApiManager.instance.makeApiCall(
-    callName: 'GetImage',
-    apiUrl:
-        'https://api.igdb.com/v4/games/?fields=cover.url&where id=${id}&limit=1',
+    callName: 'GetThreeItem',
+    apiUrl: 'https://api.igdb.com/v4/games/?fields=*&name=*&limit=3',
     callType: ApiCallType.GET,
     headers: {
       'Authorization': '${bearerToken}',
@@ -56,12 +54,14 @@ Future<ApiCallResponse> getImageCall({
   );
 }
 
-Future<ApiCallResponse> getThreeItemCall({
+Future<ApiCallResponse> getImageCall({
+  String id = '85031',
   String bearerToken = 'bearer 55zo9n1c1f5i8pbm11sayt9v7oq8iw',
 }) {
   return ApiManager.instance.makeApiCall(
-    callName: 'GetThreeItem',
-    apiUrl: 'https://api.igdb.com/v4/games/?fields=*&name=*&limit=3',
+    callName: 'GetImage',
+    apiUrl:
+        'https://api.igdb.com/v4/games/?fields=screenshots.*&where id=${id}&limit=1',
     callType: ApiCallType.GET,
     headers: {
       'Authorization': '${bearerToken}',
