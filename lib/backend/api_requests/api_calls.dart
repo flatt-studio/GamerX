@@ -2,17 +2,20 @@ import 'api_manager.dart';
 
 export 'api_manager.dart' show ApiCallResponse;
 
-Future<ApiCallResponse> getThreeItemCall() {
+Future<ApiCallResponse> tokenTwitchCall() {
   return ApiManager.instance.makeApiCall(
-    callName: 'GetThreeItem',
-    apiUrl: 'https://api.igdb.com/v4/games/?fields=*&name=*&limit=3',
-    callType: ApiCallType.GET,
+    callName: 'TokenTwitch',
+    apiUrl: 'https://id.twitch.tv/oauth2/token',
+    callType: ApiCallType.POST,
     headers: {
+      'client_secret': '31l10c3oit9ynb0dpmqb21jwkos80c',
+      'client_id': 'sj8we4fkxdaz6w6qwwotxlwkom8z0c',
+      'grant_type': 'client_credentials',
       'Authorization': '31l10c3oit9ynb0dpmqb21jwkos80c',
-      'Client-ID': 'sj8we4fkxdaz6w6qwwotxlwkom8z0c',
       'Accept': 'application/json',
     },
     params: {},
+    bodyType: BodyType.NONE,
     returnBody: true,
   );
 }
@@ -36,6 +39,7 @@ Future<ApiCallResponse> getAllCall({
 
 Future<ApiCallResponse> getImageCall({
   String id = '85031',
+  String bearerToken = 'bearer 55zo9n1c1f5i8pbm11sayt9v7oq8iw',
 }) {
   return ApiManager.instance.makeApiCall(
     callName: 'GetImage',
@@ -43,7 +47,7 @@ Future<ApiCallResponse> getImageCall({
         'https://api.igdb.com/v4/games/?fields=cover.url&where id=${id}&limit=1',
     callType: ApiCallType.GET,
     headers: {
-      'Authorization': '31l10c3oit9ynb0dpmqb21jwkos80c',
+      'Authorization': '${bearerToken}',
       'Client-ID': 'sj8we4fkxdaz6w6qwwotxlwkom8z0c',
       'Accept': 'application/json',
     },
@@ -52,20 +56,19 @@ Future<ApiCallResponse> getImageCall({
   );
 }
 
-Future<ApiCallResponse> tokenTwitchCall() {
+Future<ApiCallResponse> getThreeItemCall({
+  String bearerToken = 'bearer 55zo9n1c1f5i8pbm11sayt9v7oq8iw',
+}) {
   return ApiManager.instance.makeApiCall(
-    callName: 'TokenTwitch',
-    apiUrl: 'https://id.twitch.tv/oauth2/token',
-    callType: ApiCallType.POST,
+    callName: 'GetThreeItem',
+    apiUrl: 'https://api.igdb.com/v4/games/?fields=*&name=*&limit=3',
+    callType: ApiCallType.GET,
     headers: {
-      'client_secret': '31l10c3oit9ynb0dpmqb21jwkos80c',
-      'client_id': 'sj8we4fkxdaz6w6qwwotxlwkom8z0c',
-      'grant_type': 'client_credentials',
-      'Authorization': '31l10c3oit9ynb0dpmqb21jwkos80c',
+      'Authorization': '${bearerToken}',
+      'Client-ID': 'sj8we4fkxdaz6w6qwwotxlwkom8z0c',
       'Accept': 'application/json',
     },
     params: {},
-    bodyType: BodyType.NONE,
     returnBody: true,
   );
 }

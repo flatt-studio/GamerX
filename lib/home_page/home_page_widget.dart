@@ -610,8 +610,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 ),
                                 InkWell(
                                   onTap: () async {
-                                    apiCallOutputthree =
-                                        await getThreeItemCall();
+                                    apiCallOutputthree = await getThreeItemCall(
+                                      bearerToken:
+                                          'Bearer ${currentUserDocument?.tokenTwitch}',
+                                    );
                                     if (apiCallOutputthree.succeeded) {
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(
