@@ -457,6 +457,21 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                 FlutterFlowTheme.tertiaryColor,
                                           ),
                                         );
+                                      } else {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          SnackBar(
+                                            content: Text(
+                                              'Failed',
+                                              style: TextStyle(
+                                                color: Color(0xFFFF0000),
+                                              ),
+                                            ),
+                                            duration:
+                                                Duration(milliseconds: 4000),
+                                            backgroundColor: Color(0xFF0E151C),
+                                          ),
+                                        );
                                       }
 
                                       setState(() {});
