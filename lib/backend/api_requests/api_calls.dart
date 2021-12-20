@@ -58,17 +58,24 @@ Future<ApiCallResponse> getImageCall({
   String id = '85031',
   String bearerToken = 'bearer 55zo9n1c1f5i8pbm11sayt9v7oq8iw',
 }) {
+  final body = '''
+fields screenshots.*;
+where id=87596;
+limit 1;''';
   return ApiManager.instance.makeApiCall(
     callName: 'GetImage',
-    apiUrl:
-        'https://api.igdb.com/v4/games/?fields=screenshots.*&where id=${id}&limit=1',
-    callType: ApiCallType.GET,
+    apiUrl: 'https://api.igdb.com/v4/games/',
+    callType: ApiCallType.POST,
     headers: {
       'Authorization': '${bearerToken}',
       'Client-ID': 'sj8we4fkxdaz6w6qwwotxlwkom8z0c',
       'Accept': 'application/json',
     },
-    params: {},
+    params: {
+      'id': id,
+    },
+    body: body,
+    bodyType: BodyType.TEXT,
     returnBody: true,
   );
 }
