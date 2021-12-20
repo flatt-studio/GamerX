@@ -299,67 +299,37 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     itemBuilder: (context, threeItemIndex) {
                                       final threeItemItem =
                                           threeItem[threeItemIndex];
-                                      return FutureBuilder<ApiCallResponse>(
-                                        future: getImageCall(
-                                          id: getJsonField(
-                                                  threeItemItem, r'''$.id''')
-                                              .toString(),
-                                        ),
-                                        builder: (context, snapshot) {
-                                          // Customize what your widget looks like when it's loading.
-                                          if (!snapshot.hasData) {
-                                            return Center(
-                                              child: SizedBox(
-                                                width: 40,
-                                                height: 40,
-                                                child:
-                                                    CircularProgressIndicator(
-                                                  color: FlutterFlowTheme
-                                                      .primaryColor,
-                                                ),
-                                              ),
-                                            );
-                                          }
-                                          final stackGetImageResponse =
-                                              snapshot.data;
-                                          return Stack(
-                                            children: [
-                                              CachedNetworkImage(
-                                                imageUrl: getJsonField(
-                                                    stackGetImageResponse
-                                                        .jsonBody,
-                                                    r'''$..cover.url'''),
-                                                width: MediaQuery.of(context)
-                                                    .size
-                                                    .width,
-                                                height: 400,
-                                                fit: BoxFit.cover,
-                                              ),
-                                              Align(
-                                                alignment: AlignmentDirectional(
-                                                    0, 0.95),
-                                                child: Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(20, 0, 20, 0),
-                                                  child: Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: [
-                                                      Text(
-                                                        getJsonField(
-                                                                threeItemItem,
-                                                                r'''$.name''')
-                                                            .toString(),
-                                                        style: FlutterFlowTheme
-                                                            .title1,
-                                                      ),
-                                                    ],
+                                      return Stack(
+                                        children: [
+                                          Image.asset(
+                                            'assets/images/avatar.png',
+                                            width: MediaQuery.of(context)
+                                                .size
+                                                .width,
+                                            height: 400,
+                                            fit: BoxFit.cover,
+                                          ),
+                                          Align(
+                                            alignment:
+                                                AlignmentDirectional(0, 0.95),
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(20, 0, 20, 0),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Text(
+                                                    getJsonField(threeItemItem,
+                                                            r'''$.name''')
+                                                        .toString(),
+                                                    style:
+                                                        FlutterFlowTheme.title1,
                                                   ),
-                                                ),
+                                                ],
                                               ),
-                                            ],
-                                          );
-                                        },
+                                            ),
+                                          ),
+                                        ],
                                       );
                                     },
                                   ),
