@@ -28,11 +28,9 @@ Future<ApiCallResponse> getAllCall({
     headers: {
       'Accept': 'application/json',
       'Client-ID': 'sj8we4fkxdaz6w6qwwotxlwkom8z0c',
-      'Authorization': 'Bearer sil1dubwh7tet5j97ff26s8rhut2yj',
+      'Authorization': '${bearerToken}',
     },
-    params: {
-      'BearerToken': bearerToken,
-    },
+    params: {},
     returnBody: true,
   );
 }

@@ -434,11 +434,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   InkWell(
                                     onTap: () async {
                                       apiCallOutput = await getAllCall(
-                                        bearerToken: getJsonField(
-                                                homePageTokenTwitchResponse
-                                                    .jsonBody,
-                                                r'''$.access_token''')
-                                            .toString(),
+                                        bearerToken:
+                                            'Bearer ${getJsonField(homePageTokenTwitchResponse.jsonBody, r'''$.access_token''').toString()}',
                                       );
                                       if (apiCallOutput.succeeded) {
                                         ScaffoldMessenger.of(context)
