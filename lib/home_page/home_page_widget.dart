@@ -330,7 +330,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                               children: [
                                                 CachedNetworkImage(
                                                   imageUrl:
-                                                      'https://images.igdb.com/igdb/image/upload/t_1080p/${getJsonField(stackGetImageResponse.jsonBody, r'''$..cover.id''').toString()}.jpg',
+                                                      'https://images.igdb.com/igdb/image/upload/t_720p/${getJsonField(stackGetImageResponse.jsonBody, r'''$..cover.image_id''').toString()}.jpg',
                                                   width: MediaQuery.of(context)
                                                       .size
                                                       .width,
