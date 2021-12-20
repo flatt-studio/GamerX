@@ -292,8 +292,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 children: [
                                   Stack(
                                     children: [
-                                      CachedNetworkImage(
-                                        imageUrl: '',
+                                      Image.asset(
+                                        'assets/images/avatar.png',
                                         width:
                                             MediaQuery.of(context).size.width,
                                         height: 400,
