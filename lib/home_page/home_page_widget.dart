@@ -541,7 +541,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                     child: CachedNetworkImage(
                                                       imageUrl: getJsonField(
                                                         popularGameItem,
-                                                        r'''$..background_image''',
+                                                        r'''$.background_image''',
                                                       ),
                                                       width: 125,
                                                       height: 165,
@@ -580,57 +580,74 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                             MainAxisAlignment
                                                                 .spaceBetween,
                                                         children: [
-                                                          Column(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .start,
-                                                            children: [
-                                                              Expanded(
-                                                                child: Text(
-                                                                  getJsonField(
-                                                                    popularGameItem,
-                                                                    r'''$..name''',
-                                                                  ).toString(),
-                                                                  style: FlutterFlowTheme
-                                                                      .bodyText1
-                                                                      .override(
-                                                                    fontFamily:
-                                                                        'Roboto',
-                                                                    color: FlutterFlowTheme
-                                                                        .secondaryColor,
+                                                          Expanded(
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
+                                                              children: [
+                                                                Expanded(
+                                                                  child: Row(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    children: [
+                                                                      Expanded(
+                                                                        child:
+                                                                            Text(
+                                                                          getJsonField(
+                                                                            popularGameItem,
+                                                                            r'''$.name''',
+                                                                          ).toString().maybeHandleOverflow(
+                                                                                maxChars: 14,
+                                                                                replacement: '…',
+                                                                              ),
+                                                                          style: FlutterFlowTheme
+                                                                              .bodyText1
+                                                                              .override(
+                                                                            fontFamily:
+                                                                                'Roboto',
+                                                                            color:
+                                                                                FlutterFlowTheme.secondaryColor,
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ],
                                                                   ),
                                                                 ),
-                                                              ),
-                                                              RatingBar.builder(
-                                                                onRatingUpdate: (newValue) =>
-                                                                    setState(() =>
-                                                                        ratingBarValue =
-                                                                            newValue),
-                                                                itemBuilder:
-                                                                    (context,
-                                                                            index) =>
-                                                                        Icon(
-                                                                  Icons
-                                                                      .star_rounded,
-                                                                  color: Color(
+                                                                RatingBar
+                                                                    .builder(
+                                                                  onRatingUpdate:
+                                                                      (newValue) =>
+                                                                          setState(() =>
+                                                                              ratingBarValue = newValue),
+                                                                  itemBuilder:
+                                                                      (context,
+                                                                              index) =>
+                                                                          Icon(
+                                                                    Icons
+                                                                        .star_rounded,
+                                                                    color: Color(
+                                                                        0xFFFFA100),
+                                                                  ),
+                                                                  direction: Axis
+                                                                      .horizontal,
+                                                                  initialRating:
+                                                                      ratingBarValue ??=
+                                                                          3,
+                                                                  unratedColor:
+                                                                      Color(
+                                                                          0x80000000),
+                                                                  itemCount: 5,
+                                                                  itemSize: 16,
+                                                                  glowColor: Color(
                                                                       0xFFFFA100),
                                                                 ),
-                                                                direction: Axis
-                                                                    .horizontal,
-                                                                initialRating:
-                                                                    ratingBarValue ??=
-                                                                        3,
-                                                                unratedColor: Color(
-                                                                    0x80000000),
-                                                                itemCount: 5,
-                                                                itemSize: 16,
-                                                                glowColor: Color(
-                                                                    0xFFFFA100),
-                                                              ),
-                                                            ],
+                                                              ],
+                                                            ),
                                                           ),
                                                           Image.asset(
                                                             'assets/images/Xbox_one_logo_1.png',
@@ -737,90 +754,86 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               ],
                             ),
                           ),
-                          Expanded(
-                            child: Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
-                              child: Container(
-                                decoration: BoxDecoration(),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 10, 0, 0),
-                                  child: FutureBuilder<ApiCallResponse>(
-                                    future: GetReleasedGamesRAWGCall.call(),
-                                    builder: (context, snapshot) {
-                                      // Customize what your widget looks like when it's loading.
-                                      if (!snapshot.hasData) {
-                                        return Center(
-                                          child: SizedBox(
-                                            width: 40,
-                                            height: 40,
-                                            child: CircularProgressIndicator(
-                                              color:
-                                                  FlutterFlowTheme.primaryColor,
-                                            ),
+                          Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
+                            child: Container(
+                              decoration: BoxDecoration(),
+                              child: Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                                child: FutureBuilder<ApiCallResponse>(
+                                  future: GetReleasedGamesRAWGCall.call(),
+                                  builder: (context, snapshot) {
+                                    // Customize what your widget looks like when it's loading.
+                                    if (!snapshot.hasData) {
+                                      return Center(
+                                        child: SizedBox(
+                                          width: 40,
+                                          height: 40,
+                                          child: CircularProgressIndicator(
+                                            color:
+                                                FlutterFlowTheme.primaryColor,
+                                          ),
+                                        ),
+                                      );
+                                    }
+                                    final rowGetReleasedGamesRAWGResponse =
+                                        snapshot.data;
+                                    return Builder(
+                                      builder: (context) {
+                                        final releasedGame = (getJsonField(
+                                                  rowGetReleasedGamesRAWGResponse
+                                                      .jsonBody,
+                                                  r'''$.results''',
+                                                )?.toList() ??
+                                                [])
+                                            .take(30)
+                                            .toList();
+                                        return SingleChildScrollView(
+                                          scrollDirection: Axis.horizontal,
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: List.generate(
+                                                releasedGame.length,
+                                                (releasedGameIndex) {
+                                              final releasedGameItem =
+                                                  releasedGame[
+                                                      releasedGameIndex];
+                                              return Container(
+                                                height: 145,
+                                                decoration: BoxDecoration(
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                      blurRadius: 3,
+                                                      color: Color(0x4D000000),
+                                                      offset: Offset(0, 4),
+                                                    )
+                                                  ],
+                                                ),
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
+                                                  child: CachedNetworkImage(
+                                                    imageUrl: getJsonField(
+                                                      releasedGameItem,
+                                                      r'''$.background_image''',
+                                                    ),
+                                                    width:
+                                                        MediaQuery.of(context)
+                                                            .size
+                                                            .width,
+                                                    height: 145,
+                                                    fit: BoxFit.cover,
+                                                  ),
+                                                ),
+                                              );
+                                            }),
                                           ),
                                         );
-                                      }
-                                      final rowGetReleasedGamesRAWGResponse =
-                                          snapshot.data;
-                                      return Builder(
-                                        builder: (context) {
-                                          final releasedGame = (getJsonField(
-                                                    rowGetReleasedGamesRAWGResponse
-                                                        .jsonBody,
-                                                    r'''$.results''',
-                                                  )?.toList() ??
-                                                  [])
-                                              .take(30)
-                                              .toList();
-                                          return SingleChildScrollView(
-                                            scrollDirection: Axis.horizontal,
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: List.generate(
-                                                  releasedGame.length,
-                                                  (releasedGameIndex) {
-                                                final releasedGameItem =
-                                                    releasedGame[
-                                                        releasedGameIndex];
-                                                return Container(
-                                                  height: 145,
-                                                  decoration: BoxDecoration(
-                                                    boxShadow: [
-                                                      BoxShadow(
-                                                        blurRadius: 3,
-                                                        color:
-                                                            Color(0x4D000000),
-                                                        offset: Offset(0, 4),
-                                                      )
-                                                    ],
-                                                  ),
-                                                  child: ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            10),
-                                                    child: CachedNetworkImage(
-                                                      imageUrl: getJsonField(
-                                                        releasedGameItem,
-                                                        r'''$..background_image''',
-                                                      ),
-                                                      width:
-                                                          MediaQuery.of(context)
-                                                              .size
-                                                              .width,
-                                                      height: 145,
-                                                      fit: BoxFit.cover,
-                                                    ),
-                                                  ),
-                                                );
-                                              }),
-                                            ),
-                                          );
-                                        },
-                                      );
-                                    },
-                                  ),
+                                      },
+                                    );
+                                  },
                                 ),
                               ),
                             ),
