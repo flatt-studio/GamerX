@@ -493,7 +493,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       final popularGame = (getJsonField(
                                                 rowGetPopularGamesRAWGResponse
                                                     .jsonBody,
-                                                r'''$.*''',
+                                                r'''$.results''',
                                               )?.toList() ??
                                               [])
                                           .take(30)
@@ -771,7 +771,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           final releasedGame = getJsonField(
                                                 rowGetReleasedGamesRAWGResponse
                                                     .jsonBody,
-                                                r'''$.*''',
+                                                r'''$.results''',
                                               )?.toList() ??
                                               [];
                                           return Row(
