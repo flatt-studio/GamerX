@@ -541,7 +541,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                     child: Image.network(
                                                       getJsonField(
                                                         popularGameItem,
-                                                        r'''$.background_image''',
+                                                        r'''$..background_image''',
                                                       ),
                                                       width: 125,
                                                       height: 165,
