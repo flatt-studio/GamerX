@@ -528,27 +528,116 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                   mainAxisSize:
                                                       MainAxisSize.max,
                                                   children: [
-                                                    ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.only(
-                                                        bottomLeft:
-                                                            Radius.circular(0),
-                                                        bottomRight:
-                                                            Radius.circular(0),
-                                                        topLeft:
-                                                            Radius.circular(10),
-                                                        topRight:
-                                                            Radius.circular(10),
-                                                      ),
-                                                      child: CachedNetworkImage(
-                                                        imageUrl: getJsonField(
-                                                          popularGameItem,
-                                                          r'''$.background_image''',
+                                                    Stack(
+                                                      children: [
+                                                        ClipRRect(
+                                                          borderRadius:
+                                                              BorderRadius.only(
+                                                            bottomLeft:
+                                                                Radius.circular(
+                                                                    0),
+                                                            bottomRight:
+                                                                Radius.circular(
+                                                                    0),
+                                                            topLeft:
+                                                                Radius.circular(
+                                                                    10),
+                                                            topRight:
+                                                                Radius.circular(
+                                                                    10),
+                                                          ),
+                                                          child:
+                                                              CachedNetworkImage(
+                                                            imageUrl:
+                                                                getJsonField(
+                                                              popularGameItem,
+                                                              r'''$.background_image''',
+                                                            ),
+                                                            width: 125,
+                                                            height: 165,
+                                                            fit: BoxFit.cover,
+                                                          ),
                                                         ),
-                                                        width: 125,
-                                                        height: 165,
-                                                        fit: BoxFit.cover,
-                                                      ),
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      10,
+                                                                      10,
+                                                                      10,
+                                                                      0),
+                                                          child: FutureBuilder<
+                                                              ApiCallResponse>(
+                                                            future:
+                                                                GetPlatformsOfaGameRAWGCall
+                                                                    .call(
+                                                              platformNumber:
+                                                                  getJsonField(
+                                                                popularGameItem,
+                                                                r'''$.platforms''',
+                                                              ).toString(),
+                                                            ),
+                                                            builder: (context,
+                                                                snapshot) {
+                                                              // Customize what your widget looks like when it's loading.
+                                                              if (!snapshot
+                                                                  .hasData) {
+                                                                return Center(
+                                                                  child:
+                                                                      SizedBox(
+                                                                    width: 40,
+                                                                    height: 40,
+                                                                    child:
+                                                                        CircularProgressIndicator(
+                                                                      color: FlutterFlowTheme
+                                                                          .primaryColor,
+                                                                    ),
+                                                                  ),
+                                                                );
+                                                              }
+                                                              final rowGetPlatformsOfaGameRAWGResponse =
+                                                                  snapshot.data;
+                                                              return Builder(
+                                                                builder:
+                                                                    (context) {
+                                                                  final platformImage =
+                                                                      getJsonField(
+                                                                            rowGetPlatformsOfaGameRAWGResponse.jsonBody,
+                                                                            r'''$.background_image''',
+                                                                          )?.toList() ??
+                                                                          [];
+                                                                  return Row(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    mainAxisAlignment:
+                                                                        MainAxisAlignment
+                                                                            .end,
+                                                                    children: List.generate(
+                                                                        platformImage
+                                                                            .length,
+                                                                        (platformImageIndex) {
+                                                                      final platformImageItem =
+                                                                          platformImage[
+                                                                              platformImageIndex];
+                                                                      return Image
+                                                                          .asset(
+                                                                        'assets/images/Xbox_one_logo_1.png',
+                                                                        width:
+                                                                            20,
+                                                                        height:
+                                                                            20,
+                                                                        fit: BoxFit
+                                                                            .cover,
+                                                                      );
+                                                                    }),
+                                                                  );
+                                                                },
+                                                              );
+                                                            },
+                                                          ),
+                                                        ),
+                                                      ],
                                                     ),
                                                     Container(
                                                       width:
@@ -609,7 +698,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                               popularGameItem,
                                                                               r'''$.name''',
                                                                             ).toString().maybeHandleOverflow(
-                                                                                  maxChars: 14,
+                                                                                  maxChars: 18,
                                                                                   replacement: '…',
                                                                                 ),
                                                                             style:
@@ -641,7 +730,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                         .horizontal,
                                                                     initialRating:
                                                                         ratingBarValue ??=
-                                                                            3,
+                                                                            getJsonField(
+                                                                      popularGameItem,
+                                                                      r'''$.rating''',
+                                                                    ),
                                                                     unratedColor:
                                                                         Color(
                                                                             0x80000000),
@@ -655,12 +747,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                   ),
                                                                 ],
                                                               ),
-                                                            ),
-                                                            Image.asset(
-                                                              'assets/images/Xbox_one_logo_1.png',
-                                                              width: 20,
-                                                              height: 20,
-                                                              fit: BoxFit.cover,
                                                             ),
                                                           ],
                                                         ),

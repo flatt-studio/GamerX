@@ -163,3 +163,20 @@ class GetReleasedGamesRAWGCall {
     );
   }
 }
+
+class GetPlatformsOfaGameRAWGCall {
+  static Future<ApiCallResponse> call({
+    String apiKey = '5918dc05061442beb784d84628dc3a5b',
+    String platformNumber = '4,6',
+  }) {
+    return ApiManager.instance.makeApiCall(
+      callName: 'getPlatformsOfaGameRAWG',
+      apiUrl:
+          'https://api.rawg.io/api/platforms/${platformNumber}?key=${apiKey}',
+      callType: ApiCallType.GET,
+      headers: {},
+      params: {},
+      returnBody: true,
+    );
+  }
+}
