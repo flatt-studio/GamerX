@@ -405,6 +405,52 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                     ),
                   ],
                 ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Expanded(
+                        child: Padding(
+                          padding:
+                              EdgeInsetsDirectional.fromSTEB(16, 12, 16, 0),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(0, 0, 0, 4),
+                                child: Text(
+                                  'Description',
+                                  style: FlutterFlowTheme.bodyText2.override(
+                                    fontFamily: 'Lexend Deca',
+                                    color: Color(0xFF8B97A2),
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                                ),
+                              ),
+                              Text(
+                                getJsonField(
+                                  gameDetailGetaGameResponse.jsonBody,
+                                  r'''$.description''',
+                                ).toString(),
+                                style: FlutterFlowTheme.subtitle2.override(
+                                  fontFamily: 'Lexend Deca',
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
                 Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -420,25 +466,70 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(0, 0, 0, 4),
                               child: Text(
-                                'Description',
-                                style: FlutterFlowTheme.bodyText2.override(
-                                  fontFamily: 'Lexend Deca',
-                                  color: Color(0xFF8B97A2),
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.normal,
-                                ),
+                                'Screen Shots',
+                                style: FlutterFlowTheme.subtitle1,
                               ),
                             ),
-                            Text(
-                              getJsonField(
-                                gameDetailGetaGameResponse.jsonBody,
-                                r'''$.description''',
-                              ).toString(),
-                              style: FlutterFlowTheme.subtitle2.override(
-                                fontFamily: 'Lexend Deca',
-                                color: Colors.white,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w500,
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                              child: FutureBuilder<ApiCallResponse>(
+                                future: GetScreenshotsOfaGameCall.call(
+                                  id: widget.gameId,
+                                ),
+                                builder: (context, snapshot) {
+                                  // Customize what your widget looks like when it's loading.
+                                  if (!snapshot.hasData) {
+                                    return Center(
+                                      child: SizedBox(
+                                        width: 40,
+                                        height: 40,
+                                        child: CircularProgressIndicator(
+                                          color: FlutterFlowTheme.primaryColor,
+                                        ),
+                                      ),
+                                    );
+                                  }
+                                  final rowGetScreenshotsOfaGameResponse =
+                                      snapshot.data;
+                                  return Builder(
+                                    builder: (context) {
+                                      final screenShot = getJsonField(
+                                            rowGetScreenshotsOfaGameResponse
+                                                .jsonBody,
+                                            r'''$.results''',
+                                          )?.toList() ??
+                                          [];
+                                      return Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children:
+                                            List.generate(screenShot.length,
+                                                (screenShotIndex) {
+                                          final screenShotItem =
+                                              screenShot[screenShotIndex];
+                                          return Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0, 0, 10, 0),
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(5),
+                                              child: CachedNetworkImage(
+                                                imageUrl: getJsonField(
+                                                  screenShotItem,
+                                                  r'''$.image''',
+                                                ),
+                                                width: 150,
+                                                height: 100,
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                          );
+                                        }),
+                                      );
+                                    },
+                                  );
+                                },
                               ),
                             ),
                           ],
