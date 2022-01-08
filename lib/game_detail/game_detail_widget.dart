@@ -5,6 +5,7 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class GameDetailWidget extends StatefulWidget {
@@ -20,6 +21,7 @@ class GameDetailWidget extends StatefulWidget {
 }
 
 class _GameDetailWidgetState extends State<GameDetailWidget> {
+  double ratingBarValue;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -105,7 +107,10 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Text(
-                        'The Phantom Menance',
+                        getJsonField(
+                          gameDetailGetaGameResponse.jsonBody,
+                          r'''$.name''',
+                        ).toString(),
                         style: FlutterFlowTheme.title2.override(
                           fontFamily: 'Lexend Deca',
                           color: Colors.white,
@@ -127,7 +132,10 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              '1999',
+                              getJsonField(
+                                gameDetailGetaGameResponse.jsonBody,
+                                r'''$.released''',
+                              ).toString(),
                               textAlign: TextAlign.start,
                               style: FlutterFlowTheme.bodyText1.override(
                                 fontFamily: 'Lexend Deca',
@@ -144,50 +152,32 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                Card(
-                                  clipBehavior: Clip.antiAliasWithSaveLayer,
-                                  color: Color(0xFF0F181F),
-                                  elevation: 2,
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        6, 2, 6, 2),
-                                    child: Text(
-                                      '137m',
-                                      style:
-                                          FlutterFlowTheme.bodyText1.override(
-                                        fontFamily: 'Lexend Deca',
-                                        color: Colors.white,
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.normal,
+                            Builder(
+                              builder: (context) {
+                                final platforms = getJsonField(
+                                      gameDetailGetaGameResponse.jsonBody,
+                                      r'''$.platforms''',
+                                    )?.toList() ??
+                                    [];
+                                return Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: List.generate(platforms.length,
+                                      (platformsIndex) {
+                                    final platformsItem =
+                                        platforms[platformsIndex];
+                                    return CachedNetworkImage(
+                                      imageUrl: getJsonField(
+                                        platformsItem,
+                                        r'''$.image_background''',
                                       ),
-                                    ),
-                                  ),
-                                ),
-                                Card(
-                                  clipBehavior: Clip.antiAliasWithSaveLayer,
-                                  color: Color(0xFF0F181F),
-                                  elevation: 2,
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        6, 2, 6, 2),
-                                    child: Text(
-                                      'PG',
-                                      style:
-                                          FlutterFlowTheme.bodyText1.override(
-                                        fontFamily: 'Lexend Deca',
-                                        color: Colors.white,
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.normal,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
+                                      height: 25,
+                                      fit: BoxFit.cover,
+                                    );
+                                  }),
+                                );
+                              },
                             ),
                           ],
                         ),
@@ -266,7 +256,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(0, 0, 0, 4),
                               child: Text(
-                                'IMDb Rating',
+                                'Rating',
                                 style: FlutterFlowTheme.bodyText2.override(
                                   fontFamily: 'Lexend Deca',
                                   color: Color(0xFF8B97A2),
@@ -275,11 +265,22 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                 ),
                               ),
                             ),
-                            Image.asset(
-                              'assets/images/171_Imdb_logo_logos-512.png',
-                              width: 24,
-                              height: 24,
-                              fit: BoxFit.cover,
+                            RatingBar.builder(
+                              onRatingUpdate: (newValue) =>
+                                  setState(() => ratingBarValue = newValue),
+                              itemBuilder: (context, index) => Icon(
+                                Icons.star_rounded,
+                                color: Color(0xFFFFCE00),
+                              ),
+                              direction: Axis.horizontal,
+                              initialRating: ratingBarValue ??= getJsonField(
+                                gameDetailGetaGameResponse.jsonBody,
+                                r'''$.rating''',
+                              ),
+                              unratedColor: Color(0xFF9E9E9E),
+                              itemCount: 5,
+                              itemSize: 18,
+                              glowColor: Color(0xFFFFCE00),
                             ),
                           ],
                         ),
