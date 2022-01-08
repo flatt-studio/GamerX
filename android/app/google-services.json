@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "608519700892",
+    "project_id": "gamerx-a8577",
+    "storage_bucket": "gamerx-a8577.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:608519700892:android:fe76a6f250c131fab78859",
+        "android_client_info": {
+          "package_name": "com.flattstudio.gamerx"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "608519700892-1jpd05b0mgq7j6gpr5dos66nlfmmkck4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.flattstudio.gamerx",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "608519700892-tsi04f242q8r1tln2h91tfbv1835npsf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBPtBU1KjVSVcBr6UQMC8rT4_B-nwB_no"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "608519700892-tsi04f242q8r1tln2h91tfbv1835npsf.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "608519700892-ogp7pnb8ir3cam3hl3s6lbqvdhgcbpsk.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.flattstudio.gamerx"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
