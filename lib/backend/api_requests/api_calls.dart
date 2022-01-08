@@ -180,3 +180,19 @@ class GetPlatformsOfaGameRAWGCall {
     );
   }
 }
+
+class GetaGameCall {
+  static Future<ApiCallResponse> call({
+    String apiKey = '5918dc05061442beb784d84628dc3a5b',
+    String id = '1',
+  }) {
+    return ApiManager.instance.makeApiCall(
+      callName: 'getaGame',
+      apiUrl: 'https://api.rawg.io/api/games/${id}?key=${apiKey}',
+      callType: ApiCallType.GET,
+      headers: {},
+      params: {},
+      returnBody: true,
+    );
+  }
+}

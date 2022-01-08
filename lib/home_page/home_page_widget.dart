@@ -568,13 +568,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                       0),
                                                           child: FutureBuilder<
                                                               ApiCallResponse>(
-                                                            future:
-                                                                GetPlatformsOfaGameRAWGCall
-                                                                    .call(
-                                                              platformNumber:
-                                                                  getJsonField(
+                                                            future: GetaGameCall
+                                                                .call(
+                                                              id: getJsonField(
                                                                 popularGameItem,
-                                                                r'''$.platforms''',
+                                                                r'''$.id''',
                                                               ).toString(),
                                                             ),
                                                             builder: (context,
@@ -595,15 +593,15 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                   ),
                                                                 );
                                                               }
-                                                              final rowGetPlatformsOfaGameRAWGResponse =
+                                                              final rowGetaGameResponse =
                                                                   snapshot.data;
                                                               return Builder(
                                                                 builder:
                                                                     (context) {
-                                                                  final platformImage =
+                                                                  final platform =
                                                                       getJsonField(
-                                                                            rowGetPlatformsOfaGameRAWGResponse.jsonBody,
-                                                                            r'''$.background_image''',
+                                                                            rowGetaGameResponse.jsonBody,
+                                                                            r'''$.platforms''',
                                                                           )?.toList() ??
                                                                           [];
                                                                   return Row(
@@ -614,15 +612,18 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                         MainAxisAlignment
                                                                             .end,
                                                                     children: List.generate(
-                                                                        platformImage
+                                                                        platform
                                                                             .length,
-                                                                        (platformImageIndex) {
-                                                                      final platformImageItem =
-                                                                          platformImage[
-                                                                              platformImageIndex];
+                                                                        (platformIndex) {
+                                                                      final platformItem =
+                                                                          platform[
+                                                                              platformIndex];
                                                                       return Image
-                                                                          .asset(
-                                                                        'assets/images/Xbox_one_logo_1.png',
+                                                                          .network(
+                                                                        getJsonField(
+                                                                          platformItem,
+                                                                          r'''$.image_background''',
+                                                                        ),
                                                                         width:
                                                                             20,
                                                                         height:
@@ -857,7 +858,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 padding:
                                     EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                                 child: FutureBuilder<ApiCallResponse>(
-                                  future: GetThreeGamesRAWGCall.call(),
+                                  future: GetReleasedGamesRAWGCall.call(),
                                   builder: (context, snapshot) {
                                     // Customize what your widget looks like when it's loading.
                                     if (!snapshot.hasData) {
@@ -872,12 +873,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                         ),
                                       );
                                     }
-                                    final rowGetThreeGamesRAWGResponse =
+                                    final rowGetReleasedGamesRAWGResponse =
                                         snapshot.data;
                                     return Builder(
                                       builder: (context) {
                                         final releasedGame = (getJsonField(
-                                                  rowGetThreeGamesRAWGResponse
+                                                  rowGetReleasedGamesRAWGResponse
                                                       .jsonBody,
                                                   r'''$.results''',
                                                 )?.toList() ??
