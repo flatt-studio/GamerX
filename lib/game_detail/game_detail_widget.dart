@@ -95,6 +95,35 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                 },
                               ),
                             ),
+                            Align(
+                              alignment: AlignmentDirectional(0, 0.8),
+                              child: FFButtonWidget(
+                                onPressed: () {
+                                  print('Button pressed ...');
+                                },
+                                text: 'Add To Collection',
+                                icon: Icon(
+                                  Icons.bookmarks_sharp,
+                                  size: 15,
+                                ),
+                                options: FFButtonOptions(
+                                  width: 185,
+                                  height: 40,
+                                  color: FlutterFlowTheme.customColor1,
+                                  textStyle:
+                                      FlutterFlowTheme.subtitle2.override(
+                                    fontFamily: 'Roboto',
+                                    color: Colors.white,
+                                  ),
+                                  elevation: 15,
+                                  borderSide: BorderSide(
+                                    color: Colors.transparent,
+                                    width: 1,
+                                  ),
+                                  borderRadius: 12,
+                                ),
+                              ),
+                            ),
                           ],
                         ),
                       ),
@@ -242,7 +271,10 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(0, 0, 0, 4),
                               child: Text(
-                                '9.2',
+                                getJsonField(
+                                  gameDetailGetaGameResponse.jsonBody,
+                                  r'''$.rating''',
+                                ).toString(),
                                 textAlign: TextAlign.center,
                                 style: FlutterFlowTheme.title1.override(
                                   fontFamily: 'Lexend Deca',
@@ -298,7 +330,10 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(0, 0, 0, 4),
                               child: Text(
-                                '52%',
+                                getJsonField(
+                                  gameDetailGetaGameResponse.jsonBody,
+                                  r'''$.rating_top''',
+                                ).toString(),
                                 textAlign: TextAlign.center,
                                 style: FlutterFlowTheme.title1.override(
                                   fontFamily: 'Lexend Deca',
@@ -312,7 +347,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(0, 0, 0, 4),
                               child: Text(
-                                'Rotten Tomatoes',
+                                'Rating Top',
                                 textAlign: TextAlign.center,
                                 style: FlutterFlowTheme.bodyText2.override(
                                   fontFamily: 'Lexend Deca',
@@ -321,12 +356,6 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                   fontWeight: FontWeight.normal,
                                 ),
                               ),
-                            ),
-                            Image.asset(
-                              'assets/images/-ratingRottenTom@2x.png',
-                              width: 24,
-                              height: 24,
-                              fit: BoxFit.cover,
                             ),
                           ],
                         ),
@@ -344,7 +373,10 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(0, 0, 0, 4),
                               child: Text(
-                                '51',
+                                getJsonField(
+                                  gameDetailGetaGameResponse.jsonBody,
+                                  r'''$.playtime''',
+                                ).toString(),
                                 textAlign: TextAlign.center,
                                 style: FlutterFlowTheme.title1.override(
                                   fontFamily: 'Lexend Deca',
@@ -358,7 +390,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(0, 0, 0, 4),
                               child: Text(
-                                'Metacritic',
+                                'Playtime',
                                 style: FlutterFlowTheme.bodyText2.override(
                                   fontFamily: 'Lexend Deca',
                                   color: Color(0xFF8B97A2),
@@ -366,12 +398,6 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                   fontWeight: FontWeight.normal,
                                 ),
                               ),
-                            ),
-                            Image.asset(
-                              'assets/images/-ratingMediaCritic@2x.png',
-                              width: 24,
-                              height: 24,
-                              fit: BoxFit.cover,
                             ),
                           ],
                         ),
@@ -394,7 +420,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(0, 0, 0, 4),
                               child: Text(
-                                'Genre',
+                                'Description',
                                 style: FlutterFlowTheme.bodyText2.override(
                                   fontFamily: 'Lexend Deca',
                                   color: Color(0xFF8B97A2),
@@ -404,7 +430,10 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                               ),
                             ),
                             Text(
-                              'Action, Adventure, Fantasy, Sci Fi',
+                              getJsonField(
+                                gameDetailGetaGameResponse.jsonBody,
+                                r'''$.description''',
+                              ).toString(),
                               style: FlutterFlowTheme.subtitle2.override(
                                 fontFamily: 'Lexend Deca',
                                 color: Colors.white,
@@ -417,43 +446,6 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                       ),
                     ),
                   ],
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 24),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      FFButtonWidget(
-                        onPressed: () {
-                          print('Button pressed ...');
-                        },
-                        text: 'Add To Favorites',
-                        icon: Icon(
-                          Icons.favorite_border,
-                          size: 15,
-                        ),
-                        options: FFButtonOptions(
-                          width: 300,
-                          height: 50,
-                          color: Color(0xFF4B39EF),
-                          textStyle: FlutterFlowTheme.subtitle2.override(
-                            fontFamily: 'Lexend Deca',
-                            color: Colors.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                          ),
-                          elevation: 3,
-                          borderSide: BorderSide(
-                            color: Colors.transparent,
-                            width: 1,
-                          ),
-                          borderRadius: 8,
-                        ),
-                      ),
-                    ],
-                  ),
                 ),
               ],
             ),
