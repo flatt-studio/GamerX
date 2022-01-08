@@ -196,39 +196,46 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                       (platformsIndex) {
                                     final platformsItem =
                                         platforms[platformsIndex];
-                                    return FutureBuilder<ApiCallResponse>(
-                                      future: GetPlatformsOfaGameRAWGCall.call(
-                                        platformNumber: getJsonField(
-                                          platformsItem,
-                                          r'''$id''',
-                                        ).toString(),
-                                      ),
-                                      builder: (context, snapshot) {
-                                        // Customize what your widget looks like when it's loading.
-                                        if (!snapshot.hasData) {
-                                          return Center(
-                                            child: SizedBox(
-                                              width: 40,
-                                              height: 40,
-                                              child: CircularProgressIndicator(
-                                                color: FlutterFlowTheme
-                                                    .primaryColor,
+                                    return Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          5, 0, 5, 0),
+                                      child: FutureBuilder<ApiCallResponse>(
+                                        future:
+                                            GetPlatformsOfaGameRAWGCall.call(
+                                          platformNumber: getJsonField(
+                                            platformsItem,
+                                            r'''$.id''',
+                                          ).toString(),
+                                        ),
+                                        builder: (context, snapshot) {
+                                          // Customize what your widget looks like when it's loading.
+                                          if (!snapshot.hasData) {
+                                            return Center(
+                                              child: SizedBox(
+                                                width: 40,
+                                                height: 40,
+                                                child:
+                                                    CircularProgressIndicator(
+                                                  color: FlutterFlowTheme
+                                                      .primaryColor,
+                                                ),
                                               ),
+                                            );
+                                          }
+                                          final imageGetPlatformsOfaGameRAWGResponse =
+                                              snapshot.data;
+                                          return CachedNetworkImage(
+                                            imageUrl: getJsonField(
+                                              imageGetPlatformsOfaGameRAWGResponse
+                                                  .jsonBody,
+                                              r'''$.image_background''',
                                             ),
+                                            width: 25,
+                                            height: 25,
+                                            fit: BoxFit.cover,
                                           );
-                                        }
-                                        final imageGetPlatformsOfaGameRAWGResponse =
-                                            snapshot.data;
-                                        return CachedNetworkImage(
-                                          imageUrl: getJsonField(
-                                            imageGetPlatformsOfaGameRAWGResponse
-                                                .jsonBody,
-                                            r'''$.image_background''',
-                                          ),
-                                          height: 25,
-                                          fit: BoxFit.cover,
-                                        );
-                                      },
+                                        },
+                                      ),
                                     );
                                   }),
                                 );
@@ -482,7 +489,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                   children: [
                     Expanded(
                       child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(16, 12, 16, 0),
+                        padding: EdgeInsetsDirectional.fromSTEB(16, 12, 16, 20),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -526,32 +533,34 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                             r'''$.results''',
                                           )?.toList() ??
                                           [];
-                                      return Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children:
-                                            List.generate(screenShot.length,
-                                                (screenShotIndex) {
-                                          final screenShotItem =
-                                              screenShot[screenShotIndex];
-                                          return Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0, 0, 10, 0),
-                                            child: ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(5),
-                                              child: CachedNetworkImage(
-                                                imageUrl: getJsonField(
-                                                  screenShotItem,
-                                                  r'''$.image''',
+                                      return SingleChildScrollView(
+                                        scrollDirection: Axis.horizontal,
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children:
+                                              List.generate(screenShot.length,
+                                                  (screenShotIndex) {
+                                            final screenShotItem =
+                                                screenShot[screenShotIndex];
+                                            return Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(0, 0, 10, 0),
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(5),
+                                                child: CachedNetworkImage(
+                                                  imageUrl: getJsonField(
+                                                    screenShotItem,
+                                                    r'''$.image''',
+                                                  ),
+                                                  width: 150,
+                                                  height: 100,
+                                                  fit: BoxFit.cover,
                                                 ),
-                                                width: 150,
-                                                height: 100,
-                                                fit: BoxFit.cover,
                                               ),
-                                            ),
-                                          );
-                                        }),
+                                            );
+                                          }),
+                                        ),
                                       );
                                     },
                                   );
