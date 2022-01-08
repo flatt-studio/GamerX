@@ -600,64 +600,62 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                         10,
                                                                         10,
                                                                         0),
-                                                            child: FutureBuilder<
-                                                                ApiCallResponse>(
-                                                              future:
-                                                                  GetaGameCall
-                                                                      .call(
-                                                                id: getJsonField(
-                                                                  popularGameItem,
-                                                                  r'''$.id''',
-                                                                ).toString(),
-                                                              ),
-                                                              builder: (context,
-                                                                  snapshot) {
-                                                                // Customize what your widget looks like when it's loading.
-                                                                if (!snapshot
-                                                                    .hasData) {
-                                                                  return Center(
-                                                                    child:
-                                                                        SizedBox(
-                                                                      width: 40,
-                                                                      height:
-                                                                          40,
-                                                                      child:
-                                                                          CircularProgressIndicator(
-                                                                        color: FlutterFlowTheme
-                                                                            .primaryColor,
+                                                            child: Builder(
+                                                              builder:
+                                                                  (context) {
+                                                                final platform =
+                                                                    getJsonField(
+                                                                          popularGameItem,
+                                                                          r'''$.platforms''',
+                                                                        )?.toList() ??
+                                                                        [];
+                                                                return Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .end,
+                                                                  children: List.generate(
+                                                                      platform
+                                                                          .length,
+                                                                      (platformIndex) {
+                                                                    final platformItem =
+                                                                        platform[
+                                                                            platformIndex];
+                                                                    return FutureBuilder<
+                                                                        ApiCallResponse>(
+                                                                      future: GetPlatformsOfaGameRAWGCall
+                                                                          .call(
+                                                                        platformNumber:
+                                                                            getJsonField(
+                                                                          platformItem,
+                                                                          r'''$.id''',
+                                                                        ).toString(),
                                                                       ),
-                                                                    ),
-                                                                  );
-                                                                }
-                                                                final rowGetaGameResponse =
-                                                                    snapshot
-                                                                        .data;
-                                                                return Builder(
-                                                                  builder:
-                                                                      (context) {
-                                                                    final platform =
-                                                                        getJsonField(
-                                                                              rowGetaGameResponse.jsonBody,
-                                                                              r'''$.platforms''',
-                                                                            )?.toList() ??
-                                                                            [];
-                                                                    return Row(
-                                                                      mainAxisSize:
-                                                                          MainAxisSize
-                                                                              .max,
-                                                                      mainAxisAlignment:
-                                                                          MainAxisAlignment
-                                                                              .end,
-                                                                      children: List.generate(
-                                                                          platform
-                                                                              .length,
-                                                                          (platformIndex) {
-                                                                        final platformItem =
-                                                                            platform[platformIndex];
-                                                                        return Image
-                                                                            .network(
-                                                                          getJsonField(
-                                                                            platformItem,
+                                                                      builder:
+                                                                          (context,
+                                                                              snapshot) {
+                                                                        // Customize what your widget looks like when it's loading.
+                                                                        if (!snapshot
+                                                                            .hasData) {
+                                                                          return Center(
+                                                                            child:
+                                                                                SizedBox(
+                                                                              width: 40,
+                                                                              height: 40,
+                                                                              child: CircularProgressIndicator(
+                                                                                color: FlutterFlowTheme.primaryColor,
+                                                                              ),
+                                                                            ),
+                                                                          );
+                                                                        }
+                                                                        final imageGetPlatformsOfaGameRAWGResponse =
+                                                                            snapshot.data;
+                                                                        return CachedNetworkImage(
+                                                                          imageUrl:
+                                                                              getJsonField(
+                                                                            imageGetPlatformsOfaGameRAWGResponse.jsonBody,
                                                                             r'''$.image_background''',
                                                                           ),
                                                                           width:
@@ -667,9 +665,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                           fit: BoxFit
                                                                               .cover,
                                                                         );
-                                                                      }),
+                                                                      },
                                                                     );
-                                                                  },
+                                                                  }),
                                                                 );
                                                               },
                                                             ),

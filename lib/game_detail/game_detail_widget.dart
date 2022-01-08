@@ -196,13 +196,39 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                       (platformsIndex) {
                                     final platformsItem =
                                         platforms[platformsIndex];
-                                    return CachedNetworkImage(
-                                      imageUrl: getJsonField(
-                                        platformsItem,
-                                        r'''$.image_background''',
+                                    return FutureBuilder<ApiCallResponse>(
+                                      future: GetPlatformsOfaGameRAWGCall.call(
+                                        platformNumber: getJsonField(
+                                          platformsItem,
+                                          r'''$id''',
+                                        ).toString(),
                                       ),
-                                      height: 25,
-                                      fit: BoxFit.cover,
+                                      builder: (context, snapshot) {
+                                        // Customize what your widget looks like when it's loading.
+                                        if (!snapshot.hasData) {
+                                          return Center(
+                                            child: SizedBox(
+                                              width: 40,
+                                              height: 40,
+                                              child: CircularProgressIndicator(
+                                                color: FlutterFlowTheme
+                                                    .primaryColor,
+                                              ),
+                                            ),
+                                          );
+                                        }
+                                        final imageGetPlatformsOfaGameRAWGResponse =
+                                            snapshot.data;
+                                        return CachedNetworkImage(
+                                          imageUrl: getJsonField(
+                                            imageGetPlatformsOfaGameRAWGResponse
+                                                .jsonBody,
+                                            r'''$.image_background''',
+                                          ),
+                                          height: 25,
+                                          fit: BoxFit.cover,
+                                        );
+                                      },
                                     );
                                   }),
                                 );
