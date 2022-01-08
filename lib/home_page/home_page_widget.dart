@@ -771,7 +771,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 padding:
                                     EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                                 child: FutureBuilder<ApiCallResponse>(
-                                  future: GetReleasedGamesRAWGCall.call(),
+                                  future: GetThreeGamesRAWGCall.call(),
                                   builder: (context, snapshot) {
                                     // Customize what your widget looks like when it's loading.
                                     if (!snapshot.hasData) {
@@ -786,12 +786,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                         ),
                                       );
                                     }
-                                    final rowGetReleasedGamesRAWGResponse =
+                                    final rowGetThreeGamesRAWGResponse =
                                         snapshot.data;
                                     return Builder(
                                       builder: (context) {
                                         final releasedGame = (getJsonField(
-                                                  rowGetReleasedGamesRAWGResponse
+                                                  rowGetThreeGamesRAWGResponse
                                                       .jsonBody,
                                                   r'''$.results''',
                                                 )?.toList() ??
@@ -810,7 +810,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                       releasedGameIndex];
                                               return Padding(
                                                 padding: EdgeInsetsDirectional
-                                                    .fromSTEB(0, 0, 20, 0),
+                                                    .fromSTEB(0, 0, 20, 10),
                                                 child: Container(
                                                   height: 145,
                                                   decoration: BoxDecoration(
