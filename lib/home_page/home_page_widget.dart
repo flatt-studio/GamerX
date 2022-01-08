@@ -321,13 +321,20 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
-                                                  Text(
-                                                    getJsonField(
-                                                      resultsItem,
-                                                      r'''$..name''',
-                                                    ).toString(),
-                                                    style:
-                                                        FlutterFlowTheme.title1,
+                                                  Expanded(
+                                                    child: Text(
+                                                      getJsonField(
+                                                        resultsItem,
+                                                        r'''$.name''',
+                                                      )
+                                                          .toString()
+                                                          .maybeHandleOverflow(
+                                                            maxChars: 25,
+                                                            replacement: '…',
+                                                          ),
+                                                      style: FlutterFlowTheme
+                                                          .title1,
+                                                    ),
                                                   ),
                                                 ],
                                               ),
