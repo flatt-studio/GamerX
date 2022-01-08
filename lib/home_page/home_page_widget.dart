@@ -2,6 +2,7 @@ import '../auth/auth_util.dart';
 import '../backend/api_requests/api_calls.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../game_detail/game_detail_widget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -299,48 +300,65 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     itemCount: results.length,
                                     itemBuilder: (context, resultsIndex) {
                                       final resultsItem = results[resultsIndex];
-                                      return Stack(
-                                        children: [
-                                          CachedNetworkImage(
-                                            imageUrl: getJsonField(
-                                              resultsItem,
-                                              r'''$.background_image''',
-                                            ),
-                                            width: MediaQuery.of(context)
-                                                .size
-                                                .width,
-                                            height: 400,
-                                            fit: BoxFit.cover,
-                                          ),
-                                          Align(
-                                            alignment:
-                                                AlignmentDirectional(0, 0.95),
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(20, 0, 20, 0),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  Expanded(
-                                                    child: Text(
-                                                      getJsonField(
-                                                        resultsItem,
-                                                        r'''$.name''',
-                                                      )
-                                                          .toString()
-                                                          .maybeHandleOverflow(
-                                                            maxChars: 25,
-                                                            replacement: '…',
-                                                          ),
-                                                      style: FlutterFlowTheme
-                                                          .title1,
-                                                    ),
-                                                  ),
-                                                ],
+                                      return InkWell(
+                                        onTap: () async {
+                                          await Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  GameDetailWidget(
+                                                gameId: getJsonField(
+                                                  resultsItem,
+                                                  r'''$.id''',
+                                                ).toString(),
                                               ),
                                             ),
-                                          ),
-                                        ],
+                                          );
+                                        },
+                                        child: Stack(
+                                          children: [
+                                            CachedNetworkImage(
+                                              imageUrl: getJsonField(
+                                                resultsItem,
+                                                r'''$.background_image''',
+                                              ),
+                                              width: MediaQuery.of(context)
+                                                  .size
+                                                  .width,
+                                              height: 400,
+                                              fit: BoxFit.cover,
+                                            ),
+                                            Align(
+                                              alignment:
+                                                  AlignmentDirectional(0, 0.95),
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(20, 0, 20, 0),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Expanded(
+                                                      child: Text(
+                                                        getJsonField(
+                                                          resultsItem,
+                                                          r'''$.name''',
+                                                        )
+                                                            .toString()
+                                                            .maybeHandleOverflow(
+                                                              maxChars: 25,
+                                                              replacement: '…',
+                                                            ),
+                                                        style: FlutterFlowTheme
+                                                            .title1,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
                                       );
                                     },
                                   ),
@@ -510,250 +528,268 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                             return Padding(
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(5, 5, 5, 5),
-                                              child: Container(
-                                                width: 125,
-                                                height: 205,
-                                                decoration: BoxDecoration(
-                                                  boxShadow: [
-                                                    BoxShadow(
-                                                      blurRadius: 3,
-                                                      color: Color(0x4C000000),
-                                                      offset: Offset(0, 4),
-                                                    )
-                                                  ],
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                ),
-                                                child: Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    Stack(
-                                                      children: [
-                                                        ClipRRect(
+                                              child: InkWell(
+                                                onTap: () async {
+                                                  await Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          GameDetailWidget(
+                                                        gameId: getJsonField(
+                                                          popularGameItem,
+                                                          r'''$.id''',
+                                                        ).toString(),
+                                                      ),
+                                                    ),
+                                                  );
+                                                },
+                                                child: Container(
+                                                  width: 125,
+                                                  height: 205,
+                                                  decoration: BoxDecoration(
+                                                    boxShadow: [
+                                                      BoxShadow(
+                                                        blurRadius: 3,
+                                                        color:
+                                                            Color(0x4C000000),
+                                                        offset: Offset(0, 4),
+                                                      )
+                                                    ],
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                  ),
+                                                  child: Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Stack(
+                                                        children: [
+                                                          ClipRRect(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .only(
+                                                              bottomLeft: Radius
+                                                                  .circular(0),
+                                                              bottomRight:
+                                                                  Radius
+                                                                      .circular(
+                                                                          0),
+                                                              topLeft: Radius
+                                                                  .circular(10),
+                                                              topRight: Radius
+                                                                  .circular(10),
+                                                            ),
+                                                            child:
+                                                                CachedNetworkImage(
+                                                              imageUrl:
+                                                                  getJsonField(
+                                                                popularGameItem,
+                                                                r'''$.background_image''',
+                                                              ),
+                                                              width: 125,
+                                                              height: 165,
+                                                              fit: BoxFit.cover,
+                                                            ),
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        10,
+                                                                        10,
+                                                                        10,
+                                                                        0),
+                                                            child: FutureBuilder<
+                                                                ApiCallResponse>(
+                                                              future:
+                                                                  GetaGameCall
+                                                                      .call(
+                                                                id: getJsonField(
+                                                                  popularGameItem,
+                                                                  r'''$.id''',
+                                                                ).toString(),
+                                                              ),
+                                                              builder: (context,
+                                                                  snapshot) {
+                                                                // Customize what your widget looks like when it's loading.
+                                                                if (!snapshot
+                                                                    .hasData) {
+                                                                  return Center(
+                                                                    child:
+                                                                        SizedBox(
+                                                                      width: 40,
+                                                                      height:
+                                                                          40,
+                                                                      child:
+                                                                          CircularProgressIndicator(
+                                                                        color: FlutterFlowTheme
+                                                                            .primaryColor,
+                                                                      ),
+                                                                    ),
+                                                                  );
+                                                                }
+                                                                final rowGetaGameResponse =
+                                                                    snapshot
+                                                                        .data;
+                                                                return Builder(
+                                                                  builder:
+                                                                      (context) {
+                                                                    final platform =
+                                                                        getJsonField(
+                                                                              rowGetaGameResponse.jsonBody,
+                                                                              r'''$.platforms''',
+                                                                            )?.toList() ??
+                                                                            [];
+                                                                    return Row(
+                                                                      mainAxisSize:
+                                                                          MainAxisSize
+                                                                              .max,
+                                                                      mainAxisAlignment:
+                                                                          MainAxisAlignment
+                                                                              .end,
+                                                                      children: List.generate(
+                                                                          platform
+                                                                              .length,
+                                                                          (platformIndex) {
+                                                                        final platformItem =
+                                                                            platform[platformIndex];
+                                                                        return Image
+                                                                            .network(
+                                                                          getJsonField(
+                                                                            platformItem,
+                                                                            r'''$.image_background''',
+                                                                          ),
+                                                                          width:
+                                                                              20,
+                                                                          height:
+                                                                              20,
+                                                                          fit: BoxFit
+                                                                              .cover,
+                                                                        );
+                                                                      }),
+                                                                    );
+                                                                  },
+                                                                );
+                                                              },
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                      Container(
+                                                        width: MediaQuery.of(
+                                                                context)
+                                                            .size
+                                                            .width,
+                                                        height: 40,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color:
+                                                              Color(0xFFEEEEEE),
                                                           borderRadius:
                                                               BorderRadius.only(
                                                             bottomLeft:
                                                                 Radius.circular(
-                                                                    0),
+                                                                    10),
                                                             bottomRight:
                                                                 Radius.circular(
-                                                                    0),
+                                                                    10),
                                                             topLeft:
                                                                 Radius.circular(
-                                                                    10),
+                                                                    0),
                                                             topRight:
                                                                 Radius.circular(
-                                                                    10),
-                                                          ),
-                                                          child:
-                                                              CachedNetworkImage(
-                                                            imageUrl:
-                                                                getJsonField(
-                                                              popularGameItem,
-                                                              r'''$.background_image''',
-                                                            ),
-                                                            width: 125,
-                                                            height: 165,
-                                                            fit: BoxFit.cover,
+                                                                    0),
                                                           ),
                                                         ),
-                                                        Padding(
+                                                        child: Padding(
                                                           padding:
                                                               EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      10,
-                                                                      10,
-                                                                      10,
-                                                                      0),
-                                                          child: FutureBuilder<
-                                                              ApiCallResponse>(
-                                                            future: GetaGameCall
-                                                                .call(
-                                                              id: getJsonField(
-                                                                popularGameItem,
-                                                                r'''$.id''',
-                                                              ).toString(),
-                                                            ),
-                                                            builder: (context,
-                                                                snapshot) {
-                                                              // Customize what your widget looks like when it's loading.
-                                                              if (!snapshot
-                                                                  .hasData) {
-                                                                return Center(
-                                                                  child:
-                                                                      SizedBox(
-                                                                    width: 40,
-                                                                    height: 40,
-                                                                    child:
-                                                                        CircularProgressIndicator(
-                                                                      color: FlutterFlowTheme
-                                                                          .primaryColor,
-                                                                    ),
-                                                                  ),
-                                                                );
-                                                              }
-                                                              final rowGetaGameResponse =
-                                                                  snapshot.data;
-                                                              return Builder(
-                                                                builder:
-                                                                    (context) {
-                                                                  final platform =
-                                                                      getJsonField(
-                                                                            rowGetaGameResponse.jsonBody,
-                                                                            r'''$.platforms''',
-                                                                          )?.toList() ??
-                                                                          [];
-                                                                  return Row(
-                                                                    mainAxisSize:
-                                                                        MainAxisSize
-                                                                            .max,
-                                                                    mainAxisAlignment:
-                                                                        MainAxisAlignment
-                                                                            .end,
-                                                                    children: List.generate(
-                                                                        platform
-                                                                            .length,
-                                                                        (platformIndex) {
-                                                                      final platformItem =
-                                                                          platform[
-                                                                              platformIndex];
-                                                                      return Image
-                                                                          .network(
-                                                                        getJsonField(
-                                                                          platformItem,
-                                                                          r'''$.image_background''',
-                                                                        ),
-                                                                        width:
-                                                                            20,
-                                                                        height:
-                                                                            20,
-                                                                        fit: BoxFit
-                                                                            .cover,
-                                                                      );
-                                                                    }),
-                                                                  );
-                                                                },
-                                                              );
-                                                            },
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                    Container(
-                                                      width:
-                                                          MediaQuery.of(context)
-                                                              .size
-                                                              .width,
-                                                      height: 40,
-                                                      decoration: BoxDecoration(
-                                                        color:
-                                                            Color(0xFFEEEEEE),
-                                                        borderRadius:
-                                                            BorderRadius.only(
-                                                          bottomLeft:
-                                                              Radius.circular(
-                                                                  10),
-                                                          bottomRight:
-                                                              Radius.circular(
-                                                                  10),
-                                                          topLeft:
-                                                              Radius.circular(
-                                                                  0),
-                                                          topRight:
-                                                              Radius.circular(
-                                                                  0),
-                                                        ),
-                                                      ),
-                                                      child: Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    5, 5, 5, 5),
-                                                        child: Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .spaceBetween,
-                                                          children: [
-                                                            Expanded(
-                                                              child: Column(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                crossAxisAlignment:
-                                                                    CrossAxisAlignment
-                                                                        .start,
-                                                                children: [
-                                                                  Expanded(
-                                                                    child: Row(
-                                                                      mainAxisSize:
-                                                                          MainAxisSize
-                                                                              .max,
-                                                                      children: [
-                                                                        Expanded(
-                                                                          child:
-                                                                              Text(
-                                                                            getJsonField(
-                                                                              popularGameItem,
-                                                                              r'''$.name''',
-                                                                            ).toString().maybeHandleOverflow(
-                                                                                  maxChars: 18,
-                                                                                  replacement: '…',
-                                                                                ),
-                                                                            style:
-                                                                                FlutterFlowTheme.bodyText1.override(
-                                                                              fontFamily: 'Roboto',
-                                                                              color: FlutterFlowTheme.secondaryColor,
+                                                                  .fromSTEB(5,
+                                                                      5, 5, 5),
+                                                          child: Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceBetween,
+                                                            children: [
+                                                              Expanded(
+                                                                child: Column(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  crossAxisAlignment:
+                                                                      CrossAxisAlignment
+                                                                          .start,
+                                                                  children: [
+                                                                    Expanded(
+                                                                      child:
+                                                                          Row(
+                                                                        mainAxisSize:
+                                                                            MainAxisSize.max,
+                                                                        children: [
+                                                                          Expanded(
+                                                                            child:
+                                                                                Text(
+                                                                              getJsonField(
+                                                                                popularGameItem,
+                                                                                r'''$.name''',
+                                                                              ).toString().maybeHandleOverflow(
+                                                                                    maxChars: 18,
+                                                                                    replacement: '…',
+                                                                                  ),
+                                                                              style: FlutterFlowTheme.bodyText1.override(
+                                                                                fontFamily: 'Roboto',
+                                                                                color: FlutterFlowTheme.secondaryColor,
+                                                                              ),
                                                                             ),
                                                                           ),
-                                                                        ),
-                                                                      ],
+                                                                        ],
+                                                                      ),
                                                                     ),
-                                                                  ),
-                                                                  RatingBar
-                                                                      .builder(
-                                                                    onRatingUpdate:
-                                                                        (newValue) =>
-                                                                            setState(() =>
-                                                                                ratingBarValue = newValue),
-                                                                    itemBuilder:
-                                                                        (context,
-                                                                                index) =>
-                                                                            Icon(
-                                                                      Icons
-                                                                          .star_rounded,
-                                                                      color: Color(
-                                                                          0xFFFFA100),
-                                                                    ),
-                                                                    direction: Axis
-                                                                        .horizontal,
-                                                                    initialRating:
-                                                                        ratingBarValue ??=
-                                                                            getJsonField(
-                                                                      popularGameItem,
-                                                                      r'''$.rating''',
-                                                                    ),
-                                                                    unratedColor:
-                                                                        Color(
-                                                                            0x80000000),
-                                                                    itemCount:
-                                                                        5,
-                                                                    itemSize:
-                                                                        16,
-                                                                    glowColor:
-                                                                        Color(
+                                                                    RatingBar
+                                                                        .builder(
+                                                                      onRatingUpdate:
+                                                                          (newValue) =>
+                                                                              setState(() => ratingBarValue = newValue),
+                                                                      itemBuilder:
+                                                                          (context, index) =>
+                                                                              Icon(
+                                                                        Icons
+                                                                            .star_rounded,
+                                                                        color: Color(
                                                                             0xFFFFA100),
-                                                                  ),
-                                                                ],
+                                                                      ),
+                                                                      direction:
+                                                                          Axis.horizontal,
+                                                                      initialRating:
+                                                                          ratingBarValue ??=
+                                                                              getJsonField(
+                                                                        popularGameItem,
+                                                                        r'''$.rating''',
+                                                                      ),
+                                                                      unratedColor:
+                                                                          Color(
+                                                                              0x80000000),
+                                                                      itemCount:
+                                                                          5,
+                                                                      itemSize:
+                                                                          16,
+                                                                      glowColor:
+                                                                          Color(
+                                                                              0xFFFFA100),
+                                                                    ),
+                                                                  ],
+                                                                ),
                                                               ),
-                                                            ),
-                                                          ],
+                                                            ],
+                                                          ),
                                                         ),
                                                       ),
-                                                    ),
-                                                  ],
+                                                    ],
+                                                  ),
                                                 ),
                                               ),
                                             );
@@ -898,33 +934,49 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                               return Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(0, 0, 20, 10),
-                                                child: Container(
-                                                  height: 145,
-                                                  decoration: BoxDecoration(
-                                                    boxShadow: [
-                                                      BoxShadow(
-                                                        blurRadius: 3,
-                                                        color:
-                                                            Color(0x4D000000),
-                                                        offset: Offset(0, 4),
-                                                      )
-                                                    ],
-                                                  ),
-                                                  child: ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            10),
-                                                    child: CachedNetworkImage(
-                                                      imageUrl: getJsonField(
-                                                        releasedGameItem,
-                                                        r'''$.background_image''',
+                                                child: InkWell(
+                                                  onTap: () async {
+                                                    await Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            GameDetailWidget(
+                                                          gameId: getJsonField(
+                                                            releasedGameItem,
+                                                            r'''$.id''',
+                                                          ).toString(),
+                                                        ),
                                                       ),
-                                                      width:
-                                                          MediaQuery.of(context)
-                                                              .size
-                                                              .width,
-                                                      height: 145,
-                                                      fit: BoxFit.cover,
+                                                    );
+                                                  },
+                                                  child: Container(
+                                                    height: 145,
+                                                    decoration: BoxDecoration(
+                                                      boxShadow: [
+                                                        BoxShadow(
+                                                          blurRadius: 3,
+                                                          color:
+                                                              Color(0x4D000000),
+                                                          offset: Offset(0, 4),
+                                                        )
+                                                      ],
+                                                    ),
+                                                    child: ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10),
+                                                      child: CachedNetworkImage(
+                                                        imageUrl: getJsonField(
+                                                          releasedGameItem,
+                                                          r'''$.background_image''',
+                                                        ),
+                                                        width: MediaQuery.of(
+                                                                context)
+                                                            .size
+                                                            .width,
+                                                        height: 145,
+                                                        fit: BoxFit.cover,
+                                                      ),
                                                     ),
                                                   ),
                                                 ),
