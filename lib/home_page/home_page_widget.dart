@@ -592,7 +592,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                 child: Text(
                                                                   getJsonField(
                                                                     popularGameItem,
-                                                                    r'''$.name''',
+                                                                    r'''$..name''',
                                                                   ).toString(),
                                                                   style: FlutterFlowTheme
                                                                       .bodyText1
@@ -737,14 +737,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               ],
                             ),
                           ),
-                          Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
-                            child: Container(
-                              width: MediaQuery.of(context).size.width,
-                              decoration: BoxDecoration(),
-                              child: Align(
-                                alignment: AlignmentDirectional(0, 0),
+                          Expanded(
+                            child: Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
+                              child: Container(
+                                decoration: BoxDecoration(),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0, 10, 0, 0),
@@ -768,22 +766,25 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           snapshot.data;
                                       return Builder(
                                         builder: (context) {
-                                          final releasedGame = getJsonField(
-                                                rowGetReleasedGamesRAWGResponse
-                                                    .jsonBody,
-                                                r'''$.results''',
-                                              )?.toList() ??
-                                              [];
-                                          return Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: List.generate(
-                                                releasedGame.length,
-                                                (releasedGameIndex) {
-                                              final releasedGameItem =
-                                                  releasedGame[
-                                                      releasedGameIndex];
-                                              return Expanded(
-                                                child: Container(
+                                          final releasedGame = (getJsonField(
+                                                    rowGetReleasedGamesRAWGResponse
+                                                        .jsonBody,
+                                                    r'''$.results''',
+                                                  )?.toList() ??
+                                                  [])
+                                              .take(30)
+                                              .toList();
+                                          return SingleChildScrollView(
+                                            scrollDirection: Axis.horizontal,
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: List.generate(
+                                                  releasedGame.length,
+                                                  (releasedGameIndex) {
+                                                final releasedGameItem =
+                                                    releasedGame[
+                                                        releasedGameIndex];
+                                                return Container(
                                                   height: 145,
                                                   decoration: BoxDecoration(
                                                     boxShadow: [
@@ -802,15 +803,19 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                     child: Image.network(
                                                       getJsonField(
                                                         releasedGameItem,
-                                                        r'''$.background_image''',
+                                                        r'''$..background_image''',
                                                       ),
+                                                      width:
+                                                          MediaQuery.of(context)
+                                                              .size
+                                                              .width,
                                                       height: 145,
                                                       fit: BoxFit.cover,
                                                     ),
                                                   ),
-                                                ),
-                                              );
-                                            }),
+                                                );
+                                              }),
+                                            ),
                                           );
                                         },
                                       );
