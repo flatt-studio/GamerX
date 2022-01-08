@@ -1,4 +1,4 @@
-# gamer_x
+# GamerX
 
 A new Flutter project.
 

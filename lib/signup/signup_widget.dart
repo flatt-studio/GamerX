@@ -301,12 +301,12 @@ class _SignupWidgetState extends State<SignupWidget> {
                                     return;
                                   }
 
-                                  userToken = await tokenTwitchCall();
+                                  userToken = await TokenTwitchCall.call();
                                   final usersUpdateData = createUsersRecordData(
                                     tokenTwitch: getJsonField(
-                                            userToken.jsonBody,
-                                            r'''$.access_token''')
-                                        .toString(),
+                                      userToken.jsonBody,
+                                      r'''$.access_token''',
+                                    ).toString(),
                                   );
                                   await currentUserReference
                                       .update(usersUpdateData);

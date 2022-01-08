@@ -258,7 +258,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   FutureBuilder<ApiCallResponse>(
-                    future: getThreeItemCall(),
+                    future: GetThreeItemCall.call(),
                     builder: (context, snapshot) {
                       // Customize what your widget looks like when it's loading.
                       if (!snapshot.hasData) {
@@ -276,9 +276,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       return Builder(
                         builder: (context) {
                           final threeItem = (getJsonField(
-                                          pageViewGetThreeItemResponse.jsonBody,
-                                          r'''$.*''')
-                                      ?.toList() ??
+                                    pageViewGetThreeItemResponse.jsonBody,
+                                    r'''$.results''',
+                                  )?.toList() ??
                                   [])
                               .take(3)
                               .toList();
@@ -300,73 +300,41 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     itemBuilder: (context, threeItemIndex) {
                                       final threeItemItem =
                                           threeItem[threeItemIndex];
-                                      return FutureBuilder<ApiCallResponse>(
-                                        future: getImageCall(
-                                          id: getJsonField(
-                                                  threeItemItem, r'''$.id''')
-                                              .toString(),
-                                          bearerToken:
-                                              'Bearer ${currentUserDocument?.tokenTwitch}',
-                                        ),
-                                        builder: (context, snapshot) {
-                                          // Customize what your widget looks like when it's loading.
-                                          if (!snapshot.hasData) {
-                                            return Center(
-                                              child: SizedBox(
-                                                width: 40,
-                                                height: 40,
-                                                child:
-                                                    CircularProgressIndicator(
-                                                  color: FlutterFlowTheme
-                                                      .primaryColor,
-                                                ),
-                                              ),
-                                            );
-                                          }
-                                          final stackGetImageResponse =
-                                              snapshot.data;
-                                          return AuthUserStreamWidget(
-                                            child: Stack(
-                                              children: [
-                                                CachedNetworkImage(
-                                                  imageUrl:
-                                                      'https://images.igdb.com/igdb/image/upload/t_720p/${getJsonField(stackGetImageResponse.jsonBody, r'''$..cover.image_id''').toString()}.jpg',
-                                                  width: MediaQuery.of(context)
-                                                      .size
-                                                      .width,
-                                                  height: 400,
-                                                  fit: BoxFit.cover,
-                                                ),
-                                                Align(
-                                                  alignment:
-                                                      AlignmentDirectional(
-                                                          0, 0.95),
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                20, 0, 20, 0),
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      children: [
-                                                        Text(
-                                                          getJsonField(
-                                                                  threeItemItem,
-                                                                  r'''$.name''')
-                                                              .toString(),
-                                                          style:
-                                                              FlutterFlowTheme
-                                                                  .title1,
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
+                                      return Stack(
+                                        children: [
+                                          CachedNetworkImage(
+                                            imageUrl: getJsonField(
+                                              threeItemItem,
+                                              r'''$.background_image''',
                                             ),
-                                          );
-                                        },
+                                            width: MediaQuery.of(context)
+                                                .size
+                                                .width,
+                                            height: 400,
+                                            fit: BoxFit.cover,
+                                          ),
+                                          Align(
+                                            alignment:
+                                                AlignmentDirectional(0, 0.95),
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(20, 0, 20, 0),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Text(
+                                                    getJsonField(
+                                                      threeItemItem,
+                                                      r'''$..name''',
+                                                    ).toString(),
+                                                    style:
+                                                        FlutterFlowTheme.title1,
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        ],
                                       );
                                     },
                                   ),
@@ -430,7 +398,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               ),
                               InkWell(
                                 onTap: () async {
-                                  apiCallOutput = await getAllCall(
+                                  apiCallOutput = await GetAllCall.call(
                                     bearerToken:
                                         'Bearer ${currentUserDocument?.tokenTwitch}',
                                   );
@@ -644,7 +612,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 ),
                                 InkWell(
                                   onTap: () async {
-                                    apiCallOutputthree = await getThreeItemCall(
+                                    apiCallOutputthree =
+                                        await GetThreeItemCall.call(
                                       bearerToken:
                                           'Bearer ${currentUserDocument?.tokenTwitch}',
                                     );

@@ -1,6 +1,6 @@
 {
-    "name": "gamer_x",
-    "short_name": "gamer_x",
+    "name": "GamerX",
+    "short_name": "GamerX",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
