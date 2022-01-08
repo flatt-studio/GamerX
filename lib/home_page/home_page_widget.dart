@@ -748,34 +748,73 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0, 10, 0, 0),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Expanded(
-                                        child: Container(
-                                          width: 100,
-                                          height: 145,
-                                          decoration: BoxDecoration(
-                                            boxShadow: [
-                                              BoxShadow(
-                                                blurRadius: 3,
-                                                color: Color(0x4D000000),
-                                                offset: Offset(0, 4),
-                                              )
-                                            ],
-                                          ),
-                                          child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                            child: Image.asset(
-                                              'assets/images/Frame_10.png',
-                                              height: 145,
-                                              fit: BoxFit.cover,
+                                  child: FutureBuilder<ApiCallResponse>(
+                                    future: GetReleasedGamesRAWGCall.call(),
+                                    builder: (context, snapshot) {
+                                      // Customize what your widget looks like when it's loading.
+                                      if (!snapshot.hasData) {
+                                        return Center(
+                                          child: SizedBox(
+                                            width: 40,
+                                            height: 40,
+                                            child: CircularProgressIndicator(
+                                              color:
+                                                  FlutterFlowTheme.primaryColor,
                                             ),
                                           ),
-                                        ),
-                                      ),
-                                    ],
+                                        );
+                                      }
+                                      final rowGetReleasedGamesRAWGResponse =
+                                          snapshot.data;
+                                      return Builder(
+                                        builder: (context) {
+                                          final releasedGame = getJsonField(
+                                                rowGetReleasedGamesRAWGResponse
+                                                    .jsonBody,
+                                                r'''$.*''',
+                                              )?.toList() ??
+                                              [];
+                                          return Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: List.generate(
+                                                releasedGame.length,
+                                                (releasedGameIndex) {
+                                              final releasedGameItem =
+                                                  releasedGame[
+                                                      releasedGameIndex];
+                                              return Expanded(
+                                                child: Container(
+                                                  height: 145,
+                                                  decoration: BoxDecoration(
+                                                    boxShadow: [
+                                                      BoxShadow(
+                                                        blurRadius: 3,
+                                                        color:
+                                                            Color(0x4D000000),
+                                                        offset: Offset(0, 4),
+                                                      )
+                                                    ],
+                                                  ),
+                                                  child: ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    child: Image.network(
+                                                      getJsonField(
+                                                        releasedGameItem,
+                                                        r'''$.background_image''',
+                                                      ),
+                                                      height: 145,
+                                                      fit: BoxFit.cover,
+                                                    ),
+                                                  ),
+                                                ),
+                                              );
+                                            }),
+                                          );
+                                        },
+                                      );
+                                    },
                                   ),
                                 ),
                               ),
