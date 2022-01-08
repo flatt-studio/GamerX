@@ -258,7 +258,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   FutureBuilder<ApiCallResponse>(
-                    future: GetThreeItemCall.call(),
+                    future: GetThreeGamesRAWGCall.call(),
                     builder: (context, snapshot) {
                       // Customize what your widget looks like when it's loading.
                       if (!snapshot.hasData) {
@@ -272,11 +272,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           ),
                         );
                       }
-                      final pageViewGetThreeItemResponse = snapshot.data;
+                      final pageViewGetThreeGamesRAWGResponse = snapshot.data;
                       return Builder(
                         builder: (context) {
-                          final threeItem = (getJsonField(
-                                    pageViewGetThreeItemResponse.jsonBody,
+                          final results = (getJsonField(
+                                    pageViewGetThreeGamesRAWGResponse.jsonBody,
                                     r'''$.results''',
                                   )?.toList() ??
                                   [])
@@ -294,17 +294,16 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     controller: pageViewController ??=
                                         PageController(
                                             initialPage:
-                                                min(0, threeItem.length - 1)),
+                                                min(0, results.length - 1)),
                                     scrollDirection: Axis.horizontal,
-                                    itemCount: threeItem.length,
-                                    itemBuilder: (context, threeItemIndex) {
-                                      final threeItemItem =
-                                          threeItem[threeItemIndex];
+                                    itemCount: results.length,
+                                    itemBuilder: (context, resultsIndex) {
+                                      final resultsItem = results[resultsIndex];
                                       return Stack(
                                         children: [
                                           CachedNetworkImage(
                                             imageUrl: getJsonField(
-                                              threeItemItem,
+                                              resultsItem,
                                               r'''$.background_image''',
                                             ),
                                             width: MediaQuery.of(context)
@@ -324,7 +323,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                 children: [
                                                   Text(
                                                     getJsonField(
-                                                      threeItemItem,
+                                                      resultsItem,
                                                       r'''$..name''',
                                                     ).toString(),
                                                     style:
@@ -348,8 +347,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       controller: pageViewController ??=
                                           PageController(
                                               initialPage:
-                                                  min(0, threeItem.length - 1)),
-                                      count: threeItem.length,
+                                                  min(0, results.length - 1)),
+                                      count: results.length,
                                       axisDirection: Axis.horizontal,
                                       onDotClicked: (i) {
                                         pageViewController.animateToPage(
