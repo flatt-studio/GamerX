@@ -1,5 +1,6 @@
 import '../auth/auth_util.dart';
 import '../backend/api_requests/api_calls.dart';
+import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../game_detail/game_detail_widget.dart';
@@ -48,10 +49,18 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      Icon(
-                        Icons.arrow_back,
-                        color: FlutterFlowTheme.customColor3,
-                        size: 24,
+                      InkWell(
+                        onTap: () async {
+                          if (scaffoldKey.currentState.isDrawerOpen ||
+                              scaffoldKey.currentState.isEndDrawerOpen) {
+                            Navigator.pop(context);
+                          }
+                        },
+                        child: Icon(
+                          Icons.arrow_back,
+                          color: FlutterFlowTheme.customColor3,
+                          size: 24,
+                        ),
                       ),
                     ],
                   ),
@@ -1000,40 +1009,58 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               width: MediaQuery.of(context).size.width,
               height: 100,
               decoration: BoxDecoration(),
-              child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Icon(
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  FlutterFlowIconButton(
+                    borderColor: Colors.transparent,
+                    borderRadius: 30,
+                    borderWidth: 1,
+                    buttonSize: 48,
+                    icon: Icon(
                       Icons.menu,
                       color: FlutterFlowTheme.tertiaryColor,
                       size: 24,
                     ),
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(5, 0, 15, 0),
-                          child: Icon(
-                            Icons.search_sharp,
-                            color: FlutterFlowTheme.tertiaryColor,
-                            size: 24,
-                          ),
+                    onPressed: () async {
+                      scaffoldKey.currentState.openDrawer();
+                    },
+                  ),
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      FlutterFlowIconButton(
+                        borderColor: Colors.transparent,
+                        borderRadius: 30,
+                        borderWidth: 1,
+                        buttonSize: 48,
+                        icon: Icon(
+                          Icons.games_sharp,
+                          color: FlutterFlowTheme.tertiaryColor,
+                          size: 24,
                         ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(5, 0, 5, 0),
-                          child: Icon(
-                            Icons.games,
-                            color: FlutterFlowTheme.tertiaryColor,
-                            size: 24,
-                          ),
+                        onPressed: () async {
+                          scaffoldKey.currentState.openDrawer();
+                        },
+                      ),
+                      FlutterFlowIconButton(
+                        borderColor: Colors.transparent,
+                        borderRadius: 30,
+                        borderWidth: 1,
+                        buttonSize: 48,
+                        icon: Icon(
+                          Icons.search_outlined,
+                          color: FlutterFlowTheme.tertiaryColor,
+                          size: 24,
                         ),
-                      ],
-                    ),
-                  ],
-                ),
+                        onPressed: () async {
+                          scaffoldKey.currentState.openDrawer();
+                        },
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ),
           ],
