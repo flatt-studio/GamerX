@@ -471,124 +471,186 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             child: Padding(
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        5, 5, 5, 5),
-                                    child: Container(
-                                      width: 125,
-                                      height: 205,
-                                      decoration: BoxDecoration(
-                                        boxShadow: [
-                                          BoxShadow(
-                                            blurRadius: 3,
-                                            color: Color(0x4C000000),
-                                            offset: Offset(0, 4),
-                                          )
-                                        ],
-                                        borderRadius: BorderRadius.circular(10),
+                              child: FutureBuilder<ApiCallResponse>(
+                                future: GetPopularGamesRAWGCall.call(),
+                                builder: (context, snapshot) {
+                                  // Customize what your widget looks like when it's loading.
+                                  if (!snapshot.hasData) {
+                                    return Center(
+                                      child: SizedBox(
+                                        width: 40,
+                                        height: 40,
+                                        child: CircularProgressIndicator(
+                                          color: FlutterFlowTheme.primaryColor,
+                                        ),
                                       ),
-                                      child: Column(
+                                    );
+                                  }
+                                  final rowGetPopularGamesRAWGResponse =
+                                      snapshot.data;
+                                  return Builder(
+                                    builder: (context) {
+                                      final popularGame = (getJsonField(
+                                                rowGetPopularGamesRAWGResponse
+                                                    .jsonBody,
+                                                r'''$.*''',
+                                              )?.toList() ??
+                                              [])
+                                          .take(30)
+                                          .toList();
+                                      return Row(
                                         mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          ClipRRect(
-                                            borderRadius: BorderRadius.only(
-                                              bottomLeft: Radius.circular(0),
-                                              bottomRight: Radius.circular(0),
-                                              topLeft: Radius.circular(10),
-                                              topRight: Radius.circular(10),
-                                            ),
-                                            child: Image.asset(
-                                              'assets/images/Rectangle_4.png',
+                                        children:
+                                            List.generate(popularGame.length,
+                                                (popularGameIndex) {
+                                          final popularGameItem =
+                                              popularGame[popularGameIndex];
+                                          return Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    5, 5, 5, 5),
+                                            child: Container(
                                               width: 125,
-                                              height: 165,
-                                              fit: BoxFit.cover,
-                                            ),
-                                          ),
-                                          Container(
-                                            width: MediaQuery.of(context)
-                                                .size
-                                                .width,
-                                            height: 40,
-                                            decoration: BoxDecoration(
-                                              color: Color(0xFFEEEEEE),
-                                              borderRadius: BorderRadius.only(
-                                                bottomLeft: Radius.circular(10),
-                                                bottomRight:
-                                                    Radius.circular(10),
-                                                topLeft: Radius.circular(0),
-                                                topRight: Radius.circular(0),
+                                              height: 205,
+                                              decoration: BoxDecoration(
+                                                boxShadow: [
+                                                  BoxShadow(
+                                                    blurRadius: 3,
+                                                    color: Color(0x4C000000),
+                                                    offset: Offset(0, 4),
+                                                  )
+                                                ],
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
                                               ),
-                                            ),
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(5, 5, 5, 5),
-                                              child: Row(
+                                              child: Column(
                                                 mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
                                                 children: [
-                                                  Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      Text(
-                                                        'Game Name',
-                                                        style: FlutterFlowTheme
-                                                            .bodyText1
-                                                            .override(
-                                                          fontFamily: 'Roboto',
-                                                          color: FlutterFlowTheme
-                                                              .secondaryColor,
-                                                        ),
+                                                  ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.only(
+                                                      bottomLeft:
+                                                          Radius.circular(0),
+                                                      bottomRight:
+                                                          Radius.circular(0),
+                                                      topLeft:
+                                                          Radius.circular(10),
+                                                      topRight:
+                                                          Radius.circular(10),
+                                                    ),
+                                                    child: Image.network(
+                                                      getJsonField(
+                                                        popularGameItem,
+                                                        r'''$.background_image''',
                                                       ),
-                                                      RatingBar.builder(
-                                                        onRatingUpdate: (newValue) =>
-                                                            setState(() =>
-                                                                ratingBarValue =
-                                                                    newValue),
-                                                        itemBuilder:
-                                                            (context, index) =>
-                                                                Icon(
-                                                          Icons.star_rounded,
-                                                          color:
-                                                              Color(0xFFFFA100),
-                                                        ),
-                                                        direction:
-                                                            Axis.horizontal,
-                                                        initialRating:
-                                                            ratingBarValue ??=
-                                                                3,
-                                                        unratedColor:
-                                                            Color(0x80000000),
-                                                        itemCount: 5,
-                                                        itemSize: 16,
-                                                        glowColor:
-                                                            Color(0xFFFFA100),
-                                                      ),
-                                                    ],
+                                                      width: 125,
+                                                      height: 165,
+                                                      fit: BoxFit.cover,
+                                                    ),
                                                   ),
-                                                  Image.asset(
-                                                    'assets/images/Xbox_one_logo_1.png',
-                                                    width: 20,
-                                                    height: 20,
-                                                    fit: BoxFit.cover,
+                                                  Container(
+                                                    width:
+                                                        MediaQuery.of(context)
+                                                            .size
+                                                            .width,
+                                                    height: 40,
+                                                    decoration: BoxDecoration(
+                                                      color: Color(0xFFEEEEEE),
+                                                      borderRadius:
+                                                          BorderRadius.only(
+                                                        bottomLeft:
+                                                            Radius.circular(10),
+                                                        bottomRight:
+                                                            Radius.circular(10),
+                                                        topLeft:
+                                                            Radius.circular(0),
+                                                        topRight:
+                                                            Radius.circular(0),
+                                                      ),
+                                                    ),
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  5, 5, 5, 5),
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceBetween,
+                                                        children: [
+                                                          Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Expanded(
+                                                                child: Text(
+                                                                  getJsonField(
+                                                                    popularGameItem,
+                                                                    r'''$.name''',
+                                                                  ).toString(),
+                                                                  style: FlutterFlowTheme
+                                                                      .bodyText1
+                                                                      .override(
+                                                                    fontFamily:
+                                                                        'Roboto',
+                                                                    color: FlutterFlowTheme
+                                                                        .secondaryColor,
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                              RatingBar.builder(
+                                                                onRatingUpdate: (newValue) =>
+                                                                    setState(() =>
+                                                                        ratingBarValue =
+                                                                            newValue),
+                                                                itemBuilder:
+                                                                    (context,
+                                                                            index) =>
+                                                                        Icon(
+                                                                  Icons
+                                                                      .star_rounded,
+                                                                  color: Color(
+                                                                      0xFFFFA100),
+                                                                ),
+                                                                direction: Axis
+                                                                    .horizontal,
+                                                                initialRating:
+                                                                    ratingBarValue ??=
+                                                                        3,
+                                                                unratedColor: Color(
+                                                                    0x80000000),
+                                                                itemCount: 5,
+                                                                itemSize: 16,
+                                                                glowColor: Color(
+                                                                    0xFFFFA100),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                          Image.asset(
+                                                            'assets/images/Xbox_one_logo_1.png',
+                                                            width: 20,
+                                                            height: 20,
+                                                            fit: BoxFit.cover,
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
                                                   ),
                                                 ],
                                               ),
                                             ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ],
+                                          );
+                                        }),
+                                      );
+                                    },
+                                  );
+                                },
                               ),
                             ),
                           ),

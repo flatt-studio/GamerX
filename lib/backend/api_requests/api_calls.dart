@@ -131,3 +131,35 @@ class GetThreeGamesRAWGCall {
     );
   }
 }
+
+class GetPopularGamesRAWGCall {
+  static Future<ApiCallResponse> call({
+    String apiKey = '5918dc05061442beb784d84628dc3a5b',
+  }) {
+    return ApiManager.instance.makeApiCall(
+      callName: 'getPopularGamesRAWG',
+      apiUrl:
+          'https://api.rawg.io/api/games?key=${apiKey}&dates=2022-01-01,2022-12-30&ordering=-rating',
+      callType: ApiCallType.GET,
+      headers: {},
+      params: {},
+      returnBody: true,
+    );
+  }
+}
+
+class GetReleasedGamesRAWGCall {
+  static Future<ApiCallResponse> call({
+    String apiKey = '5918dc05061442beb784d84628dc3a5b',
+  }) {
+    return ApiManager.instance.makeApiCall(
+      callName: 'getReleasedGamesRAWG',
+      apiUrl:
+          'https://api.rawg.io/api/games?key=${apiKey}&dates=2022-01-01,2022-12-30&ordering=-released',
+      callType: ApiCallType.GET,
+      headers: {},
+      params: {},
+      returnBody: true,
+    );
+  }
+}
