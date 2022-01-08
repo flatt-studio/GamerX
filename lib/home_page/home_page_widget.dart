@@ -538,8 +538,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                       topRight:
                                                           Radius.circular(10),
                                                     ),
-                                                    child: Image.network(
-                                                      getJsonField(
+                                                    child: CachedNetworkImage(
+                                                      imageUrl: getJsonField(
                                                         popularGameItem,
                                                         r'''$..background_image''',
                                                       ),
@@ -800,8 +800,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             10),
-                                                    child: Image.network(
-                                                      getJsonField(
+                                                    child: CachedNetworkImage(
+                                                      imageUrl: getJsonField(
                                                         releasedGameItem,
                                                         r'''$..background_image''',
                                                       ),
