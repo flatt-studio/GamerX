@@ -164,6 +164,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                     borderColor: Colors.transparent,
                                     borderRadius: 30,
                                     buttonSize: 48,
+                                    fillColor: Color(0xFF090F13),
                                     icon: Icon(
                                       Icons.arrow_back_rounded,
                                       color: Colors.white,
