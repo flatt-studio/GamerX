@@ -339,12 +339,12 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                             getJsonField(
                               gameDetailGetaGameResponse.jsonBody,
                               r'''$.name''',
-                            ).toString(),
+                            ).toString().maybeHandleOverflow(maxChars: 34),
                             style: FlutterFlowTheme.title2.override(
                               fontFamily: 'Lexend Deca',
                               color: Colors.white,
-                              fontSize: 22,
-                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w600,
                             ),
                           ),
                         ],

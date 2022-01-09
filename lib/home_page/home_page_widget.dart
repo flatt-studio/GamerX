@@ -9,6 +9,7 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../game_detail/game_detail_widget.dart';
 import '../gamelist/gamelist_widget.dart';
 import '../login/login_widget.dart';
+import '../profile/profile_widget.dart';
 import '../search/search_widget.dart';
 import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:cached_network_image/cached_network_image.dart';
@@ -249,11 +250,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 EdgeInsetsDirectional.fromSTEB(0, 10, 0, 20),
                             child: InkWell(
                               onTap: () async {
-                                await Navigator.push(
+                                await Navigator.pushAndRemoveUntil(
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) => FavoritesWidget(),
                                   ),
+                                  (r) => false,
                                 );
                               },
                               child: Row(
@@ -320,26 +322,38 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           Padding(
                             padding:
                                 EdgeInsetsDirectional.fromSTEB(0, 10, 0, 20),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Icon(
-                                  Icons.person_outline,
-                                  color: FlutterFlowTheme.customColor3,
-                                  size: 20,
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      20, 0, 0, 0),
-                                  child: Text(
-                                    'Profile',
-                                    style: FlutterFlowTheme.subtitle2.override(
-                                      fontFamily: 'Roboto',
-                                      color: FlutterFlowTheme.customColor3,
+                            child: InkWell(
+                              onTap: () async {
+                                await Navigator.pushAndRemoveUntil(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => ProfileWidget(),
+                                  ),
+                                  (r) => false,
+                                );
+                              },
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Icon(
+                                    Icons.person_outline,
+                                    color: FlutterFlowTheme.customColor3,
+                                    size: 20,
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        20, 0, 0, 0),
+                                    child: Text(
+                                      'Profile',
+                                      style:
+                                          FlutterFlowTheme.subtitle2.override(
+                                        fontFamily: 'Roboto',
+                                        color: FlutterFlowTheme.customColor3,
+                                      ),
                                     ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
                           Padding(

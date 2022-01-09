@@ -394,21 +394,6 @@ class _ConsolesListWidgetState extends State<ConsolesListWidget> {
                                                                   ),
                                                                 ],
                                                               ),
-                                                              Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0,
-                                                                            10,
-                                                                            0,
-                                                                            0),
-                                                                child: Row(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  children: [],
-                                                                ),
-                                                              ),
                                                             ],
                                                           ),
                                                         ),
