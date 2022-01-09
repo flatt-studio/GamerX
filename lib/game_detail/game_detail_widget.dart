@@ -2,6 +2,7 @@ import '../auth/auth_util.dart';
 import '../backend/api_requests/api_calls.dart';
 import '../backend/backend.dart';
 import '../components/add_to_console_modal_widget.dart';
+import '../flutter_flow/flutter_flow_expanded_image_view.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -12,6 +13,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:page_transition/page_transition.dart';
 
 class GameDetailWidget extends StatefulWidget {
   const GameDetailWidget({
@@ -754,18 +756,55 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                                 return Padding(
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(0, 0, 10, 0),
-                                                  child: ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            5),
-                                                    child: CachedNetworkImage(
-                                                      imageUrl: getJsonField(
-                                                        screenShotItem,
-                                                        r'''$.image''',
+                                                  child: InkWell(
+                                                    onTap: () async {
+                                                      await Navigator.push(
+                                                        context,
+                                                        PageTransition(
+                                                          type:
+                                                              PageTransitionType
+                                                                  .fade,
+                                                          child:
+                                                              FlutterFlowExpandedImageView(
+                                                            image:
+                                                                CachedNetworkImage(
+                                                              imageUrl:
+                                                                  getJsonField(
+                                                                screenShotItem,
+                                                                r'''$.image''',
+                                                              ),
+                                                              fit: BoxFit
+                                                                  .contain,
+                                                            ),
+                                                            allowRotation:
+                                                                false,
+                                                            tag: 'imageTag3',
+                                                            useHeroAnimation:
+                                                                true,
+                                                          ),
+                                                        ),
+                                                      );
+                                                    },
+                                                    child: Hero(
+                                                      tag: 'imageTag3',
+                                                      transitionOnUserGestures:
+                                                          true,
+                                                      child: ClipRRect(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(5),
+                                                        child:
+                                                            CachedNetworkImage(
+                                                          imageUrl:
+                                                              getJsonField(
+                                                            screenShotItem,
+                                                            r'''$.image''',
+                                                          ),
+                                                          width: 150,
+                                                          height: 100,
+                                                          fit: BoxFit.cover,
+                                                        ),
                                                       ),
-                                                      width: 150,
-                                                      height: 100,
-                                                      fit: BoxFit.cover,
                                                     ),
                                                   ),
                                                 );
