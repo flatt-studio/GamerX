@@ -777,34 +777,25 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                                               fit: BoxFit
                                                                   .contain,
                                                             ),
-                                                            allowRotation:
-                                                                false,
-                                                            tag: 'imageTag3',
+                                                            allowRotation: true,
                                                             useHeroAnimation:
-                                                                true,
+                                                                false,
                                                           ),
                                                         ),
                                                       );
                                                     },
-                                                    child: Hero(
-                                                      tag: 'imageTag3',
-                                                      transitionOnUserGestures:
-                                                          true,
-                                                      child: ClipRRect(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(5),
-                                                        child:
-                                                            CachedNetworkImage(
-                                                          imageUrl:
-                                                              getJsonField(
-                                                            screenShotItem,
-                                                            r'''$.image''',
-                                                          ),
-                                                          width: 150,
-                                                          height: 100,
-                                                          fit: BoxFit.cover,
+                                                    child: ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              5),
+                                                      child: CachedNetworkImage(
+                                                        imageUrl: getJsonField(
+                                                          screenShotItem,
+                                                          r'''$.image''',
                                                         ),
+                                                        width: 150,
+                                                        height: 100,
+                                                        fit: BoxFit.cover,
                                                       ),
                                                     ),
                                                   ),
@@ -907,7 +898,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                                         snapshot.data;
                                                     return FlutterFlowVideoPlayer(
                                                       path: getJsonField(
-                                                        videoPlayerGetMoviesOfaGameRAWGResponse
+                                                        rowGetMoviesOfaGameRAWGResponse
                                                             .jsonBody,
                                                         r'''$.results''',
                                                       ),
