@@ -57,12 +57,12 @@ class _MyAppState extends State<MyApp> {
       supportedLocales: const [Locale('en', '')],
       theme: ThemeData(primarySwatch: Colors.blue),
       home: initialUser == null || displaySplashImage
-          ? const Center(
-              child: SizedBox(
-                width: 40,
-                height: 40,
-                child: CircularProgressIndicator(
-                  color: FlutterFlowTheme.primaryColor,
+          ? Container(
+              color: Colors.transparent,
+              child: Builder(
+                builder: (context) => Image.asset(
+                  'assets/images/GamerXSplashScreen.png',
+                  fit: BoxFit.cover,
                 ),
               ),
             )

@@ -148,7 +148,7 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                                                     r'''$.background_image''',
                                                   ),
                                                   width: double.infinity,
-                                                  height: 125,
+                                                  height: 145,
                                                   fit: BoxFit.cover,
                                                 ),
                                               ),
