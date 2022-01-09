@@ -1094,11 +1094,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                               releasedGameItem,
                                                               r'''$.background_image''',
                                                             ),
-                                                            width: MediaQuery.of(
-                                                                        context)
-                                                                    .size
-                                                                    .width *
-                                                                0.9,
+                                                            width: 330,
                                                             height: 145,
                                                             fit: BoxFit.cover,
                                                           ),
