@@ -1,6 +1,7 @@
 import '../auth/auth_util.dart';
 import '../backend/api_requests/api_calls.dart';
 import '../backend/backend.dart';
+import '../consoles/consoles_widget.dart';
 import '../favorites/favorites_widget.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -267,26 +268,38 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           Padding(
                             padding:
                                 EdgeInsetsDirectional.fromSTEB(0, 10, 0, 20),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Icon(
-                                  Icons.settings_system_daydream,
-                                  color: FlutterFlowTheme.customColor3,
-                                  size: 20,
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      20, 0, 0, 0),
-                                  child: Text(
-                                    'Collections',
-                                    style: FlutterFlowTheme.subtitle2.override(
-                                      fontFamily: 'Roboto',
-                                      color: FlutterFlowTheme.customColor3,
+                            child: InkWell(
+                              onTap: () async {
+                                await Navigator.pushAndRemoveUntil(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => ConsolesWidget(),
+                                  ),
+                                  (r) => false,
+                                );
+                              },
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Icon(
+                                    Icons.settings_system_daydream,
+                                    color: FlutterFlowTheme.customColor3,
+                                    size: 20,
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        20, 0, 0, 0),
+                                    child: Text(
+                                      'Collections',
+                                      style:
+                                          FlutterFlowTheme.subtitle2.override(
+                                        fontFamily: 'Roboto',
+                                        color: FlutterFlowTheme.customColor3,
+                                      ),
                                     ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
                           Padding(
