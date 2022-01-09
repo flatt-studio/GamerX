@@ -1,4 +1,5 @@
 import '../auth/auth_util.dart';
+import '../editprofile/editprofile_widget.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -54,6 +55,30 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                   Text(
                     'Profile',
                     style: FlutterFlowTheme.title2,
+                  ),
+                  Expanded(
+                    child: Align(
+                      alignment: AlignmentDirectional(1, 0),
+                      child: FlutterFlowIconButton(
+                        borderColor: Colors.transparent,
+                        borderRadius: 30,
+                        borderWidth: 1,
+                        buttonSize: 46,
+                        icon: Icon(
+                          Icons.edit_sharp,
+                          color: Colors.white,
+                          size: 24,
+                        ),
+                        onPressed: () async {
+                          await Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => EditprofileWidget(),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
                   ),
                 ],
               ),

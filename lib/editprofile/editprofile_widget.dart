@@ -3,11 +3,17 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../home_page/home_page_widget.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class EditprofileWidget extends StatefulWidget {
-  const EditprofileWidget({Key key}) : super(key: key);
+  const EditprofileWidget({
+    Key key,
+    this.profileEdit,
+  }) : super(key: key);
+
+  final DocumentReference profileEdit;
 
   @override
   _EditprofileWidgetState createState() => _EditprofileWidgetState();
