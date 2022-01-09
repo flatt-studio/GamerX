@@ -1,6 +1,7 @@
 import '../auth/auth_util.dart';
 import '../backend/api_requests/api_calls.dart';
 import '../backend/backend.dart';
+import '../components/add_to_console_modal_widget.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -172,32 +173,153 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                   ),
                                 ),
                                 Align(
-                                  alignment: AlignmentDirectional(0, 0.8),
-                                  child: FFButtonWidget(
-                                    onPressed: () {
-                                      print('Button pressed ...');
+                                  alignment: AlignmentDirectional(0, 0.85),
+                                  child: StreamBuilder<List<ConsolsRecord>>(
+                                    stream: queryConsolsRecord(
+                                      queryBuilder: (consolsRecord) =>
+                                          consolsRecord.where('gameList',
+                                              arrayContains:
+                                                  valueOrDefault<String>(
+                                                widget.gameId,
+                                                'false',
+                                              )),
+                                      singleRecord: true,
+                                    ),
+                                    builder: (context, snapshot) {
+                                      // Customize what your widget looks like when it's loading.
+                                      if (!snapshot.hasData) {
+                                        return Center(
+                                          child: SizedBox(
+                                            width: 40,
+                                            height: 40,
+                                            child: CircularProgressIndicator(
+                                              color:
+                                                  FlutterFlowTheme.primaryColor,
+                                            ),
+                                          ),
+                                        );
+                                      }
+                                      List<ConsolsRecord>
+                                          containerConsolsRecordList =
+                                          snapshot.data;
+                                      final containerConsolsRecord =
+                                          containerConsolsRecordList.isNotEmpty
+                                              ? containerConsolsRecordList.first
+                                              : null;
+                                      return Container(
+                                        height: 70,
+                                        decoration: BoxDecoration(),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            if (!(functions.isGameInCollection(
+                                                    widget.gameId,
+                                                    containerConsolsRecord)) ??
+                                                true)
+                                              Align(
+                                                alignment: AlignmentDirectional(
+                                                    0, 0.8),
+                                                child: FFButtonWidget(
+                                                  onPressed: () async {
+                                                    await showModalBottomSheet(
+                                                      isScrollControlled: true,
+                                                      context: context,
+                                                      builder: (context) {
+                                                        return Padding(
+                                                          padding:
+                                                              MediaQuery.of(
+                                                                      context)
+                                                                  .viewInsets,
+                                                          child: Container(
+                                                            height: 480,
+                                                            child:
+                                                                AddToConsoleModalWidget(
+                                                              gameId:
+                                                                  widget.gameId,
+                                                            ),
+                                                          ),
+                                                        );
+                                                      },
+                                                    );
+                                                  },
+                                                  text: 'Add To Collection',
+                                                  icon: Icon(
+                                                    Icons.bookmarks_sharp,
+                                                    size: 15,
+                                                  ),
+                                                  options: FFButtonOptions(
+                                                    width: 185,
+                                                    height: 40,
+                                                    color: FlutterFlowTheme
+                                                        .customColor1,
+                                                    textStyle: FlutterFlowTheme
+                                                        .subtitle2
+                                                        .override(
+                                                      fontFamily: 'Roboto',
+                                                      color: Colors.white,
+                                                    ),
+                                                    elevation: 15,
+                                                    borderSide: BorderSide(
+                                                      color: Colors.transparent,
+                                                      width: 1,
+                                                    ),
+                                                    borderRadius: 12,
+                                                  ),
+                                                ),
+                                              ),
+                                            if (functions.isGameInCollection(
+                                                    widget.gameId,
+                                                    containerConsolsRecord) ??
+                                                true)
+                                              Align(
+                                                alignment: AlignmentDirectional(
+                                                    0, 0.8),
+                                                child: FFButtonWidget(
+                                                  onPressed: () async {
+                                                    final consolsUpdateData = {
+                                                      'gameList': FieldValue
+                                                          .arrayRemove(
+                                                              [widget.gameId]),
+                                                    };
+                                                    await containerConsolsRecord
+                                                        .reference
+                                                        .update(
+                                                            consolsUpdateData);
+                                                  },
+                                                  text: 'Remove',
+                                                  icon: Icon(
+                                                    Icons
+                                                        .bookmark_border_rounded,
+                                                    size: 15,
+                                                  ),
+                                                  options: FFButtonOptions(
+                                                    width: 185,
+                                                    height: 40,
+                                                    color: FlutterFlowTheme
+                                                        .secondaryColor,
+                                                    textStyle: FlutterFlowTheme
+                                                        .subtitle2
+                                                        .override(
+                                                      fontFamily: 'Roboto',
+                                                      color: Colors.white,
+                                                    ),
+                                                    elevation: 15,
+                                                    borderSide: BorderSide(
+                                                      color: Colors.transparent,
+                                                      width: 1,
+                                                    ),
+                                                    borderRadius: 12,
+                                                  ),
+                                                ),
+                                              ),
+                                          ],
+                                        ),
+                                      );
                                     },
-                                    text: 'Add To Collection',
-                                    icon: Icon(
-                                      Icons.bookmarks_sharp,
-                                      size: 15,
-                                    ),
-                                    options: FFButtonOptions(
-                                      width: 185,
-                                      height: 40,
-                                      color: FlutterFlowTheme.customColor1,
-                                      textStyle:
-                                          FlutterFlowTheme.subtitle2.override(
-                                        fontFamily: 'Roboto',
-                                        color: Colors.white,
-                                      ),
-                                      elevation: 15,
-                                      borderSide: BorderSide(
-                                        color: Colors.transparent,
-                                        width: 1,
-                                      ),
-                                      borderRadius: 12,
-                                    ),
                                   ),
                                 ),
                               ],

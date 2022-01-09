@@ -212,3 +212,35 @@ class GetScreenshotsOfaGameCall {
     );
   }
 }
+
+class GetGameSearchResultCall {
+  static Future<ApiCallResponse> call({
+    String apiKey = '5918dc05061442beb784d84628dc3a5b',
+    String text = 'game',
+  }) {
+    return ApiManager.instance.makeApiCall(
+      callName: 'getGameSearchResult',
+      apiUrl: 'https://api.rawg.io/api/games?key=${apiKey}&search=${text}',
+      callType: ApiCallType.GET,
+      headers: {},
+      params: {},
+      returnBody: true,
+    );
+  }
+}
+
+class GetGamesInAPlatformCall {
+  static Future<ApiCallResponse> call({
+    String apiKey = '5918dc05061442beb784d84628dc3a5b',
+    String param = 'platforms=1,4',
+  }) {
+    return ApiManager.instance.makeApiCall(
+      callName: 'getGamesInAPlatform',
+      apiUrl: 'https://api.rawg.io/api/games?key=${apiKey}&${param}',
+      callType: ApiCallType.GET,
+      headers: {},
+      params: {},
+      returnBody: true,
+    );
+  }
+}

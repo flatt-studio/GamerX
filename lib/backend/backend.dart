@@ -6,6 +6,7 @@ import '../flutter_flow/flutter_flow_util.dart';
 
 import 'schema/users_record.dart';
 import 'schema/consols_record.dart';
+import 'schema/platforms_record.dart';
 import 'schema/serializers.dart';
 
 export 'package:cloud_firestore/cloud_firestore.dart';
@@ -14,6 +15,7 @@ export 'schema/serializers.dart';
 
 export 'schema/users_record.dart';
 export 'schema/consols_record.dart';
+export 'schema/platforms_record.dart';
 
 /// Functions to query UsersRecords (as a Stream and as a Future).
 Stream<List<UsersRecord>> queryUsersRecord(
@@ -43,6 +45,21 @@ Future<List<ConsolsRecord>> queryConsolsRecordOnce(
         int limit = -1,
         bool singleRecord = false}) =>
     queryCollectionOnce(ConsolsRecord.collection, ConsolsRecord.serializer,
+        queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
+
+/// Functions to query PlatformsRecords (as a Stream and as a Future).
+Stream<List<PlatformsRecord>> queryPlatformsRecord(
+        {Query Function(Query) queryBuilder,
+        int limit = -1,
+        bool singleRecord = false}) =>
+    queryCollection(PlatformsRecord.collection, PlatformsRecord.serializer,
+        queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
+
+Future<List<PlatformsRecord>> queryPlatformsRecordOnce(
+        {Query Function(Query) queryBuilder,
+        int limit = -1,
+        bool singleRecord = false}) =>
+    queryCollectionOnce(PlatformsRecord.collection, PlatformsRecord.serializer,
         queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
 
 Stream<List<T>> queryCollection<T>(

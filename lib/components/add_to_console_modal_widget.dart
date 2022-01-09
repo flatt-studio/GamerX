@@ -1,6 +1,5 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
-import '../consoles_list/consoles_list_widget.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -104,31 +103,6 @@ class _AddToConsoleModalWidgetState extends State<AddToConsoleModalWidget> {
                           };
                           await columnConsolsRecord.reference
                               .update(consolsUpdateData);
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(
-                                'Game Added to collection.',
-                                style: TextStyle(),
-                              ),
-                              duration: Duration(milliseconds: 4000),
-                              backgroundColor: Color(0x00000000),
-                              action: SnackBarAction(
-                                label: 'See Collection',
-                                textColor: Color(0x00000000),
-                                onPressed: () async {
-                                  await Navigator.pushAndRemoveUntil(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => ConsolesListWidget(
-                                        consoleID: columnConsolsRecord.id,
-                                      ),
-                                    ),
-                                    (r) => false,
-                                  );
-                                },
-                              ),
-                            ),
-                          );
                           Navigator.pop(context);
                         },
                         child: Container(

@@ -15,3 +15,66 @@ bool isItemInFav(
 ) {
   return currentUser.favoriteList.contains(id);
 }
+
+bool isGameInCollection(
+  String gameID,
+  ConsolsRecord console,
+) {
+  if (console != null) {
+    if (console.gameList.isNotEmpty) {
+      return console.gameList.contains(gameID);
+    }
+  }
+  return false;
+}
+
+bool searchInGamesDatabase(
+  String text,
+  String textBody,
+) {
+  if (text != null || text != "" || text.isNotEmpty) {
+    return textBody.toLowerCase().contains(text.toLowerCase());
+  }
+  return false;
+}
+
+String makeParamsFromDropdown(String option) {
+  switch (option) {
+    case "Xbox":
+      {
+        return "platforms=1";
+      }
+      break;
+    case "GamePass":
+      {
+        return "platforms=18";
+      }
+      break;
+    case "PlayStation":
+      {
+        return "platforms=187";
+      }
+      break;
+    case "Nintendo Switch":
+      {
+        return "platforms=7";
+      }
+      break;
+    case "Stadia":
+      {
+        return "platforms=19";
+      }
+      break;
+    case "Platform Six":
+      {
+        return "platforms=18";
+      }
+      break;
+
+    default:
+      {
+        return "platforms=1,4";
+      }
+      break;
+  }
+}
