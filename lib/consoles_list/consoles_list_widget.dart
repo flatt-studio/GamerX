@@ -191,6 +191,7 @@ class _ConsolesListWidgetState extends State<ConsolesListWidget> {
                               : null;
                       return Container(
                         width: MediaQuery.of(context).size.width,
+                        height: MediaQuery.of(context).size.height * 1,
                         decoration: BoxDecoration(),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
