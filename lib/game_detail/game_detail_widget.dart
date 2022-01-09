@@ -4,10 +4,8 @@ import '../backend/backend.dart';
 import '../components/add_to_console_modal_widget.dart';
 import '../flutter_flow/flutter_flow_expanded_image_view.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
-import '../flutter_flow/flutter_flow_media_display.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../flutter_flow/flutter_flow_video_player.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:cached_network_image/cached_network_image.dart';
@@ -432,7 +430,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                                 imageUrl: functions
                                                     .platformLogo(getJsonField(
                                                   platformsItem,
-                                                  r'''$.name''',
+                                                  r'''$.platforms''',
                                                 ).toString()),
                                                 width: 25,
                                                 height: 25,
@@ -799,106 +797,6 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                                         fit: BoxFit.cover,
                                                       ),
                                                     ),
-                                                  ),
-                                                );
-                                              }),
-                                            ),
-                                          );
-                                        },
-                                      );
-                                    },
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Expanded(
-                          child: Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(16, 12, 16, 20),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 0, 0, 4),
-                                  child: Text(
-                                    'Trailers',
-                                    style: FlutterFlowTheme.subtitle1,
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 10, 0, 0),
-                                  child: FutureBuilder<ApiCallResponse>(
-                                    future: GetMoviesOfaGameRAWGCall.call(
-                                      id: widget.gameId,
-                                    ),
-                                    builder: (context, snapshot) {
-                                      // Customize what your widget looks like when it's loading.
-                                      if (!snapshot.hasData) {
-                                        return Center(
-                                          child: SizedBox(
-                                            width: 40,
-                                            height: 40,
-                                            child: CircularProgressIndicator(
-                                              color:
-                                                  FlutterFlowTheme.primaryColor,
-                                            ),
-                                          ),
-                                        );
-                                      }
-                                      final rowGetMoviesOfaGameRAWGResponse =
-                                          snapshot.data;
-                                      return Builder(
-                                        builder: (context) {
-                                          final gameTrailers = getJsonField(
-                                                rowGetMoviesOfaGameRAWGResponse
-                                                    .jsonBody,
-                                                r'''$data''',
-                                              )?.toList() ??
-                                              [];
-                                          return SingleChildScrollView(
-                                            scrollDirection: Axis.horizontal,
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: List.generate(
-                                                  gameTrailers.length,
-                                                  (gameTrailersIndex) {
-                                                final gameTrailersItem =
-                                                    gameTrailers[
-                                                        gameTrailersIndex];
-                                                return FlutterFlowMediaDisplay(
-                                                  path: getJsonField(
-                                                    rowGetMoviesOfaGameRAWGResponse
-                                                        .jsonBody,
-                                                    r'''$id''',
-                                                  ),
-                                                  imageBuilder: (path) =>
-                                                      Image.network(
-                                                    path,
-                                                    width: 300,
-                                                    height: 300,
-                                                    fit: BoxFit.cover,
-                                                  ),
-                                                  videoPlayerBuilder: (path) =>
-                                                      FlutterFlowVideoPlayer(
-                                                    path: path,
-                                                    width: 300,
-                                                    autoPlay: false,
-                                                    looping: true,
-                                                    showControls: true,
-                                                    allowFullScreen: true,
-                                                    allowPlaybackSpeedMenu:
-                                                        false,
                                                   ),
                                                 );
                                               }),
