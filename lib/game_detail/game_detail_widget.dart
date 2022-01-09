@@ -867,7 +867,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                               path: getJsonField(
                                                 videoPlayerGetMoviesOfaGameRAWGResponse
                                                     .jsonBody,
-                                                r'''$.data''',
+                                                r'''$.data.480''',
                                               ),
                                               videoType: VideoType.network,
                                               width: MediaQuery.of(context)
@@ -875,7 +875,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                                       .width *
                                                   0.9,
                                               autoPlay: false,
-                                              looping: true,
+                                              looping: false,
                                               showControls: true,
                                               allowFullScreen: true,
                                               allowPlaybackSpeedMenu: false,
