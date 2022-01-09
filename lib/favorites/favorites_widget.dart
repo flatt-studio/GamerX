@@ -157,12 +157,12 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    0, 5, 0, 5),
+                                                    0, 0, 0, 5),
                                             child: Container(
                                               width: MediaQuery.of(context)
                                                   .size
                                                   .width,
-                                              height: 40,
+                                              height: 38,
                                               decoration: BoxDecoration(
                                                 color: Color(0xFFEEEEEE),
                                                 borderRadius: BorderRadius.only(
