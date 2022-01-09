@@ -900,7 +900,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                                       path: getJsonField(
                                                         rowGetMoviesOfaGameRAWGResponse
                                                             .jsonBody,
-                                                        r'''$.results''',
+                                                        r'''$.data''',
                                                       ),
                                                       videoType:
                                                           VideoType.network,
