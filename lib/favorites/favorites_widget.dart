@@ -91,7 +91,7 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                                 favoriteListItem[favoriteListItemIndex];
                             return Padding(
                               padding:
-                                  EdgeInsetsDirectional.fromSTEB(5, 5, 5, 5),
+                                  EdgeInsetsDirectional.fromSTEB(5, 0, 5, 0),
                               child: FutureBuilder<ApiCallResponse>(
                                 future: GetaGameCall.call(
                                   id: favoriteListItemItem,
@@ -130,29 +130,35 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
-                                          Stack(
-                                            children: [
-                                              ClipRRect(
-                                                borderRadius: BorderRadius.only(
-                                                  bottomLeft:
-                                                      Radius.circular(0),
-                                                  bottomRight:
-                                                      Radius.circular(0),
-                                                  topLeft: Radius.circular(10),
-                                                  topRight: Radius.circular(10),
-                                                ),
-                                                child: CachedNetworkImage(
-                                                  imageUrl: getJsonField(
-                                                    containerGetaGameResponse
-                                                        .jsonBody,
-                                                    r'''$.background_image''',
+                                          Container(
+                                            height: 200,
+                                            child: Stack(
+                                              children: [
+                                                ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.only(
+                                                    bottomLeft:
+                                                        Radius.circular(0),
+                                                    bottomRight:
+                                                        Radius.circular(0),
+                                                    topLeft:
+                                                        Radius.circular(10),
+                                                    topRight:
+                                                        Radius.circular(10),
                                                   ),
-                                                  width: double.infinity,
-                                                  height: 145,
-                                                  fit: BoxFit.cover,
+                                                  child: CachedNetworkImage(
+                                                    imageUrl: getJsonField(
+                                                      containerGetaGameResponse
+                                                          .jsonBody,
+                                                      r'''$.background_image''',
+                                                    ),
+                                                    width: double.infinity,
+                                                    height: 145,
+                                                    fit: BoxFit.cover,
+                                                  ),
                                                 ),
-                                              ),
-                                            ],
+                                              ],
+                                            ),
                                           ),
                                           Container(
                                             width: MediaQuery.of(context)
