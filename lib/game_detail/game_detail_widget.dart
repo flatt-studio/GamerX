@@ -837,53 +837,100 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0, 10, 0, 0),
-                                  child: SingleChildScrollView(
-                                    scrollDirection: Axis.horizontal,
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        FutureBuilder<ApiCallResponse>(
-                                          future: GetMoviesOfaGameRAWGCall.call(
-                                            id: widget.gameId,
-                                          ),
-                                          builder: (context, snapshot) {
-                                            // Customize what your widget looks like when it's loading.
-                                            if (!snapshot.hasData) {
-                                              return Center(
-                                                child: SizedBox(
-                                                  width: 40,
-                                                  height: 40,
-                                                  child:
-                                                      CircularProgressIndicator(
-                                                    color: FlutterFlowTheme
-                                                        .primaryColor,
-                                                  ),
-                                                ),
-                                              );
-                                            }
-                                            final videoPlayerGetMoviesOfaGameRAWGResponse =
-                                                snapshot.data;
-                                            return FlutterFlowVideoPlayer(
-                                              path: getJsonField(
-                                                videoPlayerGetMoviesOfaGameRAWGResponse
-                                                    .jsonBody,
-                                                r'''$.data.480''',
-                                              ),
-                                              videoType: VideoType.network,
-                                              width: MediaQuery.of(context)
-                                                      .size
-                                                      .width *
-                                                  0.9,
-                                              autoPlay: false,
-                                              looping: false,
-                                              showControls: true,
-                                              allowFullScreen: true,
-                                              allowPlaybackSpeedMenu: false,
-                                            );
-                                          },
-                                        ),
-                                      ],
+                                  child: FutureBuilder<ApiCallResponse>(
+                                    future: GetMoviesOfaGameRAWGCall.call(
+                                      id: widget.gameId,
                                     ),
+                                    builder: (context, snapshot) {
+                                      // Customize what your widget looks like when it's loading.
+                                      if (!snapshot.hasData) {
+                                        return Center(
+                                          child: SizedBox(
+                                            width: 40,
+                                            height: 40,
+                                            child: CircularProgressIndicator(
+                                              color:
+                                                  FlutterFlowTheme.primaryColor,
+                                            ),
+                                          ),
+                                        );
+                                      }
+                                      final rowGetMoviesOfaGameRAWGResponse =
+                                          snapshot.data;
+                                      return Builder(
+                                        builder: (context) {
+                                          final gameTrailers = getJsonField(
+                                                rowGetMoviesOfaGameRAWGResponse
+                                                    .jsonBody,
+                                                r'''$.results''',
+                                              )?.toList() ??
+                                              [];
+                                          return SingleChildScrollView(
+                                            scrollDirection: Axis.horizontal,
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: List.generate(
+                                                  gameTrailers.length,
+                                                  (gameTrailersIndex) {
+                                                final gameTrailersItem =
+                                                    gameTrailers[
+                                                        gameTrailersIndex];
+                                                return FutureBuilder<
+                                                    ApiCallResponse>(
+                                                  future:
+                                                      GetMoviesOfaGameRAWGCall
+                                                          .call(
+                                                    id: getJsonField(
+                                                      gameTrailersItem,
+                                                      r'''$.id''',
+                                                    ).toString(),
+                                                  ),
+                                                  builder: (context, snapshot) {
+                                                    // Customize what your widget looks like when it's loading.
+                                                    if (!snapshot.hasData) {
+                                                      return Center(
+                                                        child: SizedBox(
+                                                          width: 40,
+                                                          height: 40,
+                                                          child:
+                                                              CircularProgressIndicator(
+                                                            color:
+                                                                FlutterFlowTheme
+                                                                    .primaryColor,
+                                                          ),
+                                                        ),
+                                                      );
+                                                    }
+                                                    final videoPlayerGetMoviesOfaGameRAWGResponse =
+                                                        snapshot.data;
+                                                    return FlutterFlowVideoPlayer(
+                                                      path: getJsonField(
+                                                        rowGetMoviesOfaGameRAWGResponse
+                                                            .jsonBody,
+                                                        r'''$.data.480''',
+                                                      ),
+                                                      videoType:
+                                                          VideoType.network,
+                                                      width:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .width *
+                                                              0.9,
+                                                      autoPlay: false,
+                                                      looping: false,
+                                                      showControls: true,
+                                                      allowFullScreen: true,
+                                                      allowPlaybackSpeedMenu:
+                                                          false,
+                                                    );
+                                                  },
+                                                );
+                                              }),
+                                            ),
+                                          );
+                                        },
+                                      );
+                                    },
                                   ),
                                 ),
                               ],
