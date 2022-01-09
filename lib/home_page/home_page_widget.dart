@@ -911,7 +911,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                             decoration:
                                                                 BoxDecoration(
                                                               color: Color(
-                                                                  0xFFEEEEEE),
+                                                                  0x80EEEEEE),
                                                               borderRadius:
                                                                   BorderRadius
                                                                       .only(
