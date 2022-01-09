@@ -79,10 +79,12 @@ String makeParamsFromDropdown(String option) {
   }
 }
 
-String platformLogo(String text) {
-  if (text == "PlayStation 4") {
+String platformLogo(String name) {
+  if (name == "PlayStation 4") {
     return ('gs://gamerx-a8577.appspot.com/console_PlayStation.png');
-  } else if (text == "PC") {
+  } else if (name == "PC") {
+    return ('gs://gamerx-a8577.appspot.com/console_windows11.png');
+  } else if (name == "PlayStation 5") {
     return ('gs://gamerx-a8577.appspot.com/console_windows11.png');
   }
   return null;
