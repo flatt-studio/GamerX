@@ -428,11 +428,8 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                               final imageGetPlatformsOfaGameRAWGResponse =
                                                   snapshot.data;
                                               return CachedNetworkImage(
-                                                imageUrl: functions
-                                                    .platformLogo(getJsonField(
-                                                  platformsItem,
-                                                  r'''$.platforms''',
-                                                ).toString()),
+                                                imageUrl:
+                                                    'https://picsum.photos/seed/890/600',
                                                 width: 25,
                                                 height: 25,
                                                 fit: BoxFit.cover,
