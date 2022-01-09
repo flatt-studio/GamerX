@@ -163,7 +163,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                   child: FlutterFlowIconButton(
                                     borderColor: Colors.transparent,
                                     borderRadius: 30,
-                                    buttonSize: 48,
+                                    buttonSize: 44,
                                     fillColor: Color(0xFF090F13),
                                     icon: Icon(
                                       Icons.arrow_back_rounded,
