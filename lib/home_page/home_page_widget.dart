@@ -783,10 +783,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                             final imageGetPlatformsOfaGameRAWGResponse =
                                                                                 snapshot.data;
                                                                             return CachedNetworkImage(
-                                                                              imageUrl: getJsonField(
+                                                                              imageUrl: functions.platformLogo(getJsonField(
                                                                                 imageGetPlatformsOfaGameRAWGResponse.jsonBody,
                                                                                 r'''$.name''',
-                                                                              ),
+                                                                              ).toString()),
                                                                               width: 20,
                                                                               height: 20,
                                                                               fit: BoxFit.cover,
