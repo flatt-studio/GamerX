@@ -90,85 +90,107 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         ],
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Stack(
-                            alignment:
-                                AlignmentDirectional(0.6499999999999999, 1),
-                            children: [
-                              Container(
-                                width: 85,
-                                height: 85,
-                                decoration: BoxDecoration(
-                                  color: Color(0xFFEEEEEE),
-                                  shape: BoxShape.circle,
-                                  border: Border.all(
-                                    color: FlutterFlowTheme.tertiaryColor,
-                                    width: 2,
-                                  ),
-                                ),
-                                child: Container(
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      decoration: BoxDecoration(),
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Stack(
+                              alignment:
+                                  AlignmentDirectional(0.6499999999999999, 1),
+                              children: [
+                                Container(
                                   width: 85,
                                   height: 85,
-                                  clipBehavior: Clip.antiAlias,
                                   decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                  ),
-                                  child: Image.asset(
-                                    'assets/images/avatar.png',
-                                  ),
-                                ),
-                              ),
-                              Material(
-                                color: Colors.transparent,
-                                elevation: 15,
-                                shape: const CircleBorder(),
-                                child: Container(
-                                  width: 15,
-                                  height: 15,
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.primaryColor,
+                                    color: Color(0xFFEEEEEE),
                                     shape: BoxShape.circle,
                                     border: Border.all(
                                       color: FlutterFlowTheme.tertiaryColor,
                                       width: 2,
                                     ),
                                   ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Text(
-                                  'User Name',
-                                  style: FlutterFlowTheme.bodyText1.override(
-                                    fontFamily: 'Roboto',
-                                    color: FlutterFlowTheme.customColor1,
+                                  child: Container(
+                                    width: 85,
+                                    height: 85,
+                                    clipBehavior: Clip.antiAlias,
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                    ),
+                                    child: Image.asset(
+                                      'assets/images/avatar.png',
+                                    ),
                                   ),
                                 ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 10, 0, 0),
-                                  child: Text(
-                                    'Email Address',
-                                    style: FlutterFlowTheme.bodyText1.override(
-                                      fontFamily: 'Roboto',
-                                      color: FlutterFlowTheme.customColor1,
+                                Material(
+                                  color: Colors.transparent,
+                                  elevation: 15,
+                                  shape: const CircleBorder(),
+                                  child: Container(
+                                    width: 15,
+                                    height: 15,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.primaryColor,
+                                      shape: BoxShape.circle,
+                                      border: Border.all(
+                                        color: FlutterFlowTheme.tertiaryColor,
+                                        width: 2,
+                                      ),
                                     ),
                                   ),
                                 ),
                               ],
                             ),
-                          ),
-                        ],
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      AuthUserStreamWidget(
+                                        child: Text(
+                                          currentUserDisplayName,
+                                          style: FlutterFlowTheme.bodyText1
+                                              .override(
+                                            fontFamily: 'Roboto',
+                                            color:
+                                                FlutterFlowTheme.customColor1,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0, 10, 0, 0),
+                                        child: Text(
+                                          currentUserEmail,
+                                          style: FlutterFlowTheme.bodyText1
+                                              .override(
+                                            fontFamily: 'Roboto',
+                                            color:
+                                                FlutterFlowTheme.customColor1,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                     Divider(
@@ -204,6 +226,42 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   ),
                                 ),
                               ],
+                            ),
+                          ),
+                          Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(0, 10, 0, 20),
+                            child: InkWell(
+                              onTap: () async {
+                                await Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => FavoritesWidget(),
+                                  ),
+                                );
+                              },
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Icon(
+                                    Icons.favorite_border,
+                                    color: FlutterFlowTheme.customColor3,
+                                    size: 20,
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        20, 0, 0, 0),
+                                    child: Text(
+                                      'Favorites',
+                                      style:
+                                          FlutterFlowTheme.subtitle2.override(
+                                        fontFamily: 'Roboto',
+                                        color: FlutterFlowTheme.customColor3,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                           Padding(
@@ -279,42 +337,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   ),
                                 ),
                               ],
-                            ),
-                          ),
-                          Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 10, 0, 20),
-                            child: InkWell(
-                              onTap: () async {
-                                await Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => FavoritesWidget(),
-                                  ),
-                                );
-                              },
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Icon(
-                                    Icons.settings_system_daydream,
-                                    color: FlutterFlowTheme.customColor3,
-                                    size: 20,
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        20, 0, 0, 0),
-                                    child: Text(
-                                      'Favorites',
-                                      style:
-                                          FlutterFlowTheme.subtitle2.override(
-                                        fontFamily: 'Roboto',
-                                        color: FlutterFlowTheme.customColor3,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
                             ),
                           ),
                         ],

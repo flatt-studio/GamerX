@@ -1,5 +1,6 @@
 import '../auth/auth_util.dart';
 import '../backend/api_requests/api_calls.dart';
+import '../components/empty_fav_widget.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -70,6 +71,9 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                                 ?.toList()
                                 ?.toList() ??
                             [];
+                        if (favoriteListItem.isEmpty) {
+                          return EmptyFavWidget();
+                        }
                         return GridView.builder(
                           padding: EdgeInsets.zero,
                           gridDelegate:
@@ -144,7 +148,7 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                                                     r'''$.background_image''',
                                                   ),
                                                   width: double.infinity,
-                                                  height: 165,
+                                                  height: 121,
                                                   fit: BoxFit.cover,
                                                 ),
                                               ),
