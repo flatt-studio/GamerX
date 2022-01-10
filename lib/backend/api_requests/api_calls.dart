@@ -283,7 +283,7 @@ class GetGenresOfaGameCall {
   }) {
     return ApiManager.instance.makeApiCall(
       callName: 'getGenresOfaGame',
-      apiUrl: 'https://api.rawg.io/api/genres/?key=${apiKey}',
+      apiUrl: 'https://api.rawg.io/api/genres?key=${apiKey}',
       callType: ApiCallType.GET,
       headers: {},
       params: {},
