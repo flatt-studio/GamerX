@@ -265,7 +265,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                                                                     .title2
                                                                     .override(
                                                               fontFamily:
-                                                                  'Roboto',
+                                                                  'Playfair Display',
                                                               color:
                                                                   Colors.black,
                                                             ),

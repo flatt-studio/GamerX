@@ -49,7 +49,7 @@ class _ResetPasswordModalWidgetState extends State<ResetPasswordModalWidget> {
                   Text(
                     'Reset Password',
                     style: FlutterFlowTheme.title3.override(
-                      fontFamily: 'Roboto',
+                      fontFamily: 'Playfair Display',
                       color: FlutterFlowTheme.secondaryColor,
                     ),
                   ),

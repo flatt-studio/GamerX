@@ -48,7 +48,7 @@ class _AddToConsoleModalWidgetState extends State<AddToConsoleModalWidget> {
                 Text(
                   'Select Collection',
                   style: FlutterFlowTheme.title2.override(
-                    fontFamily: 'Roboto',
+                    fontFamily: 'Playfair Display',
                     color: FlutterFlowTheme.secondaryColor,
                   ),
                 ),
@@ -126,7 +126,7 @@ class _AddToConsoleModalWidgetState extends State<AddToConsoleModalWidget> {
                                 child: Text(
                                   columnConsolsRecord.name,
                                   style: FlutterFlowTheme.title2.override(
-                                    fontFamily: 'Roboto',
+                                    fontFamily: 'Playfair Display',
                                     color: FlutterFlowTheme.secondaryColor,
                                   ),
                                 ),

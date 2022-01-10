@@ -14,31 +14,31 @@ class FlutterFlowTheme {
   String primaryFontFamily = 'Poppins';
   String secondaryFontFamily = 'Roboto';
   static TextStyle get title1 => GoogleFonts.getFont(
-        'Roboto',
+        'Playfair Display',
         color: tertiaryColor,
         fontWeight: FontWeight.bold,
         fontSize: 26,
       );
   static TextStyle get title2 => GoogleFonts.getFont(
-        'Roboto',
+        'Playfair Display',
         color: tertiaryColor,
         fontWeight: FontWeight.w600,
         fontSize: 22,
       );
   static TextStyle get title3 => GoogleFonts.getFont(
-        'Roboto',
+        'Playfair Display',
         color: tertiaryColor,
         fontWeight: FontWeight.w600,
         fontSize: 18,
       );
   static TextStyle get subtitle1 => GoogleFonts.getFont(
-        'Roboto',
+        'Lato',
         color: tertiaryColor,
         fontWeight: FontWeight.w600,
         fontSize: 16,
       );
   static TextStyle get subtitle2 => GoogleFonts.getFont(
-        'Roboto',
+        'Lato',
         color: tertiaryColor,
         fontWeight: FontWeight.w500,
         fontSize: 14,

@@ -236,7 +236,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       'Home',
                                       style:
                                           FlutterFlowTheme.subtitle2.override(
-                                        fontFamily: 'Roboto',
+                                        fontFamily: 'Lato',
                                         color: FlutterFlowTheme.customColor3,
                                       ),
                                     ),
@@ -273,7 +273,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       'Favorites',
                                       style:
                                           FlutterFlowTheme.subtitle2.override(
-                                        fontFamily: 'Roboto',
+                                        fontFamily: 'Lato',
                                         color: FlutterFlowTheme.customColor3,
                                       ),
                                     ),
@@ -310,7 +310,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       'Collections',
                                       style:
                                           FlutterFlowTheme.subtitle2.override(
-                                        fontFamily: 'Roboto',
+                                        fontFamily: 'Lato',
                                         color: FlutterFlowTheme.customColor3,
                                       ),
                                     ),
@@ -347,7 +347,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       'Profile',
                                       style:
                                           FlutterFlowTheme.subtitle2.override(
-                                        fontFamily: 'Roboto',
+                                        fontFamily: 'Lato',
                                         color: FlutterFlowTheme.customColor3,
                                       ),
                                     ),
@@ -385,7 +385,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       'Logout',
                                       style:
                                           FlutterFlowTheme.subtitle2.override(
-                                        fontFamily: 'Roboto',
+                                        fontFamily: 'Lato',
                                         color: Color(0xFFFF0000),
                                       ),
                                     ),

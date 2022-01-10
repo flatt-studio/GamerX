@@ -47,7 +47,7 @@ class _FilterGameModalWidgetState extends State<FilterGameModalWidget> {
                 Text(
                   'Sort Games',
                   style: FlutterFlowTheme.title2.override(
-                    fontFamily: 'Roboto',
+                    fontFamily: 'Playfair Display',
                     color: FlutterFlowTheme.secondaryColor,
                   ),
                 ),
@@ -96,7 +96,7 @@ class _FilterGameModalWidgetState extends State<FilterGameModalWidget> {
                             height: 60,
                             color: FlutterFlowTheme.customColor1,
                             textStyle: FlutterFlowTheme.subtitle2.override(
-                              fontFamily: 'Roboto',
+                              fontFamily: 'Lato',
                               color: Colors.white,
                             ),
                             elevation: 15,

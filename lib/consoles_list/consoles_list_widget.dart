@@ -347,7 +347,7 @@ class _ConsolesListWidgetState extends State<ConsolesListWidget> {
                                                                           .title2
                                                                           .override(
                                                                         fontFamily:
-                                                                            'Roboto',
+                                                                            'Playfair Display',
                                                                         color: Colors
                                                                             .black,
                                                                       ),

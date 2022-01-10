@@ -216,7 +216,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                               child: Text(
                                 'Forgot password?',
                                 style: FlutterFlowTheme.subtitle2.override(
-                                  fontFamily: 'Roboto',
+                                  fontFamily: 'Lato',
                                   color: FlutterFlowTheme.customColor3,
                                 ),
                               ),

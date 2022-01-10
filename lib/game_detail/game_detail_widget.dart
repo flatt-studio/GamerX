@@ -262,7 +262,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                                     textStyle: FlutterFlowTheme
                                                         .subtitle2
                                                         .override(
-                                                      fontFamily: 'Roboto',
+                                                      fontFamily: 'Lato',
                                                       color: Colors.white,
                                                     ),
                                                     elevation: 15,
@@ -307,7 +307,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                                     textStyle: FlutterFlowTheme
                                                         .subtitle2
                                                         .override(
-                                                      fontFamily: 'Roboto',
+                                                      fontFamily: 'Lato',
                                                       color: Colors.white,
                                                     ),
                                                     elevation: 15,
@@ -382,38 +382,63 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                               mainAxisSize: MainAxisSize.max,
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
-                                Builder(
-                                  builder: (context) {
-                                    final getConsoleLogo = getJsonField(
-                                          gameDetailGetaGameResponse.jsonBody,
-                                          r'''$results''',
-                                        )?.toList() ??
-                                        [];
-                                    return Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.end,
-                                      children:
-                                          List.generate(getConsoleLogo.length,
-                                              (getConsoleLogoIndex) {
-                                        final getConsoleLogoItem =
-                                            getConsoleLogo[getConsoleLogoIndex];
-                                        return Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  5, 0, 5, 0),
-                                          child: CachedNetworkImage(
-                                            imageUrl: getJsonField(
-                                              getConsoleLogoItem,
-                                              r'''$.name''',
-                                            ),
-                                            width: 25,
-                                            height: 25,
-                                            fit: BoxFit.cover,
+                                FutureBuilder<ApiCallResponse>(
+                                  future: GetPlatformsRAWGCall.call(
+                                    apiKey: widget.gameId,
+                                  ),
+                                  builder: (context, snapshot) {
+                                    // Customize what your widget looks like when it's loading.
+                                    if (!snapshot.hasData) {
+                                      return Center(
+                                        child: SizedBox(
+                                          width: 40,
+                                          height: 40,
+                                          child: CircularProgressIndicator(
+                                            color:
+                                                FlutterFlowTheme.primaryColor,
                                           ),
+                                        ),
+                                      );
+                                    }
+                                    final rowGetPlatformsRAWGResponse =
+                                        snapshot.data;
+                                    return Builder(
+                                      builder: (context) {
+                                        final getConsoleLogo = getJsonField(
+                                              gameDetailGetaGameResponse
+                                                  .jsonBody,
+                                              r'''$.results''',
+                                            )?.toList() ??
+                                            [];
+                                        return Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.end,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.end,
+                                          children: List.generate(
+                                              getConsoleLogo.length,
+                                              (getConsoleLogoIndex) {
+                                            final getConsoleLogoItem =
+                                                getConsoleLogo[
+                                                    getConsoleLogoIndex];
+                                            return Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(5, 0, 5, 0),
+                                              child: CachedNetworkImage(
+                                                imageUrl: getJsonField(
+                                                  rowGetPlatformsRAWGResponse
+                                                      .jsonBody,
+                                                  r'''$.name''',
+                                                ),
+                                                width: 25,
+                                                height: 25,
+                                                fit: BoxFit.cover,
+                                              ),
+                                            );
+                                          }),
                                         );
-                                      }),
+                                      },
                                     );
                                   },
                                 ),
