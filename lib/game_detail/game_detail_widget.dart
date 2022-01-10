@@ -422,19 +422,38 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                             final getConsoleLogoItem =
                                                 getConsoleLogo[
                                                     getConsoleLogoIndex];
-                                            return Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(5, 0, 5, 0),
-                                              child: CachedNetworkImage(
-                                                imageUrl: getJsonField(
-                                                  rowGetPlatformsRAWGResponse
-                                                      .jsonBody,
-                                                  r'''$.name''',
-                                                ),
-                                                width: 25,
-                                                height: 25,
-                                                fit: BoxFit.cover,
+                                            return FutureBuilder<
+                                                ApiCallResponse>(
+                                              future: GetPlatformsRAWGCall.call(
+                                                apiKey: widget.gameId,
                                               ),
+                                              builder: (context, snapshot) {
+                                                // Customize what your widget looks like when it's loading.
+                                                if (!snapshot.hasData) {
+                                                  return Center(
+                                                    child: SizedBox(
+                                                      width: 40,
+                                                      height: 40,
+                                                      child:
+                                                          CircularProgressIndicator(
+                                                        color: FlutterFlowTheme
+                                                            .primaryColor,
+                                                      ),
+                                                    ),
+                                                  );
+                                                }
+                                                final textGetPlatformsRAWGResponse =
+                                                    snapshot.data;
+                                                return Text(
+                                                  getJsonField(
+                                                    textGetPlatformsRAWGResponse
+                                                        .jsonBody,
+                                                    r'''$.name''',
+                                                  ).toString(),
+                                                  style: FlutterFlowTheme
+                                                      .bodyText1,
+                                                );
+                                              },
                                             );
                                           }),
                                         );
