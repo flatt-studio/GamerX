@@ -384,9 +384,9 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                               children: [
                                 Builder(
                                   builder: (context) {
-                                    final platforms = getJsonField(
+                                    final getConsoleLogo = getJsonField(
                                           gameDetailGetaGameResponse.jsonBody,
-                                          r'''$.platorms''',
+                                          r'''$results''',
                                         )?.toList() ??
                                         [];
                                     return Row(
@@ -394,51 +394,23 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                       mainAxisAlignment: MainAxisAlignment.end,
                                       crossAxisAlignment:
                                           CrossAxisAlignment.end,
-                                      children: List.generate(platforms.length,
-                                          (platformsIndex) {
-                                        final platformsItem =
-                                            platforms[platformsIndex];
+                                      children:
+                                          List.generate(getConsoleLogo.length,
+                                              (getConsoleLogoIndex) {
+                                        final getConsoleLogoItem =
+                                            getConsoleLogo[getConsoleLogoIndex];
                                         return Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
                                                   5, 0, 5, 0),
-                                          child: FutureBuilder<ApiCallResponse>(
-                                            future: GetPlatformsOfaGameRAWGCall
-                                                .call(
-                                              platformNumber: getJsonField(
-                                                platformsItem,
-                                                r'''$.id''',
-                                              ).toString(),
+                                          child: CachedNetworkImage(
+                                            imageUrl: getJsonField(
+                                              getConsoleLogoItem,
+                                              r'''$.name''',
                                             ),
-                                            builder: (context, snapshot) {
-                                              // Customize what your widget looks like when it's loading.
-                                              if (!snapshot.hasData) {
-                                                return Center(
-                                                  child: SizedBox(
-                                                    width: 40,
-                                                    height: 40,
-                                                    child:
-                                                        CircularProgressIndicator(
-                                                      color: FlutterFlowTheme
-                                                          .primaryColor,
-                                                    ),
-                                                  ),
-                                                );
-                                              }
-                                              final imageGetPlatformsOfaGameRAWGResponse =
-                                                  snapshot.data;
-                                              return CachedNetworkImage(
-                                                imageUrl: functions
-                                                    .platformLogo(getJsonField(
-                                                  gameDetailGetaGameResponse
-                                                      .jsonBody,
-                                                  r'''$.name''',
-                                                ).toString()),
-                                                width: 25,
-                                                height: 25,
-                                                fit: BoxFit.cover,
-                                              );
-                                            },
+                                            width: 25,
+                                            height: 25,
+                                            fit: BoxFit.cover,
                                           ),
                                         );
                                       }),
