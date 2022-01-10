@@ -1,8 +1,10 @@
 import '../auth/auth_util.dart';
+import '../backend/backend.dart';
+import '../backend/firebase_storage/storage.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../home_page/home_page_widget.dart';
+import '../flutter_flow/upload_media.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -20,18 +22,17 @@ class EditprofileWidget extends StatefulWidget {
 }
 
 class _EditprofileWidgetState extends State<EditprofileWidget> {
+  String uploadedFileUrl = '';
+  TextEditingController displayNameController;
   TextEditingController emailAddressController;
-  TextEditingController passwordController;
-  bool passwordVisibility;
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
+    displayNameController = TextEditingController();
     emailAddressController = TextEditingController();
-    passwordController = TextEditingController();
-    passwordVisibility = false;
   }
 
   @override
@@ -73,26 +74,61 @@ class _EditprofileWidgetState extends State<EditprofileWidget> {
                                   alignment: AlignmentDirectional(
                                       0.6499999999999999, 1),
                                   children: [
-                                    Container(
-                                      width: 85,
-                                      height: 85,
-                                      decoration: BoxDecoration(
-                                        color: Color(0xFFEEEEEE),
-                                        shape: BoxShape.circle,
-                                        border: Border.all(
-                                          color: FlutterFlowTheme.tertiaryColor,
-                                          width: 2,
-                                        ),
-                                      ),
+                                    InkWell(
+                                      onTap: () async {
+                                        final selectedMedia =
+                                            await selectMediaWithSourceBottomSheet(
+                                          context: context,
+                                          allowPhoto: true,
+                                        );
+                                        if (selectedMedia != null &&
+                                            validateFileFormat(
+                                                selectedMedia.storagePath,
+                                                context)) {
+                                          showUploadMessage(
+                                              context, 'Uploading file...',
+                                              showLoading: true);
+                                          final downloadUrl = await uploadData(
+                                              selectedMedia.storagePath,
+                                              selectedMedia.bytes);
+                                          ScaffoldMessenger.of(context)
+                                              .hideCurrentSnackBar();
+                                          if (downloadUrl != null) {
+                                            setState(() =>
+                                                uploadedFileUrl = downloadUrl);
+                                            showUploadMessage(
+                                                context, 'Success!');
+                                          } else {
+                                            showUploadMessage(context,
+                                                'Failed to upload media');
+                                            return;
+                                          }
+                                        }
+                                      },
                                       child: Container(
                                         width: 85,
                                         height: 85,
-                                        clipBehavior: Clip.antiAlias,
                                         decoration: BoxDecoration(
+                                          color: Color(0xFFEEEEEE),
                                           shape: BoxShape.circle,
+                                          border: Border.all(
+                                            color:
+                                                FlutterFlowTheme.tertiaryColor,
+                                            width: 2,
+                                          ),
                                         ),
-                                        child: Image.asset(
-                                          'assets/images/avatar.png',
+                                        child: AuthUserStreamWidget(
+                                          child: Container(
+                                            width: 85,
+                                            height: 85,
+                                            clipBehavior: Clip.antiAlias,
+                                            decoration: BoxDecoration(
+                                              shape: BoxShape.circle,
+                                            ),
+                                            child: Image.network(
+                                              currentUserPhoto,
+                                            ),
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -116,54 +152,6 @@ class _EditprofileWidgetState extends State<EditprofileWidget> {
                                     ),
                                   ],
                                 ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 20, 0, 0),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          AuthUserStreamWidget(
-                                            child: Text(
-                                              currentUserDisplayName,
-                                              style: FlutterFlowTheme.bodyText1
-                                                  .override(
-                                                fontFamily: 'Roboto',
-                                                color: FlutterFlowTheme
-                                                    .customColor1,
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0, 10, 0, 0),
-                                            child: Text(
-                                              currentUserEmail,
-                                              style: FlutterFlowTheme.bodyText1
-                                                  .override(
-                                                fontFamily: 'Roboto',
-                                                color: FlutterFlowTheme
-                                                    .customColor1,
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ),
                               ],
                             ),
                           ),
@@ -179,12 +167,12 @@ class _EditprofileWidgetState extends State<EditprofileWidget> {
                             children: [
                               Expanded(
                                 child: TextFormField(
-                                  controller: emailAddressController,
+                                  controller: displayNameController,
                                   obscureText: false,
                                   decoration: InputDecoration(
-                                    labelText: 'Email address',
+                                    labelText: 'Display Name',
                                     labelStyle: FlutterFlowTheme.bodyText1,
-                                    hintText: 'email@example.com',
+                                    hintText: 'Jon Doe',
                                     hintStyle:
                                         FlutterFlowTheme.bodyText2.override(
                                       fontFamily: 'Roboto',
@@ -218,7 +206,6 @@ class _EditprofileWidgetState extends State<EditprofileWidget> {
                                   ),
                                   style: FlutterFlowTheme.bodyText1,
                                   textAlign: TextAlign.start,
-                                  keyboardType: TextInputType.emailAddress,
                                   validator: (val) {
                                     if (val.isEmpty) {
                                       return 'Input Currect Email Address';
@@ -238,13 +225,17 @@ class _EditprofileWidgetState extends State<EditprofileWidget> {
                               children: [
                                 Expanded(
                                   child: TextFormField(
-                                    controller: passwordController,
-                                    obscureText: !passwordVisibility,
+                                    controller: emailAddressController,
+                                    obscureText: false,
                                     decoration: InputDecoration(
-                                      labelText: 'Password',
+                                      labelText: 'Email address',
                                       labelStyle: FlutterFlowTheme.bodyText1,
-                                      hintText: 'Password',
-                                      hintStyle: FlutterFlowTheme.bodyText1,
+                                      hintText: 'email@example.com',
+                                      hintStyle:
+                                          FlutterFlowTheme.bodyText2.override(
+                                        fontFamily: 'Roboto',
+                                        color: FlutterFlowTheme.customColor1,
+                                      ),
                                       enabledBorder: UnderlineInputBorder(
                                         borderSide: BorderSide(
                                           color: FlutterFlowTheme.customColor3,
@@ -266,22 +257,9 @@ class _EditprofileWidgetState extends State<EditprofileWidget> {
                                         ),
                                       ),
                                       prefixIcon: Icon(
-                                        Icons.vpn_key_outlined,
+                                        Icons.email_outlined,
                                         color: FlutterFlowTheme.customColor3,
                                         size: 18,
-                                      ),
-                                      suffixIcon: InkWell(
-                                        onTap: () => setState(
-                                          () => passwordVisibility =
-                                              !passwordVisibility,
-                                        ),
-                                        child: Icon(
-                                          passwordVisibility
-                                              ? Icons.visibility_outlined
-                                              : Icons.visibility_off_outlined,
-                                          color: Color(0xFF757575),
-                                          size: 22,
-                                        ),
                                       ),
                                     ),
                                     style: FlutterFlowTheme.bodyText1,
@@ -310,22 +288,14 @@ class _EditprofileWidgetState extends State<EditprofileWidget> {
                                   if (!formKey.currentState.validate()) {
                                     return;
                                   }
-                                  final user = await signInWithEmail(
-                                    context,
-                                    emailAddressController.text,
-                                    passwordController.text,
+                                  final usersUpdateData = createUsersRecordData(
+                                    email: emailAddressController.text,
+                                    displayName: displayNameController.text,
+                                    photoUrl: uploadedFileUrl,
                                   );
-                                  if (user == null) {
-                                    return;
-                                  }
-
-                                  await Navigator.pushAndRemoveUntil(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => HomePageWidget(),
-                                    ),
-                                    (r) => false,
-                                  );
+                                  await widget.profileEdit
+                                      .update(usersUpdateData);
+                                  Navigator.pop(context);
                                 },
                                 text: 'Update Profile',
                                 options: FFButtonOptions(
