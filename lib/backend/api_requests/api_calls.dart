@@ -291,3 +291,19 @@ class GetGenresOfaGameCall {
     );
   }
 }
+
+class GetDetailsOfaGenresCall {
+  static Future<ApiCallResponse> call({
+    String apiKey = '1c52992961514c789f02e65493cfbb83',
+    String id = '1',
+  }) {
+    return ApiManager.instance.makeApiCall(
+      callName: 'getDetailsOfaGenres',
+      apiUrl: 'https://api.rawg.io/api/genres/${id}?key=${apiKey}',
+      callType: ApiCallType.GET,
+      headers: {},
+      params: {},
+      returnBody: true,
+    );
+  }
+}

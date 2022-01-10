@@ -382,82 +382,31 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                               mainAxisSize: MainAxisSize.max,
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
-                                FutureBuilder<ApiCallResponse>(
-                                  future: GetPlatformsRAWGCall.call(
-                                    apiKey: widget.gameId,
-                                  ),
-                                  builder: (context, snapshot) {
-                                    // Customize what your widget looks like when it's loading.
-                                    if (!snapshot.hasData) {
-                                      return Center(
-                                        child: SizedBox(
-                                          width: 40,
-                                          height: 40,
-                                          child: CircularProgressIndicator(
-                                            color:
-                                                FlutterFlowTheme.primaryColor,
-                                          ),
-                                        ),
-                                      );
-                                    }
-                                    final rowGetPlatformsRAWGResponse =
-                                        snapshot.data;
-                                    return Builder(
-                                      builder: (context) {
-                                        final getConsoleLogo = getJsonField(
-                                              gameDetailGetaGameResponse
-                                                  .jsonBody,
-                                              r'''$results''',
-                                            )?.toList() ??
-                                            [];
-                                        return Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.end,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.end,
-                                          children: List.generate(
-                                              getConsoleLogo.length,
-                                              (getConsoleLogoIndex) {
-                                            final getConsoleLogoItem =
-                                                getConsoleLogo[
-                                                    getConsoleLogoIndex];
-                                            return FutureBuilder<
-                                                ApiCallResponse>(
-                                              future: GetPlatformsRAWGCall.call(
-                                                apiKey: widget.gameId,
-                                              ),
-                                              builder: (context, snapshot) {
-                                                // Customize what your widget looks like when it's loading.
-                                                if (!snapshot.hasData) {
-                                                  return Center(
-                                                    child: SizedBox(
-                                                      width: 40,
-                                                      height: 40,
-                                                      child:
-                                                          CircularProgressIndicator(
-                                                        color: FlutterFlowTheme
-                                                            .primaryColor,
-                                                      ),
-                                                    ),
-                                                  );
-                                                }
-                                                final textGetPlatformsRAWGResponse =
-                                                    snapshot.data;
-                                                return Text(
-                                                  getJsonField(
-                                                    textGetPlatformsRAWGResponse
-                                                        .jsonBody,
-                                                    r'''$.name''',
-                                                  ).toString(),
-                                                  style: FlutterFlowTheme
-                                                      .bodyText1,
-                                                );
-                                              },
-                                            );
-                                          }),
+                                Builder(
+                                  builder: (context) {
+                                    final platformName = getJsonField(
+                                          gameDetailGetaGameResponse.jsonBody,
+                                          r'''$.results''',
+                                        )?.toList() ??
+                                        [];
+                                    return Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.end,
+                                      children:
+                                          List.generate(platformName.length,
+                                              (platformNameIndex) {
+                                        final platformNameItem =
+                                            platformName[platformNameIndex];
+                                        return Text(
+                                          getJsonField(
+                                            gameDetailGetaGameResponse.jsonBody,
+                                            r'''$.name''',
+                                          ).toString(),
+                                          style: FlutterFlowTheme.bodyText1,
                                         );
-                                      },
+                                      }),
                                     );
                                   },
                                 ),
