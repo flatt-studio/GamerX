@@ -407,7 +407,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                         final getConsoleLogo = getJsonField(
                                               gameDetailGetaGameResponse
                                                   .jsonBody,
-                                              r'''$.results''',
+                                              r'''$results''',
                                             )?.toList() ??
                                             [];
                                         return Row(
