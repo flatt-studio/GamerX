@@ -386,7 +386,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                   builder: (context) {
                                     final platforms = getJsonField(
                                           gameDetailGetaGameResponse.jsonBody,
-                                          r'''$.platforms''',
+                                          r'''$results''',
                                         )?.toList() ??
                                         [];
                                     return Row(
@@ -428,8 +428,10 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                               final imageGetPlatformsOfaGameRAWGResponse =
                                                   snapshot.data;
                                               return CachedNetworkImage(
-                                                imageUrl:
-                                                    'https://picsum.photos/seed/890/600',
+                                                imageUrl: getJsonField(
+                                                  platformsItem,
+                                                  r'''$.name''',
+                                                ),
                                                 width: 25,
                                                 height: 25,
                                                 fit: BoxFit.cover,

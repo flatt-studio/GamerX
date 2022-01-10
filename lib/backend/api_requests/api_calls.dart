@@ -103,7 +103,7 @@ name *;''';
 
 class GetPlatformsRAWGCall {
   static Future<ApiCallResponse> call({
-    String apiKey = '5918dc05061442beb784d84628dc3a5b',
+    String apiKey = '1c52992961514c789f02e65493cfbb83',
   }) {
     return ApiManager.instance.makeApiCall(
       callName: 'getPlatformsRAWG',
@@ -118,7 +118,7 @@ class GetPlatformsRAWGCall {
 
 class GetThreeGamesRAWGCall {
   static Future<ApiCallResponse> call({
-    String apiKey = '5918dc05061442beb784d84628dc3a5b',
+    String apiKey = '1c52992961514c789f02e65493cfbb83',
   }) {
     return ApiManager.instance.makeApiCall(
       callName: 'getThreeGamesRAWG',
@@ -134,7 +134,7 @@ class GetThreeGamesRAWGCall {
 
 class GetPopularGamesRAWGCall {
   static Future<ApiCallResponse> call({
-    String apiKey = '5918dc05061442beb784d84628dc3a5b',
+    String apiKey = '1c52992961514c789f02e65493cfbb83',
   }) {
     return ApiManager.instance.makeApiCall(
       callName: 'getPopularGamesRAWG',
@@ -150,7 +150,7 @@ class GetPopularGamesRAWGCall {
 
 class GetReleasedGamesRAWGCall {
   static Future<ApiCallResponse> call({
-    String apiKey = '5918dc05061442beb784d84628dc3a5b',
+    String apiKey = '1c52992961514c789f02e65493cfbb83',
   }) {
     return ApiManager.instance.makeApiCall(
       callName: 'getReleasedGamesRAWG',
@@ -166,7 +166,7 @@ class GetReleasedGamesRAWGCall {
 
 class GetPlatformsOfaGameRAWGCall {
   static Future<ApiCallResponse> call({
-    String apiKey = '5918dc05061442beb784d84628dc3a5b',
+    String apiKey = '1c52992961514c789f02e65493cfbb83',
     String platformNumber = '4,6',
   }) {
     return ApiManager.instance.makeApiCall(
@@ -183,7 +183,7 @@ class GetPlatformsOfaGameRAWGCall {
 
 class GetaGameCall {
   static Future<ApiCallResponse> call({
-    String apiKey = '5918dc05061442beb784d84628dc3a5b',
+    String apiKey = '1c52992961514c789f02e65493cfbb83',
     String id = '1',
   }) {
     return ApiManager.instance.makeApiCall(
@@ -199,7 +199,7 @@ class GetaGameCall {
 
 class GetScreenshotsOfaGameCall {
   static Future<ApiCallResponse> call({
-    String apiKey = '5918dc05061442beb784d84628dc3a5b',
+    String apiKey = '1c52992961514c789f02e65493cfbb83',
     String id = '1',
   }) {
     return ApiManager.instance.makeApiCall(
@@ -215,7 +215,7 @@ class GetScreenshotsOfaGameCall {
 
 class GetGameSearchResultCall {
   static Future<ApiCallResponse> call({
-    String apiKey = '5918dc05061442beb784d84628dc3a5b',
+    String apiKey = '1c52992961514c789f02e65493cfbb83',
     String text = 'game',
   }) {
     return ApiManager.instance.makeApiCall(
@@ -231,7 +231,7 @@ class GetGameSearchResultCall {
 
 class GetGamesInAPlatformCall {
   static Future<ApiCallResponse> call({
-    String apiKey = '5918dc05061442beb784d84628dc3a5b',
+    String apiKey = '1c52992961514c789f02e65493cfbb83',
     String param = 'platforms=1,4',
   }) {
     return ApiManager.instance.makeApiCall(
@@ -247,7 +247,7 @@ class GetGamesInAPlatformCall {
 
 class GetAchievementsOfaGameRAWGCall {
   static Future<ApiCallResponse> call({
-    String apiKey = '5918dc05061442beb784d84628dc3a5b',
+    String apiKey = '1c52992961514c789f02e65493cfbb83',
     String id = '4',
   }) {
     return ApiManager.instance.makeApiCall(
@@ -263,7 +263,7 @@ class GetAchievementsOfaGameRAWGCall {
 
 class GetMoviesOfaGameRAWGCall {
   static Future<ApiCallResponse> call({
-    String apiKey = '5918dc05061442beb784d84628dc3a5b',
+    String apiKey = '1c52992961514c789f02e65493cfbb83',
     String id = '4',
   }) {
     return ApiManager.instance.makeApiCall(

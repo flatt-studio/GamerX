@@ -83,9 +83,11 @@ String platformLogo(String name) {
   if (name == "PlayStation 4") {
     return ('gs://gamerx-a8577.appspot.com/console_PlayStation.png');
   } else if (name == "PC") {
-    return ('gs://gamerx-a8577.appspot.com/console_windows11.png');
+    return ('https://firebasestorage.googleapis.com/v0/b/gamerx-a8577.appspot.com/o/console_windows11.png?alt=media&token=589fa5ab-553f-4916-b5e3-09a8fd6c0195');
   } else if (name == "PlayStation 5") {
     return ('gs://gamerx-a8577.appspot.com/console_windows11.png');
+  } else if (name == "Nintendo Switch") {
+    return ('gs://gamerx-a8577.appspot.com/console_windows11.png');
   }
-  return null;
+  return name;
 }
