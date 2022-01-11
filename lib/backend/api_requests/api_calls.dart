@@ -203,6 +203,14 @@ class GetaGameCall {
         response,
         r'''$.metacritic''',
       );
+  static dynamic genres(dynamic response) => getJsonField(
+        response,
+        r'''$.esrb_rating''',
+      );
+  static dynamic esrbrating(dynamic response) => getJsonField(
+        response,
+        r'''$.esrb_rating''',
+      );
 }
 
 class GetScreenshotsOfaGameCall {
