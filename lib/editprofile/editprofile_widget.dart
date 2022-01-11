@@ -31,8 +31,8 @@ class _EditprofileWidgetState extends State<EditprofileWidget> {
   @override
   void initState() {
     super.initState();
-    displayNameController = TextEditingController();
-    emailAddressController = TextEditingController();
+    displayNameController = TextEditingController(text: currentUserDisplayName);
+    emailAddressController = TextEditingController(text: currentUserEmail);
   }
 
   @override
@@ -166,53 +166,55 @@ class _EditprofileWidgetState extends State<EditprofileWidget> {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Expanded(
-                                child: TextFormField(
-                                  controller: displayNameController,
-                                  obscureText: false,
-                                  decoration: InputDecoration(
-                                    labelText: 'Display Name',
-                                    labelStyle: FlutterFlowTheme.bodyText1,
-                                    hintText: 'Jon Doe',
-                                    hintStyle:
-                                        FlutterFlowTheme.bodyText2.override(
-                                      fontFamily: 'Roboto',
-                                      color: FlutterFlowTheme.customColor1,
-                                    ),
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
+                                child: AuthUserStreamWidget(
+                                  child: TextFormField(
+                                    controller: displayNameController,
+                                    obscureText: false,
+                                    decoration: InputDecoration(
+                                      labelText: 'Display Name',
+                                      labelStyle: FlutterFlowTheme.bodyText1,
+                                      hintText: 'Jon Doe',
+                                      hintStyle:
+                                          FlutterFlowTheme.bodyText2.override(
+                                        fontFamily: 'Roboto',
+                                        color: FlutterFlowTheme.customColor1,
+                                      ),
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.customColor3,
+                                          width: 2,
+                                        ),
+                                        borderRadius: const BorderRadius.only(
+                                          topLeft: Radius.circular(4.0),
+                                          topRight: Radius.circular(4.0),
+                                        ),
+                                      ),
+                                      focusedBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.customColor3,
+                                          width: 2,
+                                        ),
+                                        borderRadius: const BorderRadius.only(
+                                          topLeft: Radius.circular(4.0),
+                                          topRight: Radius.circular(4.0),
+                                        ),
+                                      ),
+                                      prefixIcon: Icon(
+                                        Icons.email_outlined,
                                         color: FlutterFlowTheme.customColor3,
-                                        width: 2,
-                                      ),
-                                      borderRadius: const BorderRadius.only(
-                                        topLeft: Radius.circular(4.0),
-                                        topRight: Radius.circular(4.0),
+                                        size: 18,
                                       ),
                                     ),
-                                    focusedBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: FlutterFlowTheme.customColor3,
-                                        width: 2,
-                                      ),
-                                      borderRadius: const BorderRadius.only(
-                                        topLeft: Radius.circular(4.0),
-                                        topRight: Radius.circular(4.0),
-                                      ),
-                                    ),
-                                    prefixIcon: Icon(
-                                      Icons.email_outlined,
-                                      color: FlutterFlowTheme.customColor3,
-                                      size: 18,
-                                    ),
-                                  ),
-                                  style: FlutterFlowTheme.bodyText1,
-                                  textAlign: TextAlign.start,
-                                  validator: (val) {
-                                    if (val.isEmpty) {
-                                      return 'Input Currect Email Address';
-                                    }
+                                    style: FlutterFlowTheme.bodyText1,
+                                    textAlign: TextAlign.start,
+                                    validator: (val) {
+                                      if (val.isEmpty) {
+                                        return 'Input Currect Email Address';
+                                      }
 
-                                    return null;
-                                  },
+                                      return null;
+                                    },
+                                  ),
                                 ),
                               ),
                             ],
