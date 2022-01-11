@@ -115,7 +115,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                           borderColor: Colors.transparent,
                                           borderRadius: 30,
                                           borderWidth: 1,
-                                          buttonSize: 44,
+                                          buttonSize: 40,
                                           fillColor: Color(0xFF090F13),
                                           icon: Icon(
                                             Icons.favorite_border,
@@ -140,7 +140,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                           borderColor: Colors.transparent,
                                           borderRadius: 30,
                                           borderWidth: 1,
-                                          buttonSize: 44,
+                                          buttonSize: 40,
                                           fillColor: Color(0xFF090F13),
                                           icon: Icon(
                                             Icons.favorite_sharp,
@@ -168,7 +168,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                     child: FlutterFlowIconButton(
                                       borderColor: Colors.transparent,
                                       borderRadius: 30,
-                                      buttonSize: 44,
+                                      buttonSize: 40,
                                       fillColor: Color(0xFF090F13),
                                       icon: Icon(
                                         Icons.arrow_back_rounded,
