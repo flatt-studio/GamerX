@@ -194,6 +194,15 @@ class GetaGameCall {
       returnBody: true,
     );
   }
+
+  static dynamic platforms(dynamic response) => getJsonField(
+        response,
+        r'''$.platforms''',
+      );
+  static dynamic metacritic(dynamic response) => getJsonField(
+        response,
+        r'''$.metacritic''',
+      );
 }
 
 class GetScreenshotsOfaGameCall {
