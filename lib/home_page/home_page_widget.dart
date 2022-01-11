@@ -1245,7 +1245,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           borderRadius: 30,
                           borderWidth: 1,
                           buttonSize: 44,
-                          fillColor: Color(0xFF090F13),
+                          fillColor: FlutterFlowTheme.secondaryColor,
                           icon: Icon(
                             Icons.menu,
                             color: FlutterFlowTheme.tertiaryColor,
@@ -1267,7 +1267,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               borderRadius: 30,
                               borderWidth: 1,
                               buttonSize: 44,
-                              fillColor: Color(0xFF090F13),
+                              fillColor: FlutterFlowTheme.secondaryColor,
                               icon: Icon(
                                 Icons.search_outlined,
                                 color: FlutterFlowTheme.tertiaryColor,
@@ -1291,7 +1291,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               borderRadius: 30,
                               borderWidth: 1,
                               buttonSize: 44,
-                              fillColor: Color(0xFF090F13),
+                              fillColor: FlutterFlowTheme.secondaryColor,
                               icon: Icon(
                                 Icons.games_sharp,
                                 color: FlutterFlowTheme.tertiaryColor,
