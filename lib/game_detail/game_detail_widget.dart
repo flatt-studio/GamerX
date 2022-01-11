@@ -427,9 +427,8 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                       padding: EdgeInsetsDirectional.fromSTEB(16, 4, 16, 0),
                       child: Builder(
                         builder: (context) {
-                          final platformImages = getJsonField(
+                          final platformImages = GetaGameCall.platforms(
                                 gameDetailGetaGameResponse.jsonBody,
-                                r'''$.platforms[:].platform''',
                               )?.toList() ??
                               [];
                           return Row(
@@ -443,8 +442,8 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                   platformImagesItem,
                                   r'''$.image''',
                                 ),
-                                width: 50,
-                                height: 50,
+                                width: 40,
+                                height: 40,
                                 fit: BoxFit.cover,
                               );
                             }),
