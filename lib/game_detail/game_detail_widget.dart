@@ -456,170 +456,6 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                     ),
                     Row(
                       mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Padding(
-                          padding:
-                              EdgeInsetsDirectional.fromSTEB(16, 12, 16, 0),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 0, 0, 4),
-                                child: Text(
-                                  'Ratings',
-                                  style: FlutterFlowTheme.bodyText2.override(
-                                    fontFamily: 'Lexend Deca',
-                                    color: Color(0xFF8B97A2),
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Expanded(
-                          child: Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(16, 12, 16, 0),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 0, 0, 4),
-                                  child: Text(
-                                    getJsonField(
-                                      gameDetailGetaGameResponse.jsonBody,
-                                      r'''$.rating''',
-                                    ).toString(),
-                                    textAlign: TextAlign.center,
-                                    style: FlutterFlowTheme.title1.override(
-                                      fontFamily: 'Lexend Deca',
-                                      color: Colors.white,
-                                      fontSize: 24,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 0, 0, 4),
-                                  child: Text(
-                                    'Rating',
-                                    style: FlutterFlowTheme.bodyText2.override(
-                                      fontFamily: 'Lexend Deca',
-                                      color: Color(0xFF8B97A2),
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.normal,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          child: Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(8, 12, 8, 0),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 0, 0, 4),
-                                  child: Text(
-                                    getJsonField(
-                                      gameDetailGetaGameResponse.jsonBody,
-                                      r'''$.rating_top''',
-                                    ).toString(),
-                                    textAlign: TextAlign.center,
-                                    style: FlutterFlowTheme.title1.override(
-                                      fontFamily: 'Lexend Deca',
-                                      color: Colors.white,
-                                      fontSize: 24,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 0, 0, 4),
-                                  child: Text(
-                                    'Rating Top',
-                                    textAlign: TextAlign.center,
-                                    style: FlutterFlowTheme.bodyText2.override(
-                                      fontFamily: 'Lexend Deca',
-                                      color: Color(0xFF8B97A2),
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.normal,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          child: Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(16, 12, 16, 0),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 0, 0, 4),
-                                  child: Text(
-                                    getJsonField(
-                                      gameDetailGetaGameResponse.jsonBody,
-                                      r'''$.playtime''',
-                                    ).toString(),
-                                    textAlign: TextAlign.center,
-                                    style: FlutterFlowTheme.title1.override(
-                                      fontFamily: 'Lexend Deca',
-                                      color: Colors.white,
-                                      fontSize: 24,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 0, 0, 4),
-                                  child: Text(
-                                    'Playtime',
-                                    style: FlutterFlowTheme.bodyText2.override(
-                                      fontFamily: 'Lexend Deca',
-                                      color: Color(0xFF8B97A2),
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.normal,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Expanded(
@@ -651,7 +487,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                       r'''$.esrb_rating.name''',
                                     ).toString(),
                                     textAlign: TextAlign.center,
-                                    style: FlutterFlowTheme.title3,
+                                    style: FlutterFlowTheme.bodyText1,
                                   ),
                                 ),
                               ],
@@ -685,10 +521,10 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                   child: Text(
                                     getJsonField(
                                       gameDetailGetaGameResponse.jsonBody,
-                                      r'''$.genres[:0].slug''',
+                                      r'''$.genres[:1].name''',
                                     ).toString(),
                                     textAlign: TextAlign.center,
-                                    style: FlutterFlowTheme.title3,
+                                    style: FlutterFlowTheme.bodyText1,
                                   ),
                                 ),
                               ],
@@ -722,9 +558,12 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                     getJsonField(
                                       gameDetailGetaGameResponse.jsonBody,
                                       r'''$.playtime''',
-                                    ).toString(),
+                                    ).toString().maybeHandleOverflow(
+                                          maxChars: 16,
+                                          replacement: '…',
+                                        ),
                                     textAlign: TextAlign.center,
-                                    style: FlutterFlowTheme.title3,
+                                    style: FlutterFlowTheme.bodyText1,
                                   ),
                                 ),
                               ],
@@ -760,7 +599,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                       r'''$.metacritic''',
                                     ).toString(),
                                     textAlign: TextAlign.center,
-                                    style: FlutterFlowTheme.title3,
+                                    style: FlutterFlowTheme.bodyText1,
                                   ),
                                 ),
                               ],
