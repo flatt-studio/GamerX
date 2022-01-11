@@ -438,8 +438,8 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                 (platformImagesIndex) {
                               final platformImagesItem =
                                   platformImages[platformImagesIndex];
-                              return Image.network(
-                                getJsonField(
+                              return CachedNetworkImage(
+                                imageUrl: getJsonField(
                                   platformImagesItem,
                                   r'''$.image''',
                                 ),
