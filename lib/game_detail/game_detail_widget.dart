@@ -409,7 +409,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                           return Builder(
                             builder: (context) {
                               final platforms = getJsonField(
-                                    rowGetaGameResponse.jsonBody,
+                                    gameDetailGetaGameResponse.jsonBody,
                                     r'''$.platforms''',
                                   )?.toList() ??
                                   [];
