@@ -410,20 +410,20 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                   color: Colors.transparent,
                                   elevation: 0,
                                   shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(8),
+                                    borderRadius: BorderRadius.circular(12),
                                   ),
                                   child: Container(
                                     height: 20,
                                     decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(8),
+                                      borderRadius: BorderRadius.circular(12),
                                       border: Border.all(
                                         color: FlutterFlowTheme.tertiaryColor,
-                                        width: 2,
+                                        width: 1,
                                       ),
                                     ),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          2, 2, 2, 2),
+                                          4, 4, 4, 4),
                                       child: Text(
                                         getJsonField(
                                           platformsItem,
