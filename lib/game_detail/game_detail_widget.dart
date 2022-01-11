@@ -160,19 +160,23 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                 ),
                                 Align(
                                   alignment: AlignmentDirectional(-0.9, -0.84),
-                                  child: FlutterFlowIconButton(
-                                    borderColor: Colors.transparent,
-                                    borderRadius: 30,
-                                    buttonSize: 44,
-                                    fillColor: Color(0xFF090F13),
-                                    icon: Icon(
-                                      Icons.arrow_back_rounded,
-                                      color: Colors.white,
-                                      size: 30,
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 4, 0, 0),
+                                    child: FlutterFlowIconButton(
+                                      borderColor: Colors.transparent,
+                                      borderRadius: 30,
+                                      buttonSize: 44,
+                                      fillColor: Color(0xFF090F13),
+                                      icon: Icon(
+                                        Icons.arrow_back_rounded,
+                                        color: Colors.white,
+                                        size: 24,
+                                      ),
+                                      onPressed: () async {
+                                        Navigator.pop(context);
+                                      },
                                     ),
-                                    onPressed: () async {
-                                      Navigator.pop(context);
-                                    },
                                   ),
                                 ),
                                 Align(
