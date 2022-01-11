@@ -341,6 +341,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                       padding: EdgeInsetsDirectional.fromSTEB(16, 12, 16, 0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           AutoSizeText(
                             getJsonField(
@@ -368,7 +369,8 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                           Expanded(
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Text(
                                   getJsonField(
@@ -400,6 +402,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                               [];
                           return Row(
                             mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: List.generate(platforms.length,
                                 (platformsIndex) {
                               final platformsItem = platforms[platformsIndex];
@@ -423,7 +426,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                     ),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          4, 4, 4, 4),
+                                          2, 2, 2, 2),
                                       child: Text(
                                         getJsonField(
                                           platformsItem,
@@ -527,45 +530,6 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                       gameDetailGetaGameResponse.jsonBody,
                                       r'''$.genres[:1].name''',
                                     ).toString(),
-                                    textAlign: TextAlign.center,
-                                    style: FlutterFlowTheme.bodyText1,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          child: Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(16, 12, 16, 0),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 0, 0, 4),
-                                  child: Text(
-                                    'Publisher',
-                                    style: FlutterFlowTheme.subtitle2.override(
-                                      fontFamily: 'Lato',
-                                      color: Color(0xFF8B97A2),
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 0, 0, 4),
-                                  child: Text(
-                                    getJsonField(
-                                      gameDetailGetaGameResponse.jsonBody,
-                                      r'''$.playtime''',
-                                    ).toString().maybeHandleOverflow(
-                                          maxChars: 16,
-                                          replacement: '…',
-                                        ),
                                     textAlign: TextAlign.center,
                                     style: FlutterFlowTheme.bodyText1,
                                   ),
