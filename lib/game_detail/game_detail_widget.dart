@@ -753,7 +753,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                                           r'''$.image''',
                                                         ),
                                                         width: 250,
-                                                        height: 100,
+                                                        height: 140,
                                                         fit: BoxFit.cover,
                                                       ),
                                                     ),
