@@ -403,18 +403,35 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                             children: List.generate(platforms.length,
                                 (platformsIndex) {
                               final platformsItem = platforms[platformsIndex];
-                              return Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 0, 4, 0),
-                                child: Text(
-                                  getJsonField(
-                                    platformsItem,
-                                    r'''$.name''',
-                                  ).toString().maybeHandleOverflow(
-                                        maxChars: 60,
-                                        replacement: '…',
-                                      ),
-                                  style: FlutterFlowTheme.bodyText1,
+                              return Material(
+                                color: Colors.transparent,
+                                elevation: 0,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                child: Container(
+                                  height: 20,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(8),
+                                    border: Border.all(
+                                      color: FlutterFlowTheme.tertiaryColor,
+                                      width: 2,
+                                    ),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 0, 4, 0),
+                                    child: Text(
+                                      getJsonField(
+                                        platformsItem,
+                                        r'''$.name''',
+                                      ).toString().maybeHandleOverflow(
+                                            maxChars: 60,
+                                            replacement: '…',
+                                          ),
+                                      style: FlutterFlowTheme.bodyText1,
+                                    ),
+                                  ),
                                 ),
                               );
                             }),
