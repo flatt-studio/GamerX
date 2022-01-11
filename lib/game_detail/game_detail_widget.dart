@@ -383,8 +383,8 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
                                 FutureBuilder<ApiCallResponse>(
-                                  future: GetaGameCall.call(
-                                    id: widget.gameId,
+                                  future: GetGamesInAPlatformCall.call(
+                                    param: widget.gameId,
                                   ),
                                   builder: (context, snapshot) {
                                     // Customize what your widget looks like when it's loading.
@@ -400,13 +400,14 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                         ),
                                       );
                                     }
-                                    final rowGetaGameResponse = snapshot.data;
+                                    final rowGetGamesInAPlatformResponse =
+                                        snapshot.data;
                                     return Builder(
                                       builder: (context) {
                                         final platformName = getJsonField(
                                               gameDetailGetaGameResponse
                                                   .jsonBody,
-                                              r'''$.platforms''',
+                                              r'''$.results''',
                                             )?.toList() ??
                                             [];
                                         return Row(
@@ -422,7 +423,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                                 platformName[platformNameIndex];
                                             return Text(
                                               getJsonField(
-                                                gameDetailGetaGameResponse
+                                                rowGetGamesInAPlatformResponse
                                                     .jsonBody,
                                                 r'''$.name''',
                                               ).toString(),
