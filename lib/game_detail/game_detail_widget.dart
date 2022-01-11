@@ -701,22 +701,25 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                         ),
                                       ),
                                     ),
-                                    expanded: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Text(
-                                          getJsonField(
-                                            gameDetailGetaGameResponse.jsonBody,
-                                            r'''$.description_raw''',
-                                          ).toString(),
-                                          style: FlutterFlowTheme.bodyText1
-                                              .override(
-                                            fontFamily: 'Roboto',
-                                            color:
-                                                FlutterFlowTheme.tertiaryColor,
+                                    expanded: SingleChildScrollView(
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Text(
+                                            getJsonField(
+                                              gameDetailGetaGameResponse
+                                                  .jsonBody,
+                                              r'''$.description_raw''',
+                                            ).toString(),
+                                            style: FlutterFlowTheme.bodyText1
+                                                .override(
+                                              fontFamily: 'Roboto',
+                                              color: FlutterFlowTheme
+                                                  .tertiaryColor,
+                                            ),
                                           ),
-                                        ),
-                                      ],
+                                        ],
+                                      ),
                                     ),
                                     theme: ExpandableThemeData(
                                       tapHeaderToExpand: true,
