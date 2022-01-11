@@ -5,6 +5,7 @@ import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../game_detail/game_detail_widget.dart';
+import '../home_page/home_page_widget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -50,7 +51,13 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                         size: 24,
                       ),
                       onPressed: () async {
-                        Navigator.pop(context);
+                        await Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => HomePageWidget(),
+                          ),
+                          (r) => false,
+                        );
                       },
                     ),
                     Text(
