@@ -405,7 +405,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                       builder: (context) {
                                         final platformName = getJsonField(
                                               rowGetaGameResponse.jsonBody,
-                                              r'''$.platforms''',
+                                              r'''$.results''',
                                             )?.toList() ??
                                             [];
                                         return Row(
@@ -422,7 +422,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                             return Text(
                                               getJsonField(
                                                 rowGetaGameResponse.jsonBody,
-                                                r'''$.name''',
+                                                r'''$.platforms''',
                                               ).toString(),
                                               style: FlutterFlowTheme.bodyText1,
                                             );
