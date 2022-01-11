@@ -389,7 +389,9 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(16, 4, 16, 0),
                       child: FutureBuilder<ApiCallResponse>(
-                        future: GetPlatformsRAWGCall.call(),
+                        future: GetaGameCall.call(
+                          id: widget.gameId,
+                        ),
                         builder: (context, snapshot) {
                           // Customize what your widget looks like when it's loading.
                           if (!snapshot.hasData) {
@@ -403,12 +405,12 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                               ),
                             );
                           }
-                          final rowGetPlatformsRAWGResponse = snapshot.data;
+                          final rowGetaGameResponse = snapshot.data;
                           return Builder(
                             builder: (context) {
                               final platforms = getJsonField(
-                                    rowGetPlatformsRAWGResponse.jsonBody,
-                                    r'''$.results''',
+                                    gameDetailGetaGameResponse.jsonBody,
+                                    r'''$.platforms''',
                                   )?.toList() ??
                                   [];
                               return Row(
