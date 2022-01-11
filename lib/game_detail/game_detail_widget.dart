@@ -685,7 +685,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                   child: Text(
                                     getJsonField(
                                       gameDetailGetaGameResponse.jsonBody,
-                                      r'''$.genres[:].name''',
+                                      r'''$.genres[:0].slug''',
                                     ).toString(),
                                     textAlign: TextAlign.center,
                                     style: FlutterFlowTheme.title3,
