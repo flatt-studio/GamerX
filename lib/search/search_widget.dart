@@ -262,7 +262,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                                                             )
                                                                 .toString()
                                                                 .maybeHandleOverflow(
-                                                                  maxChars: 25,
+                                                                  maxChars: 20,
                                                                   replacement:
                                                                       '…',
                                                                 ),
