@@ -437,14 +437,18 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                 (platformImagesIndex) {
                               final platformImagesItem =
                                   platformImages[platformImagesIndex];
-                              return CachedNetworkImage(
-                                imageUrl: getJsonField(
-                                  platformImagesItem,
-                                  r'''$.image''',
+                              return Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(0, 0, 4, 0),
+                                child: CachedNetworkImage(
+                                  imageUrl: getJsonField(
+                                    platformImagesItem,
+                                    r'''$.image''',
+                                  ),
+                                  width: 30,
+                                  height: 30,
+                                  fit: BoxFit.cover,
                                 ),
-                                width: 40,
-                                height: 40,
-                                fit: BoxFit.cover,
                               );
                             }),
                           );
