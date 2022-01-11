@@ -83,7 +83,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                       child: TextFormField(
                         onChanged: (_) => EasyDebounce.debounce(
                           'searchTextFieldController',
-                          Duration(milliseconds: 2000),
+                          Duration(milliseconds: 1000),
                           () => setState(() {}),
                         ),
                         controller: searchTextFieldController,

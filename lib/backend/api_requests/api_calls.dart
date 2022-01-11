@@ -103,7 +103,7 @@ name *;''';
 
 class GetPlatformsRAWGCall {
   static Future<ApiCallResponse> call({
-    String apiKey = '1c52992961514c789f02e65493cfbb83',
+    String apiKey = '1c50b5904fdb4cfdbf6b7307fc692ed9',
   }) {
     return ApiManager.instance.makeApiCall(
       callName: 'getPlatformsRAWG',
@@ -118,7 +118,7 @@ class GetPlatformsRAWGCall {
 
 class GetThreeGamesRAWGCall {
   static Future<ApiCallResponse> call({
-    String apiKey = '1c52992961514c789f02e65493cfbb83',
+    String apiKey = '1c50b5904fdb4cfdbf6b7307fc692ed9',
   }) {
     return ApiManager.instance.makeApiCall(
       callName: 'getThreeGamesRAWG',
@@ -134,7 +134,7 @@ class GetThreeGamesRAWGCall {
 
 class GetPopularGamesRAWGCall {
   static Future<ApiCallResponse> call({
-    String apiKey = '1c52992961514c789f02e65493cfbb83',
+    String apiKey = '1c50b5904fdb4cfdbf6b7307fc692ed9',
   }) {
     return ApiManager.instance.makeApiCall(
       callName: 'getPopularGamesRAWG',
@@ -166,13 +166,12 @@ class GetReleasedGamesRAWGCall {
 
 class GetPlatformsOfaGameRAWGCall {
   static Future<ApiCallResponse> call({
-    String apiKey = '1c52992961514c789f02e65493cfbb83',
-    String platformNumber = '4,6',
+    String apiKey = '1c50b5904fdb4cfdbf6b7307fc692ed9',
+    String id = '',
   }) {
     return ApiManager.instance.makeApiCall(
       callName: 'getPlatformsOfaGameRAWG',
-      apiUrl:
-          'https://api.rawg.io/api/platforms/${platformNumber}?key=${apiKey}',
+      apiUrl: 'https://api.rawg.io/api/platforms/${id}?key=${apiKey}',
       callType: ApiCallType.GET,
       headers: {},
       params: {},
@@ -183,7 +182,7 @@ class GetPlatformsOfaGameRAWGCall {
 
 class GetaGameCall {
   static Future<ApiCallResponse> call({
-    String apiKey = '1c52992961514c789f02e65493cfbb83',
+    String apiKey = '1c50b5904fdb4cfdbf6b7307fc692ed9',
     String id = '1',
   }) {
     return ApiManager.instance.makeApiCall(
@@ -199,7 +198,7 @@ class GetaGameCall {
 
 class GetScreenshotsOfaGameCall {
   static Future<ApiCallResponse> call({
-    String apiKey = '1c52992961514c789f02e65493cfbb83',
+    String apiKey = '1c50b5904fdb4cfdbf6b7307fc692ed9',
     String id = '1',
   }) {
     return ApiManager.instance.makeApiCall(
@@ -215,7 +214,7 @@ class GetScreenshotsOfaGameCall {
 
 class GetGameSearchResultCall {
   static Future<ApiCallResponse> call({
-    String apiKey = '1c52992961514c789f02e65493cfbb83',
+    String apiKey = '1c50b5904fdb4cfdbf6b7307fc692ed9',
     String text = 'game',
   }) {
     return ApiManager.instance.makeApiCall(
@@ -231,12 +230,13 @@ class GetGameSearchResultCall {
 
 class GetGamesInAPlatformCall {
   static Future<ApiCallResponse> call({
-    String apiKey = '1c52992961514c789f02e65493cfbb83',
+    String apiKey = '1c50b5904fdb4cfdbf6b7307fc692ed9',
     String param = 'platforms=1,4',
+    String id = '1',
   }) {
     return ApiManager.instance.makeApiCall(
       callName: 'getGamesInAPlatform',
-      apiUrl: 'https://api.rawg.io/api/games?key=${apiKey}&${param}',
+      apiUrl: 'https://api.rawg.io/api/games/${id}?key=${apiKey}&${param}',
       callType: ApiCallType.GET,
       headers: {},
       params: {},
@@ -247,7 +247,7 @@ class GetGamesInAPlatformCall {
 
 class GetAchievementsOfaGameRAWGCall {
   static Future<ApiCallResponse> call({
-    String apiKey = '1c52992961514c789f02e65493cfbb83',
+    String apiKey = '1c50b5904fdb4cfdbf6b7307fc692ed9',
     String id = '4',
   }) {
     return ApiManager.instance.makeApiCall(
@@ -279,7 +279,7 @@ class GetMoviesOfaGameRAWGCall {
 
 class GetGenresOfaGameCall {
   static Future<ApiCallResponse> call({
-    String apiKey = '1c52992961514c789f02e65493cfbb83',
+    String apiKey = '1c50b5904fdb4cfdbf6b7307fc692ed9',
   }) {
     return ApiManager.instance.makeApiCall(
       callName: 'getGenresOfaGame',
@@ -294,7 +294,7 @@ class GetGenresOfaGameCall {
 
 class GetDetailsOfaGenresCall {
   static Future<ApiCallResponse> call({
-    String apiKey = '1c52992961514c789f02e65493cfbb83',
+    String apiKey = '1c50b5904fdb4cfdbf6b7307fc692ed9',
     String id = '1',
   }) {
     return ApiManager.instance.makeApiCall(
