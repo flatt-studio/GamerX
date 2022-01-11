@@ -635,8 +635,8 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                       0, 0, 0, 4),
                                   child: Text(
                                     'ESRB',
-                                    style: FlutterFlowTheme.title3.override(
-                                      fontFamily: 'Playfair Display',
+                                    style: FlutterFlowTheme.subtitle2.override(
+                                      fontFamily: 'Lato',
                                       color: Color(0xFF8B97A2),
                                     ),
                                   ),
@@ -677,8 +677,8 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                   child: Text(
                                     'Genres',
                                     textAlign: TextAlign.center,
-                                    style: FlutterFlowTheme.title3.override(
-                                      fontFamily: 'Playfair Display',
+                                    style: FlutterFlowTheme.subtitle2.override(
+                                      fontFamily: 'Lato',
                                       color: Color(0xFF8B97A2),
                                     ),
                                   ),
@@ -718,8 +718,8 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                       0, 0, 0, 4),
                                   child: Text(
                                     'Publisher',
-                                    style: FlutterFlowTheme.title3.override(
-                                      fontFamily: 'Playfair Display',
+                                    style: FlutterFlowTheme.subtitle2.override(
+                                      fontFamily: 'Lato',
                                       color: Color(0xFF8B97A2),
                                     ),
                                   ),
@@ -759,8 +759,8 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                       0, 0, 0, 4),
                                   child: Text(
                                     'Metacritics',
-                                    style: FlutterFlowTheme.title3.override(
-                                      fontFamily: 'Playfair Display',
+                                    style: FlutterFlowTheme.subtitle2.override(
+                                      fontFamily: 'Lato',
                                       color: Color(0xFF8B97A2),
                                     ),
                                   ),
