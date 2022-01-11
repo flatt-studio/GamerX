@@ -679,25 +679,19 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                     ),
                                     collapsed: Container(
                                       width: MediaQuery.of(context).size.width,
-                                      height: 40,
                                       decoration: BoxDecoration(),
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0, 8, 0, 0),
-                                        child: Text(
-                                          getJsonField(
-                                            gameDetailGetaGameResponse.jsonBody,
-                                            r'''$.description_raw''',
-                                          ).toString().maybeHandleOverflow(
-                                                maxChars: 80,
-                                                replacement: '…',
-                                              ),
-                                          style: FlutterFlowTheme.bodyText1
-                                              .override(
-                                            fontFamily: 'Roboto',
-                                            color:
-                                                FlutterFlowTheme.tertiaryColor,
-                                          ),
+                                      child: Text(
+                                        getJsonField(
+                                          gameDetailGetaGameResponse.jsonBody,
+                                          r'''$.description_raw''',
+                                        ).toString().maybeHandleOverflow(
+                                              maxChars: 80,
+                                              replacement: '…',
+                                            ),
+                                        style:
+                                            FlutterFlowTheme.bodyText1.override(
+                                          fontFamily: 'Roboto',
+                                          color: FlutterFlowTheme.tertiaryColor,
                                         ),
                                       ),
                                     ),
