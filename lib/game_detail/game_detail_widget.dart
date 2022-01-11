@@ -116,6 +116,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                           borderRadius: 30,
                                           borderWidth: 1,
                                           buttonSize: 44,
+                                          fillColor: Color(0xFF090F13),
                                           icon: Icon(
                                             Icons.favorite_border,
                                             color:
@@ -140,6 +141,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                           borderRadius: 30,
                                           borderWidth: 1,
                                           buttonSize: 44,
+                                          fillColor: Color(0xFF090F13),
                                           icon: Icon(
                                             Icons.favorite_sharp,
                                             color: Color(0xFFFF0000),
