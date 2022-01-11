@@ -11,6 +11,7 @@ import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -660,39 +661,77 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                           Expanded(
                             child: Padding(
                               padding:
-                                  EdgeInsetsDirectional.fromSTEB(16, 12, 16, 0),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 0, 0, 4),
-                                    child: Text(
+                                  EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
+                              child: Container(
+                                width: double.infinity,
+                                color: Color(0x00000000),
+                                child: ExpandableNotifier(
+                                  initialExpanded: false,
+                                  child: ExpandablePanel(
+                                    header: Text(
                                       'Description',
                                       style:
                                           FlutterFlowTheme.bodyText2.override(
-                                        fontFamily: 'Lexend Deca',
+                                        fontFamily: 'Roboto',
                                         color: Color(0xFF8B97A2),
                                         fontSize: 14,
-                                        fontWeight: FontWeight.normal,
                                       ),
                                     ),
-                                  ),
-                                  Text(
-                                    getJsonField(
-                                      gameDetailGetaGameResponse.jsonBody,
-                                      r'''$.description_raw''',
-                                    ).toString(),
-                                    style: FlutterFlowTheme.subtitle2.override(
-                                      fontFamily: 'Lexend Deca',
-                                      color: Colors.white,
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w500,
+                                    collapsed: Container(
+                                      width: MediaQuery.of(context).size.width,
+                                      height: 40,
+                                      decoration: BoxDecoration(),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0, 8, 0, 0),
+                                        child: Text(
+                                          getJsonField(
+                                            gameDetailGetaGameResponse.jsonBody,
+                                            r'''$.description_raw''',
+                                          ).toString().maybeHandleOverflow(
+                                                maxChars: 80,
+                                                replacement: '…',
+                                              ),
+                                          style: FlutterFlowTheme.bodyText1
+                                              .override(
+                                            fontFamily: 'Roboto',
+                                            color:
+                                                FlutterFlowTheme.tertiaryColor,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    expanded: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Text(
+                                          getJsonField(
+                                            gameDetailGetaGameResponse.jsonBody,
+                                            r'''$.description_raw''',
+                                          ).toString(),
+                                          style: FlutterFlowTheme.bodyText1
+                                              .override(
+                                            fontFamily: 'Roboto',
+                                            color:
+                                                FlutterFlowTheme.tertiaryColor,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    theme: ExpandableThemeData(
+                                      tapHeaderToExpand: true,
+                                      tapBodyToExpand: true,
+                                      tapBodyToCollapse: true,
+                                      headerAlignment:
+                                          ExpandablePanelHeaderAlignment.center,
+                                      hasIcon: true,
+                                      expandIcon: Icons.arrow_drop_up,
+                                      collapseIcon: Icons.arrow_drop_down,
+                                      iconSize: 24,
+                                      iconColor: FlutterFlowTheme.tertiaryColor,
                                     ),
                                   ),
-                                ],
+                                ),
                               ),
                             ),
                           ),
