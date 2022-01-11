@@ -388,37 +388,36 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                     ),
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(16, 4, 16, 0),
-                      child: FutureBuilder<ApiCallResponse>(
-                        future: GetaGameCall.call(
-                          id: widget.gameId,
-                        ),
-                        builder: (context, snapshot) {
-                          // Customize what your widget looks like when it's loading.
-                          if (!snapshot.hasData) {
-                            return Center(
-                              child: SizedBox(
-                                width: 40,
-                                height: 40,
-                                child: CircularProgressIndicator(
-                                  color: FlutterFlowTheme.primaryColor,
+                      child: Builder(
+                        builder: (context) {
+                          final platforms = getJsonField(
+                                gameDetailGetaGameResponse.jsonBody,
+                                r'''$.platforms''',
+                              )?.toList() ??
+                              [];
+                          return Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: List.generate(platforms.length,
+                                (platformsIndex) {
+                              final platformsItem = platforms[platformsIndex];
+                              return FutureBuilder<ApiCallResponse>(
+                                future: GetaGameCall.call(
+                                  id: widget.gameId,
                                 ),
-                              ),
-                            );
-                          }
-                          final rowGetaGameResponse = snapshot.data;
-                          return Builder(
-                            builder: (context) {
-                              final platforms = getJsonField(
-                                    gameDetailGetaGameResponse.jsonBody,
-                                    r'''$.platforms''',
-                                  )?.toList() ??
-                                  [];
-                              return Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: List.generate(platforms.length,
-                                    (platformsIndex) {
-                                  final platformsItem =
-                                      platforms[platformsIndex];
+                                builder: (context, snapshot) {
+                                  // Customize what your widget looks like when it's loading.
+                                  if (!snapshot.hasData) {
+                                    return Center(
+                                      child: SizedBox(
+                                        width: 40,
+                                        height: 40,
+                                        child: CircularProgressIndicator(
+                                          color: FlutterFlowTheme.primaryColor,
+                                        ),
+                                      ),
+                                    );
+                                  }
+                                  final textGetaGameResponse = snapshot.data;
                                   return Text(
                                     getJsonField(
                                       platformsItem,
@@ -426,9 +425,9 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                     ).toString(),
                                     style: FlutterFlowTheme.bodyText1,
                                   );
-                                }),
+                                },
                               );
-                            },
+                            }),
                           );
                         },
                       ),
