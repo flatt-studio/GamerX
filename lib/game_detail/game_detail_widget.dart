@@ -404,15 +404,19 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                             children: List.generate(platforms.length,
                                 (platformsIndex) {
                               final platformsItem = platforms[platformsIndex];
-                              return Text(
-                                getJsonField(
-                                  platformsItem,
-                                  r'''$.name''',
-                                ).toString().maybeHandleOverflow(
-                                      maxChars: 60,
-                                      replacement: '…',
-                                    ),
-                                style: FlutterFlowTheme.bodyText1,
+                              return Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(0, 0, 4, 0),
+                                child: Text(
+                                  getJsonField(
+                                    platformsItem,
+                                    r'''$.name''',
+                                  ).toString().maybeHandleOverflow(
+                                        maxChars: 60,
+                                        replacement: '…',
+                                      ),
+                                  style: FlutterFlowTheme.bodyText1,
+                                ),
                               );
                             }),
                           );
@@ -439,8 +443,8 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                   platformImagesItem,
                                   r'''$.image''',
                                 ),
-                                width: 30,
-                                height: 30,
+                                width: 50,
+                                height: 50,
                                 fit: BoxFit.cover,
                               );
                             }),
