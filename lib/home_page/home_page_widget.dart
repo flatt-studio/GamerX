@@ -15,7 +15,6 @@ import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -28,7 +27,6 @@ class HomePageWidget extends StatefulWidget {
 
 class _HomePageWidgetState extends State<HomePageWidget> {
   PageController pageViewController;
-  double ratingBarValue;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -839,7 +837,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                             decoration:
                                                                 BoxDecoration(
                                                               color: Color(
-                                                                  0x80EEEEEE),
+                                                                  0x7F1D448A),
                                                               borderRadius:
                                                                   BorderRadius
                                                                       .only(
@@ -901,38 +899,39 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                                       ),
                                                                                   style: FlutterFlowTheme.bodyText1.override(
                                                                                     fontFamily: 'Roboto',
-                                                                                    color: FlutterFlowTheme.secondaryColor,
+                                                                                    color: FlutterFlowTheme.tertiaryColor,
                                                                                   ),
                                                                                 ),
                                                                               ),
                                                                             ],
                                                                           ),
                                                                         ),
-                                                                        RatingBar
-                                                                            .builder(
-                                                                          onRatingUpdate: (newValue) =>
-                                                                              setState(() => ratingBarValue = newValue),
-                                                                          itemBuilder: (context, index) =>
-                                                                              Icon(
-                                                                            Icons.star_rounded,
-                                                                            color:
-                                                                                Color(0xFFFFA100),
-                                                                          ),
-                                                                          direction:
-                                                                              Axis.horizontal,
-                                                                          initialRating: ratingBarValue ??=
-                                                                              getJsonField(
-                                                                            popularGameItem,
-                                                                            r'''$.rating''',
-                                                                          ),
-                                                                          unratedColor:
-                                                                              Color(0x80000000),
-                                                                          itemCount:
-                                                                              5,
-                                                                          itemSize:
-                                                                              16,
-                                                                          glowColor:
-                                                                              Color(0xFFFFA100),
+                                                                        Row(
+                                                                          mainAxisSize:
+                                                                              MainAxisSize.max,
+                                                                          children: [
+                                                                            Container(
+                                                                              width: 15,
+                                                                              height: 15,
+                                                                              clipBehavior: Clip.antiAlias,
+                                                                              decoration: BoxDecoration(
+                                                                                shape: BoxShape.circle,
+                                                                              ),
+                                                                              child: Image.asset(
+                                                                                'assets/images/Metacritic.svg.png',
+                                                                              ),
+                                                                            ),
+                                                                            Padding(
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
+                                                                              child: Text(
+                                                                                getJsonField(
+                                                                                  popularGameItem,
+                                                                                  r'''$.metacritic''',
+                                                                                ).toString(),
+                                                                                style: FlutterFlowTheme.bodyText1,
+                                                                              ),
+                                                                            ),
+                                                                          ],
                                                                         ),
                                                                       ],
                                                                     ),
