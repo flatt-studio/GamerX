@@ -423,7 +423,10 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                     getJsonField(
                                       platformsItem,
                                       r'''$.name''',
-                                    ).toString(),
+                                    ).toString().maybeHandleOverflow(
+                                          maxChars: 60,
+                                          replacement: '…',
+                                        ),
                                     style: FlutterFlowTheme.bodyText1,
                                   );
                                 }),
