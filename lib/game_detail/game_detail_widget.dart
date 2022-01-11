@@ -348,15 +348,10 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                               gameDetailGetaGameResponse.jsonBody,
                               r'''$.name''',
                             ).toString().maybeHandleOverflow(
-                                  maxChars: 34,
+                                  maxChars: 30,
                                   replacement: '…',
                                 ),
-                            style: FlutterFlowTheme.title2.override(
-                              fontFamily: 'Lexend Deca',
-                              color: Colors.white,
-                              fontSize: 20,
-                              fontWeight: FontWeight.w600,
-                            ),
+                            style: FlutterFlowTheme.title3,
                           ),
                         ],
                       ),
