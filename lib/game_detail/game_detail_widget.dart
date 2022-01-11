@@ -392,51 +392,29 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                     ),
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(16, 4, 16, 0),
-                      child: FutureBuilder<ApiCallResponse>(
-                        future: GetPlatformsOfaGameRAWGCall.call(
-                          id: widget.gameId,
-                        ),
-                        builder: (context, snapshot) {
-                          // Customize what your widget looks like when it's loading.
-                          if (!snapshot.hasData) {
-                            return Center(
-                              child: SizedBox(
-                                width: 40,
-                                height: 40,
-                                child: CircularProgressIndicator(
-                                  color: FlutterFlowTheme.primaryColor,
-                                ),
-                              ),
-                            );
-                          }
-                          final rowGetPlatformsOfaGameRAWGResponse =
-                              snapshot.data;
-                          return Builder(
-                            builder: (context) {
-                              final platforms = getJsonField(
-                                    rowGetPlatformsOfaGameRAWGResponse.jsonBody,
-                                    r'''$.platforms''',
-                                  )?.toList() ??
-                                  [];
-                              return Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: List.generate(platforms.length,
-                                    (platformsIndex) {
-                                  final platformsItem =
-                                      platforms[platformsIndex];
-                                  return Text(
-                                    getJsonField(
-                                      platformsItem,
-                                      r'''$.name''',
-                                    ).toString().maybeHandleOverflow(
-                                          maxChars: 60,
-                                          replacement: '…',
-                                        ),
-                                    style: FlutterFlowTheme.bodyText1,
-                                  );
-                                }),
+                      child: Builder(
+                        builder: (context) {
+                          final platforms = getJsonField(
+                                gameDetailGetaGameResponse.jsonBody,
+                                r'''$.platforms[:].platform''',
+                              )?.toList() ??
+                              [];
+                          return Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: List.generate(platforms.length,
+                                (platformsIndex) {
+                              final platformsItem = platforms[platformsIndex];
+                              return Text(
+                                getJsonField(
+                                  platformsItem,
+                                  r'''$.name''',
+                                ).toString().maybeHandleOverflow(
+                                      maxChars: 60,
+                                      replacement: '…',
+                                    ),
+                                style: FlutterFlowTheme.bodyText1,
                               );
-                            },
+                            }),
                           );
                         },
                       ),
