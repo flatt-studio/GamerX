@@ -13,7 +13,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -30,7 +29,6 @@ class GameDetailWidget extends StatefulWidget {
 }
 
 class _GameDetailWidgetState extends State<GameDetailWidget> {
-  double ratingBarValue;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -509,24 +507,6 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                       fontWeight: FontWeight.normal,
                                     ),
                                   ),
-                                ),
-                                RatingBar.builder(
-                                  onRatingUpdate: (newValue) =>
-                                      setState(() => ratingBarValue = newValue),
-                                  itemBuilder: (context, index) => Icon(
-                                    Icons.star_rounded,
-                                    color: Color(0xFFFFCE00),
-                                  ),
-                                  direction: Axis.horizontal,
-                                  initialRating: ratingBarValue ??=
-                                      getJsonField(
-                                    gameDetailGetaGameResponse.jsonBody,
-                                    r'''$.rating''',
-                                  ),
-                                  unratedColor: Color(0xFF9E9E9E),
-                                  itemCount: 5,
-                                  itemSize: 18,
-                                  glowColor: Color(0xFFFFCE00),
                                 ),
                               ],
                             ),
