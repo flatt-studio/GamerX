@@ -1272,8 +1272,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                     CachedNetworkImage(
                                                                   imageUrl:
                                                                       getJsonField(
-                                                                    gameGenresItem,
-                                                                    r'''$.background_image''',
+                                                                    rowGetGenresOfaGameResponse
+                                                                        .jsonBody,
+                                                                    r'''$.image_background''',
                                                                   ),
                                                                   width: 125,
                                                                   height: 165,
