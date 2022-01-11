@@ -259,15 +259,21 @@ class _SearchWidgetState extends State<SearchWidget> {
                                                             getJsonField(
                                                               gamesItem,
                                                               r'''$.name''',
-                                                            ).toString(),
+                                                            )
+                                                                .toString()
+                                                                .maybeHandleOverflow(
+                                                                  maxChars: 25,
+                                                                  replacement:
+                                                                      '…',
+                                                                ),
                                                             style:
                                                                 FlutterFlowTheme
-                                                                    .title2
+                                                                    .title3
                                                                     .override(
                                                               fontFamily:
                                                                   'Playfair Display',
-                                                              color:
-                                                                  Colors.black,
+                                                              color: FlutterFlowTheme
+                                                                  .secondaryColor,
                                                             ),
                                                           ),
                                                         ),
