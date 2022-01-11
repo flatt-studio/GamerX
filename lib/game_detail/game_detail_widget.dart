@@ -8,6 +8,7 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../flutter_flow/custom_functions.dart' as functions;
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -342,11 +343,14 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Text(
+                          AutoSizeText(
                             getJsonField(
                               gameDetailGetaGameResponse.jsonBody,
                               r'''$.name''',
-                            ).toString().maybeHandleOverflow(maxChars: 34),
+                            ).toString().maybeHandleOverflow(
+                                  maxChars: 34,
+                                  replacement: '…',
+                                ),
                             style: FlutterFlowTheme.title2.override(
                               fontFamily: 'Lexend Deca',
                               color: Colors.white,
