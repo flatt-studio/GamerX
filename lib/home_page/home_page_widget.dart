@@ -1363,6 +1363,14 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                             ],
                                                                           ),
                                                                         ),
+                                                                        Text(
+                                                                          getJsonField(
+                                                                            gameGenresItem,
+                                                                            r'''$.games_count''',
+                                                                          ).toString(),
+                                                                          style:
+                                                                              FlutterFlowTheme.bodyText1,
+                                                                        ),
                                                                       ],
                                                                     ),
                                                                   ),
