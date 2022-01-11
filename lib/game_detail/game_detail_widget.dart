@@ -421,15 +421,19 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                         width: 2,
                                       ),
                                     ),
-                                    child: Text(
-                                      getJsonField(
-                                        platformsItem,
-                                        r'''$.name''',
-                                      ).toString().maybeHandleOverflow(
-                                            maxChars: 60,
-                                            replacement: '…',
-                                          ),
-                                      style: FlutterFlowTheme.bodyText1,
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          2, 2, 2, 2),
+                                      child: Text(
+                                        getJsonField(
+                                          platformsItem,
+                                          r'''$.name''',
+                                        ).toString().maybeHandleOverflow(
+                                              maxChars: 60,
+                                              replacement: '…',
+                                            ),
+                                        style: FlutterFlowTheme.bodyText1,
+                                      ),
                                     ),
                                   ),
                                 ),
