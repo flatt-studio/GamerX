@@ -403,24 +403,24 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                             children: List.generate(platforms.length,
                                 (platformsIndex) {
                               final platformsItem = platforms[platformsIndex];
-                              return Material(
-                                color: Colors.transparent,
-                                elevation: 0,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                                child: Container(
-                                  height: 20,
-                                  decoration: BoxDecoration(
+                              return Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(0, 0, 4, 0),
+                                child: Material(
+                                  color: Colors.transparent,
+                                  elevation: 0,
+                                  shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(8),
-                                    border: Border.all(
-                                      color: FlutterFlowTheme.tertiaryColor,
-                                      width: 2,
-                                    ),
                                   ),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 0, 4, 0),
+                                  child: Container(
+                                    height: 20,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      border: Border.all(
+                                        color: FlutterFlowTheme.tertiaryColor,
+                                        width: 2,
+                                      ),
+                                    ),
                                     child: Text(
                                       getJsonField(
                                         platformsItem,
@@ -620,6 +620,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                     ),
                     Row(
                       mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Expanded(
                           child: Padding(
@@ -650,12 +651,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                       r'''$.esrb_rating.name''',
                                     ).toString(),
                                     textAlign: TextAlign.center,
-                                    style: FlutterFlowTheme.title1.override(
-                                      fontFamily: 'Lexend Deca',
-                                      color: Colors.white,
-                                      fontSize: 24,
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                                    style: FlutterFlowTheme.title3,
                                   ),
                                 ),
                               ],
@@ -692,12 +688,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                       r'''$.genres[:].name''',
                                     ).toString(),
                                     textAlign: TextAlign.center,
-                                    style: FlutterFlowTheme.title1.override(
-                                      fontFamily: 'Lexend Deca',
-                                      color: Colors.white,
-                                      fontSize: 24,
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                                    style: FlutterFlowTheme.title3,
                                   ),
                                 ),
                               ],
@@ -733,12 +724,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                       r'''$.playtime''',
                                     ).toString(),
                                     textAlign: TextAlign.center,
-                                    style: FlutterFlowTheme.title1.override(
-                                      fontFamily: 'Lexend Deca',
-                                      color: Colors.white,
-                                      fontSize: 24,
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                                    style: FlutterFlowTheme.title3,
                                   ),
                                 ),
                               ],
@@ -774,12 +760,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                       r'''$.metacritic''',
                                     ).toString(),
                                     textAlign: TextAlign.center,
-                                    style: FlutterFlowTheme.title1.override(
-                                      fontFamily: 'Lexend Deca',
-                                      color: Colors.white,
-                                      fontSize: 24,
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                                    style: FlutterFlowTheme.title3,
                                   ),
                                 ),
                               ],
