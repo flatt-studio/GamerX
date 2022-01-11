@@ -420,6 +420,35 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                       ),
                     ),
                     Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(16, 4, 16, 0),
+                      child: Builder(
+                        builder: (context) {
+                          final platformImages = getJsonField(
+                                gameDetailGetaGameResponse.jsonBody,
+                                r'''$.platforms[:].platform''',
+                              )?.toList() ??
+                              [];
+                          return Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: List.generate(platformImages.length,
+                                (platformImagesIndex) {
+                              final platformImagesItem =
+                                  platformImages[platformImagesIndex];
+                              return Image.network(
+                                getJsonField(
+                                  platformImagesItem,
+                                  r'''$.image''',
+                                ),
+                                width: 30,
+                                height: 30,
+                                fit: BoxFit.cover,
+                              );
+                            }),
+                          );
+                        },
+                      ),
+                    ),
+                    Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(16, 12, 16, 0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
