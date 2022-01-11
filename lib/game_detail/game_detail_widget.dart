@@ -103,7 +103,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                 ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      10, 35, 20, 0),
+                                      10, 40, 20, 0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment: MainAxisAlignment.end,
@@ -164,7 +164,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                   alignment: AlignmentDirectional(-0.9, -0.84),
                                   child: Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 4, 0, 0),
+                                        0, 9, 0, 0),
                                     child: FlutterFlowIconButton(
                                       borderColor: Colors.transparent,
                                       borderRadius: 30,
