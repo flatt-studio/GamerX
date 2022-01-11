@@ -383,8 +383,8 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
                                 FutureBuilder<ApiCallResponse>(
-                                  future: GetGamesInAPlatformCall.call(
-                                    param: widget.gameId,
+                                  future: GetaGameCall.call(
+                                    id: widget.gameId,
                                   ),
                                   builder: (context, snapshot) {
                                     // Customize what your widget looks like when it's loading.
@@ -400,13 +400,11 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                         ),
                                       );
                                     }
-                                    final rowGetGamesInAPlatformResponse =
-                                        snapshot.data;
+                                    final rowGetaGameResponse = snapshot.data;
                                     return Builder(
                                       builder: (context) {
                                         final platformName = getJsonField(
-                                              gameDetailGetaGameResponse
-                                                  .jsonBody,
+                                              rowGetaGameResponse.jsonBody,
                                               r'''$.platforms''',
                                             )?.toList() ??
                                             [];
