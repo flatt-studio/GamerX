@@ -6,6 +6,7 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../game_detail/game_detail_widget.dart';
 import '../flutter_flow/custom_functions.dart' as functions;
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
@@ -369,15 +370,15 @@ class _ConsolesListWidgetState extends State<ConsolesListWidget> {
                                                                               0,
                                                                               0),
                                                                       child:
-                                                                          Text(
+                                                                          AutoSizeText(
                                                                         getJsonField(
                                                                           containerGetaGameResponse
                                                                               .jsonBody,
-                                                                          r'''$.description''',
+                                                                          r'''$.description_raw''',
                                                                         )
                                                                             .toString()
                                                                             .maybeHandleOverflow(
-                                                                              maxChars: 99,
+                                                                              maxChars: 80,
                                                                               replacement: '…',
                                                                             ),
                                                                         style: FlutterFlowTheme
