@@ -73,7 +73,9 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                           await Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => EditprofileWidget(),
+                              builder: (context) => EditprofileWidget(
+                                profileEdit: currentUserReference,
+                              ),
                             ),
                           );
                         },
