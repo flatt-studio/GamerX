@@ -154,111 +154,101 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                                                     r'''$.background_image''',
                                                   ),
                                                   width: double.infinity,
-                                                  height: 145,
+                                                  height: 141,
                                                   fit: BoxFit.cover,
                                                 ),
                                               ),
                                             ],
                                           ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0, 0, 0, 5),
-                                            child: Container(
-                                              width: MediaQuery.of(context)
-                                                  .size
-                                                  .width,
-                                              height: 38,
-                                              decoration: BoxDecoration(
-                                                color: Color(0xFFEEEEEE),
-                                                borderRadius: BorderRadius.only(
-                                                  bottomLeft:
-                                                      Radius.circular(10),
-                                                  bottomRight:
-                                                      Radius.circular(10),
-                                                  topLeft: Radius.circular(0),
-                                                  topRight: Radius.circular(0),
-                                                ),
+                                          Container(
+                                            width: MediaQuery.of(context)
+                                                .size
+                                                .width,
+                                            height: 40,
+                                            decoration: BoxDecoration(
+                                              color: Color(0xFFEEEEEE),
+                                              borderRadius: BorderRadius.only(
+                                                bottomLeft: Radius.circular(10),
+                                                bottomRight:
+                                                    Radius.circular(10),
+                                                topLeft: Radius.circular(0),
+                                                topRight: Radius.circular(0),
                                               ),
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(5, 5, 5, 5),
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceBetween,
-                                                  children: [
-                                                    Expanded(
-                                                      child: Column(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
-                                                        children: [
-                                                          Expanded(
-                                                            child: Row(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              children: [
-                                                                Expanded(
-                                                                  child: Text(
-                                                                    getJsonField(
-                                                                      containerGetaGameResponse
-                                                                          .jsonBody,
-                                                                      r'''$.name''',
-                                                                    )
-                                                                        .toString()
-                                                                        .maybeHandleOverflow(
-                                                                          maxChars:
-                                                                              18,
-                                                                          replacement:
-                                                                              '…',
-                                                                        ),
-                                                                    style: FlutterFlowTheme
-                                                                        .bodyText1
-                                                                        .override(
-                                                                      fontFamily:
-                                                                          'Roboto',
-                                                                      color: FlutterFlowTheme
-                                                                          .secondaryColor,
-                                                                    ),
+                                            ),
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(5, 5, 5, 5),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Expanded(
+                                                    child: Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        Expanded(
+                                                          child: Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              Expanded(
+                                                                child: Text(
+                                                                  getJsonField(
+                                                                    containerGetaGameResponse
+                                                                        .jsonBody,
+                                                                    r'''$.name''',
+                                                                  )
+                                                                      .toString()
+                                                                      .maybeHandleOverflow(
+                                                                        maxChars:
+                                                                            18,
+                                                                        replacement:
+                                                                            '…',
+                                                                      ),
+                                                                  style: FlutterFlowTheme
+                                                                      .bodyText1
+                                                                      .override(
+                                                                    fontFamily:
+                                                                        'Roboto',
+                                                                    color: FlutterFlowTheme
+                                                                        .secondaryColor,
                                                                   ),
                                                                 ),
-                                                              ],
-                                                            ),
+                                                              ),
+                                                            ],
                                                           ),
-                                                          RatingBarIndicator(
-                                                            itemBuilder:
-                                                                (context,
-                                                                        index) =>
-                                                                    Icon(
-                                                              Icons
-                                                                  .star_rounded,
-                                                              color: Color(
-                                                                  0xFFFFA100),
-                                                            ),
-                                                            direction:
-                                                                Axis.horizontal,
-                                                            rating:
-                                                                getJsonField(
-                                                              containerGetaGameResponse
-                                                                  .jsonBody,
-                                                              r'''$.rating_top''',
-                                                            ),
-                                                            unratedColor: Color(
-                                                                0x80000000),
-                                                            itemCount: 5,
-                                                            itemSize: 16,
+                                                        ),
+                                                        RatingBarIndicator(
+                                                          itemBuilder: (context,
+                                                                  index) =>
+                                                              Icon(
+                                                            Icons.star_rounded,
+                                                            color: Color(
+                                                                0xFFFFA100),
                                                           ),
-                                                        ],
-                                                      ),
+                                                          direction:
+                                                              Axis.horizontal,
+                                                          rating: getJsonField(
+                                                            containerGetaGameResponse
+                                                                .jsonBody,
+                                                            r'''$.rating_top''',
+                                                          ),
+                                                          unratedColor:
+                                                              Color(0x80000000),
+                                                          itemCount: 5,
+                                                          itemSize: 16,
+                                                        ),
+                                                      ],
                                                     ),
-                                                  ],
-                                                ),
+                                                  ),
+                                                ],
                                               ),
                                             ),
                                           ),
