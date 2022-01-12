@@ -475,7 +475,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(12),
                                         border: Border.all(
-                                          color: FlutterFlowTheme.tertiaryColor,
+                                          color: Color(0xFF2094F3),
                                           width: 1,
                                         ),
                                       ),
