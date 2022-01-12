@@ -204,7 +204,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                                             MediaQuery.of(context).size.width,
                                         height: 75,
                                         decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.tertiaryColor,
+                                          color: Color(0x7F1D448A),
                                           boxShadow: [
                                             BoxShadow(
                                               blurRadius: 5,
@@ -273,7 +273,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                                                               fontFamily:
                                                                   'Playfair Display',
                                                               color: FlutterFlowTheme
-                                                                  .secondaryColor,
+                                                                  .tertiaryColor,
                                                             ),
                                                           ),
                                                         ),
@@ -305,7 +305,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                                                           child: Text(
                                                             getJsonField(
                                                               gamesItem,
-                                                              r'''$.metacritics''',
+                                                              r'''$.metacritic''',
                                                             ).toString(),
                                                             style:
                                                                 FlutterFlowTheme
@@ -314,7 +314,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                                                               fontFamily:
                                                                   'Roboto',
                                                               color: FlutterFlowTheme
-                                                                  .secondaryColor,
+                                                                  .tertiaryColor,
                                                             ),
                                                           ),
                                                         ),

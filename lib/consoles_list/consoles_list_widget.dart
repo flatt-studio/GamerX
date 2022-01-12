@@ -265,8 +265,7 @@ class _ConsolesListWidgetState extends State<ConsolesListWidget> {
                                                       .width,
                                                   height: 100,
                                                   decoration: BoxDecoration(
-                                                    color: FlutterFlowTheme
-                                                        .tertiaryColor,
+                                                    color: Color(0x7F1D448A),
                                                     boxShadow: [
                                                       BoxShadow(
                                                         blurRadius: 4,
@@ -343,7 +342,7 @@ class _ConsolesListWidgetState extends State<ConsolesListWidget> {
                                                                     fontFamily:
                                                                         'Playfair Display',
                                                                     color: FlutterFlowTheme
-                                                                        .secondaryColor,
+                                                                        .tertiaryColor,
                                                                   ),
                                                                 ),
                                                               ),
@@ -366,7 +365,7 @@ class _ConsolesListWidgetState extends State<ConsolesListWidget> {
                                                                   fontFamily:
                                                                       'Lato',
                                                                   color: FlutterFlowTheme
-                                                                      .secondaryColor,
+                                                                      .tertiaryColor,
                                                                 ),
                                                               ),
                                                             ],

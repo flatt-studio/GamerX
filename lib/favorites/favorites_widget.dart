@@ -168,7 +168,7 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                                                 .width,
                                             height: 40,
                                             decoration: BoxDecoration(
-                                              color: Color(0xFFEEEEEE),
+                                              color: Color(0x7F1D448A),
                                               borderRadius: BorderRadius.only(
                                                 bottomLeft: Radius.circular(10),
                                                 bottomRight:
@@ -220,7 +220,7 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                                                                     fontFamily:
                                                                         'Roboto',
                                                                     color: FlutterFlowTheme
-                                                                        .secondaryColor,
+                                                                        .tertiaryColor,
                                                                   ),
                                                                 ),
                                                               ),
