@@ -23,7 +23,6 @@ class GamelistWidget extends StatefulWidget {
 
 class _GamelistWidgetState extends State<GamelistWidget> {
   String dropDownValue;
-  double ratingBarValue;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -361,12 +360,7 @@ class _GamelistWidgetState extends State<GamelistWidget> {
                                                                       ],
                                                                     ),
                                                                   ),
-                                                                  RatingBar
-                                                                      .builder(
-                                                                    onRatingUpdate:
-                                                                        (newValue) =>
-                                                                            setState(() =>
-                                                                                ratingBarValue = newValue),
+                                                                  RatingBarIndicator(
                                                                     itemBuilder:
                                                                         (context,
                                                                                 index) =>
@@ -378,9 +372,8 @@ class _GamelistWidgetState extends State<GamelistWidget> {
                                                                     ),
                                                                     direction: Axis
                                                                         .horizontal,
-                                                                    initialRating:
-                                                                        ratingBarValue ??=
-                                                                            getJsonField(
+                                                                    rating:
+                                                                        getJsonField(
                                                                       containerGetaGameResponse
                                                                           .jsonBody,
                                                                       r'''$.rating''',
@@ -392,9 +385,6 @@ class _GamelistWidgetState extends State<GamelistWidget> {
                                                                         5,
                                                                     itemSize:
                                                                         16,
-                                                                    glowColor:
-                                                                        Color(
-                                                                            0xFFFFA100),
                                                                   ),
                                                                 ],
                                                               ),
