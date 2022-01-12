@@ -243,7 +243,8 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                                                             r'''$.rating''',
                                                           ),
                                                           unratedColor:
-                                                              Color(0x80000000),
+                                                              FlutterFlowTheme
+                                                                  .tertiaryColor,
                                                           itemCount: 5,
                                                           itemSize: 16,
                                                         ),
