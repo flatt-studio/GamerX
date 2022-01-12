@@ -210,7 +210,7 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                                                                       .toString()
                                                                       .maybeHandleOverflow(
                                                                         maxChars:
-                                                                            18,
+                                                                            25,
                                                                         replacement:
                                                                             '…',
                                                                       ),
