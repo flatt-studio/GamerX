@@ -65,7 +65,7 @@ class _ConsolesWidgetState extends State<ConsolesWidget> {
               ),
               Expanded(
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
+                  padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 0),
                   child: StreamBuilder<List<ConsolsRecord>>(
                     stream: queryConsolsRecord(),
                     builder: (context, snapshot) {

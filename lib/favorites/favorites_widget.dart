@@ -68,7 +68,7 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
               ),
               Expanded(
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
+                  padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 0),
                   child: AuthUserStreamWidget(
                     child: Builder(
                       builder: (context) {
