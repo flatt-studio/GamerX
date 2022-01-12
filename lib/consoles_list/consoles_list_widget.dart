@@ -8,7 +8,6 @@ import '../game_detail/game_detail_widget.dart';
 import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_debounce/easy_debounce.dart';
-import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -71,7 +70,7 @@ class _ConsolesListWidgetState extends State<ConsolesListWidget> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(16, 40, 16, 0),
+                    padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -328,119 +327,7 @@ class _ConsolesListWidgetState extends State<ConsolesListWidget> {
                                                             crossAxisAlignment:
                                                                 CrossAxisAlignment
                                                                     .start,
-                                                            children: [
-                                                              Expanded(
-                                                                child:
-                                                                    Container(
-                                                                  width: double
-                                                                      .infinity,
-                                                                  color: Colors
-                                                                      .white,
-                                                                  child:
-                                                                      ExpandableNotifier(
-                                                                    initialExpanded:
-                                                                        false,
-                                                                    child:
-                                                                        ExpandablePanel(
-                                                                      header:
-                                                                          Text(
-                                                                        getJsonField(
-                                                                          containerGetaGameResponse
-                                                                              .jsonBody,
-                                                                          r'''$.name''',
-                                                                        ).toString(),
-                                                                        style: FlutterFlowTheme
-                                                                            .title2
-                                                                            .override(
-                                                                          fontFamily:
-                                                                              'Playfair Display',
-                                                                          color:
-                                                                              FlutterFlowTheme.secondaryColor,
-                                                                        ),
-                                                                      ),
-                                                                      collapsed:
-                                                                          Container(
-                                                                        width: MediaQuery.of(context)
-                                                                            .size
-                                                                            .width,
-                                                                        height:
-                                                                            40,
-                                                                        decoration:
-                                                                            BoxDecoration(
-                                                                          color:
-                                                                              Color(0xFFEEEEEE),
-                                                                        ),
-                                                                        child:
-                                                                            Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
-                                                                              0,
-                                                                              8,
-                                                                              0,
-                                                                              0),
-                                                                          child:
-                                                                              Text(
-                                                                            getJsonField(
-                                                                              containerGetaGameResponse.jsonBody,
-                                                                              r'''$.description_raw''',
-                                                                            ).toString().maybeHandleOverflow(
-                                                                                  maxChars: 80,
-                                                                                  replacement: '…',
-                                                                                ),
-                                                                            style:
-                                                                                FlutterFlowTheme.bodyText1.override(
-                                                                              fontFamily: 'Roboto',
-                                                                              color: Color(0x8A000000),
-                                                                            ),
-                                                                          ),
-                                                                        ),
-                                                                      ),
-                                                                      expanded:
-                                                                          Column(
-                                                                        mainAxisSize:
-                                                                            MainAxisSize.max,
-                                                                        children: [
-                                                                          Text(
-                                                                            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-                                                                            style:
-                                                                                FlutterFlowTheme.bodyText1.override(
-                                                                              fontFamily: 'Roboto',
-                                                                              color: Color(0x8A000000),
-                                                                            ),
-                                                                          ),
-                                                                          Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
-                                                                                0,
-                                                                                4,
-                                                                                0,
-                                                                                0),
-                                                                            child:
-                                                                                Image.network(
-                                                                              'https://picsum.photos/seed/642/600',
-                                                                              width: MediaQuery.of(context).size.width,
-                                                                              height: 100,
-                                                                              fit: BoxFit.cover,
-                                                                            ),
-                                                                          ),
-                                                                        ],
-                                                                      ),
-                                                                      theme:
-                                                                          ExpandableThemeData(
-                                                                        tapHeaderToExpand:
-                                                                            true,
-                                                                        tapBodyToExpand:
-                                                                            false,
-                                                                        tapBodyToCollapse:
-                                                                            false,
-                                                                        headerAlignment:
-                                                                            ExpandablePanelHeaderAlignment.center,
-                                                                        hasIcon:
-                                                                            true,
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            ],
+                                                            children: [],
                                                           ),
                                                         ),
                                                       ),

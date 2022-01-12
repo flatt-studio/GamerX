@@ -19,7 +19,6 @@ class FavoritesWidget extends StatefulWidget {
 }
 
 class _FavoritesWidgetState extends State<FavoritesWidget> {
-  double ratingBarValue;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -36,7 +35,7 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16, 40, 16, 0),
+                padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -232,11 +231,7 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                                                               ],
                                                             ),
                                                           ),
-                                                          RatingBar.builder(
-                                                            onRatingUpdate: (newValue) =>
-                                                                setState(() =>
-                                                                    ratingBarValue =
-                                                                        newValue),
+                                                          RatingBarIndicator(
                                                             itemBuilder:
                                                                 (context,
                                                                         index) =>
@@ -248,19 +243,16 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                                                             ),
                                                             direction:
                                                                 Axis.horizontal,
-                                                            initialRating:
-                                                                ratingBarValue ??=
-                                                                    getJsonField(
+                                                            rating:
+                                                                getJsonField(
                                                               containerGetaGameResponse
                                                                   .jsonBody,
-                                                              r'''$.rating''',
+                                                              r'''$.rating_top''',
                                                             ),
                                                             unratedColor: Color(
                                                                 0x80000000),
                                                             itemCount: 5,
                                                             itemSize: 16,
-                                                            glowColor: Color(
-                                                                0xFFFFA100),
                                                           ),
                                                         ],
                                                       ),

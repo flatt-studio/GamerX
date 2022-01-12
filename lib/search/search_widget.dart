@@ -304,9 +304,8 @@ class _SearchWidgetState extends State<SearchWidget> {
                                                                       0, 0, 0),
                                                           child: Text(
                                                             getJsonField(
-                                                              columnGetGameSearchResultResponse
-                                                                  .jsonBody,
-                                                              r'''$.metacritic''',
+                                                              gamesItem,
+                                                              r'''$.metacritics''',
                                                             ).toString(),
                                                             style:
                                                                 FlutterFlowTheme

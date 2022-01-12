@@ -167,7 +167,7 @@ class GetReleasedGamesRAWGCall {
 class GetPlatformsOfaGameRAWGCall {
   static Future<ApiCallResponse> call({
     String apiKey = '1c50b5904fdb4cfdbf6b7307fc692ed9',
-    String id = '',
+    String id = '1',
   }) {
     return ApiManager.instance.makeApiCall(
       callName: 'getPlatformsOfaGameRAWG',
@@ -205,11 +205,15 @@ class GetaGameCall {
       );
   static dynamic genres(dynamic response) => getJsonField(
         response,
-        r'''$.esrb_rating''',
+        r'''$.genres[:].name''',
       );
   static dynamic esrbrating(dynamic response) => getJsonField(
         response,
         r'''$.esrb_rating''',
+      );
+  static dynamic ratingstop(dynamic response) => getJsonField(
+        response,
+        r'''$.rating_top''',
       );
 }
 
@@ -323,4 +327,37 @@ class GetDetailsOfaGenresCall {
       returnBody: true,
     );
   }
+}
+
+class GetaGameCopyCall {
+  static Future<ApiCallResponse> call({
+    String apiKey = '1c50b5904fdb4cfdbf6b7307fc692ed9',
+    String id = '1',
+  }) {
+    return ApiManager.instance.makeApiCall(
+      callName: 'getaGame Copy',
+      apiUrl: 'https://api.rawg.io/api/games/${id}?key=${apiKey}',
+      callType: ApiCallType.GET,
+      headers: {},
+      params: {},
+      returnBody: true,
+    );
+  }
+
+  static dynamic platforms(dynamic response) => getJsonField(
+        response,
+        r'''$.platforms''',
+      );
+  static dynamic metacritic(dynamic response) => getJsonField(
+        response,
+        r'''$.metacritic''',
+      );
+  static dynamic genres(dynamic response) => getJsonField(
+        response,
+        r'''$.genres[:].name''',
+      );
+  static dynamic esrbrating(dynamic response) => getJsonField(
+        response,
+        r'''$.esrb_rating''',
+      );
 }
