@@ -255,7 +255,6 @@ class _GamelistWidgetState extends State<GamelistWidget> {
                                                 );
                                               },
                                               child: Container(
-                                                height: 200,
                                                 decoration: BoxDecoration(
                                                   borderRadius:
                                                       BorderRadius.circular(10),
@@ -282,7 +281,10 @@ class _GamelistWidgetState extends State<GamelistWidget> {
                                                               .jsonBody,
                                                           r'''$.background_image''',
                                                         ),
-                                                        width: double.infinity,
+                                                        width: MediaQuery.of(
+                                                                context)
+                                                            .size
+                                                            .width,
                                                         height: 165,
                                                         fit: BoxFit.cover,
                                                       ),
@@ -292,7 +294,7 @@ class _GamelistWidgetState extends State<GamelistWidget> {
                                                           MediaQuery.of(context)
                                                               .size
                                                               .width,
-                                                      height: 45,
+                                                      height: 40,
                                                       decoration: BoxDecoration(
                                                         color:
                                                             Color(0xFFEEEEEE),
