@@ -238,7 +238,7 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                                                           rating: getJsonField(
                                                             containerGetaGameResponse
                                                                 .jsonBody,
-                                                            r'''$.rating_top''',
+                                                            r'''$.rating''',
                                                           ),
                                                           unratedColor:
                                                               Color(0x80000000),
