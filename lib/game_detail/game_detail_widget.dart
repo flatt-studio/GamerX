@@ -399,7 +399,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                             scrollDirection: Axis.horizontal,
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.start,
                               children: List.generate(platforms.length,
                                   (platformsIndex) {
                                 final platformsItem = platforms[platformsIndex];
@@ -433,6 +433,72 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                                 replacement: '…',
                                               ),
                                           style: FlutterFlowTheme.bodyText1,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              }),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(16, 4, 16, 0),
+                      child: Builder(
+                        builder: (context) {
+                          final stores = getJsonField(
+                                gameDetailGetaGameResponse.jsonBody,
+                                r'''$.stores[:]''',
+                              )?.toList() ??
+                              [];
+                          return SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children:
+                                  List.generate(stores.length, (storesIndex) {
+                                final storesItem = stores[storesIndex];
+                                return Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 0, 4, 0),
+                                  child: Material(
+                                    color: Colors.transparent,
+                                    elevation: 0,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(12),
+                                    ),
+                                    child: Container(
+                                      height: 20,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(12),
+                                        border: Border.all(
+                                          color: FlutterFlowTheme.tertiaryColor,
+                                          width: 1,
+                                        ),
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            2, 2, 2, 2),
+                                        child: InkWell(
+                                          onTap: () async {
+                                            await launchURL(getJsonField(
+                                              storesItem,
+                                              r'''$.url''',
+                                            ).toString());
+                                          },
+                                          child: Text(
+                                            getJsonField(
+                                              storesItem,
+                                              r'''$.name''',
+                                            ).toString().maybeHandleOverflow(
+                                                  maxChars: 60,
+                                                  replacement: '…',
+                                                ),
+                                            style: FlutterFlowTheme.bodyText1,
+                                          ),
                                         ),
                                       ),
                                     ),
