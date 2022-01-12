@@ -361,7 +361,7 @@ class _ConsolesListWidgetState extends State<ConsolesListWidget> {
                                                                     .toString()
                                                                     .maybeHandleOverflow(
                                                                       maxChars:
-                                                                          20,
+                                                                          30,
                                                                       replacement:
                                                                           '…',
                                                                     ),
