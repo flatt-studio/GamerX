@@ -207,7 +207,7 @@ class _GamelistWidgetState extends State<GamelistWidget> {
                                       crossAxisCount: 2,
                                       crossAxisSpacing: 10,
                                       mainAxisSpacing: 10,
-                                      childAspectRatio: 0.2,
+                                      childAspectRatio: 0.7,
                                     ),
                                     shrinkWrap: true,
                                     scrollDirection: Axis.vertical,
