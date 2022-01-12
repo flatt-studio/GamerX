@@ -207,7 +207,7 @@ class _GamelistWidgetState extends State<GamelistWidget> {
                                       crossAxisCount: 2,
                                       crossAxisSpacing: 10,
                                       mainAxisSpacing: 10,
-                                      childAspectRatio: 0.7,
+                                      childAspectRatio: 0.2,
                                     ),
                                     shrinkWrap: true,
                                     scrollDirection: Axis.vertical,
@@ -283,7 +283,7 @@ class _GamelistWidgetState extends State<GamelistWidget> {
                                                           r'''$.background_image''',
                                                         ),
                                                         width: double.infinity,
-                                                        height: 160,
+                                                        height: 165,
                                                         fit: BoxFit.cover,
                                                       ),
                                                     ),
@@ -292,7 +292,7 @@ class _GamelistWidgetState extends State<GamelistWidget> {
                                                           MediaQuery.of(context)
                                                               .size
                                                               .width,
-                                                      height: 40,
+                                                      height: 45,
                                                       decoration: BoxDecoration(
                                                         color:
                                                             Color(0xFFEEEEEE),

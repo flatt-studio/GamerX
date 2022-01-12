@@ -130,6 +130,7 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                                       );
                                     },
                                     child: Container(
+                                      height: 200,
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(10),
                                       ),
@@ -154,7 +155,7 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                                                     r'''$.background_image''',
                                                   ),
                                                   width: double.infinity,
-                                                  height: 160,
+                                                  height: 165,
                                                   fit: BoxFit.cover,
                                                 ),
                                               ),
