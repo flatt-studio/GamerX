@@ -965,31 +965,31 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   width: MediaQuery.of(context).size.width,
                   height: 100,
                   decoration: BoxDecoration(),
-                  child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 14, 0, 0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(15, 0, 0, 0),
-                          child: FlutterFlowIconButton(
-                            borderColor: Colors.transparent,
-                            borderRadius: 30,
-                            borderWidth: 1,
-                            buttonSize: 40,
-                            fillColor: FlutterFlowTheme.secondaryColor,
-                            icon: Icon(
-                              Icons.menu,
-                              color: FlutterFlowTheme.tertiaryColor,
-                              size: 24,
-                            ),
-                            onPressed: () async {
-                              scaffoldKey.currentState.openDrawer();
-                            },
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(15, 15, 0, 0),
+                        child: FlutterFlowIconButton(
+                          borderColor: Colors.transparent,
+                          borderRadius: 30,
+                          borderWidth: 1,
+                          buttonSize: 40,
+                          fillColor: FlutterFlowTheme.secondaryColor,
+                          icon: Icon(
+                            Icons.menu,
+                            color: FlutterFlowTheme.tertiaryColor,
+                            size: 24,
                           ),
+                          onPressed: () async {
+                            scaffoldKey.currentState.openDrawer();
+                          },
                         ),
-                        Row(
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+                        child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Padding(
@@ -1044,8 +1044,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             ),
                           ],
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
               ],
