@@ -718,7 +718,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                     popularGameItem,
                                                                     r'''$.background_image''',
                                                                   ),
-                                                                  width: 125,
+                                                                  width: double
+                                                                      .infinity,
                                                                   height: 165,
                                                                   fit: BoxFit
                                                                       .cover,
