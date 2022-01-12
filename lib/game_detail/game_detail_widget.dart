@@ -492,7 +492,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                           child: Text(
                                             getJsonField(
                                               storesItem,
-                                              r'''$.name''',
+                                              r'''$.stores[:].store.name''',
                                             ).toString().maybeHandleOverflow(
                                                   maxChars: 60,
                                                   replacement: '…',
