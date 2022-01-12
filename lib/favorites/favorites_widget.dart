@@ -87,7 +87,7 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                             crossAxisCount: 2,
                             crossAxisSpacing: 5,
                             mainAxisSpacing: 10,
-                            childAspectRatio: 0.9,
+                            childAspectRatio: 0.8,
                           ),
                           shrinkWrap: true,
                           scrollDirection: Axis.vertical,
@@ -130,7 +130,6 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                                       );
                                     },
                                     child: Container(
-                                      height: 200,
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(10),
                                       ),
@@ -154,7 +153,9 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                                                         .jsonBody,
                                                     r'''$.background_image''',
                                                   ),
-                                                  width: double.infinity,
+                                                  width: MediaQuery.of(context)
+                                                      .size
+                                                      .width,
                                                   height: 165,
                                                   fit: BoxFit.cover,
                                                 ),
