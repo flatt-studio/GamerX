@@ -410,20 +410,20 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                     color: Colors.transparent,
                                     elevation: 0,
                                     shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(12),
+                                      borderRadius: BorderRadius.circular(8),
                                     ),
                                     child: Container(
-                                      height: 20,
+                                      height: 25,
                                       decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(12),
+                                        borderRadius: BorderRadius.circular(8),
                                         border: Border.all(
                                           color: FlutterFlowTheme.tertiaryColor,
-                                          width: 1,
+                                          width: 2,
                                         ),
                                       ),
                                       child: Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            2, 2, 2, 2),
+                                            4, 4, 4, 4),
                                         child: Text(
                                           getJsonField(
                                             platformsItem,
@@ -444,75 +444,72 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                         },
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(16, 4, 16, 0),
-                      child: Builder(
-                        builder: (context) {
-                          final stores = getJsonField(
-                                gameDetailGetaGameResponse.jsonBody,
-                                r'''$.stores[:]''',
-                              )?.toList() ??
-                              [];
-                          return SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children:
-                                  List.generate(stores.length, (storesIndex) {
-                                final storesItem = stores[storesIndex];
-                                return Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 0, 4, 0),
-                                  child: Material(
-                                    color: Colors.transparent,
-                                    elevation: 0,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(12),
-                                    ),
-                                    child: Container(
-                                      height: 20,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(12),
-                                        border: Border.all(
-                                          color: Color(0xFF2094F3),
-                                          width: 1,
-                                        ),
+                    Builder(
+                      builder: (context) {
+                        final stores = getJsonField(
+                              gameDetailGetaGameResponse.jsonBody,
+                              r'''$.stores[:]''',
+                            )?.toList() ??
+                            [];
+                        return SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children:
+                                List.generate(stores.length, (storesIndex) {
+                              final storesItem = stores[storesIndex];
+                              return Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(0, 0, 4, 0),
+                                child: Material(
+                                  color: Colors.transparent,
+                                  elevation: 3,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  child: Container(
+                                    height: 25,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      border: Border.all(
+                                        color: Color(0xFF2094F3),
+                                        width: 2,
                                       ),
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            2, 2, 2, 2),
-                                        child: InkWell(
-                                          onTap: () async {
-                                            await launchURL(getJsonField(
-                                              storesItem,
-                                              r'''$.url''',
-                                            ).toString());
-                                          },
-                                          child: Text(
-                                            getJsonField(
-                                              storesItem,
-                                              r'''$.store.name''',
-                                            ).toString().maybeHandleOverflow(
-                                                  maxChars: 60,
-                                                  replacement: '…',
-                                                ),
-                                            style: FlutterFlowTheme.bodyText1
-                                                .override(
-                                              fontFamily: 'Roboto',
-                                              color: Color(0xFF2094F3),
-                                            ),
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          4, 4, 4, 4),
+                                      child: InkWell(
+                                        onTap: () async {
+                                          await launchURL(getJsonField(
+                                            storesItem,
+                                            r'''$.url''',
+                                          ).toString());
+                                        },
+                                        child: Text(
+                                          getJsonField(
+                                            storesItem,
+                                            r'''$.store.name''',
+                                          ).toString().maybeHandleOverflow(
+                                                maxChars: 60,
+                                                replacement: '…',
+                                              ),
+                                          style: FlutterFlowTheme.bodyText1
+                                              .override(
+                                            fontFamily: 'Roboto',
+                                            color: Color(0xFF2094F3),
                                           ),
                                         ),
                                       ),
                                     ),
                                   ),
-                                );
-                              }),
-                            ),
-                          );
-                        },
-                      ),
+                                ),
+                              );
+                            }),
+                          ),
+                        );
+                      },
                     ),
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(16, 12, 16, 0),
