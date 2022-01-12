@@ -950,7 +950,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         height: 250,
                         decoration: BoxDecoration(),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 25),
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
