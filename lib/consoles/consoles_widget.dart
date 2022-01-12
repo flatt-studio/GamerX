@@ -89,7 +89,7 @@ class _ConsolesWidgetState extends State<ConsolesWidget> {
                           crossAxisCount: 2,
                           crossAxisSpacing: 10,
                           mainAxisSpacing: 10,
-                          childAspectRatio: 0.8,
+                          childAspectRatio: 0.75,
                         ),
                         scrollDirection: Axis.vertical,
                         itemCount: gridViewConsolsRecordList.length,
