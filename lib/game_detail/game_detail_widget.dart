@@ -387,7 +387,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(16, 4, 16, 0),
+                      padding: EdgeInsetsDirectional.fromSTEB(16, 4, 16, 4),
                       child: Builder(
                         builder: (context) {
                           final platforms = getJsonField(
@@ -497,7 +497,11 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                                   maxChars: 60,
                                                   replacement: '…',
                                                 ),
-                                            style: FlutterFlowTheme.bodyText1,
+                                            style: FlutterFlowTheme.bodyText1
+                                                .override(
+                                              fontFamily: 'Roboto',
+                                              color: Color(0xFF2094F3),
+                                            ),
                                           ),
                                         ),
                                       ),
