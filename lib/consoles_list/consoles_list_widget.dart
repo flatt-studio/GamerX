@@ -356,7 +356,7 @@ class _ConsolesListWidgetState extends State<ConsolesListWidget> {
                                                                 getJsonField(
                                                                   containerGetaGameResponse
                                                                       .jsonBody,
-                                                                  r'''$.genres[:0].name''',
+                                                                  r'''$.genres[:].name''',
                                                                 )
                                                                     .toString()
                                                                     .maybeHandleOverflow(
