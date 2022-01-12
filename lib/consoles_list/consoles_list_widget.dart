@@ -327,7 +327,54 @@ class _ConsolesListWidgetState extends State<ConsolesListWidget> {
                                                             crossAxisAlignment:
                                                                 CrossAxisAlignment
                                                                     .start,
-                                                            children: [],
+                                                            children: [
+                                                              Expanded(
+                                                                child: Text(
+                                                                  getJsonField(
+                                                                    containerGetaGameResponse
+                                                                        .jsonBody,
+                                                                    r'''$.name''',
+                                                                  )
+                                                                      .toString()
+                                                                      .maybeHandleOverflow(
+                                                                        maxChars:
+                                                                            20,
+                                                                        replacement:
+                                                                            '…',
+                                                                      ),
+                                                                  style: FlutterFlowTheme
+                                                                      .title3
+                                                                      .override(
+                                                                    fontFamily:
+                                                                        'Playfair Display',
+                                                                    color: FlutterFlowTheme
+                                                                        .secondaryColor,
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                              Text(
+                                                                getJsonField(
+                                                                  containerGetaGameResponse
+                                                                      .jsonBody,
+                                                                  r'''$.genres[:0].name''',
+                                                                )
+                                                                    .toString()
+                                                                    .maybeHandleOverflow(
+                                                                      maxChars:
+                                                                          20,
+                                                                      replacement:
+                                                                          '…',
+                                                                    ),
+                                                                style: FlutterFlowTheme
+                                                                    .subtitle2
+                                                                    .override(
+                                                                  fontFamily:
+                                                                      'Lato',
+                                                                  color: FlutterFlowTheme
+                                                                      .secondaryColor,
+                                                                ),
+                                                              ),
+                                                            ],
                                                           ),
                                                         ),
                                                       ),
