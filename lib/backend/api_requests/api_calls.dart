@@ -139,7 +139,7 @@ class GetPopularGamesRAWGCall {
     return ApiManager.instance.makeApiCall(
       callName: 'getPopularGamesRAWG',
       apiUrl:
-          'https://api.rawg.io/api/games?key=${apiKey}&dates=2021-01-01,2022-12-30&ordering=-rating&platform=17,1,187,4,186,7,18,8,6',
+          'https://api.rawg.io/api/games?key=${apiKey}&dates=2021-01-01,2022-12-30&ordering=-rating&platform=17,1,187,4,186,7,18,8,6,3,21',
       callType: ApiCallType.GET,
       headers: {},
       params: {},
@@ -155,7 +155,7 @@ class GetReleasedGamesRAWGCall {
     return ApiManager.instance.makeApiCall(
       callName: 'getReleasedGamesRAWG',
       apiUrl:
-          'https://api.rawg.io/api/games?key=${apiKey}&dates=2022-01-01,2022-12-30&ordering=-released',
+          'https://api.rawg.io/api/games?key=${apiKey}&dates=2022-01-01,2022-12-30&ordering=-released&platform=17,1,187,4,186,7,18,8,6,3,21',
       callType: ApiCallType.GET,
       headers: {},
       params: {},
