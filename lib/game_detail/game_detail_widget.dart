@@ -494,7 +494,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                             valueOrDefault<String>(
                                               getJsonField(
                                                 platformStoresItem,
-                                                r'''$.store.name''',
+                                                r'''$.store,name''',
                                               ).toString(),
                                               'empty',
                                             ).maybeHandleOverflow(
