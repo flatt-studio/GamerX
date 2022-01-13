@@ -151,12 +151,11 @@ class GetPopularGamesRAWGCall {
 class GetReleasedGamesRAWGCall {
   static Future<ApiCallResponse> call({
     String apiKey = '1c50b5904fdb4cfdbf6b7307fc692ed9',
-    String id = '1',
   }) {
     return ApiManager.instance.makeApiCall(
       callName: 'getReleasedGamesRAWG',
       apiUrl:
-          'https://api.rawg.io/api/games/${id}?key=${apiKey}&dates=2022-01-01,2022-12-30&ordering=released',
+          'https://api.rawg.io/api/games?key=${apiKey}&dates=2022-01-01,2022-12-30&ordering=released',
       callType: ApiCallType.GET,
       headers: {},
       params: {},
