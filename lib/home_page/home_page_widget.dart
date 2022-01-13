@@ -640,7 +640,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                     r'''$.results''',
                                                   )?.toList() ??
                                                   [])
-                                              .take(30)
+                                              .take(5)
                                               .toList();
                                           return SingleChildScrollView(
                                             scrollDirection: Axis.horizontal,
