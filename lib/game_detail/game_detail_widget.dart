@@ -449,7 +449,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(16, 4, 16, 4),
                         child: FutureBuilder<ApiCallResponse>(
-                          future: GetaGameCall.call(
+                          future: GetPlatformsOfaGameRAWGCall.call(
                             id: widget.gameId,
                           ),
                           builder: (context, snapshot) {
@@ -465,7 +465,8 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                 ),
                               );
                             }
-                            final rowGetaGameResponse = snapshot.data;
+                            final rowGetPlatformsOfaGameRAWGResponse =
+                                snapshot.data;
                             return Builder(
                               builder: (context) {
                                 final platformStores = (getJsonField(
