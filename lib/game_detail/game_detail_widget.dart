@@ -448,7 +448,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                       padding: EdgeInsetsDirectional.fromSTEB(16, 4, 16, 4),
                       child: Builder(
                         builder: (context) {
-                          final stores = getJsonField(
+                          final platformStores = getJsonField(
                                 gameDetailGetaGameResponse.jsonBody,
                                 r'''$.stores[:0]''',
                               )?.toList() ??
@@ -459,16 +459,17 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.center,
-                              children:
-                                  List.generate(stores.length, (storesIndex) {
-                                final storesItem = stores[storesIndex];
+                              children: List.generate(platformStores.length,
+                                  (platformStoresIndex) {
+                                final platformStoresItem =
+                                    platformStores[platformStoresIndex];
                                 return Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0, 0, 4, 0),
                                   child: InkWell(
                                     onTap: () async {
                                       await launchURL(getJsonField(
-                                        storesItem,
+                                        platformStoresItem,
                                         r'''$.url''',
                                       ).toString());
                                     },
@@ -494,7 +495,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                                   4, 4, 4, 4),
                                           child: Text(
                                             getJsonField(
-                                              storesItem,
+                                              platformStoresItem,
                                               r'''$.store.name''',
                                             ).toString().maybeHandleOverflow(
                                                   maxChars: 60,
