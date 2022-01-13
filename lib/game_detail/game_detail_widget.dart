@@ -467,7 +467,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                           return Builder(
                             builder: (context) {
                               final stores = getJsonField(
-                                    gameDetailGetaGameResponse.jsonBody,
+                                    rowGetaGameResponse.jsonBody,
                                     r'''$.stores[:0]''',
                                   )?.toList() ??
                                   [];
@@ -486,7 +486,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                       child: InkWell(
                                         onTap: () async {
                                           await launchURL(getJsonField(
-                                            rowGetaGameResponse.jsonBody,
+                                            storesItem,
                                             r'''$.url''',
                                           ).toString());
                                         },
