@@ -452,7 +452,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                           builder: (context) {
                             final platformStores = (getJsonField(
                                       gameDetailGetaGameResponse.jsonBody,
-                                      r'''$.stores[:]''',
+                                      r'''$.results''',
                                     )?.toList() ??
                                     [])
                                 .take(8)
@@ -470,41 +470,50 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                   return Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0, 0, 4, 0),
-                                    child: Material(
-                                      color: Colors.transparent,
-                                      elevation: 3,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(8),
-                                      ),
-                                      child: Container(
-                                        height: 25,
-                                        decoration: BoxDecoration(
+                                    child: InkWell(
+                                      onTap: () async {
+                                        await launchURL(getJsonField(
+                                          gameDetailGetaGameResponse.jsonBody,
+                                          r'''$.results[:].stores.url''',
+                                        ).toString());
+                                      },
+                                      child: Material(
+                                        color: Colors.transparent,
+                                        elevation: 3,
+                                        shape: RoundedRectangleBorder(
                                           borderRadius:
                                               BorderRadius.circular(8),
-                                          border: Border.all(
-                                            color: Color(0xFF2094F3),
-                                            width: 2,
-                                          ),
                                         ),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  4, 4, 4, 4),
-                                          child: Text(
-                                            valueOrDefault<String>(
-                                              getJsonField(
-                                                platformStoresItem,
-                                                r'''$.store,name''',
-                                              ).toString(),
-                                              'empty',
-                                            ).maybeHandleOverflow(
-                                              maxChars: 60,
-                                              replacement: '…',
-                                            ),
-                                            style: FlutterFlowTheme.bodyText1
-                                                .override(
-                                              fontFamily: 'Roboto',
+                                        child: Container(
+                                          height: 25,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                            border: Border.all(
                                               color: Color(0xFF2094F3),
+                                              width: 2,
+                                            ),
+                                          ),
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    4, 4, 4, 4),
+                                            child: Text(
+                                              valueOrDefault<String>(
+                                                getJsonField(
+                                                  platformStoresItem,
+                                                  r'''$.store.name''',
+                                                ).toString(),
+                                                'empty',
+                                              ).maybeHandleOverflow(
+                                                maxChars: 60,
+                                                replacement: '…',
+                                              ),
+                                              style: FlutterFlowTheme.bodyText1
+                                                  .override(
+                                                fontFamily: 'Roboto',
+                                                color: Color(0xFF2094F3),
+                                              ),
                                             ),
                                           ),
                                         ),
