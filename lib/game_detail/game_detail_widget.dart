@@ -486,8 +486,8 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                       child: InkWell(
                                         onTap: () async {
                                           await launchURL(getJsonField(
-                                            storesItem,
-                                            r'''$.url''',
+                                            rowGetaGameResponse.jsonBody,
+                                            r'''$.stores[:0].url''',
                                           ).toString());
                                         },
                                         child: Material(
