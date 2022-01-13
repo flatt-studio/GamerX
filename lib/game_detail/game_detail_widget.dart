@@ -452,7 +452,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                           builder: (context) {
                             final platformStores = getJsonField(
                                   gameDetailGetaGameResponse.jsonBody,
-                                  r'''$.stores[:0]''',
+                                  r'''$.stores''',
                                 )?.toList() ??
                                 [];
                             return SingleChildScrollView(
@@ -472,7 +472,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                       onTap: () async {
                                         await launchURL(getJsonField(
                                           platformStoresItem,
-                                          r'''$.url''',
+                                          r'''$..url''',
                                         ).toString());
                                       },
                                       child: Material(
