@@ -591,7 +591,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                         gameDetailGetaGameResponse.jsonBody,
                                         r'''$.esrb_rating.name''',
                                       ).toString(),
-                                      'N/A',
+                                      '0',
                                     ),
                                     textAlign: TextAlign.center,
                                     style: FlutterFlowTheme.bodyText1,
@@ -665,10 +665,13 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0, 0, 0, 4),
                                   child: Text(
-                                    getJsonField(
-                                      gameDetailGetaGameResponse.jsonBody,
-                                      r'''$.metacritic''',
-                                    ).toString(),
+                                    valueOrDefault<String>(
+                                      getJsonField(
+                                        gameDetailGetaGameResponse.jsonBody,
+                                        r'''$.metacritic''',
+                                      ).toString(),
+                                      '0',
+                                    ),
                                     textAlign: TextAlign.center,
                                     style: FlutterFlowTheme.bodyText1,
                                   ),
