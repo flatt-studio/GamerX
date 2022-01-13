@@ -915,7 +915,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                               getJsonField(
                                                                                 popularGameItem,
                                                                                 r'''$..genres..name''',
-                                                                              ).toString(),
+                                                                              ).toString().maybeHandleOverflow(
+                                                                                    maxChars: 18,
+                                                                                    replacement: '…',
+                                                                                  ),
                                                                               style: FlutterFlowTheme.bodyText1,
                                                                             ),
                                                                           ],
