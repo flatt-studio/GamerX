@@ -474,7 +474,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                       onTap: () async {
                                         await launchURL(getJsonField(
                                           platformStoresItem,
-                                          r'''$.stores.url''',
+                                          r'''$.url''',
                                         ).toString());
                                       },
                                       child: Material(
