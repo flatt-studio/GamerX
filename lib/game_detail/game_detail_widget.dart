@@ -934,7 +934,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                                       child: CachedNetworkImage(
                                                         imageUrl: getJsonField(
                                                           gameVideosItem,
-                                                          r'''$.image''',
+                                                          r'''$..preview''',
                                                         ),
                                                         width: 250,
                                                         height: 140,
