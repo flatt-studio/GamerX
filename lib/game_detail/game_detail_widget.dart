@@ -338,7 +338,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                       ],
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(16, 12, 16, 0),
+                      padding: EdgeInsetsDirectional.fromSTEB(16, 12, 16, 4),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -357,7 +357,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(16, 4, 16, 0),
+                      padding: EdgeInsetsDirectional.fromSTEB(16, 4, 16, 4),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -444,72 +444,75 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                         },
                       ),
                     ),
-                    Builder(
-                      builder: (context) {
-                        final stores = getJsonField(
-                              gameDetailGetaGameResponse.jsonBody,
-                              r'''$.stores[:]''',
-                            )?.toList() ??
-                            [];
-                        return SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children:
-                                List.generate(stores.length, (storesIndex) {
-                              final storesItem = stores[storesIndex];
-                              return Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 0, 4, 0),
-                                child: Material(
-                                  color: Colors.transparent,
-                                  elevation: 3,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                  child: Container(
-                                    height: 25,
-                                    decoration: BoxDecoration(
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(16, 4, 16, 4),
+                      child: Builder(
+                        builder: (context) {
+                          final stores = getJsonField(
+                                gameDetailGetaGameResponse.jsonBody,
+                                r'''$.stores[:]''',
+                              )?.toList() ??
+                              [];
+                          return SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children:
+                                  List.generate(stores.length, (storesIndex) {
+                                final storesItem = stores[storesIndex];
+                                return Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 0, 4, 0),
+                                  child: Material(
+                                    color: Colors.transparent,
+                                    elevation: 3,
+                                    shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(8),
-                                      border: Border.all(
-                                        color: Color(0xFF2094F3),
-                                        width: 2,
-                                      ),
                                     ),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          4, 4, 4, 4),
-                                      child: InkWell(
-                                        onTap: () async {
-                                          await launchURL(getJsonField(
-                                            storesItem,
-                                            r'''$.url''',
-                                          ).toString());
-                                        },
-                                        child: Text(
-                                          getJsonField(
-                                            storesItem,
-                                            r'''$.store.name''',
-                                          ).toString().maybeHandleOverflow(
-                                                maxChars: 60,
-                                                replacement: '…',
-                                              ),
-                                          style: FlutterFlowTheme.bodyText1
-                                              .override(
-                                            fontFamily: 'Roboto',
-                                            color: Color(0xFF2094F3),
+                                    child: Container(
+                                      height: 25,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(8),
+                                        border: Border.all(
+                                          color: Color(0xFF2094F3),
+                                          width: 2,
+                                        ),
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            4, 4, 4, 4),
+                                        child: InkWell(
+                                          onTap: () async {
+                                            await launchURL(getJsonField(
+                                              storesItem,
+                                              r'''$.url''',
+                                            ).toString());
+                                          },
+                                          child: Text(
+                                            getJsonField(
+                                              storesItem,
+                                              r'''$.store.name''',
+                                            ).toString().maybeHandleOverflow(
+                                                  maxChars: 60,
+                                                  replacement: '…',
+                                                ),
+                                            style: FlutterFlowTheme.bodyText1
+                                                .override(
+                                              fontFamily: 'Roboto',
+                                              color: Color(0xFF2094F3),
+                                            ),
                                           ),
                                         ),
                                       ),
                                     ),
                                   ),
-                                ),
-                              );
-                            }),
-                          ),
-                        );
-                      },
+                                );
+                              }),
+                            ),
+                          );
+                        },
+                      ),
                     ),
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(16, 12, 16, 0),
@@ -554,10 +557,13 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0, 0, 0, 4),
                                   child: Text(
-                                    getJsonField(
-                                      gameDetailGetaGameResponse.jsonBody,
-                                      r'''$.esrb_rating.name''',
-                                    ).toString(),
+                                    valueOrDefault<String>(
+                                      getJsonField(
+                                        gameDetailGetaGameResponse.jsonBody,
+                                        r'''$.esrb_rating.name''',
+                                      ).toString(),
+                                      'N/A',
+                                    ),
                                     textAlign: TextAlign.center,
                                     style: FlutterFlowTheme.bodyText1,
                                   ),
@@ -591,10 +597,13 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0, 0, 0, 4),
                                   child: Text(
-                                    getJsonField(
-                                      gameDetailGetaGameResponse.jsonBody,
-                                      r'''$.genres[:1].name''',
-                                    ).toString(),
+                                    valueOrDefault<String>(
+                                      getJsonField(
+                                        gameDetailGetaGameResponse.jsonBody,
+                                        r'''$.genres[:0].name''',
+                                      ).toString(),
+                                      'N/A',
+                                    ),
                                     textAlign: TextAlign.center,
                                     style: FlutterFlowTheme.bodyText1,
                                   ),
