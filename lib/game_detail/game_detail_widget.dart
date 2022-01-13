@@ -6,6 +6,7 @@ import '../flutter_flow/flutter_flow_expanded_image_view.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../flutter_flow/flutter_flow_video_player.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
@@ -916,32 +917,17 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                                   (gameVideosIndex) {
                                                 final gameVideosItem =
                                                     gameVideos[gameVideosIndex];
-                                                return Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(0, 0, 10, 0),
-                                                  child: InkWell(
-                                                    onTap: () async {
-                                                      await launchURL(
-                                                          getJsonField(
-                                                        gameVideosItem,
-                                                        r'''$..data.max''',
-                                                      ).toString());
-                                                    },
-                                                    child: ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              5),
-                                                      child: CachedNetworkImage(
-                                                        imageUrl: getJsonField(
-                                                          gameVideosItem,
-                                                          r'''$..preview''',
-                                                        ),
-                                                        width: 250,
-                                                        height: 140,
-                                                        fit: BoxFit.cover,
-                                                      ),
-                                                    ),
+                                                return FlutterFlowVideoPlayer(
+                                                  path: getJsonField(
+                                                    gameVideosItem,
+                                                    r'''$..data.max''',
                                                   ),
+                                                  videoType: VideoType.network,
+                                                  autoPlay: false,
+                                                  looping: true,
+                                                  showControls: true,
+                                                  allowFullScreen: true,
+                                                  allowPlaybackSpeedMenu: false,
                                                 );
                                               }),
                                             ),
