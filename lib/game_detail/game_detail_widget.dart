@@ -450,7 +450,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                         builder: (context) {
                           final stores = getJsonField(
                                 gameDetailGetaGameResponse.jsonBody,
-                                r'''$.stores[:]''',
+                                r'''$.stores[:0]''',
                               )?.toList() ??
                               [];
                           return SingleChildScrollView(
@@ -458,54 +458,107 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children:
                                   List.generate(stores.length, (storesIndex) {
                                 final storesItem = stores[storesIndex];
                                 return Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0, 0, 4, 0),
-                                  child: Material(
-                                    color: Colors.transparent,
-                                    elevation: 3,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(8),
+                                  child: FutureBuilder<ApiCallResponse>(
+                                    future: GetaGameCall.call(
+                                      id: widget.gameId,
                                     ),
-                                    child: Container(
-                                      height: 25,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(8),
-                                        border: Border.all(
-                                          color: Color(0xFF2094F3),
-                                          width: 2,
-                                        ),
-                                      ),
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            4, 4, 4, 4),
-                                        child: InkWell(
-                                          onTap: () async {
-                                            await launchURL(getJsonField(
-                                              storesItem,
-                                              r'''$.url''',
-                                            ).toString());
-                                          },
-                                          child: Text(
-                                            getJsonField(
-                                              storesItem,
-                                              r'''$.store.name''',
-                                            ).toString().maybeHandleOverflow(
-                                                  maxChars: 60,
-                                                  replacement: '…',
+                                    builder: (context, snapshot) {
+                                      // Customize what your widget looks like when it's loading.
+                                      if (!snapshot.hasData) {
+                                        return Center(
+                                          child: SizedBox(
+                                            width: 40,
+                                            height: 40,
+                                            child: CircularProgressIndicator(
+                                              color:
+                                                  FlutterFlowTheme.primaryColor,
+                                            ),
+                                          ),
+                                        );
+                                      }
+                                      final containerGetaGameResponse =
+                                          snapshot.data;
+                                      return InkWell(
+                                        onTap: () async {
+                                          await launchURL(getJsonField(
+                                            storesItem,
+                                            r'''$.url''',
+                                          ).toString());
+                                        },
+                                        child: Material(
+                                          color: Colors.transparent,
+                                          elevation: 3,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                          ),
+                                          child: Container(
+                                            height: 25,
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                              border: Border.all(
+                                                color: Color(0xFF2094F3),
+                                                width: 2,
+                                              ),
+                                            ),
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(4, 4, 4, 4),
+                                              child: FutureBuilder<
+                                                  ApiCallResponse>(
+                                                future: GetaGameCall.call(
+                                                  id: widget.gameId,
                                                 ),
-                                            style: FlutterFlowTheme.bodyText1
-                                                .override(
-                                              fontFamily: 'Roboto',
-                                              color: Color(0xFF2094F3),
+                                                builder: (context, snapshot) {
+                                                  // Customize what your widget looks like when it's loading.
+                                                  if (!snapshot.hasData) {
+                                                    return Center(
+                                                      child: SizedBox(
+                                                        width: 40,
+                                                        height: 40,
+                                                        child:
+                                                            CircularProgressIndicator(
+                                                          color:
+                                                              FlutterFlowTheme
+                                                                  .primaryColor,
+                                                        ),
+                                                      ),
+                                                    );
+                                                  }
+                                                  final textGetaGameResponse =
+                                                      snapshot.data;
+                                                  return Text(
+                                                    getJsonField(
+                                                      storesItem,
+                                                      r'''$.store.name''',
+                                                    )
+                                                        .toString()
+                                                        .maybeHandleOverflow(
+                                                          maxChars: 60,
+                                                          replacement: '…',
+                                                        ),
+                                                    style: FlutterFlowTheme
+                                                        .bodyText1
+                                                        .override(
+                                                      fontFamily: 'Roboto',
+                                                      color: Color(0xFF2094F3),
+                                                    ),
+                                                  );
+                                                },
+                                              ),
                                             ),
                                           ),
                                         ),
-                                      ),
-                                    ),
+                                      );
+                                    },
                                   ),
                                 );
                               }),
@@ -723,6 +776,8 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                       collapseIcon: Icons.arrow_drop_down,
                                       iconSize: 24,
                                       iconColor: FlutterFlowTheme.tertiaryColor,
+                                      iconPadding:
+                                          EdgeInsets.fromLTRB(0, 0, 8, 8),
                                     ),
                                   ),
                                 ),
