@@ -369,7 +369,7 @@ class GetUpcomingGamesRAWGCall {
     return ApiManager.instance.makeApiCall(
       callName: 'getUpcomingGamesRAWG',
       apiUrl:
-          'https://api.rawg.io/api/games?key=${apiKey}&dates=2022-01-10,2022-12-10&ordering=-added',
+          'https://api.rawg.io/api/games?key=${apiKey}&dates=2022-01-10,2022-12-10&ordering=-added&platform=17,1,187,4,186,7,18,8,6,3,21',
       callType: ApiCallType.GET,
       headers: {},
       params: {},
