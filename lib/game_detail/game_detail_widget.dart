@@ -450,11 +450,13 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                         padding: EdgeInsetsDirectional.fromSTEB(16, 4, 16, 4),
                         child: Builder(
                           builder: (context) {
-                            final platformStores = getJsonField(
-                                  gameDetailGetaGameResponse.jsonBody,
-                                  r'''$.stores[:]''',
-                                )?.toList() ??
-                                [];
+                            final platformStores = (getJsonField(
+                                      gameDetailGetaGameResponse.jsonBody,
+                                      r'''$.stores[:]''',
+                                    )?.toList() ??
+                                    [])
+                                .take(8)
+                                .toList();
                             return SingleChildScrollView(
                               scrollDirection: Axis.horizontal,
                               child: Row(
