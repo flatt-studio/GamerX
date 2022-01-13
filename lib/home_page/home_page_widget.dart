@@ -914,7 +914,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                             Text(
                                                                               getJsonField(
                                                                                 popularGameItem,
-                                                                                r'''$.released''',
+                                                                                r'''$..genres..name''',
                                                                               ).toString(),
                                                                               style: FlutterFlowTheme.bodyText1,
                                                                             ),
