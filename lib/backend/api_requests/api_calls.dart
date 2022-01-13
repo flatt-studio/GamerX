@@ -284,7 +284,7 @@ class GetAchievementsOfaGameRAWGCall {
 
 class GetMoviesOfaGameRAWGCall {
   static Future<ApiCallResponse> call({
-    String apiKey = '1c52992961514c789f02e65493cfbb83',
+    String apiKey = '1c50b5904fdb4cfdbf6b7307fc692ed9',
     String id = '4',
   }) {
     return ApiManager.instance.makeApiCall(

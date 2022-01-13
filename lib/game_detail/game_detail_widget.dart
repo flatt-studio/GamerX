@@ -858,6 +858,105 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                         ),
                       ],
                     ),
+                    Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Expanded(
+                          child: Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(16, 12, 16, 20),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 0, 0, 4),
+                                  child: Text(
+                                    'Videos',
+                                    style: FlutterFlowTheme.subtitle1,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 10, 0, 0),
+                                  child: FutureBuilder<ApiCallResponse>(
+                                    future: GetMoviesOfaGameRAWGCall.call(),
+                                    builder: (context, snapshot) {
+                                      // Customize what your widget looks like when it's loading.
+                                      if (!snapshot.hasData) {
+                                        return Center(
+                                          child: SizedBox(
+                                            width: 40,
+                                            height: 40,
+                                            child: CircularProgressIndicator(
+                                              color:
+                                                  FlutterFlowTheme.primaryColor,
+                                            ),
+                                          ),
+                                        );
+                                      }
+                                      final rowGetMoviesOfaGameRAWGResponse =
+                                          snapshot.data;
+                                      return Builder(
+                                        builder: (context) {
+                                          final gameVideos = getJsonField(
+                                                rowGetMoviesOfaGameRAWGResponse
+                                                    .jsonBody,
+                                                r'''$.results''',
+                                              )?.toList() ??
+                                              [];
+                                          return SingleChildScrollView(
+                                            scrollDirection: Axis.horizontal,
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: List.generate(
+                                                  gameVideos.length,
+                                                  (gameVideosIndex) {
+                                                final gameVideosItem =
+                                                    gameVideos[gameVideosIndex];
+                                                return Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(0, 0, 10, 0),
+                                                  child: InkWell(
+                                                    onTap: () async {
+                                                      await launchURL(
+                                                          getJsonField(
+                                                        gameVideosItem,
+                                                        r'''$..data.max''',
+                                                      ).toString());
+                                                    },
+                                                    child: ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              5),
+                                                      child: CachedNetworkImage(
+                                                        imageUrl: getJsonField(
+                                                          gameVideosItem,
+                                                          r'''$.image''',
+                                                        ),
+                                                        width: 250,
+                                                        height: 140,
+                                                        fit: BoxFit.cover,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                );
+                                              }),
+                                            ),
+                                          );
+                                        },
+                                      );
+                                    },
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               );
