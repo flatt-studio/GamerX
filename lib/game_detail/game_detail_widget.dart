@@ -883,7 +883,10 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                       0, 10, 0, 0),
                                   child: FutureBuilder<ApiCallResponse>(
                                     future: GetMoviesOfaGameRAWGCall.call(
-                                      id: widget.gameId,
+                                      id: valueOrDefault<String>(
+                                        widget.gameId,
+                                        '\$.id',
+                                      ),
                                     ),
                                     builder: (context, snapshot) {
                                       // Customize what your widget looks like when it's loading.
