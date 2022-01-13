@@ -155,7 +155,7 @@ class GetReleasedGamesRAWGCall {
     return ApiManager.instance.makeApiCall(
       callName: 'getReleasedGamesRAWG',
       apiUrl:
-          'https://api.rawg.io/api/games?key=${apiKey}&dates=2022-01-01,2022-12-30&ordering=released',
+          'https://api.rawg.io/api/games?key=${apiKey}&dates=2022-01-01,2022-12-30&ordering=-released',
       callType: ApiCallType.GET,
       headers: {},
       params: {},
