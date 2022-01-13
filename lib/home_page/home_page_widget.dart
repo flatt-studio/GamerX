@@ -678,11 +678,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                           RoundedRectangleBorder(
                                                         borderRadius:
                                                             BorderRadius
-                                                                .circular(10),
+                                                                .circular(8),
                                                       ),
                                                       child: Container(
                                                         width: 125,
-                                                        height: 205,
+                                                        height: 210,
                                                         decoration:
                                                             BoxDecoration(
                                                           boxShadow: [
@@ -696,11 +696,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                           ],
                                                           borderRadius:
                                                               BorderRadius
-                                                                  .circular(10),
+                                                                  .circular(8),
                                                           border: Border.all(
                                                             color: FlutterFlowTheme
                                                                 .tertiaryColor,
-                                                            width: 3,
+                                                            width: 2,
                                                           ),
                                                         ),
                                                         child: Column(
