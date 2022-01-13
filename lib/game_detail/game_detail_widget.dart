@@ -569,7 +569,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                   child: Text(
                                     getJsonField(
                                       gameDetailGetaGameResponse.jsonBody,
-                                      r'''$.esrb_rating.name''',
+                                      r'''$.esrb_rating..name''',
                                     ).toString(),
                                     textAlign: TextAlign.center,
                                     style: FlutterFlowTheme.bodyText1,
@@ -606,7 +606,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                   child: Text(
                                     getJsonField(
                                       gameDetailGetaGameResponse.jsonBody,
-                                      r'''$.genres[:0].name''',
+                                      r'''$.genres..name''',
                                     ).toString(),
                                     textAlign: TextAlign.center,
                                     style: FlutterFlowTheme.bodyText1,
@@ -629,7 +629,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0, 0, 0, 4),
                                   child: Text(
-                                    'Metacritics',
+                                    'Rating',
                                     style: FlutterFlowTheme.subtitle2.override(
                                       fontFamily: 'Lato',
                                       color: Color(0xFF8B97A2),
@@ -640,10 +640,10 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0, 0, 0, 4),
                                   child: Text(
-                                    getJsonField(
+                                    '${getJsonField(
                                       gameDetailGetaGameResponse.jsonBody,
-                                      r'''$.metacritic''',
-                                    ).toString(),
+                                      r'''$.rating_top''',
+                                    ).toString()}/5',
                                     textAlign: TextAlign.center,
                                     style: FlutterFlowTheme.bodyText1,
                                   ),
