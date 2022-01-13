@@ -487,7 +487,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                         onTap: () async {
                                           await launchURL(getJsonField(
                                             rowGetaGameResponse.jsonBody,
-                                            r'''$.stores[:0].url''',
+                                            r'''$.url''',
                                           ).toString());
                                         },
                                         child: Material(
@@ -510,51 +510,22 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                             child: Padding(
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(4, 4, 4, 4),
-                                              child: FutureBuilder<
-                                                  ApiCallResponse>(
-                                                future: GetaGameCall.call(
-                                                  id: getJsonField(
-                                                    storesItem,
-                                                    r'''$.stores[:0].store''',
-                                                  ).toString(),
-                                                ),
-                                                builder: (context, snapshot) {
-                                                  // Customize what your widget looks like when it's loading.
-                                                  if (!snapshot.hasData) {
-                                                    return Center(
-                                                      child: SizedBox(
-                                                        width: 40,
-                                                        height: 40,
-                                                        child:
-                                                            CircularProgressIndicator(
-                                                          color:
-                                                              FlutterFlowTheme
-                                                                  .primaryColor,
-                                                        ),
-                                                      ),
-                                                    );
-                                                  }
-                                                  final textGetaGameResponse =
-                                                      snapshot.data;
-                                                  return Text(
-                                                    getJsonField(
-                                                      textGetaGameResponse
-                                                          .jsonBody,
-                                                      r'''$.name''',
-                                                    )
-                                                        .toString()
-                                                        .maybeHandleOverflow(
-                                                          maxChars: 60,
-                                                          replacement: '…',
-                                                        ),
-                                                    style: FlutterFlowTheme
-                                                        .bodyText1
-                                                        .override(
-                                                      fontFamily: 'Roboto',
-                                                      color: Color(0xFF2094F3),
+                                              child: Text(
+                                                getJsonField(
+                                                  storesItem,
+                                                  r'''$.store.name''',
+                                                )
+                                                    .toString()
+                                                    .maybeHandleOverflow(
+                                                      maxChars: 60,
+                                                      replacement: '…',
                                                     ),
-                                                  );
-                                                },
+                                                style: FlutterFlowTheme
+                                                    .bodyText1
+                                                    .override(
+                                                  fontFamily: 'Roboto',
+                                                  color: Color(0xFF2094F3),
+                                                ),
                                               ),
                                             ),
                                           ),
