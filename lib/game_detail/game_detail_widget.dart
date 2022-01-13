@@ -475,28 +475,30 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                         [])
                                     .take(8)
                                     .toList();
-                                return SingleChildScrollView(
-                                  scrollDirection: Axis.horizontal,
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children:
-                                        List.generate(platformStores.length,
-                                            (platformStoresIndex) {
-                                      final platformStoresItem =
-                                          platformStores[platformStoresIndex];
-                                      return Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0, 0, 4, 0),
-                                        child: InkWell(
-                                          onTap: () async {
-                                            await launchURL(getJsonField(
-                                              platformStoresItem,
-                                              r'''$.url''',
-                                            ).toString());
-                                          },
+                                return InkWell(
+                                  onTap: () async {
+                                    await launchURL(getJsonField(
+                                      rowGetaGameResponse.jsonBody,
+                                      r'''$.url''',
+                                    ).toString());
+                                  },
+                                  child: SingleChildScrollView(
+                                    scrollDirection: Axis.horizontal,
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children:
+                                          List.generate(platformStores.length,
+                                              (platformStoresIndex) {
+                                        final platformStoresItem =
+                                            platformStores[platformStoresIndex];
+                                        return Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0, 0, 4, 0),
                                           child: Material(
                                             color: Colors.transparent,
                                             elevation: 3,
@@ -538,9 +540,9 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                               ),
                                             ),
                                           ),
-                                        ),
-                                      );
-                                    }),
+                                        );
+                                      }),
+                                    ),
                                   ),
                                 );
                               },
