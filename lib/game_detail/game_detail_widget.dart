@@ -569,7 +569,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                   child: Text(
                                     getJsonField(
                                       gameDetailGetaGameResponse.jsonBody,
-                                      r'''$.esrb_rating..name''',
+                                      r'''$..esrb_rating.name''',
                                     ).toString(),
                                     textAlign: TextAlign.center,
                                     style: FlutterFlowTheme.bodyText1,
@@ -606,7 +606,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                   child: Text(
                                     getJsonField(
                                       gameDetailGetaGameResponse.jsonBody,
-                                      r'''$.genres..name''',
+                                      r'''$..genres..name''',
                                     ).toString(),
                                     textAlign: TextAlign.center,
                                     style: FlutterFlowTheme.bodyText1,
