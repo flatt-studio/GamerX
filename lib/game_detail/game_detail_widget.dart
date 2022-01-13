@@ -489,13 +489,16 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                               EdgeInsetsDirectional.fromSTEB(
                                                   4, 4, 4, 4),
                                           child: Text(
-                                            getJsonField(
-                                              platformStoresItem,
-                                              r'''$.store.name''',
-                                            ).toString().maybeHandleOverflow(
-                                                  maxChars: 60,
-                                                  replacement: '…',
-                                                ),
+                                            valueOrDefault<String>(
+                                              getJsonField(
+                                                platformStoresItem,
+                                                r'''$.store.name''',
+                                              ).toString(),
+                                              'empty',
+                                            ).maybeHandleOverflow(
+                                              maxChars: 60,
+                                              replacement: '…',
+                                            ),
                                             style: FlutterFlowTheme.bodyText1
                                                 .override(
                                               fontFamily: 'Roboto',
