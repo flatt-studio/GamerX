@@ -350,10 +350,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                             getJsonField(
                               gameDetailGetaGameResponse.jsonBody,
                               r'''$.name''',
-                            ).toString().maybeHandleOverflow(
-                                  maxChars: 30,
-                                  replacement: '…',
-                                ),
+                            ).toString(),
                             style: FlutterFlowTheme.title3,
                           ),
                         ],
@@ -645,7 +642,10 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                       r'''$.rating_top''',
                                     ).toString()}/5',
                                     textAlign: TextAlign.center,
-                                    style: FlutterFlowTheme.bodyText1,
+                                    style: FlutterFlowTheme.bodyText1.override(
+                                      fontFamily: 'Roboto',
+                                      color: Color(0xFF378E3B),
+                                    ),
                                   ),
                                 ),
                               ],
