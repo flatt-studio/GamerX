@@ -649,7 +649,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                         style:
                                             FlutterFlowTheme.bodyText1.override(
                                           fontFamily: 'Roboto',
-                                          color: Color(0xFF378E3B),
+                                          color: FlutterFlowTheme.tertiaryColor,
                                         ),
                                       ),
                                     ),
