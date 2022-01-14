@@ -633,20 +633,35 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                     ),
                                   ),
                                 ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 0, 0, 4),
-                                  child: Text(
-                                    '${getJsonField(
-                                      gameDetailGetaGameResponse.jsonBody,
-                                      r'''$.rating_top''',
-                                    ).toString()}/5',
-                                    textAlign: TextAlign.center,
-                                    style: FlutterFlowTheme.bodyText1.override(
-                                      fontFamily: 'Roboto',
-                                      color: Color(0xFF378E3B),
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0, 0, 0, 4),
+                                      child: Text(
+                                        getJsonField(
+                                          gameDetailGetaGameResponse.jsonBody,
+                                          r'''$.rating_top''',
+                                        ).toString(),
+                                        textAlign: TextAlign.center,
+                                        style:
+                                            FlutterFlowTheme.bodyText1.override(
+                                          fontFamily: 'Roboto',
+                                          color: Color(0xFF378E3B),
+                                        ),
+                                      ),
                                     ),
-                                  ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0, 0, 0, 4),
+                                      child: Text(
+                                        '/5',
+                                        style: FlutterFlowTheme.bodyText1,
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),
