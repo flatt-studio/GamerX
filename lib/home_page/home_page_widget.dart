@@ -1633,7 +1633,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 40, 0, 0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                   child: Container(
                     width: MediaQuery.of(context).size.width,
                     height: 100,
@@ -1643,7 +1643,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(15, 15, 0, 0),
+                          padding: EdgeInsetsDirectional.fromSTEB(15, 0, 0, 0),
                           child: FlutterFlowIconButton(
                             borderColor: Colors.transparent,
                             borderRadius: 30,
@@ -1661,7 +1661,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 9),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
