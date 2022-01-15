@@ -1267,12 +1267,12 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                                         await currentUserReference.update(usersUpdateData);
                                                                                       },
                                                                                     ),
-                                                                                  if (!(functions.isItemInFav(
+                                                                                  if (functions.isItemInFav(
                                                                                           getJsonField(
                                                                                             releasedGameItem,
                                                                                             r'''$.id''',
                                                                                           ).toString(),
-                                                                                          homePageUsersRecord)) ??
+                                                                                          homePageUsersRecord) ??
                                                                                       true)
                                                                                     FlutterFlowIconButton(
                                                                                       borderColor: Colors.transparent,
