@@ -204,9 +204,9 @@ class _GamelistWidgetState extends State<GamelistWidget> {
                                     gridDelegate:
                                         SliverGridDelegateWithFixedCrossAxisCount(
                                       crossAxisCount: 2,
-                                      crossAxisSpacing: 10,
+                                      crossAxisSpacing: 5,
                                       mainAxisSpacing: 10,
-                                      childAspectRatio: 0.6,
+                                      childAspectRatio: 0.8,
                                     ),
                                     shrinkWrap: true,
                                     scrollDirection: Axis.vertical,
@@ -218,7 +218,7 @@ class _GamelistWidgetState extends State<GamelistWidget> {
                                               favoriteListItemIndex];
                                       return Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            5, 5, 5, 5),
+                                            5, 0, 5, 0),
                                         child: FutureBuilder<ApiCallResponse>(
                                           future: GetaGameCall.call(
                                             id: favoriteListItemItem,
