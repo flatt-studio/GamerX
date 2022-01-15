@@ -40,7 +40,7 @@ class _ConsolesWidgetState extends State<ConsolesWidget> {
                     FlutterFlowIconButton(
                       borderColor: Colors.transparent,
                       borderRadius: 30,
-                      buttonSize: 40,
+                      buttonSize: 46,
                       icon: Icon(
                         Icons.arrow_back_ios_sharp,
                         color: Colors.white,

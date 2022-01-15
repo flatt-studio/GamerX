@@ -43,7 +43,7 @@ class _SearchWidgetState extends State<SearchWidget> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
+                padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 16),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -53,7 +53,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                       borderRadius: 30,
                       buttonSize: 46,
                       icon: Icon(
-                        Icons.arrow_back_rounded,
+                        Icons.arrow_back_ios_sharp,
                         color: Colors.white,
                         size: 24,
                       ),

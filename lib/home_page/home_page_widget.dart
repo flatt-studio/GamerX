@@ -1632,91 +1632,94 @@ class _HomePageWidgetState extends State<HomePageWidget>
                     ],
                   ),
                 ),
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: 100,
-                  decoration: BoxDecoration(),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(15, 15, 0, 0),
-                        child: FlutterFlowIconButton(
-                          borderColor: Colors.transparent,
-                          borderRadius: 30,
-                          borderWidth: 1,
-                          buttonSize: 40,
-                          fillColor: FlutterFlowTheme.secondaryColor,
-                          icon: Icon(
-                            Icons.notes,
-                            color: FlutterFlowTheme.tertiaryColor,
-                            size: 24,
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 40, 0, 0),
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: 100,
+                    decoration: BoxDecoration(),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(15, 15, 0, 0),
+                          child: FlutterFlowIconButton(
+                            borderColor: Colors.transparent,
+                            borderRadius: 30,
+                            borderWidth: 1,
+                            buttonSize: 40,
+                            fillColor: FlutterFlowTheme.secondaryColor,
+                            icon: Icon(
+                              Icons.notes,
+                              color: FlutterFlowTheme.tertiaryColor,
+                              size: 24,
+                            ),
+                            onPressed: () async {
+                              scaffoldKey.currentState.openDrawer();
+                            },
                           ),
-                          onPressed: () async {
-                            scaffoldKey.currentState.openDrawer();
-                          },
                         ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 0, 15, 0),
-                              child: FlutterFlowIconButton(
-                                borderColor: Colors.transparent,
-                                borderRadius: 30,
-                                borderWidth: 1,
-                                buttonSize: 40,
-                                fillColor: FlutterFlowTheme.secondaryColor,
-                                icon: Icon(
-                                  Icons.search_outlined,
-                                  color: FlutterFlowTheme.tertiaryColor,
-                                  size: 24,
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(0, 0, 15, 0),
+                                child: FlutterFlowIconButton(
+                                  borderColor: Colors.transparent,
+                                  borderRadius: 30,
+                                  borderWidth: 1,
+                                  buttonSize: 40,
+                                  fillColor: FlutterFlowTheme.secondaryColor,
+                                  icon: Icon(
+                                    Icons.search_outlined,
+                                    color: FlutterFlowTheme.tertiaryColor,
+                                    size: 24,
+                                  ),
+                                  onPressed: () async {
+                                    await Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => SearchWidget(),
+                                      ),
+                                    );
+                                  },
                                 ),
-                                onPressed: () async {
-                                  await Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => SearchWidget(),
-                                    ),
-                                  );
-                                },
                               ),
-                            ),
-                            Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 0, 15, 0),
-                              child: FlutterFlowIconButton(
-                                borderColor: Colors.transparent,
-                                borderRadius: 30,
-                                borderWidth: 1,
-                                buttonSize: 40,
-                                fillColor: FlutterFlowTheme.secondaryColor,
-                                icon: Icon(
-                                  Icons.games_sharp,
-                                  color: FlutterFlowTheme.tertiaryColor,
-                                  size: 24,
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(0, 0, 15, 0),
+                                child: FlutterFlowIconButton(
+                                  borderColor: Colors.transparent,
+                                  borderRadius: 30,
+                                  borderWidth: 1,
+                                  buttonSize: 40,
+                                  fillColor: FlutterFlowTheme.secondaryColor,
+                                  icon: Icon(
+                                    Icons.games_sharp,
+                                    color: FlutterFlowTheme.tertiaryColor,
+                                    size: 24,
+                                  ),
+                                  onPressed: () async {
+                                    await Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => GamelistWidget(),
+                                      ),
+                                    );
+                                    setState(() => FFAppState().apiCallParams =
+                                        'platforms=1');
+                                  },
                                 ),
-                                onPressed: () async {
-                                  await Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => GamelistWidget(),
-                                    ),
-                                  );
-                                  setState(() => FFAppState().apiCallParams =
-                                      'platforms=1');
-                                },
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ],

@@ -71,7 +71,7 @@ class _ConsolesListWidgetState extends State<ConsolesListWidget> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
+                    padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 16),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -81,7 +81,7 @@ class _ConsolesListWidgetState extends State<ConsolesListWidget> {
                           borderRadius: 30,
                           buttonSize: 46,
                           icon: Icon(
-                            Icons.arrow_back_rounded,
+                            Icons.arrow_back_ios_sharp,
                             color: Colors.white,
                             size: 24,
                           ),
