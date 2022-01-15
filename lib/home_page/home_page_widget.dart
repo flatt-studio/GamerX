@@ -794,7 +794,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                       .fromSTEB(
                                                                           10,
                                                                           10,
-                                                                          0,
+                                                                          4,
                                                                           0),
                                                                   child: Row(
                                                                     mainAxisSize:
@@ -1232,56 +1232,73 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                                 ),
                                                                               ),
                                                                             ),
-                                                                            Row(
-                                                                              mainAxisSize: MainAxisSize.max,
-                                                                              children: [
-                                                                                FlutterFlowIconButton(
-                                                                                  borderColor: Colors.transparent,
-                                                                                  borderRadius: 30,
-                                                                                  borderWidth: 1,
-                                                                                  buttonSize: 34,
-                                                                                  fillColor: FlutterFlowTheme.customColor1,
-                                                                                  icon: Icon(
-                                                                                    Icons.book_outlined,
-                                                                                    color: FlutterFlowTheme.tertiaryColor,
-                                                                                    size: 18,
-                                                                                  ),
-                                                                                  onPressed: () async {
-                                                                                    final usersUpdateData = {
-                                                                                      'favoriteList': FieldValue.arrayUnion([
-                                                                                        getJsonField(
-                                                                                          releasedGameItem,
-                                                                                          r'''$.id''',
-                                                                                        ).toString()
-                                                                                      ]),
-                                                                                    };
-                                                                                    await currentUserReference.update(usersUpdateData);
-                                                                                  },
-                                                                                ),
-                                                                                FlutterFlowIconButton(
-                                                                                  borderColor: Colors.transparent,
-                                                                                  borderRadius: 30,
-                                                                                  borderWidth: 1,
-                                                                                  buttonSize: 34,
-                                                                                  fillColor: FlutterFlowTheme.customColor1,
-                                                                                  icon: Icon(
-                                                                                    Icons.book_sharp,
-                                                                                    color: Color(0xFFFF0000),
-                                                                                    size: 18,
-                                                                                  ),
-                                                                                  onPressed: () async {
-                                                                                    final usersUpdateData = {
-                                                                                      'favoriteList': FieldValue.arrayRemove([
-                                                                                        getJsonField(
-                                                                                          releasedGameItem,
-                                                                                          r'''$.id''',
-                                                                                        ).toString()
-                                                                                      ]),
-                                                                                    };
-                                                                                    await currentUserReference.update(usersUpdateData);
-                                                                                  },
-                                                                                ),
-                                                                              ],
+                                                                            Padding(
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(10, 10, 4, 0),
+                                                                              child: Row(
+                                                                                mainAxisSize: MainAxisSize.max,
+                                                                                children: [
+                                                                                  if (functions.isItemInFav(
+                                                                                          getJsonField(
+                                                                                            releasedGameItem,
+                                                                                            r'''$.id''',
+                                                                                          ).toString(),
+                                                                                          homePageUsersRecord) ??
+                                                                                      true)
+                                                                                    FlutterFlowIconButton(
+                                                                                      borderColor: Colors.transparent,
+                                                                                      borderRadius: 30,
+                                                                                      borderWidth: 1,
+                                                                                      buttonSize: 34,
+                                                                                      fillColor: FlutterFlowTheme.customColor1,
+                                                                                      icon: Icon(
+                                                                                        Icons.book_outlined,
+                                                                                        color: FlutterFlowTheme.tertiaryColor,
+                                                                                        size: 18,
+                                                                                      ),
+                                                                                      onPressed: () async {
+                                                                                        final usersUpdateData = {
+                                                                                          'favoriteList': FieldValue.arrayUnion([
+                                                                                            getJsonField(
+                                                                                              releasedGameItem,
+                                                                                              r'''$.id''',
+                                                                                            ).toString()
+                                                                                          ]),
+                                                                                        };
+                                                                                        await currentUserReference.update(usersUpdateData);
+                                                                                      },
+                                                                                    ),
+                                                                                  if (functions.isItemInFav(
+                                                                                          getJsonField(
+                                                                                            releasedGameItem,
+                                                                                            r'''$.id''',
+                                                                                          ).toString(),
+                                                                                          homePageUsersRecord) ??
+                                                                                      true)
+                                                                                    FlutterFlowIconButton(
+                                                                                      borderColor: Colors.transparent,
+                                                                                      borderRadius: 30,
+                                                                                      borderWidth: 1,
+                                                                                      buttonSize: 34,
+                                                                                      fillColor: FlutterFlowTheme.customColor1,
+                                                                                      icon: Icon(
+                                                                                        Icons.book_sharp,
+                                                                                        color: Color(0xFFFF0000),
+                                                                                        size: 18,
+                                                                                      ),
+                                                                                      onPressed: () async {
+                                                                                        final usersUpdateData = {
+                                                                                          'favoriteList': FieldValue.arrayRemove([
+                                                                                            getJsonField(
+                                                                                              releasedGameItem,
+                                                                                              r'''$.id''',
+                                                                                            ).toString()
+                                                                                          ]),
+                                                                                        };
+                                                                                        await currentUserReference.update(usersUpdateData);
+                                                                                      },
+                                                                                    ),
+                                                                                ],
+                                                                              ),
                                                                             ),
                                                                           ],
                                                                         ),
