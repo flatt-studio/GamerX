@@ -821,7 +821,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                           buttonSize:
                                                                               34,
                                                                           fillColor:
-                                                                              FlutterFlowTheme.customColor1,
+                                                                              FlutterFlowTheme.secondaryColor,
                                                                           icon:
                                                                               Icon(
                                                                             Icons.favorite_border,
@@ -861,7 +861,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                           buttonSize:
                                                                               34,
                                                                           fillColor:
-                                                                              FlutterFlowTheme.customColor1,
+                                                                              FlutterFlowTheme.secondaryColor,
                                                                           icon:
                                                                               Icon(
                                                                             Icons.favorite_sharp,
@@ -1249,9 +1249,9 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                                       borderRadius: 30,
                                                                                       borderWidth: 1,
                                                                                       buttonSize: 34,
-                                                                                      fillColor: FlutterFlowTheme.customColor1,
+                                                                                      fillColor: FlutterFlowTheme.secondaryColor,
                                                                                       icon: Icon(
-                                                                                        Icons.book_outlined,
+                                                                                        Icons.favorite_border,
                                                                                         color: FlutterFlowTheme.tertiaryColor,
                                                                                         size: 18,
                                                                                       ),
@@ -1279,9 +1279,9 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                                       borderRadius: 30,
                                                                                       borderWidth: 1,
                                                                                       buttonSize: 34,
-                                                                                      fillColor: FlutterFlowTheme.customColor1,
+                                                                                      fillColor: FlutterFlowTheme.secondaryColor,
                                                                                       icon: Icon(
-                                                                                        Icons.book_sharp,
+                                                                                        Icons.favorite_sharp,
                                                                                         color: Color(0xFFFF0000),
                                                                                         size: 18,
                                                                                       ),
@@ -1647,7 +1647,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                           borderRadius: 30,
                           borderWidth: 1,
                           buttonSize: 40,
-                          fillColor: FlutterFlowTheme.customColor1,
+                          fillColor: FlutterFlowTheme.secondaryColor,
                           icon: Icon(
                             Icons.notes,
                             color: FlutterFlowTheme.tertiaryColor,
@@ -1671,7 +1671,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                 borderRadius: 30,
                                 borderWidth: 1,
                                 buttonSize: 40,
-                                fillColor: FlutterFlowTheme.customColor1,
+                                fillColor: FlutterFlowTheme.secondaryColor,
                                 icon: Icon(
                                   Icons.search_outlined,
                                   color: FlutterFlowTheme.tertiaryColor,
@@ -1695,7 +1695,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                 borderRadius: 30,
                                 borderWidth: 1,
                                 buttonSize: 40,
-                                fillColor: FlutterFlowTheme.customColor1,
+                                fillColor: FlutterFlowTheme.secondaryColor,
                                 icon: Icon(
                                   Icons.games_sharp,
                                   color: FlutterFlowTheme.tertiaryColor,

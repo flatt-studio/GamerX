@@ -40,9 +40,9 @@ class _ConsolesWidgetState extends State<ConsolesWidget> {
                     FlutterFlowIconButton(
                       borderColor: Colors.transparent,
                       borderRadius: 30,
-                      buttonSize: 46,
+                      buttonSize: 40,
                       icon: Icon(
-                        Icons.arrow_back_rounded,
+                        Icons.arrow_back_ios_sharp,
                         color: Colors.white,
                         size: 24,
                       ),
@@ -91,6 +91,7 @@ class _ConsolesWidgetState extends State<ConsolesWidget> {
                           mainAxisSpacing: 10,
                           childAspectRatio: 0.75,
                         ),
+                        shrinkWrap: true,
                         scrollDirection: Axis.vertical,
                         itemCount: gridViewConsolsRecordList.length,
                         itemBuilder: (context, gridViewIndex) {

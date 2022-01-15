@@ -175,7 +175,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                       fillColor:
                                           FlutterFlowTheme.secondaryColor,
                                       icon: Icon(
-                                        Icons.arrow_back_rounded,
+                                        Icons.arrow_back_ios_sharp,
                                         color: Colors.white,
                                         size: 24,
                                       ),
