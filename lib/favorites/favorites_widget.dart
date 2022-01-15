@@ -149,8 +149,9 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                                                 ),
                                                 child: CachedNetworkImage(
                                                   imageUrl: getJsonField(
-                                                    containerGetaGameResponse
-                                                        .jsonBody,
+                                                    (containerGetaGameResponse
+                                                            ?.jsonBody ??
+                                                        ''),
                                                     r'''$.background_image''',
                                                   ),
                                                   width: MediaQuery.of(context)
@@ -203,8 +204,9 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                                                               Expanded(
                                                                 child: Text(
                                                                   getJsonField(
-                                                                    containerGetaGameResponse
-                                                                        .jsonBody,
+                                                                    (containerGetaGameResponse
+                                                                            ?.jsonBody ??
+                                                                        ''),
                                                                     r'''$.name''',
                                                                   )
                                                                       .toString()
@@ -238,8 +240,9 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                                                           direction:
                                                               Axis.horizontal,
                                                           rating: getJsonField(
-                                                            containerGetaGameResponse
-                                                                .jsonBody,
+                                                            (containerGetaGameResponse
+                                                                    ?.jsonBody ??
+                                                                ''),
                                                             r'''$.rating''',
                                                           ),
                                                           unratedColor:

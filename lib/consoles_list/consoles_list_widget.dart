@@ -242,8 +242,9 @@ class _ConsolesListWidgetState extends State<ConsolesListWidget> {
                                                           searchTextFieldController
                                                               .text,
                                                           getJsonField(
-                                                            containerGetaGameResponse
-                                                                .jsonBody,
+                                                            (containerGetaGameResponse
+                                                                    ?.jsonBody ??
+                                                                ''),
                                                             r'''$.name''',
                                                           ).toString()) ??
                                                   true,
@@ -302,8 +303,9 @@ class _ConsolesListWidgetState extends State<ConsolesListWidget> {
                                                             CachedNetworkImage(
                                                           imageUrl:
                                                               getJsonField(
-                                                            containerGetaGameResponse
-                                                                .jsonBody,
+                                                            (containerGetaGameResponse
+                                                                    ?.jsonBody ??
+                                                                ''),
                                                             r'''$.background_image''',
                                                           ),
                                                           width: 100,
@@ -332,8 +334,9 @@ class _ConsolesListWidgetState extends State<ConsolesListWidget> {
                                                                 child:
                                                                     AutoSizeText(
                                                                   getJsonField(
-                                                                    containerGetaGameResponse
-                                                                        .jsonBody,
+                                                                    (containerGetaGameResponse
+                                                                            ?.jsonBody ??
+                                                                        ''),
                                                                     r'''$.name''',
                                                                   ).toString(),
                                                                   style: FlutterFlowTheme
@@ -348,8 +351,9 @@ class _ConsolesListWidgetState extends State<ConsolesListWidget> {
                                                               ),
                                                               Text(
                                                                 getJsonField(
-                                                                  containerGetaGameResponse
-                                                                      .jsonBody,
+                                                                  (containerGetaGameResponse
+                                                                          ?.jsonBody ??
+                                                                      ''),
                                                                   r'''$.genres[:].name''',
                                                                 )
                                                                     .toString()

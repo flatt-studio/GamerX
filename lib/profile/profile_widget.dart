@@ -169,12 +169,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                           AuthUserStreamWidget(
                                             child: Text(
                                               currentUserDisplayName,
-                                              style: FlutterFlowTheme.bodyText1
-                                                  .override(
-                                                fontFamily: 'Roboto',
-                                                color: FlutterFlowTheme
-                                                    .customColor1,
-                                              ),
+                                              style: FlutterFlowTheme.title3,
                                             ),
                                           ),
                                         ],
@@ -190,12 +185,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                     0, 10, 0, 0),
                                             child: Text(
                                               currentUserEmail,
-                                              style: FlutterFlowTheme.bodyText1
-                                                  .override(
-                                                fontFamily: 'Roboto',
-                                                color: FlutterFlowTheme
-                                                    .customColor1,
-                                              ),
+                                              style: FlutterFlowTheme.subtitle2,
                                             ),
                                           ),
                                         ],

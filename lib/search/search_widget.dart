@@ -168,7 +168,9 @@ class _SearchWidgetState extends State<SearchWidget> {
                         return Builder(
                           builder: (context) {
                             final games = getJsonField(
-                                  columnGetGameSearchResultResponse.jsonBody,
+                                  (columnGetGameSearchResultResponse
+                                          ?.jsonBody ??
+                                      ''),
                                   r'''$.results''',
                                 )?.toList() ??
                                 [];

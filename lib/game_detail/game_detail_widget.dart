@@ -93,7 +93,8 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                   alignment: AlignmentDirectional(0, 0),
                                   child: CachedNetworkImage(
                                     imageUrl: getJsonField(
-                                      gameDetailGetaGameResponse.jsonBody,
+                                      (gameDetailGetaGameResponse?.jsonBody ??
+                                          ''),
                                       r'''$.background_image''',
                                     ),
                                     width: MediaQuery.of(context).size.width,
@@ -348,7 +349,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                         children: [
                           AutoSizeText(
                             getJsonField(
-                              gameDetailGetaGameResponse.jsonBody,
+                              (gameDetailGetaGameResponse?.jsonBody ?? ''),
                               r'''$.name''',
                             ).toString(),
                             style: FlutterFlowTheme.title3,
@@ -369,7 +370,8 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                               children: [
                                 Text(
                                   getJsonField(
-                                    gameDetailGetaGameResponse.jsonBody,
+                                    (gameDetailGetaGameResponse?.jsonBody ??
+                                        ''),
                                     r'''$.released''',
                                   ).toString(),
                                   textAlign: TextAlign.start,
@@ -391,7 +393,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                       child: Builder(
                         builder: (context) {
                           final platforms = getJsonField(
-                                gameDetailGetaGameResponse.jsonBody,
+                                (gameDetailGetaGameResponse?.jsonBody ?? ''),
                                 r'''$.platforms[:].platform''',
                               )?.toList() ??
                               [];
@@ -444,14 +446,14 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                         },
                       ),
                     ),
-                    if ((gameDetailGetaGameResponse.succeeded) ==
-                        (gameDetailGetaGameResponse.succeeded))
+                    if (((gameDetailGetaGameResponse?.succeeded ?? true)) ==
+                        ((gameDetailGetaGameResponse?.succeeded ?? true)))
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(16, 4, 16, 4),
                         child: Builder(
                           builder: (context) {
                             final platformStores = getJsonField(
-                                  gameDetailGetaGameResponse.jsonBody,
+                                  (gameDetailGetaGameResponse?.jsonBody ?? ''),
                                   r'''$.stores''',
                                 )?.toList() ??
                                 [];
@@ -565,7 +567,8 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                       0, 0, 0, 4),
                                   child: Text(
                                     getJsonField(
-                                      gameDetailGetaGameResponse.jsonBody,
+                                      (gameDetailGetaGameResponse?.jsonBody ??
+                                          ''),
                                       r'''$..esrb_rating.name''',
                                     ).toString(),
                                     textAlign: TextAlign.center,
@@ -602,7 +605,8 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                       0, 0, 0, 4),
                                   child: Text(
                                     getJsonField(
-                                      gameDetailGetaGameResponse.jsonBody,
+                                      (gameDetailGetaGameResponse?.jsonBody ??
+                                          ''),
                                       r'''$..genres..name''',
                                     ).toString(),
                                     textAlign: TextAlign.center,
@@ -642,7 +646,9 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                           0, 0, 0, 4),
                                       child: Text(
                                         getJsonField(
-                                          gameDetailGetaGameResponse.jsonBody,
+                                          (gameDetailGetaGameResponse
+                                                  ?.jsonBody ??
+                                              ''),
                                           r'''$.rating_top''',
                                         ).toString(),
                                         textAlign: TextAlign.center,
@@ -698,7 +704,9 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                       decoration: BoxDecoration(),
                                       child: Text(
                                         getJsonField(
-                                          gameDetailGetaGameResponse.jsonBody,
+                                          (gameDetailGetaGameResponse
+                                                  ?.jsonBody ??
+                                              ''),
                                           r'''$.description_raw''',
                                         ).toString().maybeHandleOverflow(
                                               maxChars: 80,
@@ -717,8 +725,9 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                         children: [
                                           Text(
                                             getJsonField(
-                                              gameDetailGetaGameResponse
-                                                  .jsonBody,
+                                              (gameDetailGetaGameResponse
+                                                      ?.jsonBody ??
+                                                  ''),
                                               r'''$.description_raw''',
                                             ).toString(),
                                             style: FlutterFlowTheme.bodyText1
@@ -799,8 +808,9 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                       return Builder(
                                         builder: (context) {
                                           final screenShot = getJsonField(
-                                                rowGetScreenshotsOfaGameResponse
-                                                    .jsonBody,
+                                                (rowGetScreenshotsOfaGameResponse
+                                                        ?.jsonBody ??
+                                                    ''),
                                                 r'''$.results''',
                                               )?.toList() ??
                                               [];

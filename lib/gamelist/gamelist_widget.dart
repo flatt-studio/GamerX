@@ -276,8 +276,9 @@ class _GamelistWidgetState extends State<GamelistWidget> {
                                                       ),
                                                       child: CachedNetworkImage(
                                                         imageUrl: getJsonField(
-                                                          containerGetaGameResponse
-                                                              .jsonBody,
+                                                          (containerGetaGameResponse
+                                                                  ?.jsonBody ??
+                                                              ''),
                                                           r'''$.background_image''',
                                                         ),
                                                         width: MediaQuery.of(
@@ -344,7 +345,7 @@ class _GamelistWidgetState extends State<GamelistWidget> {
                                                                           child:
                                                                               Text(
                                                                             getJsonField(
-                                                                              containerGetaGameResponse.jsonBody,
+                                                                              (containerGetaGameResponse?.jsonBody ?? ''),
                                                                               r'''$.name''',
                                                                             ).toString().maybeHandleOverflow(
                                                                                   maxChars: 18,
@@ -374,8 +375,9 @@ class _GamelistWidgetState extends State<GamelistWidget> {
                                                                         .horizontal,
                                                                     rating:
                                                                         getJsonField(
-                                                                      containerGetaGameResponse
-                                                                          .jsonBody,
+                                                                      (containerGetaGameResponse
+                                                                              ?.jsonBody ??
+                                                                          ''),
                                                                       r'''$.rating''',
                                                                     ),
                                                                     unratedColor:

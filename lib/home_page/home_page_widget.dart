@@ -429,8 +429,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           return Builder(
                             builder: (context) {
                               final results = (getJsonField(
-                                        pageViewGetThreeGamesRAWGResponse
-                                            .jsonBody,
+                                        (pageViewGetThreeGamesRAWGResponse
+                                                ?.jsonBody ??
+                                            ''),
                                         r'''$.results''',
                                       )?.toList() ??
                                       [])
@@ -635,8 +636,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       return Builder(
                                         builder: (context) {
                                           final popularGame = (getJsonField(
-                                                    rowGetPopularGamesRAWGResponse
-                                                        .jsonBody,
+                                                    (rowGetPopularGamesRAWGResponse
+                                                            ?.jsonBody ??
+                                                        ''),
                                                     r'''$.results''',
                                                   )?.toList() ??
                                                   [])
@@ -721,10 +723,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                             0),
                                                                     topLeft: Radius
                                                                         .circular(
-                                                                            10),
+                                                                            8),
                                                                     topRight: Radius
                                                                         .circular(
-                                                                            10),
+                                                                            8),
                                                                   ),
                                                                   child:
                                                                       CachedNetworkImage(
@@ -852,10 +854,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                         .only(
                                                                   bottomLeft: Radius
                                                                       .circular(
-                                                                          10),
+                                                                          8),
                                                                   bottomRight: Radius
                                                                       .circular(
-                                                                          10),
+                                                                          8),
                                                                   topLeft: Radius
                                                                       .circular(
                                                                           0),
@@ -1028,8 +1030,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                           builder: (context) {
                                                             final releasedGame =
                                                                 (getJsonField(
-                                                                          rowGetReleasedGamesRAWGResponse
-                                                                              .jsonBody,
+                                                                          (rowGetReleasedGamesRAWGResponse?.jsonBody ??
+                                                                              ''),
                                                                           r'''$.results''',
                                                                         )?.toList() ??
                                                                         [])
@@ -1119,8 +1121,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                                     borderRadius: BorderRadius.only(
                                                                                       bottomLeft: Radius.circular(0),
                                                                                       bottomRight: Radius.circular(0),
-                                                                                      topLeft: Radius.circular(10),
-                                                                                      topRight: Radius.circular(10),
+                                                                                      topLeft: Radius.circular(8),
+                                                                                      topRight: Radius.circular(8),
                                                                                     ),
                                                                                     child: CachedNetworkImage(
                                                                                       imageUrl: getJsonField(
@@ -1207,8 +1209,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                                 decoration: BoxDecoration(
                                                                                   color: Color(0x7F1D448A),
                                                                                   borderRadius: BorderRadius.only(
-                                                                                    bottomLeft: Radius.circular(10),
-                                                                                    bottomRight: Radius.circular(10),
+                                                                                    bottomLeft: Radius.circular(8),
+                                                                                    bottomRight: Radius.circular(8),
                                                                                     topLeft: Radius.circular(0),
                                                                                     topRight: Radius.circular(0),
                                                                                   ),
@@ -1327,8 +1329,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                           builder: (context) {
                                                             final upcomingGame =
                                                                 (getJsonField(
-                                                                          rowGetUpcomingGamesRAWGResponse
-                                                                              .jsonBody,
+                                                                          (rowGetUpcomingGamesRAWGResponse?.jsonBody ??
+                                                                              ''),
                                                                           r'''$.results''',
                                                                         )?.toList() ??
                                                                         [])
