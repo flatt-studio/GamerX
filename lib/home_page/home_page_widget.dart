@@ -700,8 +700,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                               BorderRadius
                                                                   .circular(8),
                                                           border: Border.all(
-                                                            color: FlutterFlowTheme
-                                                                .tertiaryColor,
+                                                            color:
+                                                                FlutterFlowTheme
+                                                                    .customColor1,
                                                             width: 2,
                                                           ),
                                                         ),
@@ -1106,7 +1107,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                                 BorderRadius.circular(8),
                                                                             border:
                                                                                 Border.all(
-                                                                              color: FlutterFlowTheme.tertiaryColor,
+                                                                              color: FlutterFlowTheme.customColor1,
                                                                               width: 2,
                                                                             ),
                                                                           ),
