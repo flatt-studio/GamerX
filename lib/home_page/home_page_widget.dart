@@ -3,6 +3,7 @@ import '../backend/api_requests/api_calls.dart';
 import '../backend/backend.dart';
 import '../consoles/consoles_widget.dart';
 import '../favorites/favorites_widget.dart';
+import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -25,9 +26,54 @@ class HomePageWidget extends StatefulWidget {
   _HomePageWidgetState createState() => _HomePageWidgetState();
 }
 
-class _HomePageWidgetState extends State<HomePageWidget> {
+class _HomePageWidgetState extends State<HomePageWidget>
+    with TickerProviderStateMixin {
   PageController pageViewController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final animationsMap = {
+    'containerOnPageLoadAnimation1': AnimationInfo(
+      curve: Curves.easeIn,
+      trigger: AnimationTrigger.onPageLoad,
+      duration: 600,
+      fadeIn: true,
+      initialState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1.2,
+        opacity: 0,
+      ),
+      finalState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1,
+        opacity: 1,
+      ),
+    ),
+    'containerOnPageLoadAnimation2': AnimationInfo(
+      curve: Curves.easeIn,
+      trigger: AnimationTrigger.onPageLoad,
+      duration: 600,
+      fadeIn: true,
+      initialState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1.2,
+        opacity: 0,
+      ),
+      finalState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1,
+        opacity: 1,
+      ),
+    ),
+  };
+
+  @override
+  void initState() {
+    super.initState();
+    startPageLoadAnimations(
+      animationsMap.values
+          .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
+      this,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -773,14 +819,16 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                           borderWidth:
                                                                               1,
                                                                           buttonSize:
-                                                                              44,
+                                                                              34,
+                                                                          fillColor:
+                                                                              FlutterFlowTheme.customColor1,
                                                                           icon:
                                                                               Icon(
                                                                             Icons.favorite_border,
                                                                             color:
                                                                                 FlutterFlowTheme.tertiaryColor,
                                                                             size:
-                                                                                24,
+                                                                                18,
                                                                           ),
                                                                           onPressed:
                                                                               () async {
@@ -811,14 +859,16 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                           borderWidth:
                                                                               1,
                                                                           buttonSize:
-                                                                              44,
+                                                                              34,
+                                                                          fillColor:
+                                                                              FlutterFlowTheme.customColor1,
                                                                           icon:
                                                                               Icon(
                                                                             Icons.favorite_sharp,
                                                                             color:
                                                                                 Color(0xFFFF0000),
                                                                             size:
-                                                                                24,
+                                                                                18,
                                                                           ),
                                                                           onPressed:
                                                                               () async {
@@ -941,7 +991,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                         ),
                                                       ),
                                                     ),
-                                                  ),
+                                                  ).animated([
+                                                    animationsMap[
+                                                        'containerOnPageLoadAnimation1']
+                                                  ]),
                                                 );
                                               }),
                                             ),
@@ -1179,11 +1232,65 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                                 ),
                                                                               ),
                                                                             ),
+                                                                            Row(
+                                                                              mainAxisSize: MainAxisSize.max,
+                                                                              children: [
+                                                                                FlutterFlowIconButton(
+                                                                                  borderColor: Colors.transparent,
+                                                                                  borderRadius: 30,
+                                                                                  borderWidth: 1,
+                                                                                  buttonSize: 34,
+                                                                                  fillColor: FlutterFlowTheme.customColor1,
+                                                                                  icon: Icon(
+                                                                                    Icons.book_outlined,
+                                                                                    color: FlutterFlowTheme.tertiaryColor,
+                                                                                    size: 18,
+                                                                                  ),
+                                                                                  onPressed: () async {
+                                                                                    final usersUpdateData = {
+                                                                                      'favoriteList': FieldValue.arrayUnion([
+                                                                                        getJsonField(
+                                                                                          releasedGameItem,
+                                                                                          r'''$.id''',
+                                                                                        ).toString()
+                                                                                      ]),
+                                                                                    };
+                                                                                    await currentUserReference.update(usersUpdateData);
+                                                                                  },
+                                                                                ),
+                                                                                FlutterFlowIconButton(
+                                                                                  borderColor: Colors.transparent,
+                                                                                  borderRadius: 30,
+                                                                                  borderWidth: 1,
+                                                                                  buttonSize: 34,
+                                                                                  fillColor: FlutterFlowTheme.customColor1,
+                                                                                  icon: Icon(
+                                                                                    Icons.book_sharp,
+                                                                                    color: Color(0xFFFF0000),
+                                                                                    size: 18,
+                                                                                  ),
+                                                                                  onPressed: () async {
+                                                                                    final usersUpdateData = {
+                                                                                      'favoriteList': FieldValue.arrayRemove([
+                                                                                        getJsonField(
+                                                                                          releasedGameItem,
+                                                                                          r'''$.id''',
+                                                                                        ).toString()
+                                                                                      ]),
+                                                                                    };
+                                                                                    await currentUserReference.update(usersUpdateData);
+                                                                                  },
+                                                                                ),
+                                                                              ],
+                                                                            ),
                                                                           ],
                                                                         ),
                                                                       ),
                                                                     ),
-                                                                  ),
+                                                                  ).animated([
+                                                                    animationsMap[
+                                                                        'containerOnPageLoadAnimation2']
+                                                                  ]),
                                                                 );
                                                               }),
                                                             ),
@@ -1523,9 +1630,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           borderRadius: 30,
                           borderWidth: 1,
                           buttonSize: 40,
-                          fillColor: FlutterFlowTheme.secondaryColor,
+                          fillColor: FlutterFlowTheme.customColor1,
                           icon: Icon(
-                            Icons.menu,
+                            Icons.notes,
                             color: FlutterFlowTheme.tertiaryColor,
                             size: 24,
                           ),
@@ -1547,7 +1654,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 borderRadius: 30,
                                 borderWidth: 1,
                                 buttonSize: 40,
-                                fillColor: FlutterFlowTheme.secondaryColor,
+                                fillColor: FlutterFlowTheme.customColor1,
                                 icon: Icon(
                                   Icons.search_outlined,
                                   color: FlutterFlowTheme.tertiaryColor,
@@ -1571,7 +1678,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 borderRadius: 30,
                                 borderWidth: 1,
                                 buttonSize: 40,
-                                fillColor: FlutterFlowTheme.secondaryColor,
+                                fillColor: FlutterFlowTheme.customColor1,
                                 icon: Icon(
                                   Icons.games_sharp,
                                   color: FlutterFlowTheme.tertiaryColor,
