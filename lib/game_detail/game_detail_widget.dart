@@ -552,7 +552,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                     imageUrl:
                                         functions.platformLogo(getJsonField(
                                       platformLogoItem,
-                                      r'''$.name''',
+                                      r'''$..platform.name''',
                                     ).toString()),
                                     width: 30,
                                     height: 30,
