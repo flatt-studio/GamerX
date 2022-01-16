@@ -1228,7 +1228,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                                               releasedGameItem,
                                                                                               r'''$.name''',
                                                                                             ).toString().maybeHandleOverflow(
-                                                                                                  maxChars: 20,
+                                                                                                  maxChars: 15,
                                                                                                   replacement: '…',
                                                                                                 ),
                                                                                             style: FlutterFlowTheme.title3.override(
