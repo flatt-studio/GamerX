@@ -276,20 +276,20 @@ class _HomePageWidgetState extends State<HomePageWidget>
                               ),
                             ),
                           ),
-                          Container(
-                            width: MediaQuery.of(context).size.width,
-                            height: 44,
-                            decoration: BoxDecoration(),
-                            child: InkWell(
-                              onTap: () async {
-                                await Navigator.pushAndRemoveUntil(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => FavoritesWidget(),
-                                  ),
-                                  (r) => false,
-                                );
-                              },
+                          InkWell(
+                            onTap: () async {
+                              await Navigator.pushAndRemoveUntil(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => FavoritesWidget(),
+                                ),
+                                (r) => false,
+                              );
+                            },
+                            child: Container(
+                              width: MediaQuery.of(context).size.width,
+                              height: 44,
+                              decoration: BoxDecoration(),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
@@ -314,20 +314,20 @@ class _HomePageWidgetState extends State<HomePageWidget>
                               ),
                             ),
                           ),
-                          Container(
-                            width: MediaQuery.of(context).size.width,
-                            height: 44,
-                            decoration: BoxDecoration(),
-                            child: InkWell(
-                              onTap: () async {
-                                await Navigator.pushAndRemoveUntil(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => ConsolesWidget(),
-                                  ),
-                                  (r) => false,
-                                );
-                              },
+                          InkWell(
+                            onTap: () async {
+                              await Navigator.pushAndRemoveUntil(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => ConsolesWidget(),
+                                ),
+                                (r) => false,
+                              );
+                            },
+                            child: Container(
+                              width: MediaQuery.of(context).size.width,
+                              height: 44,
+                              decoration: BoxDecoration(),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
@@ -352,20 +352,20 @@ class _HomePageWidgetState extends State<HomePageWidget>
                               ),
                             ),
                           ),
-                          Container(
-                            width: MediaQuery.of(context).size.width,
-                            height: 44,
-                            decoration: BoxDecoration(),
-                            child: InkWell(
-                              onTap: () async {
-                                await Navigator.pushAndRemoveUntil(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => ProfileWidget(),
-                                  ),
-                                  (r) => false,
-                                );
-                              },
+                          InkWell(
+                            onTap: () async {
+                              await Navigator.pushAndRemoveUntil(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => ProfileWidget(),
+                                ),
+                                (r) => false,
+                              );
+                            },
+                            child: Container(
+                              width: MediaQuery.of(context).size.width,
+                              height: 44,
+                              decoration: BoxDecoration(),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
@@ -390,21 +390,21 @@ class _HomePageWidgetState extends State<HomePageWidget>
                               ),
                             ),
                           ),
-                          Container(
-                            width: MediaQuery.of(context).size.width,
-                            height: 44,
-                            decoration: BoxDecoration(),
-                            child: InkWell(
-                              onTap: () async {
-                                await signOut();
-                                await Navigator.pushAndRemoveUntil(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => LoginWidget(),
-                                  ),
-                                  (r) => false,
-                                );
-                              },
+                          InkWell(
+                            onTap: () async {
+                              await signOut();
+                              await Navigator.pushAndRemoveUntil(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => LoginWidget(),
+                                ),
+                                (r) => false,
+                              );
+                            },
+                            child: Container(
+                              width: MediaQuery.of(context).size.width,
+                              height: 44,
+                              decoration: BoxDecoration(),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
