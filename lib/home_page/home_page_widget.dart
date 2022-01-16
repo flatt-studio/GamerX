@@ -1173,9 +1173,10 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                               Color(0x7F1D448A),
                                                                           boxShadow: [
                                                                             BoxShadow(
-                                                                              blurRadius: 5,
+                                                                              blurRadius: 3,
                                                                               color: Color(0x3F000000),
                                                                               offset: Offset(0, 2),
+                                                                              spreadRadius: 3,
                                                                             )
                                                                           ],
                                                                           borderRadius:
@@ -1481,9 +1482,10 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                               Color(0x7F1D448A),
                                                                           boxShadow: [
                                                                             BoxShadow(
-                                                                              blurRadius: 5,
-                                                                              color: Color(0x3F000000),
+                                                                              blurRadius: 3,
+                                                                              color: FlutterFlowTheme.secondaryColor,
                                                                               offset: Offset(0, 2),
+                                                                              spreadRadius: 3,
                                                                             )
                                                                           ],
                                                                           borderRadius:
