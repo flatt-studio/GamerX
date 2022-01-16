@@ -644,7 +644,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                             ),
                             Padding(
                               padding:
-                                  EdgeInsetsDirectional.fromSTEB(15, 0, 0, 0),
+                                  EdgeInsetsDirectional.fromSTEB(15, 0, 15, 0),
                               child: Container(
                                 width: MediaQuery.of(context).size.width,
                                 height: 230,
@@ -1348,7 +1348,37 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                             children: [
                                               Padding(
                                                 padding: EdgeInsetsDirectional
-                                                    .fromSTEB(15, 0, 0, 0),
+                                                    .fromSTEB(20, 5, 20, 5),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.end,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.center,
+                                                  children: [
+                                                    Text(
+                                                      'More',
+                                                      style: FlutterFlowTheme
+                                                          .bodyText1
+                                                          .override(
+                                                        fontFamily: 'Roboto',
+                                                        color: FlutterFlowTheme
+                                                            .customColor3,
+                                                      ),
+                                                    ),
+                                                    Icon(
+                                                      Icons.arrow_forward_ios,
+                                                      color: FlutterFlowTheme
+                                                          .customColor3,
+                                                      size: 16,
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(15, 0, 15, 0),
                                                 child: Container(
                                                   width: MediaQuery.of(context)
                                                       .size
@@ -1506,7 +1536,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                                               upcomingGameItem,
                                                                                               r'''$.name''',
                                                                                             ).toString().maybeHandleOverflow(
-                                                                                                  maxChars: 20,
+                                                                                                  maxChars: 15,
                                                                                                   replacement: '…',
                                                                                                 ),
                                                                                             style: FlutterFlowTheme.title3.override(
