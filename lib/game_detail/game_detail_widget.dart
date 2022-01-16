@@ -407,23 +407,34 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                               return Padding(
                                 padding:
                                     EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
-                                child: Container(
-                                  width: 40,
-                                  height: 40,
-                                  decoration: BoxDecoration(
+                                child: Material(
+                                  color: Colors.transparent,
+                                  elevation: 3,
+                                  shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(0),
                                   ),
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(0),
-                                    child: CachedNetworkImage(
-                                      imageUrl:
-                                          functions.platformLogo(getJsonField(
-                                        platformLogoItem,
-                                        r'''$..platform.name''',
-                                      ).toString()),
-                                      width: 40,
-                                      height: 40,
-                                      fit: BoxFit.contain,
+                                  child: Container(
+                                    width: 40,
+                                    height: 40,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(0),
+                                      border: Border.all(
+                                        color: FlutterFlowTheme.tertiaryColor,
+                                        width: 2,
+                                      ),
+                                    ),
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(0),
+                                      child: CachedNetworkImage(
+                                        imageUrl:
+                                            functions.platformLogo(getJsonField(
+                                          platformLogoItem,
+                                          r'''$..platform.name''',
+                                        ).toString()),
+                                        width: 40,
+                                        height: 40,
+                                        fit: BoxFit.contain,
+                                      ),
                                     ),
                                   ),
                                 ),
