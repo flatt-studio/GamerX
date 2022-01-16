@@ -345,7 +345,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                       padding: EdgeInsetsDirectional.fromSTEB(16, 12, 16, 4),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           AutoSizeText(
                             getJsonField(
@@ -361,12 +361,13 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                       padding: EdgeInsetsDirectional.fromSTEB(16, 4, 16, 4),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Expanded(
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
                                   getJsonField(
@@ -401,7 +402,8 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                             scrollDirection: Axis.horizontal,
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: List.generate(platformLogo.length,
                                   (platformLogoIndex) {
                                 final platformLogoItem =
@@ -565,6 +567,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                     style: FlutterFlowTheme.subtitle2.override(
                                       fontFamily: 'Lato',
                                       color: Color(0xFF8B97A2),
+                                      fontSize: 16,
                                     ),
                                   ),
                                 ),
@@ -578,7 +581,10 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                       r'''$..esrb_rating.name''',
                                     ).toString(),
                                     textAlign: TextAlign.center,
-                                    style: FlutterFlowTheme.bodyText1,
+                                    style: FlutterFlowTheme.bodyText1.override(
+                                      fontFamily: 'Roboto',
+                                      fontSize: 14,
+                                    ),
                                   ),
                                 ),
                               ],
@@ -603,6 +609,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                     style: FlutterFlowTheme.subtitle2.override(
                                       fontFamily: 'Lato',
                                       color: Color(0xFF8B97A2),
+                                      fontSize: 16,
                                     ),
                                   ),
                                 ),
@@ -616,7 +623,10 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                       r'''$..genres..name''',
                                     ).toString(),
                                     textAlign: TextAlign.center,
-                                    style: FlutterFlowTheme.bodyText1,
+                                    style: FlutterFlowTheme.bodyText1.override(
+                                      fontFamily: 'Roboto',
+                                      fontSize: 14,
+                                    ),
                                   ),
                                 ),
                               ],
@@ -640,6 +650,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                     style: FlutterFlowTheme.subtitle2.override(
                                       fontFamily: 'Lato',
                                       color: Color(0xFF8B97A2),
+                                      fontSize: 16,
                                     ),
                                   ),
                                 ),
@@ -662,6 +673,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                             FlutterFlowTheme.bodyText1.override(
                                           fontFamily: 'Roboto',
                                           color: FlutterFlowTheme.tertiaryColor,
+                                          fontSize: 14,
                                         ),
                                       ),
                                     ),
@@ -670,7 +682,11 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                           0, 0, 0, 4),
                                       child: Text(
                                         '/5',
-                                        style: FlutterFlowTheme.bodyText1,
+                                        style:
+                                            FlutterFlowTheme.bodyText1.override(
+                                          fontFamily: 'Roboto',
+                                          fontSize: 14,
+                                        ),
                                       ),
                                     ),
                                   ],
@@ -722,6 +738,8 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                             FlutterFlowTheme.bodyText1.override(
                                           fontFamily: 'Roboto',
                                           color: FlutterFlowTheme.tertiaryColor,
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w500,
                                         ),
                                       ),
                                     ),
@@ -741,6 +759,8 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                               fontFamily: 'Roboto',
                                               color: FlutterFlowTheme
                                                   .tertiaryColor,
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w500,
                                             ),
                                           ),
                                         ],
