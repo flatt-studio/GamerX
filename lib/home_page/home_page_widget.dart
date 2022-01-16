@@ -604,7 +604,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                       ),
                       Container(
                         width: MediaQuery.of(context).size.width,
-                        height: 270,
+                        height: 250,
                         decoration: BoxDecoration(),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
@@ -1006,7 +1006,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                       ),
                       Container(
                         width: MediaQuery.of(context).size.width,
-                        height: 300,
+                        height: 320,
                         decoration: BoxDecoration(),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
