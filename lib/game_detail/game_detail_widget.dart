@@ -411,7 +411,6 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                   width: 30,
                                   height: 30,
                                   decoration: BoxDecoration(
-                                    color: Color(0xFFEEEEEE),
                                     borderRadius: BorderRadius.circular(8),
                                   ),
                                   child: CachedNetworkImage(
