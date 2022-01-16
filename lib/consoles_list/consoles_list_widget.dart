@@ -165,235 +165,239 @@ class _ConsolesListWidgetState extends State<ConsolesListWidget> {
                       ],
                     ),
                   ),
-                  StreamBuilder<List<ConsolsRecord>>(
-                    stream: queryConsolsRecord(
-                      queryBuilder: (consolsRecord) => consolsRecord.where('id',
-                          isEqualTo: widget.consoleID),
-                      singleRecord: true,
-                    ),
-                    builder: (context, snapshot) {
-                      // Customize what your widget looks like when it's loading.
-                      if (!snapshot.hasData) {
-                        return Center(
-                          child: SizedBox(
-                            width: 40,
-                            height: 40,
-                            child: CircularProgressIndicator(
-                              color: FlutterFlowTheme.primaryColor,
+                  Expanded(
+                    child: StreamBuilder<List<ConsolsRecord>>(
+                      stream: queryConsolsRecord(
+                        queryBuilder: (consolsRecord) => consolsRecord
+                            .where('id', isEqualTo: widget.consoleID),
+                        singleRecord: true,
+                      ),
+                      builder: (context, snapshot) {
+                        // Customize what your widget looks like when it's loading.
+                        if (!snapshot.hasData) {
+                          return Center(
+                            child: SizedBox(
+                              width: 40,
+                              height: 40,
+                              child: CircularProgressIndicator(
+                                color: FlutterFlowTheme.primaryColor,
+                              ),
                             ),
-                          ),
-                        );
-                      }
-                      List<ConsolsRecord> containerConsolsRecordList =
-                          snapshot.data;
-                      final containerConsolsRecord =
-                          containerConsolsRecordList.isNotEmpty
-                              ? containerConsolsRecordList.first
-                              : null;
-                      return Container(
-                        width: MediaQuery.of(context).size.width,
-                        height: MediaQuery.of(context).size.height * 1,
-                        decoration: BoxDecoration(),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
-                          child: Builder(
-                            builder: (context) {
-                              final game = containerConsolsRecord.gameList
-                                      .toList()
-                                      ?.toList() ??
-                                  [];
-                              return SingleChildScrollView(
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children:
-                                      List.generate(game.length, (gameIndex) {
-                                    final gameItem = game[gameIndex];
-                                    return Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 5, 0, 5),
-                                      child: FutureBuilder<ApiCallResponse>(
-                                        future: GetaGameCall.call(
-                                          id: gameItem,
-                                        ),
-                                        builder: (context, snapshot) {
-                                          // Customize what your widget looks like when it's loading.
-                                          if (!snapshot.hasData) {
-                                            return Center(
-                                              child: SizedBox(
-                                                width: 40,
-                                                height: 40,
-                                                child:
-                                                    CircularProgressIndicator(
-                                                  color: FlutterFlowTheme
-                                                      .primaryColor,
-                                                ),
-                                              ),
-                                            );
-                                          }
-                                          final containerGetaGameResponse =
-                                              snapshot.data;
-                                          return Container(
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(0),
-                                            ),
-                                            child: Visibility(
-                                              visible: functions
-                                                      .searchInGamesDatabase(
-                                                          searchTextFieldController
-                                                              .text,
-                                                          getJsonField(
-                                                            (containerGetaGameResponse
-                                                                    ?.jsonBody ??
-                                                                ''),
-                                                            r'''$.name''',
-                                                          ).toString()) ??
-                                                  true,
-                                              child: InkWell(
-                                                onTap: () async {
-                                                  await Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          GameDetailWidget(
-                                                        gameId: gameItem,
-                                                      ),
-                                                    ),
-                                                  );
-                                                },
-                                                child: Container(
-                                                  width: MediaQuery.of(context)
-                                                      .size
-                                                      .width,
-                                                  height: 100,
-                                                  decoration: BoxDecoration(
-                                                    color: Color(0x7F1D448A),
-                                                    boxShadow: [
-                                                      BoxShadow(
-                                                        blurRadius: 4,
-                                                        color:
-                                                            Color(0x43000000),
-                                                        offset: Offset(0, 2),
-                                                      )
-                                                    ],
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            10),
+                          );
+                        }
+                        List<ConsolsRecord> containerConsolsRecordList =
+                            snapshot.data;
+                        final containerConsolsRecord =
+                            containerConsolsRecordList.isNotEmpty
+                                ? containerConsolsRecordList.first
+                                : null;
+                        return Container(
+                          width: MediaQuery.of(context).size.width,
+                          height: MediaQuery.of(context).size.height * 1,
+                          decoration: BoxDecoration(),
+                          child: Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
+                            child: Builder(
+                              builder: (context) {
+                                final game = containerConsolsRecord.gameList
+                                        .toList()
+                                        ?.toList() ??
+                                    [];
+                                return SingleChildScrollView(
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children:
+                                        List.generate(game.length, (gameIndex) {
+                                      final gameItem = game[gameIndex];
+                                      return Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0, 5, 0, 5),
+                                        child: FutureBuilder<ApiCallResponse>(
+                                          future: GetaGameCall.call(
+                                            id: gameItem,
+                                          ),
+                                          builder: (context, snapshot) {
+                                            // Customize what your widget looks like when it's loading.
+                                            if (!snapshot.hasData) {
+                                              return Center(
+                                                child: SizedBox(
+                                                  width: 40,
+                                                  height: 40,
+                                                  child:
+                                                      CircularProgressIndicator(
+                                                    color: FlutterFlowTheme
+                                                        .primaryColor,
                                                   ),
-                                                  child: Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: [
-                                                      ClipRRect(
-                                                        borderRadius:
-                                                            BorderRadius.only(
-                                                          bottomLeft:
-                                                              Radius.circular(
-                                                                  10),
-                                                          bottomRight:
-                                                              Radius.circular(
-                                                                  0),
-                                                          topLeft:
-                                                              Radius.circular(
-                                                                  10),
-                                                          topRight:
-                                                              Radius.circular(
-                                                                  0),
-                                                        ),
-                                                        child:
-                                                            CachedNetworkImage(
-                                                          imageUrl:
-                                                              getJsonField(
-                                                            (containerGetaGameResponse
-                                                                    ?.jsonBody ??
-                                                                ''),
-                                                            r'''$.background_image''',
-                                                          ),
-                                                          width: 100,
-                                                          height: 100,
-                                                          fit: BoxFit.cover,
+                                                ),
+                                              );
+                                            }
+                                            final containerGetaGameResponse =
+                                                snapshot.data;
+                                            return Container(
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(0),
+                                              ),
+                                              child: Visibility(
+                                                visible: functions
+                                                        .searchInGamesDatabase(
+                                                            searchTextFieldController
+                                                                .text,
+                                                            getJsonField(
+                                                              (containerGetaGameResponse
+                                                                      ?.jsonBody ??
+                                                                  ''),
+                                                              r'''$.name''',
+                                                            ).toString()) ??
+                                                    true,
+                                                child: InkWell(
+                                                  onTap: () async {
+                                                    await Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            GameDetailWidget(
+                                                          gameId: gameItem,
                                                         ),
                                                       ),
-                                                      Expanded(
-                                                        child: Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      10,
-                                                                      10,
-                                                                      10,
-                                                                      10),
-                                                          child: Column(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .start,
-                                                            children: [
-                                                              Expanded(
-                                                                child:
-                                                                    AutoSizeText(
+                                                    );
+                                                  },
+                                                  child: Container(
+                                                    width:
+                                                        MediaQuery.of(context)
+                                                            .size
+                                                            .width,
+                                                    height: 100,
+                                                    decoration: BoxDecoration(
+                                                      color: Color(0x7F1D448A),
+                                                      boxShadow: [
+                                                        BoxShadow(
+                                                          blurRadius: 4,
+                                                          color:
+                                                              Color(0x43000000),
+                                                          offset: Offset(0, 2),
+                                                        )
+                                                      ],
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10),
+                                                    ),
+                                                    child: Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        ClipRRect(
+                                                          borderRadius:
+                                                              BorderRadius.only(
+                                                            bottomLeft:
+                                                                Radius.circular(
+                                                                    10),
+                                                            bottomRight:
+                                                                Radius.circular(
+                                                                    0),
+                                                            topLeft:
+                                                                Radius.circular(
+                                                                    10),
+                                                            topRight:
+                                                                Radius.circular(
+                                                                    0),
+                                                          ),
+                                                          child:
+                                                              CachedNetworkImage(
+                                                            imageUrl:
+                                                                getJsonField(
+                                                              (containerGetaGameResponse
+                                                                      ?.jsonBody ??
+                                                                  ''),
+                                                              r'''$.background_image''',
+                                                            ),
+                                                            width: 100,
+                                                            height: 100,
+                                                            fit: BoxFit.cover,
+                                                          ),
+                                                        ),
+                                                        Expanded(
+                                                          child: Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        10,
+                                                                        10,
+                                                                        10,
+                                                                        10),
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
+                                                              children: [
+                                                                Expanded(
+                                                                  child:
+                                                                      AutoSizeText(
+                                                                    getJsonField(
+                                                                      (containerGetaGameResponse
+                                                                              ?.jsonBody ??
+                                                                          ''),
+                                                                      r'''$.name''',
+                                                                    ).toString(),
+                                                                    style: FlutterFlowTheme
+                                                                        .title3
+                                                                        .override(
+                                                                      fontFamily:
+                                                                          'Playfair Display',
+                                                                      color: FlutterFlowTheme
+                                                                          .tertiaryColor,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                                Text(
                                                                   getJsonField(
                                                                     (containerGetaGameResponse
                                                                             ?.jsonBody ??
                                                                         ''),
-                                                                    r'''$.name''',
-                                                                  ).toString(),
+                                                                    r'''$.genres[:].name''',
+                                                                  )
+                                                                      .toString()
+                                                                      .maybeHandleOverflow(
+                                                                        maxChars:
+                                                                            30,
+                                                                        replacement:
+                                                                            '…',
+                                                                      ),
                                                                   style: FlutterFlowTheme
-                                                                      .title3
+                                                                      .subtitle2
                                                                       .override(
                                                                     fontFamily:
-                                                                        'Playfair Display',
+                                                                        'Lato',
                                                                     color: FlutterFlowTheme
                                                                         .tertiaryColor,
                                                                   ),
                                                                 ),
-                                                              ),
-                                                              Text(
-                                                                getJsonField(
-                                                                  (containerGetaGameResponse
-                                                                          ?.jsonBody ??
-                                                                      ''),
-                                                                  r'''$.genres[:].name''',
-                                                                )
-                                                                    .toString()
-                                                                    .maybeHandleOverflow(
-                                                                      maxChars:
-                                                                          30,
-                                                                      replacement:
-                                                                          '…',
-                                                                    ),
-                                                                style: FlutterFlowTheme
-                                                                    .subtitle2
-                                                                    .override(
-                                                                  fontFamily:
-                                                                      'Lato',
-                                                                  color: FlutterFlowTheme
-                                                                      .tertiaryColor,
-                                                                ),
-                                                              ),
-                                                            ],
+                                                              ],
+                                                            ),
                                                           ),
                                                         ),
-                                                      ),
-                                                    ],
+                                                      ],
+                                                    ),
                                                   ),
                                                 ),
                                               ),
-                                            ),
-                                          );
-                                        },
-                                      ),
-                                    );
-                                  }),
-                                ),
-                              );
-                            },
+                                            );
+                                          },
+                                        ),
+                                      );
+                                    }),
+                                  ),
+                                );
+                              },
+                            ),
                           ),
-                        ),
-                      );
-                    },
+                        );
+                      },
+                    ),
                   ),
                 ],
               ),
