@@ -529,7 +529,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                         builder: (context) {
                           final platformLogo = getJsonField(
                                 (gameDetailGetaGameResponse?.jsonBody ?? ''),
-                                r'''$.results''',
+                                r'''$.platforms''',
                               )?.toList() ??
                               [];
                           return Row(
@@ -552,7 +552,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                     imageUrl:
                                         functions.platformLogo(getJsonField(
                                       platformLogoItem,
-                                      r'''$.platforms..platform.name''',
+                                      r'''$.name''',
                                     ).toString()),
                                     width: 30,
                                     height: 30,
