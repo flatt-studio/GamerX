@@ -411,10 +411,10 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                   width: 40,
                                   height: 40,
                                   decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8),
+                                    borderRadius: BorderRadius.circular(0),
                                   ),
                                   child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(8),
+                                    borderRadius: BorderRadius.circular(0),
                                     child: CachedNetworkImage(
                                       imageUrl:
                                           functions.platformLogo(getJsonField(
