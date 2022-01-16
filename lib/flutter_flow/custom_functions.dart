@@ -81,13 +81,13 @@ String makeParamsFromDropdown(String option) {
 
 String platformLogo(String platformname) {
   if (platformname == "PlayStation 4") {
-    return ('https://firebasestorage.googleapis.com/v0/b/gamerx-a8577.appspot.com/o/console_windows11.png?alt=media&token=589fa5ab-553f-4916-b5e3-09a8fd6c0195');
+    return ('https://firebasestorage.googleapis.com/v0/b/gamerx-a8577.appspot.com/o/console_PlayStation.png?alt=media&token=b5945745-a23f-4858-91c2-5ddcb269ea81');
   } else if (platformname == "PC") {
     return ('https://firebasestorage.googleapis.com/v0/b/gamerx-a8577.appspot.com/o/console_windows11.png?alt=media&token=589fa5ab-553f-4916-b5e3-09a8fd6c0195');
   } else if (platformname == "PlayStation 5") {
-    return ('https://firebasestorage.googleapis.com/v0/b/gamerx-a8577.appspot.com/o/console_windows11.png?alt=media&token=589fa5ab-553f-4916-b5e3-09a8fd6c0195');
+    return ('https://firebasestorage.googleapis.com/v0/b/gamerx-a8577.appspot.com/o/console_PlayStation.png?alt=media&token=b5945745-a23f-4858-91c2-5ddcb269ea81');
   } else if (platformname == "Nintendo Switch") {
-    return ('gs://gamerx-a8577.appspot.com/console_windows11.png');
+    return ('https://firebasestorage.googleapis.com/v0/b/gamerx-a8577.appspot.com/o/console_Nintendo.png?alt=media&token=d9c40f4a-30c0-4ac5-9cc3-54de263f115e');
   }
   return platformname;
 }
