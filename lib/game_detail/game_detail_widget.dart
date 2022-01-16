@@ -397,49 +397,52 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                 r'''$.platforms''',
                               )?.toList() ??
                               [];
-                          return Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: List.generate(platformLogo.length,
-                                (platformLogoIndex) {
-                              final platformLogoItem =
-                                  platformLogo[platformLogoIndex];
-                              return Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
-                                child: Material(
-                                  color: Colors.transparent,
-                                  elevation: 3,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(0),
-                                  ),
-                                  child: Container(
-                                    width: 40,
-                                    height: 40,
-                                    decoration: BoxDecoration(
+                          return SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: List.generate(platformLogo.length,
+                                  (platformLogoIndex) {
+                                final platformLogoItem =
+                                    platformLogo[platformLogoIndex];
+                                return Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      2, 0, 2, 0),
+                                  child: Material(
+                                    color: Colors.transparent,
+                                    elevation: 3,
+                                    shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(0),
-                                      border: Border.all(
-                                        color: FlutterFlowTheme.tertiaryColor,
-                                        width: 2,
+                                    ),
+                                    child: Container(
+                                      width: 40,
+                                      height: 40,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(0),
+                                        border: Border.all(
+                                          color: FlutterFlowTheme.tertiaryColor,
+                                          width: 2,
+                                        ),
+                                      ),
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(0),
+                                        child: CachedNetworkImage(
+                                          imageUrl: functions
+                                              .platformLogo(getJsonField(
+                                            platformLogoItem,
+                                            r'''$..platform.name''',
+                                          ).toString()),
+                                          width: 40,
+                                          height: 40,
+                                          fit: BoxFit.contain,
+                                        ),
                                       ),
                                     ),
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(0),
-                                      child: CachedNetworkImage(
-                                        imageUrl:
-                                            functions.platformLogo(getJsonField(
-                                          platformLogoItem,
-                                          r'''$..platform.name''',
-                                        ).toString()),
-                                        width: 40,
-                                        height: 40,
-                                        fit: BoxFit.contain,
-                                      ),
-                                    ),
                                   ),
-                                ),
-                              );
-                            }),
+                                );
+                              }),
+                            ),
                           );
                         },
                       ),
