@@ -31,39 +31,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
   PageController pageViewController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final animationsMap = {
-    'containerOnPageLoadAnimation1': AnimationInfo(
-      curve: Curves.easeIn,
-      trigger: AnimationTrigger.onPageLoad,
-      duration: 600,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1.2,
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
-    ),
-    'containerOnPageLoadAnimation2': AnimationInfo(
-      curve: Curves.easeIn,
-      trigger: AnimationTrigger.onPageLoad,
-      duration: 600,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1.2,
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
-    ),
-    'containerOnPageLoadAnimation3': AnimationInfo(
+    'containerOnPageLoadAnimation': AnimationInfo(
       curve: Curves.easeIn,
       trigger: AnimationTrigger.onPageLoad,
       duration: 600,
@@ -1016,7 +984,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                     ),
                                                   ).animated([
                                                     animationsMap[
-                                                        'containerOnPageLoadAnimation1']
+                                                        'containerOnPageLoadAnimation']
                                                   ]),
                                                 );
                                               }),
@@ -1327,10 +1295,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                         ),
                                                                       ),
                                                                     ),
-                                                                  ).animated([
-                                                                    animationsMap[
-                                                                        'containerOnPageLoadAnimation2']
-                                                                  ]),
+                                                                  ),
                                                                 );
                                                               }),
                                                             ),
@@ -1608,10 +1573,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                         ),
                                                                       ),
                                                                     ),
-                                                                  ).animated([
-                                                                    animationsMap[
-                                                                        'containerOnPageLoadAnimation3']
-                                                                  ]),
+                                                                  ),
                                                                 );
                                                               }),
                                                             ),
