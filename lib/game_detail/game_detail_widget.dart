@@ -392,56 +392,41 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                       padding: EdgeInsetsDirectional.fromSTEB(16, 4, 16, 4),
                       child: Builder(
                         builder: (context) {
-                          final platforms = getJsonField(
+                          final platformLogo = getJsonField(
                                 (gameDetailGetaGameResponse?.jsonBody ?? ''),
-                                r'''$.platforms[:].platform''',
+                                r'''$.platforms''',
                               )?.toList() ??
                               [];
-                          return SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: List.generate(platforms.length,
-                                  (platformsIndex) {
-                                final platformsItem = platforms[platformsIndex];
-                                return Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 0, 4, 0),
-                                  child: Material(
-                                    color: Colors.transparent,
-                                    elevation: 0,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(8),
-                                    ),
-                                    child: Container(
-                                      height: 25,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(8),
-                                        border: Border.all(
-                                          color: FlutterFlowTheme.tertiaryColor,
-                                          width: 2,
-                                        ),
-                                      ),
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            4, 4, 4, 4),
-                                        child: Text(
-                                          getJsonField(
-                                            platformsItem,
-                                            r'''$.name''',
-                                          ).toString().maybeHandleOverflow(
-                                                maxChars: 60,
-                                                replacement: '…',
-                                              ),
-                                          style: FlutterFlowTheme.bodyText1,
-                                        ),
-                                      ),
-                                    ),
+                          return Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: List.generate(platformLogo.length,
+                                (platformLogoIndex) {
+                              final platformLogoItem =
+                                  platformLogo[platformLogoIndex];
+                              return Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
+                                child: Container(
+                                  width: 30,
+                                  height: 30,
+                                  decoration: BoxDecoration(
+                                    color: Color(0xFFEEEEEE),
+                                    borderRadius: BorderRadius.circular(8),
                                   ),
-                                );
-                              }),
-                            ),
+                                  child: CachedNetworkImage(
+                                    imageUrl:
+                                        functions.platformLogo(getJsonField(
+                                      platformLogoItem,
+                                      r'''$..platform.name''',
+                                    ).toString()),
+                                    width: 30,
+                                    height: 30,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              );
+                            }),
                           );
                         },
                       ),
@@ -523,49 +508,6 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                           },
                         ),
                       ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(16, 4, 16, 4),
-                      child: Builder(
-                        builder: (context) {
-                          final platformLogo = getJsonField(
-                                (gameDetailGetaGameResponse?.jsonBody ?? ''),
-                                r'''$.platforms''',
-                              )?.toList() ??
-                              [];
-                          return Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: List.generate(platformLogo.length,
-                                (platformLogoIndex) {
-                              final platformLogoItem =
-                                  platformLogo[platformLogoIndex];
-                              return Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
-                                child: Container(
-                                  width: 30,
-                                  height: 30,
-                                  decoration: BoxDecoration(
-                                    color: Color(0xFFEEEEEE),
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                  child: CachedNetworkImage(
-                                    imageUrl:
-                                        functions.platformLogo(getJsonField(
-                                      platformLogoItem,
-                                      r'''$..platform.name''',
-                                    ).toString()),
-                                    width: 30,
-                                    height: 30,
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                              );
-                            }),
-                          );
-                        },
-                      ),
-                    ),
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(16, 12, 16, 0),
                       child: Row(
