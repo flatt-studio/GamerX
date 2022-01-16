@@ -1456,7 +1456,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                             ),
                                                                             Expanded(
                                                                               child: Padding(
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(10, 10, 10, 10),
+                                                                                padding: EdgeInsetsDirectional.fromSTEB(5, 10, 0, 10),
                                                                                 child: Column(
                                                                                   mainAxisSize: MainAxisSize.max,
                                                                                   mainAxisAlignment: MainAxisAlignment.center,
