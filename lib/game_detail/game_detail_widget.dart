@@ -534,6 +534,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                               [];
                           return Row(
                             mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: List.generate(platformLogo.length,
                                 (platformLogoIndex) {
                               final platformLogoItem =
