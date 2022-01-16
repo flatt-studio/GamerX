@@ -408,8 +408,8 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                 padding:
                                     EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
                                 child: Container(
-                                  width: 30,
-                                  height: 30,
+                                  width: 40,
+                                  height: 40,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(8),
                                   ),
@@ -419,8 +419,8 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                       platformLogoItem,
                                       r'''$..platform.name''',
                                     ).toString()),
-                                    width: 30,
-                                    height: 30,
+                                    width: 40,
+                                    height: 40,
                                     fit: BoxFit.cover,
                                   ),
                                 ),
