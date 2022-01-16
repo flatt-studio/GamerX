@@ -1006,7 +1006,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                       ),
                       Container(
                         width: MediaQuery.of(context).size.width,
-                        height: 320,
+                        height: 300,
                         decoration: BoxDecoration(),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
@@ -1038,6 +1038,36 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                           Column(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(20, 5, 20, 5),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.end,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.center,
+                                                  children: [
+                                                    Text(
+                                                      'More',
+                                                      style: FlutterFlowTheme
+                                                          .bodyText1
+                                                          .override(
+                                                        fontFamily: 'Roboto',
+                                                        color: FlutterFlowTheme
+                                                            .customColor3,
+                                                      ),
+                                                    ),
+                                                    Icon(
+                                                      Icons.arrow_forward_ios,
+                                                      color: FlutterFlowTheme
+                                                          .customColor3,
+                                                      size: 16,
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
                                               Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(15, 0, 0, 0),
