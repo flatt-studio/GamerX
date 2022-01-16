@@ -1069,13 +1069,14 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                       return Builder(
                                                         builder: (context) {
                                                           final releasedGame =
-                                                              getJsonField(
-                                                                    (columnGetReleasedGamesRAWGResponse
-                                                                            ?.jsonBody ??
-                                                                        ''),
-                                                                    r'''$.results''',
-                                                                  )?.toList() ??
-                                                                  [];
+                                                              (getJsonField(
+                                                                        (columnGetReleasedGamesRAWGResponse?.jsonBody ??
+                                                                            ''),
+                                                                        r'''$.results''',
+                                                                      )?.toList() ??
+                                                                      [])
+                                                                  .take(10)
+                                                                  .toList();
                                                           return SingleChildScrollView(
                                                             child: Column(
                                                               mainAxisSize:
