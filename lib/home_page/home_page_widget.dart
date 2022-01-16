@@ -1196,9 +1196,9 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                           children: [
                                                                             ClipRRect(
                                                                               borderRadius: BorderRadius.only(
-                                                                                bottomLeft: Radius.circular(10),
+                                                                                bottomLeft: Radius.circular(8),
                                                                                 bottomRight: Radius.circular(0),
-                                                                                topLeft: Radius.circular(10),
+                                                                                topLeft: Radius.circular(8),
                                                                                 topRight: Radius.circular(0),
                                                                               ),
                                                                               child: CachedNetworkImage(
@@ -1505,9 +1505,9 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                           children: [
                                                                             ClipRRect(
                                                                               borderRadius: BorderRadius.only(
-                                                                                bottomLeft: Radius.circular(10),
+                                                                                bottomLeft: Radius.circular(8),
                                                                                 bottomRight: Radius.circular(0),
-                                                                                topLeft: Radius.circular(10),
+                                                                                topLeft: Radius.circular(8),
                                                                                 topRight: Radius.circular(0),
                                                                               ),
                                                                               child: CachedNetworkImage(
