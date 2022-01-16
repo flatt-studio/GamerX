@@ -1016,330 +1016,329 @@ class _HomePageWidgetState extends State<HomePageWidget>
                           ],
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
-                        child: Container(
-                          width: MediaQuery.of(context).size.width,
-                          height: 300,
-                          decoration: BoxDecoration(),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Expanded(
-                                child: DefaultTabController(
-                                  length: 2,
-                                  initialIndex: 0,
-                                  child: Column(
-                                    children: [
-                                      TabBar(
-                                        labelColor:
-                                            FlutterFlowTheme.tertiaryColor,
-                                        labelStyle: FlutterFlowTheme.bodyText1,
-                                        indicatorColor:
-                                            FlutterFlowTheme.secondaryColor,
-                                        tabs: [
-                                          Tab(
-                                            text: 'New Releases',
-                                          ),
-                                          Tab(
-                                            text: 'Up Coming',
-                                          ),
-                                        ],
-                                      ),
-                                      Expanded(
-                                        child: TabBarView(
-                                          children: [
-                                            Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(15, 0, 0, 0),
-                                                  child: Container(
-                                                    width:
-                                                        MediaQuery.of(context)
-                                                            .size
-                                                            .width,
-                                                    height: 230,
-                                                    decoration: BoxDecoration(),
-                                                    child: FutureBuilder<
-                                                        ApiCallResponse>(
-                                                      future:
-                                                          GetReleasedGamesRAWGCall
-                                                              .call(),
-                                                      builder:
-                                                          (context, snapshot) {
-                                                        // Customize what your widget looks like when it's loading.
-                                                        if (!snapshot.hasData) {
-                                                          return Center(
-                                                            child: SizedBox(
-                                                              width: 40,
-                                                              height: 40,
-                                                              child:
-                                                                  CircularProgressIndicator(
-                                                                color: FlutterFlowTheme
-                                                                    .primaryColor,
-                                                              ),
+                      Container(
+                        width: MediaQuery.of(context).size.width,
+                        height: 320,
+                        decoration: BoxDecoration(),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Expanded(
+                              child: DefaultTabController(
+                                length: 2,
+                                initialIndex: 0,
+                                child: Column(
+                                  children: [
+                                    TabBar(
+                                      labelColor:
+                                          FlutterFlowTheme.tertiaryColor,
+                                      labelStyle: FlutterFlowTheme.bodyText1,
+                                      indicatorColor:
+                                          FlutterFlowTheme.secondaryColor,
+                                      tabs: [
+                                        Tab(
+                                          text: 'New Releases',
+                                        ),
+                                        Tab(
+                                          text: 'Up Coming',
+                                        ),
+                                      ],
+                                    ),
+                                    Expanded(
+                                      child: TabBarView(
+                                        children: [
+                                          Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(15, 0, 0, 0),
+                                                child: Container(
+                                                  width: MediaQuery.of(context)
+                                                      .size
+                                                      .width,
+                                                  height: 230,
+                                                  decoration: BoxDecoration(),
+                                                  child: FutureBuilder<
+                                                      ApiCallResponse>(
+                                                    future:
+                                                        GetReleasedGamesRAWGCall
+                                                            .call(),
+                                                    builder:
+                                                        (context, snapshot) {
+                                                      // Customize what your widget looks like when it's loading.
+                                                      if (!snapshot.hasData) {
+                                                        return Center(
+                                                          child: SizedBox(
+                                                            width: 40,
+                                                            height: 40,
+                                                            child:
+                                                                CircularProgressIndicator(
+                                                              color: FlutterFlowTheme
+                                                                  .primaryColor,
                                                             ),
-                                                          );
-                                                        }
-                                                        final columnGetReleasedGamesRAWGResponse =
-                                                            snapshot.data;
-                                                        return Builder(
-                                                          builder: (context) {
-                                                            final releasedGame =
-                                                                getJsonField(
-                                                                      (columnGetReleasedGamesRAWGResponse
-                                                                              ?.jsonBody ??
-                                                                          ''),
-                                                                      r'''$.results''',
-                                                                    )?.toList() ??
-                                                                    [];
-                                                            return SingleChildScrollView(
-                                                              child: Column(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                children: List.generate(
-                                                                    releasedGame
-                                                                        .length,
-                                                                    (releasedGameIndex) {
-                                                                  final releasedGameItem =
-                                                                      releasedGame[
-                                                                          releasedGameIndex];
-                                                                  return Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0,
-                                                                            5,
-                                                                            0,
-                                                                            5),
-                                                                    child:
-                                                                        InkWell(
-                                                                      onTap:
-                                                                          () async {
-                                                                        await Navigator
-                                                                            .push(
-                                                                          context,
-                                                                          MaterialPageRoute(
-                                                                            builder: (context) =>
-                                                                                GameDetailWidget(
-                                                                              gameId: getJsonField(
-                                                                                releasedGameItem,
-                                                                                r'''$.id''',
-                                                                              ).toString(),
-                                                                            ),
+                                                          ),
+                                                        );
+                                                      }
+                                                      final columnGetReleasedGamesRAWGResponse =
+                                                          snapshot.data;
+                                                      return Builder(
+                                                        builder: (context) {
+                                                          final releasedGame =
+                                                              getJsonField(
+                                                                    (columnGetReleasedGamesRAWGResponse
+                                                                            ?.jsonBody ??
+                                                                        ''),
+                                                                    r'''$.results''',
+                                                                  )?.toList() ??
+                                                                  [];
+                                                          return SingleChildScrollView(
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              children: List.generate(
+                                                                  releasedGame
+                                                                      .length,
+                                                                  (releasedGameIndex) {
+                                                                final releasedGameItem =
+                                                                    releasedGame[
+                                                                        releasedGameIndex];
+                                                                return Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0,
+                                                                          5,
+                                                                          0,
+                                                                          5),
+                                                                  child:
+                                                                      InkWell(
+                                                                    onTap:
+                                                                        () async {
+                                                                      await Navigator
+                                                                          .push(
+                                                                        context,
+                                                                        MaterialPageRoute(
+                                                                          builder: (context) =>
+                                                                              GameDetailWidget(
+                                                                            gameId:
+                                                                                getJsonField(
+                                                                              releasedGameItem,
+                                                                              r'''$.id''',
+                                                                            ).toString(),
                                                                           ),
-                                                                        );
-                                                                      },
+                                                                        ),
+                                                                      );
+                                                                    },
+                                                                    child:
+                                                                        Material(
+                                                                      color: Colors
+                                                                          .transparent,
+                                                                      elevation:
+                                                                          3,
+                                                                      shape:
+                                                                          RoundedRectangleBorder(
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(8),
+                                                                      ),
                                                                       child:
-                                                                          Material(
-                                                                        color: Colors
-                                                                            .transparent,
-                                                                        elevation:
-                                                                            3,
-                                                                        shape:
-                                                                            RoundedRectangleBorder(
+                                                                          Container(
+                                                                        width: MediaQuery.of(context)
+                                                                            .size
+                                                                            .width,
+                                                                        height:
+                                                                            75,
+                                                                        decoration:
+                                                                            BoxDecoration(
+                                                                          color:
+                                                                              Color(0x7F1D448A),
+                                                                          boxShadow: [
+                                                                            BoxShadow(
+                                                                              blurRadius: 5,
+                                                                              color: Color(0x3F000000),
+                                                                              offset: Offset(0, 2),
+                                                                            )
+                                                                          ],
                                                                           borderRadius:
                                                                               BorderRadius.circular(8),
+                                                                          border:
+                                                                              Border.all(
+                                                                            color:
+                                                                                FlutterFlowTheme.customColor1,
+                                                                            width:
+                                                                                2,
+                                                                          ),
                                                                         ),
                                                                         child:
-                                                                            Container(
-                                                                          width: MediaQuery.of(context)
-                                                                              .size
-                                                                              .width,
-                                                                          height:
-                                                                              75,
-                                                                          decoration:
-                                                                              BoxDecoration(
-                                                                            color:
-                                                                                Color(0x7F1D448A),
-                                                                            boxShadow: [
-                                                                              BoxShadow(
-                                                                                blurRadius: 5,
-                                                                                color: Color(0x3F000000),
-                                                                                offset: Offset(0, 2),
-                                                                              )
-                                                                            ],
-                                                                            borderRadius:
-                                                                                BorderRadius.circular(8),
-                                                                            border:
-                                                                                Border.all(
-                                                                              color: FlutterFlowTheme.customColor1,
-                                                                              width: 2,
-                                                                            ),
-                                                                          ),
-                                                                          child:
-                                                                              Row(
-                                                                            mainAxisSize:
-                                                                                MainAxisSize.max,
-                                                                            children: [
-                                                                              ClipRRect(
-                                                                                borderRadius: BorderRadius.only(
-                                                                                  bottomLeft: Radius.circular(10),
-                                                                                  bottomRight: Radius.circular(0),
-                                                                                  topLeft: Radius.circular(10),
-                                                                                  topRight: Radius.circular(0),
-                                                                                ),
-                                                                                child: CachedNetworkImage(
-                                                                                  imageUrl: getJsonField(
-                                                                                    releasedGameItem,
-                                                                                    r'''$.background_image''',
-                                                                                  ),
-                                                                                  width: 100,
-                                                                                  height: 75,
-                                                                                  fit: BoxFit.cover,
-                                                                                ),
+                                                                            Row(
+                                                                          mainAxisSize:
+                                                                              MainAxisSize.max,
+                                                                          children: [
+                                                                            ClipRRect(
+                                                                              borderRadius: BorderRadius.only(
+                                                                                bottomLeft: Radius.circular(10),
+                                                                                bottomRight: Radius.circular(0),
+                                                                                topLeft: Radius.circular(10),
+                                                                                topRight: Radius.circular(0),
                                                                               ),
-                                                                              Expanded(
-                                                                                child: Padding(
-                                                                                  padding: EdgeInsetsDirectional.fromSTEB(10, 10, 10, 10),
-                                                                                  child: Column(
-                                                                                    mainAxisSize: MainAxisSize.max,
-                                                                                    mainAxisAlignment: MainAxisAlignment.center,
-                                                                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                    children: [
-                                                                                      Row(
-                                                                                        mainAxisSize: MainAxisSize.max,
-                                                                                        mainAxisAlignment: MainAxisAlignment.center,
-                                                                                        children: [
-                                                                                          Expanded(
-                                                                                            child: Text(
-                                                                                              getJsonField(
-                                                                                                releasedGameItem,
-                                                                                                r'''$.name''',
-                                                                                              ).toString().maybeHandleOverflow(
-                                                                                                    maxChars: 20,
-                                                                                                    replacement: '…',
-                                                                                                  ),
-                                                                                              style: FlutterFlowTheme.title3.override(
-                                                                                                fontFamily: 'Playfair Display',
-                                                                                                color: FlutterFlowTheme.tertiaryColor,
-                                                                                              ),
-                                                                                            ),
-                                                                                          ),
-                                                                                        ],
-                                                                                      ),
-                                                                                      Row(
-                                                                                        mainAxisSize: MainAxisSize.max,
-                                                                                        children: [
-                                                                                          Text(
+                                                                              child: CachedNetworkImage(
+                                                                                imageUrl: getJsonField(
+                                                                                  releasedGameItem,
+                                                                                  r'''$.background_image''',
+                                                                                ),
+                                                                                width: 100,
+                                                                                height: 75,
+                                                                                fit: BoxFit.cover,
+                                                                              ),
+                                                                            ),
+                                                                            Expanded(
+                                                                              child: Padding(
+                                                                                padding: EdgeInsetsDirectional.fromSTEB(10, 10, 10, 10),
+                                                                                child: Column(
+                                                                                  mainAxisSize: MainAxisSize.max,
+                                                                                  mainAxisAlignment: MainAxisAlignment.center,
+                                                                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                  children: [
+                                                                                    Row(
+                                                                                      mainAxisSize: MainAxisSize.max,
+                                                                                      mainAxisAlignment: MainAxisAlignment.center,
+                                                                                      children: [
+                                                                                        Expanded(
+                                                                                          child: Text(
                                                                                             getJsonField(
                                                                                               releasedGameItem,
-                                                                                              r'''$.released''',
+                                                                                              r'''$.name''',
                                                                                             ).toString().maybeHandleOverflow(
-                                                                                                  maxChars: 18,
+                                                                                                  maxChars: 20,
                                                                                                   replacement: '…',
                                                                                                 ),
-                                                                                            style: FlutterFlowTheme.bodyText1,
+                                                                                            style: FlutterFlowTheme.title3.override(
+                                                                                              fontFamily: 'Playfair Display',
+                                                                                              color: FlutterFlowTheme.tertiaryColor,
+                                                                                            ),
                                                                                           ),
-                                                                                        ],
-                                                                                      ),
-                                                                                    ],
-                                                                                  ),
-                                                                                ),
-                                                                              ),
-                                                                              Padding(
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(10, 10, 4, 0),
-                                                                                child: Row(
-                                                                                  mainAxisSize: MainAxisSize.max,
-                                                                                  children: [
-                                                                                    if (!(functions.isItemInFav(
-                                                                                            getJsonField(
-                                                                                              releasedGameItem,
-                                                                                              r'''$.id''',
-                                                                                            ).toString(),
-                                                                                            homePageUsersRecord)) ??
-                                                                                        true)
-                                                                                      FlutterFlowIconButton(
-                                                                                        borderColor: Colors.transparent,
-                                                                                        borderRadius: 30,
-                                                                                        borderWidth: 1,
-                                                                                        buttonSize: 34,
-                                                                                        fillColor: FlutterFlowTheme.secondaryColor,
-                                                                                        icon: Icon(
-                                                                                          Icons.favorite_border,
-                                                                                          color: FlutterFlowTheme.tertiaryColor,
-                                                                                          size: 18,
                                                                                         ),
-                                                                                        onPressed: () async {
-                                                                                          final usersUpdateData = {
-                                                                                            'favoriteList': FieldValue.arrayUnion([
-                                                                                              getJsonField(
-                                                                                                releasedGameItem,
-                                                                                                r'''$.id''',
-                                                                                              ).toString()
-                                                                                            ]),
-                                                                                          };
-                                                                                          await currentUserReference.update(usersUpdateData);
-                                                                                        },
-                                                                                      ),
-                                                                                    if (functions.isItemInFav(
-                                                                                            getJsonField(
-                                                                                              releasedGameItem,
-                                                                                              r'''$.id''',
-                                                                                            ).toString(),
-                                                                                            homePageUsersRecord) ??
-                                                                                        true)
-                                                                                      FlutterFlowIconButton(
-                                                                                        borderColor: Colors.transparent,
-                                                                                        borderRadius: 30,
-                                                                                        borderWidth: 1,
-                                                                                        buttonSize: 34,
-                                                                                        fillColor: FlutterFlowTheme.secondaryColor,
-                                                                                        icon: Icon(
-                                                                                          Icons.favorite_sharp,
-                                                                                          color: Color(0xFFFF0000),
-                                                                                          size: 18,
+                                                                                      ],
+                                                                                    ),
+                                                                                    Row(
+                                                                                      mainAxisSize: MainAxisSize.max,
+                                                                                      children: [
+                                                                                        Text(
+                                                                                          getJsonField(
+                                                                                            releasedGameItem,
+                                                                                            r'''$.released''',
+                                                                                          ).toString().maybeHandleOverflow(
+                                                                                                maxChars: 18,
+                                                                                                replacement: '…',
+                                                                                              ),
+                                                                                          style: FlutterFlowTheme.bodyText1,
                                                                                         ),
-                                                                                        onPressed: () async {
-                                                                                          final usersUpdateData = {
-                                                                                            'favoriteList': FieldValue.arrayRemove([
-                                                                                              getJsonField(
-                                                                                                releasedGameItem,
-                                                                                                r'''$.id''',
-                                                                                              ).toString()
-                                                                                            ]),
-                                                                                          };
-                                                                                          await currentUserReference.update(usersUpdateData);
-                                                                                        },
-                                                                                      ),
+                                                                                      ],
+                                                                                    ),
                                                                                   ],
                                                                                 ),
                                                                               ),
-                                                                            ],
-                                                                          ),
+                                                                            ),
+                                                                            Padding(
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(10, 10, 4, 0),
+                                                                              child: Row(
+                                                                                mainAxisSize: MainAxisSize.max,
+                                                                                children: [
+                                                                                  if (!(functions.isItemInFav(
+                                                                                          getJsonField(
+                                                                                            releasedGameItem,
+                                                                                            r'''$.id''',
+                                                                                          ).toString(),
+                                                                                          homePageUsersRecord)) ??
+                                                                                      true)
+                                                                                    FlutterFlowIconButton(
+                                                                                      borderColor: Colors.transparent,
+                                                                                      borderRadius: 30,
+                                                                                      borderWidth: 1,
+                                                                                      buttonSize: 34,
+                                                                                      fillColor: FlutterFlowTheme.secondaryColor,
+                                                                                      icon: Icon(
+                                                                                        Icons.favorite_border,
+                                                                                        color: FlutterFlowTheme.tertiaryColor,
+                                                                                        size: 18,
+                                                                                      ),
+                                                                                      onPressed: () async {
+                                                                                        final usersUpdateData = {
+                                                                                          'favoriteList': FieldValue.arrayUnion([
+                                                                                            getJsonField(
+                                                                                              releasedGameItem,
+                                                                                              r'''$.id''',
+                                                                                            ).toString()
+                                                                                          ]),
+                                                                                        };
+                                                                                        await currentUserReference.update(usersUpdateData);
+                                                                                      },
+                                                                                    ),
+                                                                                  if (functions.isItemInFav(
+                                                                                          getJsonField(
+                                                                                            releasedGameItem,
+                                                                                            r'''$.id''',
+                                                                                          ).toString(),
+                                                                                          homePageUsersRecord) ??
+                                                                                      true)
+                                                                                    FlutterFlowIconButton(
+                                                                                      borderColor: Colors.transparent,
+                                                                                      borderRadius: 30,
+                                                                                      borderWidth: 1,
+                                                                                      buttonSize: 34,
+                                                                                      fillColor: FlutterFlowTheme.secondaryColor,
+                                                                                      icon: Icon(
+                                                                                        Icons.favorite_sharp,
+                                                                                        color: Color(0xFFFF0000),
+                                                                                        size: 18,
+                                                                                      ),
+                                                                                      onPressed: () async {
+                                                                                        final usersUpdateData = {
+                                                                                          'favoriteList': FieldValue.arrayRemove([
+                                                                                            getJsonField(
+                                                                                              releasedGameItem,
+                                                                                              r'''$.id''',
+                                                                                            ).toString()
+                                                                                          ]),
+                                                                                        };
+                                                                                        await currentUserReference.update(usersUpdateData);
+                                                                                      },
+                                                                                    ),
+                                                                                ],
+                                                                              ),
+                                                                            ),
+                                                                          ],
                                                                         ),
                                                                       ),
-                                                                    ).animated([
-                                                                      animationsMap[
-                                                                          'containerOnPageLoadAnimation2']
-                                                                    ]),
-                                                                  );
-                                                                }),
-                                                              ),
-                                                            );
-                                                          },
-                                                        );
-                                                      },
-                                                    ),
+                                                                    ),
+                                                                  ).animated([
+                                                                    animationsMap[
+                                                                        'containerOnPageLoadAnimation2']
+                                                                  ]),
+                                                                );
+                                                              }),
+                                                            ),
+                                                          );
+                                                        },
+                                                      );
+                                                    },
                                                   ),
                                                 ),
-                                              ],
-                                            ),
-                                            Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [],
-                                            ),
-                                          ],
-                                        ),
+                                              ),
+                                            ],
+                                          ),
+                                          Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [],
+                                          ),
+                                        ],
                                       ),
-                                    ],
-                                  ),
+                                    ),
+                                  ],
                                 ),
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
                     ],
