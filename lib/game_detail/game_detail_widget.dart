@@ -413,13 +413,13 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                     color: Colors.transparent,
                                     elevation: 3,
                                     shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(0),
+                                      borderRadius: BorderRadius.circular(8),
                                     ),
                                     child: Container(
                                       width: 44,
                                       height: 44,
                                       decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(0),
+                                        borderRadius: BorderRadius.circular(8),
                                         border: Border.all(
                                           color: FlutterFlowTheme.tertiaryColor,
                                           width: 2,
