@@ -423,7 +423,7 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                       ).toString()),
                                       width: 40,
                                       height: 40,
-                                      fit: BoxFit.scaleDown,
+                                      fit: BoxFit.fill,
                                     ),
                                   ),
                                 ),
