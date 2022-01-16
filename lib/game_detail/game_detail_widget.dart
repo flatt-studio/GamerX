@@ -762,126 +762,135 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                         ],
                       ),
                     ),
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Expanded(
-                          child: Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(16, 12, 16, 20),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 0, 0, 4),
-                                  child: Text(
-                                    'Screen Shots',
-                                    style: FlutterFlowTheme.subtitle1,
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 10, 0, 0),
-                                  child: FutureBuilder<ApiCallResponse>(
-                                    future: GetScreenshotsOfaGameCall.call(
-                                      id: widget.gameId,
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Expanded(
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  16, 12, 16, 20),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 0, 0, 4),
+                                    child: Text(
+                                      'Screen Shots',
+                                      style: FlutterFlowTheme.subtitle1,
                                     ),
-                                    builder: (context, snapshot) {
-                                      // Customize what your widget looks like when it's loading.
-                                      if (!snapshot.hasData) {
-                                        return Center(
-                                          child: SizedBox(
-                                            width: 40,
-                                            height: 40,
-                                            child: CircularProgressIndicator(
-                                              color:
-                                                  FlutterFlowTheme.primaryColor,
-                                            ),
-                                          ),
-                                        );
-                                      }
-                                      final rowGetScreenshotsOfaGameResponse =
-                                          snapshot.data;
-                                      return Builder(
-                                        builder: (context) {
-                                          final screenShot = getJsonField(
-                                                (rowGetScreenshotsOfaGameResponse
-                                                        ?.jsonBody ??
-                                                    ''),
-                                                r'''$.results''',
-                                              )?.toList() ??
-                                              [];
-                                          return SingleChildScrollView(
-                                            scrollDirection: Axis.horizontal,
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: List.generate(
-                                                  screenShot.length,
-                                                  (screenShotIndex) {
-                                                final screenShotItem =
-                                                    screenShot[screenShotIndex];
-                                                return Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(0, 0, 10, 0),
-                                                  child: InkWell(
-                                                    onTap: () async {
-                                                      await Navigator.push(
-                                                        context,
-                                                        PageTransition(
-                                                          type:
-                                                              PageTransitionType
-                                                                  .fade,
-                                                          child:
-                                                              FlutterFlowExpandedImageView(
-                                                            image:
-                                                                CachedNetworkImage(
-                                                              imageUrl:
-                                                                  getJsonField(
-                                                                screenShotItem,
-                                                                r'''$.image''',
-                                                              ),
-                                                              fit: BoxFit
-                                                                  .contain,
-                                                            ),
-                                                            allowRotation: true,
-                                                            useHeroAnimation:
-                                                                false,
-                                                          ),
-                                                        ),
-                                                      );
-                                                    },
-                                                    child: ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              5),
-                                                      child: CachedNetworkImage(
-                                                        imageUrl: getJsonField(
-                                                          screenShotItem,
-                                                          r'''$.image''',
-                                                        ),
-                                                        width: 250,
-                                                        height: 140,
-                                                        fit: BoxFit.cover,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                );
-                                              }),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 10, 0, 0),
+                                    child: FutureBuilder<ApiCallResponse>(
+                                      future: GetScreenshotsOfaGameCall.call(
+                                        id: widget.gameId,
+                                      ),
+                                      builder: (context, snapshot) {
+                                        // Customize what your widget looks like when it's loading.
+                                        if (!snapshot.hasData) {
+                                          return Center(
+                                            child: SizedBox(
+                                              width: 40,
+                                              height: 40,
+                                              child: CircularProgressIndicator(
+                                                color: FlutterFlowTheme
+                                                    .primaryColor,
+                                              ),
                                             ),
                                           );
-                                        },
-                                      );
-                                    },
+                                        }
+                                        final rowGetScreenshotsOfaGameResponse =
+                                            snapshot.data;
+                                        return Builder(
+                                          builder: (context) {
+                                            final screenShot = getJsonField(
+                                                  (rowGetScreenshotsOfaGameResponse
+                                                          ?.jsonBody ??
+                                                      ''),
+                                                  r'''$.results''',
+                                                )?.toList() ??
+                                                [];
+                                            return SingleChildScrollView(
+                                              scrollDirection: Axis.horizontal,
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: List.generate(
+                                                    screenShot.length,
+                                                    (screenShotIndex) {
+                                                  final screenShotItem =
+                                                      screenShot[
+                                                          screenShotIndex];
+                                                  return Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                0, 0, 10, 0),
+                                                    child: InkWell(
+                                                      onTap: () async {
+                                                        await Navigator.push(
+                                                          context,
+                                                          PageTransition(
+                                                            type:
+                                                                PageTransitionType
+                                                                    .fade,
+                                                            child:
+                                                                FlutterFlowExpandedImageView(
+                                                              image:
+                                                                  CachedNetworkImage(
+                                                                imageUrl:
+                                                                    getJsonField(
+                                                                  screenShotItem,
+                                                                  r'''$.image''',
+                                                                ),
+                                                                fit: BoxFit
+                                                                    .contain,
+                                                              ),
+                                                              allowRotation:
+                                                                  true,
+                                                              useHeroAnimation:
+                                                                  false,
+                                                            ),
+                                                          ),
+                                                        );
+                                                      },
+                                                      child: ClipRRect(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(5),
+                                                        child:
+                                                            CachedNetworkImage(
+                                                          imageUrl:
+                                                              getJsonField(
+                                                            screenShotItem,
+                                                            r'''$.image''',
+                                                          ),
+                                                          width: 250,
+                                                          height: 140,
+                                                          fit: BoxFit.cover,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  );
+                                                }),
+                                              ),
+                                            );
+                                          },
+                                        );
+                                      },
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ],
                 ),
