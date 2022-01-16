@@ -416,8 +416,8 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                       borderRadius: BorderRadius.circular(0),
                                     ),
                                     child: Container(
-                                      width: 40,
-                                      height: 40,
+                                      width: 44,
+                                      height: 44,
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(0),
                                         border: Border.all(
@@ -425,17 +425,22 @@ class _GameDetailWidgetState extends State<GameDetailWidget> {
                                           width: 2,
                                         ),
                                       ),
-                                      child: ClipRRect(
-                                        borderRadius: BorderRadius.circular(0),
-                                        child: CachedNetworkImage(
-                                          imageUrl: functions
-                                              .platformLogo(getJsonField(
-                                            platformLogoItem,
-                                            r'''$..platform.name''',
-                                          ).toString()),
-                                          width: 40,
-                                          height: 40,
-                                          fit: BoxFit.contain,
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            4, 4, 4, 4),
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(0),
+                                          child: CachedNetworkImage(
+                                            imageUrl: functions
+                                                .platformLogo(getJsonField(
+                                              platformLogoItem,
+                                              r'''$..platform.name''',
+                                            ).toString()),
+                                            width: 40,
+                                            height: 40,
+                                            fit: BoxFit.contain,
+                                          ),
                                         ),
                                       ),
                                     ),
