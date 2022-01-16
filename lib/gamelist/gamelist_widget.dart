@@ -93,78 +93,75 @@ class _GamelistWidgetState extends State<GamelistWidget> {
                     ],
                   ),
                 ),
-                Expanded(
-                  child: Column(
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
+                  child: Row(
                     mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
+                      Expanded(
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Expanded(
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Expanded(
-                                    child: FlutterFlowDropDown(
-                                      initialOption: dropDownValue ??= 'All',
-                                      options: gamelistPlatformsRecord
-                                          .platfotmsText
-                                          .toList()
-                                          .toList(),
-                                      onChanged: (val) =>
-                                          setState(() => dropDownValue = val),
-                                      width: 180,
-                                      height: 50,
-                                      textStyle:
-                                          FlutterFlowTheme.bodyText1.override(
-                                        fontFamily: 'Roboto',
-                                        color: Colors.black,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                      icon: Icon(
-                                        Icons.filter_list,
-                                        size: 15,
-                                      ),
-                                      fillColor: Colors.white,
-                                      elevation: 2,
-                                      borderColor: Colors.transparent,
-                                      borderWidth: 0,
-                                      borderRadius: 10,
-                                      margin: EdgeInsetsDirectional.fromSTEB(
-                                          12, 4, 12, 4),
-                                      hidesUnderline: true,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
-                              child: FlutterFlowIconButton(
-                                borderColor: Color(0x43FFFFFF),
-                                borderRadius: 10,
-                                borderWidth: 1,
-                                buttonSize: 50,
-                                icon: Icon(
-                                  Icons.local_fire_department,
-                                  color: FlutterFlowTheme.tertiaryColor,
-                                  size: 30,
+                              child: FlutterFlowDropDown(
+                                initialOption: dropDownValue ??= 'All',
+                                options: gamelistPlatformsRecord.platfotmsText
+                                    .toList()
+                                    .toList(),
+                                onChanged: (val) =>
+                                    setState(() => dropDownValue = val),
+                                width: 180,
+                                height: 50,
+                                textStyle: FlutterFlowTheme.bodyText1.override(
+                                  fontFamily: 'Roboto',
+                                  color: Colors.black,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w600,
                                 ),
-                                onPressed: () async {
-                                  setState(() => FFAppState().apiCallParams =
-                                      functions.makeParamsFromDropdown(
-                                          dropDownValue));
-                                },
+                                icon: Icon(
+                                  Icons.filter_list,
+                                  size: 15,
+                                ),
+                                fillColor: Colors.white,
+                                elevation: 2,
+                                borderColor: Colors.transparent,
+                                borderWidth: 0,
+                                borderRadius: 10,
+                                margin: EdgeInsetsDirectional.fromSTEB(
+                                    12, 4, 12, 4),
+                                hidesUnderline: true,
                               ),
                             ),
                           ],
                         ),
                       ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                        child: FlutterFlowIconButton(
+                          borderColor: Color(0x43FFFFFF),
+                          borderRadius: 10,
+                          borderWidth: 1,
+                          buttonSize: 50,
+                          icon: Icon(
+                            Icons.local_fire_department,
+                            color: FlutterFlowTheme.tertiaryColor,
+                            size: 30,
+                          ),
+                          onPressed: () async {
+                            setState(() => FFAppState().apiCallParams =
+                                functions
+                                    .makeParamsFromDropdown(dropDownValue));
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
                       Expanded(
                         child: Padding(
                           padding:
