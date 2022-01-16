@@ -89,7 +89,9 @@ String platformLogo(String platformname) {
   } else if (platformname == "Nintendo Switch") {
     return ('https://firebasestorage.googleapis.com/v0/b/gamerx-a8577.appspot.com/o/nintendo_switch_tall.png?alt=media&token=cb8207d2-10bd-4cdb-b32f-4a98552a6ff9');
   } else if (platformname == "Xbox Series S/X") {
-    return ('https://firebasestorage.googleapis.com/v0/b/gamerx-a8577.appspot.com/o/xbox_series_tall.png?alt=media&token=e1c6d006-fb29-4f3e-8ad8-7fddff1b25eb');
+    return ('https://firebasestorage.googleapis.com/v0/b/gamerx-a8577.appspot.com/o/xbox_series_sx_tall.png?alt=media&token=7f9b3d0e-959b-46c1-aba5-bc0d917436f7');
+  } else if (platformname == "Xbox One") {
+    return ('https://firebasestorage.googleapis.com/v0/b/gamerx-a8577.appspot.com/o/xbox_series_one_tall.png?alt=media&token=026673f7-9a78-4767-b01e-821cb59fc756');
   }
   return platformname;
 }
